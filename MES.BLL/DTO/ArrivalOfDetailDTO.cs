@@ -2,7 +2,7 @@
 
 namespace MES.BLL.DTO
 {
-    public class ArrivalOfDetailDTO : IdProvider
+    public class ArrivalOfDetailDto : IdProvider
     {
         public int DetailId { get; set; }
         public DateTime Date { get; set; }

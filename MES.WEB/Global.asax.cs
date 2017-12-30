@@ -29,7 +29,7 @@ namespace MES.WEB
             Mapper.Initialize(x =>
             {
                 AutoMapperConfigWeb.Config.Invoke(x);
-                AutmapperConfigBLL.Configure.Invoke(x);
+                AutmapperConfigBll.Configure.Invoke(x);
             });
         }
     }

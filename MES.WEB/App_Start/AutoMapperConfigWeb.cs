@@ -9,11 +9,10 @@ namespace MES.WEB
     {
         public static readonly Action<IMapperConfigurationExpression> Config = cfg =>
         {
-            //cfg.CreateMap<DetailDTO, DetailVM>().ReverseMap();
+            cfg.CreateMap<DetailDTO, DetailVm>().ReverseMap();
             cfg.CreateMap<RegisterVm, UserDTO>().ReverseMap();
             cfg.CreateMap<LoginVm, UserDTO>().ReverseMap();
-            //cfg.CreateMap<ArrivalOfDetailVM, ArrivalOfDetailDTO>().ReverseMap();
-
+            cfg.CreateMap<ArrivalOfDetailVm, ArrivalOfDetailDto>().ReverseMap();
         };
     }
 }
