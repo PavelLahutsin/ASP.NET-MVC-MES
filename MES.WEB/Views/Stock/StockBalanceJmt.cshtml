@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<MES.WEB.Models.DetailVm>
 
 @{
-    ViewBag.Title = "StockBalanceOw";
+    ViewBag.Title = "Остаток на складе";
 }
 
 <div class="box external-event">
@@ -40,7 +40,7 @@
                     @Html.DisplayNameFor(model => model.VendorCode)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Quantity)
+                    @Html.DisplayNameFor(model => model.Quantityq)
                 </th>
                 <th></th>
             </tr>
@@ -55,10 +55,10 @@
                         @Html.DisplayFor(modelItem => item.VendorCode)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Quantity)
+                        @Html.DisplayFor(modelItem => item.Quantityq)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })
+                        @Html.ActionLink("Edit", "EditJmtDetail", new { id=item.Id})
 
                     </td>
                 </tr>
@@ -101,4 +101,10 @@
             }
         }
     });
+</script>
+
+<script>
+    var cto = document.getElementById("stock").className = "active treeview menu-open";
+    var cto = document.getElementById("stockJmt").className = "active treeview menu-open";
+    var met = document.getElementById("stockBalanceJmt").className = "active";
 </script>

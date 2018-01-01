@@ -16,21 +16,21 @@ namespace MES.DAL.EF
             db.GroupProducts.Add(g1);
 
             //Детали
-            var s1 = new Detail { Name = "Крышка под пружинку", VendorCode = "245-004", Quantity = 1000, GroupProduct = g1};
-            var s2 = new Detail { Name = "Крышка корпуса", VendorCode = "245-003", Quantity = 1000, GroupProduct = g1 };
-            var s3 = new Detail { Name = "Крышка №", VendorCode = "245-004", Quantity = 1000, GroupProduct = g1 };
-            var s4 = new Detail { Name = "Корпус 5200-01", VendorCode = "245-004", Quantity = 1000, GroupProduct = g1 };
-            var s5 = new Detail { Name = "Диск Верхний", VendorCode = "245-004", Quantity = 7000, GroupProduct = g1 };
-            var s6 = new Detail { Name = "Диск Нижний", VendorCode = "245-004", Quantity = 7000, GroupProduct = g1 };
-            var s7 = new Detail { Name = "Сетка", VendorCode = "245-004", Quantity = 7000, GroupProduct = g1 };
-            var s8 = new Detail { Name = "Шайба О", VendorCode = "245-004", Quantity = 7000, GroupProduct = g1 };
-            var s9 = new Detail { Name = "Шайба Н", VendorCode = "245-004", Quantity = 7000, GroupProduct = g1 };
-            var s10 = new Detail { Name = "Резинка", VendorCode = "245-004", Quantity = 1000, GroupProduct = g1 };
-            var s11 = new Detail { Name = "Бонка", VendorCode = "245-004", Quantity = 1000, GroupProduct = g1 };
-            var s12 = new Detail { Name = "Болт М8", VendorCode = "245-004", Quantity = 1000, GroupProduct = g1 };
-            var s13 = new Detail { Name = "Корпус 5200", VendorCode = "245-004", Quantity = 1000, GroupProduct = g1 };
-            var s14 = new Detail { Name = "Корпус 5200-03", VendorCode = "245-004", Quantity = 1000, GroupProduct = g1 };
-            var s15 = new Detail { Name = "Корпус 6500", VendorCode = "245-004", Quantity = 1000, GroupProduct = g1 };
+            var s1 = new Detail { Name = "Крышка под пружинку", VendorCode = "245-004", Quantityq = 1000, GroupProduct = g1};
+            var s2 = new Detail { Name = "Крышка корпуса", VendorCode = "245-003", Quantityq = 1000, GroupProduct = g1 };
+            var s3 = new Detail { Name = "Крышка №", VendorCode = "245-004", Quantityq = 1000, GroupProduct = g1 };
+            var s4 = new Detail { Name = "Корпус 5200-01", VendorCode = "245-004", Quantityq = 1000, GroupProduct = g1 };
+            var s5 = new Detail { Name = "Диск Верхний", VendorCode = "245-004", Quantityq = 7000, GroupProduct = g1 };
+            var s6 = new Detail { Name = "Диск Нижний", VendorCode = "245-004", Quantityq = 7000, GroupProduct = g1 };
+            var s7 = new Detail { Name = "Сетка", VendorCode = "245-004", Quantityq = 7000, GroupProduct = g1 };
+            var s8 = new Detail { Name = "Шайба О", VendorCode = "245-004", Quantityq = 7000, GroupProduct = g1 };
+            var s9 = new Detail { Name = "Шайба Н", VendorCode = "245-004", Quantityq = 7000, GroupProduct = g1 };
+            var s10 = new Detail { Name = "Резинка", VendorCode = "245-004", Quantityq = 1000, GroupProduct = g1 };
+            var s11 = new Detail { Name = "Бонка", VendorCode = "245-004", Quantityq = 1000, GroupProduct = g1 };
+            var s12 = new Detail { Name = "Болт М8", VendorCode = "245-004", Quantityq = 1000, GroupProduct = g1 };
+            var s13 = new Detail { Name = "Корпус 5200", VendorCode = "245-004", Quantityq = 1000, GroupProduct = g1 };
+            var s14 = new Detail { Name = "Корпус 5200-03", VendorCode = "245-004", Quantityq = 1000, GroupProduct = g1 };
+            var s15 = new Detail { Name = "Корпус 6500", VendorCode = "245-004", Quantityq = 1000, GroupProduct = g1 };
 
 
             db.Details.Add(s1);

@@ -4,10 +4,10 @@ namespace MES.WEB.Models
 {
     public class LoginVm
     {
-      //  [Required]
-        
+        [Required]
         public string Name { get; set; }
-       // [Required]
+
+        [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
     }

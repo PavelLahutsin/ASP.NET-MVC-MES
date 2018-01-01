@@ -1,0 +1,87 @@
+﻿@model MES.WEB.Models.ArrivalOfDetailVm
+
+@{
+    ViewBag.Title = "AddJmtDetail";
+}
+<link href="~/Content/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
+@*<link href="~/Content/StyleSheet1.css" rel="stylesheet" />*@
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class="box-title">Добавить на склад</h3>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <div class="box-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DetailId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.DetailId, ViewBag.Detail as SelectList, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.DetailId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Count, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Count, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Count, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="box-footer">
+            <button type="submit" class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-info pull-right">Sign in</button>
+        </div>
+    }
+</div>
+
+@section scripts {
+
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+    <script src="~/Scripts/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker/locales/bootstrap-datepicker.ru.min.js"></script>
+
+
+    <script>
+        $(function () {
+
+
+            //Date picker
+            $('#Date').datepicker({
+                language: "ru",
+                orientation: "bottom auto",
+                todayHighlight: true,
+                todayBtn: "linked"
+            });
+        })
+    </script>
+
+
+    <script>
+        var cto = document.getElementById("stock").className = "active treeview menu-open";
+        var cto = document.getElementById("stockJmt").className = "active treeview menu-open";
+        var met = document.getElementById("addJmtDetail").className = "active";
+    </script>
+
+
+
+}

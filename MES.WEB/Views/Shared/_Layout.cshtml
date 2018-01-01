@@ -58,15 +58,15 @@
                         </a>
                     </li>
 
-                    <li class="treeview">
+                    <li class="treeview" id="stock">
                         <a href="#">
-                            <i class="fa fa-share"></i> <span>Склад деталей</span>
+                            <i class="fa fa-shopping-cart"></i> <span>Склад деталей</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li class="treeview">
+                            <li class="treeview" id="stockJmt">
                                 <a href="#">
                                     <i class="fa fa-circle-o"></i> ЖМТ
                                     <span class="pull-right-container">
@@ -74,8 +74,8 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="@Url.Action("StockBalanceOw", "Stock")"><i class="fa fa-circle-o"></i> Остаток на складе</a></li>
-                                    <li><a href="@Url.Action("AddDetail", "Stock")"><i class="fa fa-circle-o"></i> Добавить на склад</a></li>
+                                    <li id="stockBalanceJmt"><a href="@Url.Action("StockBalanceJmt", "Stock")"><i class="fa fa-circle-o"></i>Остаток на складе</a></li>
+                                    <li id="addJmtDetail"><a href="@Url.Action("AddJmtDetail", "Stock")"><i class="fa fa-circle-o"></i> Добавить на склад</a></li>
                                     <li><a href="#"><i class="fa fa-circle-o"></i> Брак</a></li>
                                     <li><a href="#"><i class="fa fa-circle-o"></i> История</a></li>
                                 </ul>
@@ -96,6 +96,61 @@
                             </li>
                         </ul>
                     </li>
+                    
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-fire"></i> <span>Пайки</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu" style="display: none;">
+                            <li><a href="#"><i class="fa fa-circle-o"></i> Добавить пайку</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i>История паяк</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-flask"></i> <span>Паста</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu" style="display: none;">
+                            <li><a href="#"><i class="fa fa-circle-o"></i>Остаток на складе</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i>Шелкография</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i>Дозатор</a></li>
+                        </ul>
+                    </li>
+
+                     <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-check"></i> <span>Проверка</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu" style="display: none;">
+                            <li><a href="#"><i class="fa fa-circle-o"></i>ЖМТ</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i>ЕГР</a></li>                            
+                        </ul>
+                    </li>
+                    
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-shopping-basket"></i> <span>Склад готовой продукции</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu" style="display: none;">
+                            <li><a href="#"><i class="fa fa-circle-o"></i>ЖМТ</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i>ЕГР</a></li>                            
+                        </ul>
+                    </li>
+
+
                 </ul>
             </section>
             <!-- /.sidebar -->

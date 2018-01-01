@@ -7,7 +7,7 @@ namespace MES.DAL.Entities
     {
         public string Name { get; set; }
         public string VendorCode { get; set; }
-        public int Quantity { get; set; }
+        public int Quantityq { get; set; }
         public int GroupProductId { get; set; }
         public GroupProduct GroupProduct { get; set; }
         

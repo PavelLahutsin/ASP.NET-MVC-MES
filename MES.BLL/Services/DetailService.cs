@@ -28,7 +28,7 @@ namespace MES.BLL.Services
             {
                 Name = x.Detail.Name,
                 GroupProductId = x.Detail.GroupProductId,
-                Quantity = x.Detail.Quantity / x.Quantity
+                Quantityq = x.Detail.Quantityq / x.Quantity
             });
             
         }
@@ -44,7 +44,7 @@ namespace MES.BLL.Services
             _uof.ArrivalOfDetails.Create(arrivalOfDetail);
 
 
-            detail.Quantity += arrival.Count;
+            detail.Quantityq += arrival.Count;
             _uof.Details.Update(detail);
             await _uof.Commit();
         }
