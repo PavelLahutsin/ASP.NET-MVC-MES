@@ -15,12 +15,12 @@ namespace MES.WEB.Controllers
 {
     public class StockController : Controller
     {
-        private readonly IDetailService _detailOn;
+        private readonly IStockService _stockOn;
         private readonly IUnitOfWork _db;
 
-        public StockController(IDetailService detailOn, IUnitOfWork db)
+        public StockController(IStockService stockOn, IUnitOfWork db)
         {
-            _detailOn = detailOn;
+            _stockOn = stockOn;
             _db = db;
         }
 
@@ -28,9 +28,9 @@ namespace MES.WEB.Controllers
         // Остаток деталей на складе
         public async Task<ActionResult> StockBalanceJmt()
         {
-            var d52001 = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(_detailOn.GetDetail("5200-01"));
+            var d52001 = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(_stockOn.GetDetail("5200-01"));
 
-            var d6500 = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(_detailOn.GetDetail("6500"));
+            var d6500 = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(_stockOn.GetDetail("6500"));
             var detail = Mapper.Map<IEnumerable<Detail>, List<DetailVm>>(await _db.Details.GetAllAsync());
 
             ViewBag.d52001 = d52001.Select(t => t.Name);
@@ -47,39 +47,85 @@ namespace MES.WEB.Controllers
         //прихон на склад 
         public ActionResult AddJmtDetail()
         {
-            var details = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(_detailOn.GetDetailsJmt());
+            var details = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(_stockOn.GetDetailsJmt());
             SelectList detailList = new SelectList(details, "Id", "Name");
             ViewBag.Detail = detailList;
-            return View();
+            ArrivalOfDetailVm arrivalOfDetail = new ArrivalOfDetailVm {Date = DateTime.Now};
+            return View(arrivalOfDetail);
         }
 
         [HttpPost]
         public async Task<ActionResult> AddJmtDetail(ArrivalOfDetailVm arrival)
         {
-            var details = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(_detailOn.GetDetailsJmt());
+            var details = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(_stockOn.GetDetailsJmt());
             SelectList detailList = new SelectList(details, "Id", "Name");
             ViewBag.Detail = detailList;
 
             if (!ModelState.IsValid) return View(arrival);
 
-            await _detailOn.AddArrivalOfDetailAsync(Mapper.Map<ArrivalOfDetailDto>(arrival));
+            var result = await _stockOn.AddArrivalOfDetailAsync(Mapper.Map<ArrivalOfDetailDto>(arrival));
             return RedirectToAction("AddJmtDetail");
         }
 
-        //прихон на склад 
+        //Редактирование деталей
         public async Task<ActionResult> EditJmtDetail(int id)
         {
             var detail = Mapper.Map<DetailVm>(await _db.Details.GetAsync(id));
-            return View(detail);
+            return PartialView(detail);
         }
         [HttpPost]
         public async Task<ActionResult> EditJmtDetail(DetailVm detail)
         {
-            if (!ModelState.IsValid) return View(detail);
+            if (!ModelState.IsValid) return PartialView(detail);
             
             _db.Details.Update(Mapper.Map<Detail>(detail));
             await _db.Commit();
-            return View(detail);
+            return RedirectToAction("StockBalanceJmt");
         }
+
+        //История прихода на склад
+        public async Task<ActionResult> HistArrival()
+        {
+            var arrivals = Mapper.Map<IEnumerable<DisplayArrivalOfDetailDto>, List<DisplayArrivalOfDetailVm>>(await _stockOn.ShowArryvalOfDedails());
+            return View(arrivals);
+        }
+
+        //Удаление Данных о добавлении на склад
+        public async Task<ActionResult> DeleteArrival(int id)
+        {
+            var result = await _stockOn.DeleteArrivalOfDetail(id);
+            return RedirectToAction("HistArrival");
+        }
+
+        //Редактирование Данных о добавлении на склад
+        public async Task<ActionResult> EditArrival(int id)
+        {
+            var arrival = Mapper.Map<ArrivalOfDetailVm>(await _db.ArrivalOfDetails.GetAsync(id));
+
+            var details = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(_stockOn.GetDetailsJmt());
+            SelectList detailList = new SelectList(details, "Id", "Name");
+            ViewBag.Detail = detailList;
+
+            return View(arrival);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> EditArrival(ArrivalOfDetailVm arrival)
+        {
+            var details = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(_stockOn.GetDetailsJmt());
+            SelectList detailList = new SelectList(details, "Id", "Name");
+            ViewBag.Detail = detailList;
+
+            if (!ModelState.IsValid) return View(arrival);
+
+            var result = await _stockOn.EditArrivalOfDetail(Mapper.Map<ArrivalOfDetail>(arrival));
+
+            return RedirectToAction("HistArrival");
+        }
+
+
+
+
+
     }
 }

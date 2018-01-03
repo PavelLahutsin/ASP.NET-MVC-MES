@@ -7,7 +7,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MES.DAL.EF
 {
-    public class MesDbInitializer : DropCreateDatabaseIfModelChanges<MesContext>
+    public class MesDbInitializer : CreateDatabaseIfNotExists<MesContext>
     {
         protected override void Seed(MesContext db)
         {

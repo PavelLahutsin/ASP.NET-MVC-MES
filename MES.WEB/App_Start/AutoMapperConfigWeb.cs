@@ -15,6 +15,9 @@ namespace MES.WEB
             cfg.CreateMap<RegisterVm, UserDTO>().ReverseMap();
             cfg.CreateMap<LoginVm, UserDTO>().ReverseMap();
             cfg.CreateMap<ArrivalOfDetailVm, ArrivalOfDetailDto>().ReverseMap();
+            cfg.CreateMap<ArrivalOfDetailVm, ArrivalOfDetail>().ReverseMap();
+            cfg.CreateMap<DisplayArrivalOfDetailVm, DisplayArrivalOfDetailDto>().ReverseMap();
+
         };
     }
 }

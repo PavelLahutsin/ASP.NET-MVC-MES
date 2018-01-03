@@ -4,6 +4,11 @@
     ViewBag.Title = "Остаток на складе";
 }
 
+
+<div id="modDialog" class="modal fade">
+    <div id="dialogContent" class="modal-dialog"></div>
+</div>
+
 <div class="box external-event">
     <div class="box-header with-border">
         <h3 class="box-title">5200-01</h3>
@@ -58,8 +63,7 @@
                         @Html.DisplayFor(modelItem => item.Quantityq)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "EditJmtDetail", new { id=item.Id})
-
+                        @Html.ActionLink("Edit", "EditJmtDetail", new { id=item.Id}, new { @class = "btn btn-danger" })                        
                     </td>
                 </tr>
             }
@@ -69,42 +73,64 @@
 </div>
 
 
-<script src="~/Scripts/Chart.min.js"></script>
 
 
+@section scripts
+{
+    <script src="~/Scripts/Chart.min.js"></script>
 
-<script>
-    var ctx = document.getElementById("Chart520001").getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: @Html.Raw(Json.Encode(ViewBag.d52001)),
-            datasets: [{
-                label: '5200-01',
-                data: @Html.Raw(Json.Encode(ViewBag.d52001Count)),
-                backgroundColor:
-                    'rgba(255, 159, 64, 1)'
-                ,
-                borderColor:
-                    'rgba(255, 159, 64, 1)'
-                ,
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero:true
-                    }
+    <script type="text/javascript">
+
+            $(function () {
+                $.ajaxSetup({ cache: false });
+                $(".btn").click(function (e) {
+
+                    e.preventDefault();
+                    $.get(this.href, function (data) {
+                        $('#dialogContent').html(data);
+                        $('#modDialog').modal('show');
+                    });
+                });
+            })
+        </script>    
+
+
+    <script>
+        var ctx = document.getElementById("Chart520001").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: @Html.Raw(Json.Encode(ViewBag.d52001)),
+                datasets: [{
+                    label: '5200-01',
+                    data: @Html.Raw(Json.Encode(ViewBag.d52001Count)),
+                    backgroundColor:
+                        'rgba(255, 159, 64, 1)'
+                    ,
+                    borderColor:
+                        'rgba(255, 159, 64, 1)'
+                    ,
+                    borderWidth: 1
                 }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
             }
-        }
-    });
-</script>
+        });
+    </script>
 
-<script>
-    var cto = document.getElementById("stock").className = "active treeview menu-open";
-    var cto = document.getElementById("stockJmt").className = "active treeview menu-open";
-    var met = document.getElementById("stockBalanceJmt").className = "active";
-</script>
+    <script>
+                var cto = document.getElementById("stock").className = "active treeview menu-open";
+                var cto = document.getElementById("stockJmt").className = "active treeview menu-open";
+                var met = document.getElementById("stockBalanceJmt").className = "active";
+    </script>
+
+}
+
+

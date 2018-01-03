@@ -4,7 +4,7 @@
     ViewBag.Title = "AddJmtDetail";
 }
 <link href="~/Content/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
-@*<link href="~/Content/StyleSheet1.css" rel="stylesheet" />*@
+<link href="~/Content/StyleSheet1.css" rel="stylesheet" />
 <div class="box box-info">
     <div class="box-header with-border">
         <h3 class="box-title">Добавить на склад</h3>
@@ -46,8 +46,7 @@
 
         </div>
         <div class="box-footer">
-            <button type="submit" class="btn btn-default">Cancel</button>
-            <button type="submit" class="btn btn-info pull-right">Sign in</button>
+            <button type="submit" class="btn btn-info pull-right">Добавить</button>
         </div>
     }
 </div>
@@ -63,7 +62,11 @@
 
     <script>
         $(function () {
-
+            $(document.body).on('click',
+                '[data-val-required]',
+                function(ev) {
+                    $(ev.target).attr('required', 'true');
+                });
 
             //Date picker
             $('#Date').datepicker({
@@ -71,6 +74,7 @@
                 orientation: "bottom auto",
                 todayHighlight: true,
                 todayBtn: "linked"
+
             });
         })
     </script>

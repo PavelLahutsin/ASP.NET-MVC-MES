@@ -13,7 +13,7 @@ namespace MES.WEB
         {
             Bind<IMesContext>().To<MesContext>();
             Bind<IUnitOfWork>().To<UnitOfWork>();
-            Bind<IDetailService>().To<DetailService>();
+            Bind<IStockService>().To<StockService>();
             Bind(typeof(IBaseRepository<>)).To(typeof(BaseRepository<>));
             Bind<IUserService>().To<UserService>();
             Bind<IClientManager>().To<ClientManager>();

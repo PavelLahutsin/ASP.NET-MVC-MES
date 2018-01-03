@@ -9,11 +9,11 @@ namespace MES.WEB.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IDetailService _detailOn;
+        private readonly IStockService _stockOn;
 
-        public HomeController(IDetailService detailOn)
+        public HomeController(IStockService stockOn)
         {
-            _detailOn = detailOn;
+            _stockOn = stockOn;
         }
 
         public ActionResult Index()
@@ -23,7 +23,7 @@ namespace MES.WEB.Controllers
 
         public ActionResult About()
         {
-            var details = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(_detailOn.GetDetailsJmt());
+            var details = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(_stockOn.GetDetailsJmt());
             SelectList detailList = new SelectList(details, "Id", "Name");
             ViewBag.Detail = detailList;
             return View();
