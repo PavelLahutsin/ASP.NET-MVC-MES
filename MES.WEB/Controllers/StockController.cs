@@ -123,9 +123,73 @@ namespace MES.WEB.Controllers
             return RedirectToAction("HistArrival");
         }
 
+        /// <summary>
+        /// Добавить детали в брак
+        /// </summary>
+        /// <returns>PartialView</returns>
+        public ActionResult AddDefectJmtDetail()
+        {
+            var details = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(_stockOn.GetDetailsJmt());
+            SelectList detailList = new SelectList(details, "Id", "Name");
+            ViewBag.Detail = detailList;
+            DefectDetailVm defect = new DefectDetailVm { Date = DateTime.Now };
+            return PartialView(defect);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AddDefectJmtDetail(DefectDetailVm defect)
+        {
+            var details = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(_stockOn.GetDetailsJmt());
+            SelectList detailList = new SelectList(details, "Id", "Name");
+            ViewBag.Detail = detailList;
+
+            if (!ModelState.IsValid) return PartialView(defect);
+
+            var result = await _stockOn.AddDefectDetailAsync(Mapper.Map<DefectDetailDto>(defect));
+            return RedirectToAction("HistDefect");
+        }
 
 
+        //История брака на склад
+        public async Task<ActionResult> HistDefect()
+        {
+            var defect = Mapper.Map<IEnumerable<DefectDetailDisplayDto>, List<DefectDetailDisplayVm>>(await _stockOn.ShowDefectDetailAsync());
+            return View(defect);
+        }
 
+
+        //Удаление Данных о браковке деталей
+        public async Task<ActionResult> DeleteDefect(int id)
+        {
+            var result = await _stockOn.DeleteDefectDetail(id);
+            return RedirectToAction("HistDefect");
+        }
+
+        //Редактирование Данных о браковке деталей
+        public async Task<ActionResult> EditDefect(int id)
+        {
+            var defect = Mapper.Map<DefectDetailVm>(await _db.DefectDetails.GetAsync(id));
+
+            var details = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(_stockOn.GetDetailsJmt());
+            SelectList detailList = new SelectList(details, "Id", "Name");
+            ViewBag.Detail = detailList;
+
+            return PartialView(defect);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> EditDefect(DefectDetailVm defect)
+        {
+            var details = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(_stockOn.GetDetailsJmt());
+            SelectList detailList = new SelectList(details, "Id", "Name");
+            ViewBag.Detail = detailList;
+
+            if (!ModelState.IsValid) return View(defect);
+
+            var result = await _stockOn.EditDefectDetail(Mapper.Map<DefectDetail>(defect));
+
+            return RedirectToAction("HistDefect");
+        }
 
     }
 }

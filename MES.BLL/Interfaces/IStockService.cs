@@ -13,5 +13,9 @@ namespace MES.BLL.Interfaces
         Task<IEnumerable<DisplayArrivalOfDetailDto>> ShowArryvalOfDedails();
         Task<bool> DeleteArrivalOfDetail(int id);
         Task<bool> EditArrivalOfDetail(ArrivalOfDetail arrival);
+        Task<bool> AddDefectDetailAsync(DefectDetailDto defect);
+        Task<IEnumerable<DefectDetailDisplayDto>> ShowDefectDetailAsync();
+        Task<bool> DeleteDefectDetail(int id);
+        Task<bool> EditDefectDetail(DefectDetail defect);
     }
 }

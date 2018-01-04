@@ -19,6 +19,8 @@ namespace MES.DAL.EF
         private IBaseRepository<Product> _productRepository;
         private IBaseRepository<StructureOfTheProduct> _structureOfTheProductRepository;
         private IBaseRepository<GroupProduct> _groupProductRepository;
+        private IBaseRepository<DefectDetail> _defectDetailRepository;
+
 
         public UnitOfWork()
         {
@@ -33,6 +35,9 @@ namespace MES.DAL.EF
 
         public IBaseRepository<Detail> Details => _detailRepository ??
                                                   (_detailRepository = new BaseRepository<Detail>(_context));
+
+        public IBaseRepository<DefectDetail> DefectDetails => _defectDetailRepository ??
+                                                  (_defectDetailRepository = new BaseRepository<DefectDetail>(_context));
 
         public IBaseRepository<GroupProduct> GroupProducts => _groupProductRepository ??
                                                   (_groupProductRepository = new BaseRepository<GroupProduct>(_context));

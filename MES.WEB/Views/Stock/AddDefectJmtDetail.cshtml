@@ -1,35 +1,30 @@
-﻿@model MES.WEB.Models.ArrivalOfDetailVm
+﻿@model MES.WEB.Models.DefectDetailVm
 
-@{
-    ViewBag.Title = "AddJmtDetail";
-}
 <link href="~/Content/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
-@*<link href="~/Content/StyleSheet1.css" rel="stylesheet" />*@
-<div class="box box-info">
-    <div class="box-header with-border">
-        <h3 class="box-title">Добавить на склад</h3>
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title">Добавить в брак</h4>
     </div>
 
     @using (Html.BeginForm())
     {
-        @Html.AntiForgeryToken()
+        <div class="modal-body">
 
-        <div class="form-horizontal">
-            <div class="box-body">
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
                     @Html.LabelFor(model => model.DetailId, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.DropDownListFor(model => model.DetailId, ViewBag.Detail as SelectList, htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.DetailId, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Count, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Count, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Count, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -41,16 +36,23 @@
                     </div>
                 </div>
 
-
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Count, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Count, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Count, "", new { @class = "text-danger" })
+                    </div>
+                </div>
             </div>
-
         </div>
+
         <div class="box-footer">
-            <button type="reset" class="btn btn-default">Отмена</button>
-            <button type="submit" class="btn btn-info pull-right">Добавить</button>
+            <button type="submit" class="btn btn-warning pull-right">Добавить</button>
         </div>
     }
 </div>
+
+
 
 @section scripts {
 
@@ -58,7 +60,7 @@
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap-datepicker")
 
- 
+
 
     <script>
         $(function () {
@@ -80,11 +82,7 @@
     </script>
 
 
-    <script>
-        var cto = document.getElementById("stock").className = "active treeview menu-open";
-        var cto = document.getElementById("stockJmt").className = "active treeview menu-open";
-        var met = document.getElementById("addJmtDetail").className = "active";
-    </script>
+   
 
 
 

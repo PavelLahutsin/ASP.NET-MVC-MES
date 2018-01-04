@@ -10,6 +10,7 @@ namespace MES.DAL.EF
         public DbSet<Detail> Details { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ArrivalOfDetail> ArrivalOfDetails { get; set; }
+        public DbSet<DefectDetail> DefectDetails { get; set; }
         public DbSet<StructureOfTheProduct> StructureOfTheProducts { get; set; }
         public DbSet<ClientProfile> ClientProfiles { get; set; }
         public DbSet<GroupProduct> GroupProducts { get; set; }

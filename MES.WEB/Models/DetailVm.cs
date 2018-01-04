@@ -11,6 +11,7 @@ namespace MES.WEB.Models
         public string VendorCode { get; set; }
 
         [Display(Name = "Количество")]
+        [Range(0, 100000, ErrorMessage = "Min = 0, Max = 1000000")]
         public int Quantityq { get; set; }
 
         [HiddenInput(DisplayValue = false)]

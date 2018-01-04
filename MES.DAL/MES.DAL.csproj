@@ -60,6 +60,7 @@
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Entities\ArrivalOfDetail.cs" />
     <Compile Include="Entities\ClientProfile.cs" />
+    <Compile Include="Entities\DefectDetail.cs" />
     <Compile Include="Entities\Detail.cs" />
     <Compile Include="Entities\GroupProduct.cs" />
     <Compile Include="Entities\IdProvider.cs" />

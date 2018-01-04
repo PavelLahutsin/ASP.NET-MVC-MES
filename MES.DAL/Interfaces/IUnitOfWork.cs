@@ -12,6 +12,7 @@ namespace MES.DAL.Interfaces
         IBaseRepository<GroupProduct> GroupProducts { get; }
         IBaseRepository<Product> Products { get; }
         IBaseRepository<StructureOfTheProduct> StructureOfTheProducts { get; }
+        IBaseRepository<DefectDetail> DefectDetails { get; }
         ApplicationUserManager UserManager { get; }
         ApplicationRoleManager RoleManager { get; }
         IClientManager ClientManager { get; }

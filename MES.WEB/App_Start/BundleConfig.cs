@@ -13,7 +13,11 @@ namespace MES.WEB
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
-           
+
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap-datepicker").Include(
+                "~/Scripts/bootstrap-datepicker/bootstrap-datepicker.min.js",
+                "~/Scripts/bootstrap-datepicker/locales/bootstrap-datepicker.ru.min.js"));
+
             // Используйте версию Modernizr для разработчиков, чтобы учиться работать. Когда вы будете готовы перейти к работе,
             // готово к выпуску, используйте средство сборки по адресу https://modernizr.com, чтобы выбрать только необходимые тесты.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

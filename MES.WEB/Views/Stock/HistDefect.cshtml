@@ -1,0 +1,91 @@
+﻿@model IEnumerable<MES.WEB.Models.DefectDetailDisplayVm>
+
+@{
+    ViewBag.Title = "HistDefect";
+}
+
+<link href="~/Content/datatables.net-bs/dataTables.bootstrap.css" rel="stylesheet" />
+
+<div id="modDialog" class="modal fade">
+    <div id="dialogContent" class="modal-dialog"></div>
+</div>
+
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Брак деталей</h3>
+        </div>
+        <div class="box-body">
+            <div class="row"><div class="col-sm-6"></div><div class="col-sm-6"></div></div><div class="row">
+                <div class="col-sm-12">
+                    <p>
+                        @Html.ActionLink("Добавить в брак", "AddDefectJmtDetail", "Stock", new { @class = "btn btn-danger" })
+                    </p>
+                    <table class="table table-bordered table-striped dataTable">
+
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.NameDetail)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Count)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Date)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NameDetail)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Count)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Date)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "EditDefect", new { id = item.Id }, new { @class = "btn btn-adn" })
+
+
+                                    @Html.ActionLink("Delete", "DeleteDefect", new { id = item.Id })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+
+    <script type="text/javascript">
+
+        $(function() {
+            $.ajaxSetup({ cache: false });
+            $(".btn").click(function(e) {
+
+                e.preventDefault();
+                $.get(this.href,
+                    function(data) {
+                        $('#dialogContent').html(data);
+                        $('#modDialog').modal('show');
+                    });
+            });
+        })
+    </script>
+    
+    <script>
+        var cto = document.getElementById("stock").className = "active treeview menu-open";
+        var cto = document.getElementById("stockJmt").className = "active treeview menu-open";
+        var met = document.getElementById("defectJmtDetail").className = "active";
+    </script>
+}

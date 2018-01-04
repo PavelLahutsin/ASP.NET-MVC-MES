@@ -206,6 +206,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ArrivalOfDetailVm.cs" />
+    <Compile Include="Models\DefectDetailDisplayVm.cs" />
+    <Compile Include="Models\DefectDetailVm.cs" />
     <Compile Include="Models\DetailVm.cs" />
     <Compile Include="Models\IdProvider.cs" />
     <Compile Include="Models\DisplayArrivalOfDetailVm.cs" />
@@ -462,6 +464,9 @@
     <Content Include="Views\Stock\HistArrival.cshtml" />
     <Content Include="Views\Stock\EditArrival.cshtml" />
     <Content Include="Views\Stock\EditJmtDetail.cshtml" />
+    <Content Include="Views\Stock\HistDefect.cshtml" />
+    <Content Include="Views\Stock\AddDefectJmtDetail.cshtml" />
+    <Content Include="Views\Stock\EditDefect.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
