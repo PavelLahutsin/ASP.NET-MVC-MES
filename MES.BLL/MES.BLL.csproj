@@ -89,14 +89,16 @@
     <Compile Include="DTO\IdProvider.cs" />
     <Compile Include="DTO\DisplayArrivalOfDetailDto.cs" />
     <Compile Include="DTO\ProductDTO.cs" />
+    <Compile Include="DTO\SolderingDto.cs" />
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Infrastructure\AutmapperConfigBLL.cs" />
     <Compile Include="Infrastructure\OperationDetails.cs" />
     <Compile Include="Infrastructure\ServiceModule.cs" />
-    <Compile Include="Infrastructure\ValidationException.cs" />
+    <Compile Include="Interfaces\ISolderingService.cs" />
     <Compile Include="Interfaces\IStockService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\SolderingService.cs" />
     <Compile Include="Services\StockService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>

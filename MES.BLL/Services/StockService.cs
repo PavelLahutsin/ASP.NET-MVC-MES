@@ -67,6 +67,7 @@ namespace MES.BLL.Services
             }
             catch (Exception)
             {
+                _uof.Rollback();
                 return false;
             }
             
@@ -77,7 +78,7 @@ namespace MES.BLL.Services
         /// Возвращает список приходов на склад
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<DisplayArrivalOfDetailDto>> ShowArryvalOfDedails()
+        public async Task<IEnumerable<DisplayArrivalOfDetailDto>> ShowArryvalOfDedailsAsync()
         {
             return await _uof.ArrivalOfDetails.Entities.Select(x => new DisplayArrivalOfDetailDto
             {
@@ -93,7 +94,7 @@ namespace MES.BLL.Services
         /// </summary>
         /// <param name="id">ArrivalOfDetail.Id</param>
         /// <returns>успешна ли операция</returns>
-        public async Task<bool> DeleteArrivalOfDetail(int id)
+        public async Task<bool> DeleteArrivalOfDetailAsync(int id)
         {
             try
             {
@@ -111,6 +112,7 @@ namespace MES.BLL.Services
             }
             catch (Exception)
             {
+                _uof.Rollback();
                 return false;
             }
            
@@ -121,7 +123,7 @@ namespace MES.BLL.Services
         /// </summary>
         /// <param name="arrival">Обнавленные данные о приходе</param>
         /// <returns>успешно ли обнавление бд</returns>
-        public async Task<bool> EditArrivalOfDetail(ArrivalOfDetail arrival)
+        public async Task<bool> EditArrivalOfDetailAsync(ArrivalOfDetail arrival)
         {
             try
             {
@@ -152,6 +154,7 @@ namespace MES.BLL.Services
             }
             catch (Exception)
             {
+                _uof.Rollback();
                 return false;
             }
 
@@ -179,6 +182,7 @@ namespace MES.BLL.Services
             }
             catch (Exception)
             {
+                _uof.Rollback();
                 return false;
             }
 
@@ -205,7 +209,7 @@ namespace MES.BLL.Services
         /// </summary>
         /// <param name="id">Записи для удаления</param>
         /// <returns>успешна ли операция</returns>
-        public async Task<bool> DeleteDefectDetail(int id)
+        public async Task<bool> DeleteDefectDetailAsync(int id)
         {
             try
             {
@@ -223,6 +227,7 @@ namespace MES.BLL.Services
             }
             catch (Exception)
             {
+                _uof.Rollback();
                 return false;
             }
 
@@ -233,7 +238,7 @@ namespace MES.BLL.Services
         /// </summary>
         /// <param name="defect">измененные данные</param>
         /// <returns>успешна ли операция</returns>
-        public async Task<bool> EditDefectDetail(DefectDetail defect)
+        public async Task<bool> EditDefectDetailAsync(DefectDetail defect)
         {
             try
             {
@@ -264,6 +269,7 @@ namespace MES.BLL.Services
             }
             catch (Exception)
             {
+                _uof.Rollback();
                 return false;
             }
 

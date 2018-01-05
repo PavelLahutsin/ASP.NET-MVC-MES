@@ -9,6 +9,7 @@ namespace MES.DAL.Interfaces
         DbSet<Detail> Details { get; set; }
         DbSet<Product> Products { get; set; }
         DbSet<ArrivalOfDetail> ArrivalOfDetails { get; set; }
+        DbSet<Soldering> Solderings { get; set; }
         DbSet<DefectDetail> DefectDetails { get; set; }
         DbSet<StructureOfTheProduct> StructureOfTheProducts { get; set; }
         DbSet<ClientProfile> ClientProfiles { get; set; }

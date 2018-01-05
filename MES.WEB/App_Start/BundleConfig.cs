@@ -8,30 +8,30 @@ namespace MES.WEB
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js",
-                "~/Scripts/dist/js/adminlte.min.js"));
+                "~/Scripts/jquery-{version}.js",
+                "~/Scripts/dist/js/adminlte.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate*"));
+                "~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap-datepicker").Include(
-                "~/Scripts/bootstrap-datepicker/bootstrap-datepicker.min.js",
+                "~/Scripts/bootstrap-datepicker/bootstrap-datepicker.js",
                 "~/Scripts/bootstrap-datepicker/locales/bootstrap-datepicker.ru.min.js"));
 
             // Используйте версию Modernizr для разработчиков, чтобы учиться работать. Когда вы будете готовы перейти к работе,
             // готово к выпуску, используйте средство сборки по адресу https://modernizr.com, чтобы выбрать только необходимые тесты.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
+                "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                "~/Scripts/bootstrap.js",
+                "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/dist/css/AdminLTE.min.css",
-                      "~/Content/dist/css/skins/_all-skins.min.css",
-                      "~/Content/font-awesome/css/font-awesome.min.css"));
+                "~/Content/bootstrap.css",
+                "~/Content/font-awesome/css/font-awesome.css",
+                "~/Content/dist/css/AdminLTE.css",
+                "~/Content/dist/css/skins/_all-skins.css"));
         }
     }
 }

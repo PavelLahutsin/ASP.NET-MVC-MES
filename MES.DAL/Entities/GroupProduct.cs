@@ -6,11 +6,7 @@ namespace MES.DAL.Entities
     {
         public string Name { get; set; }
 
-        public ICollection<Detail> Details { get; set; }
+        public virtual ICollection<Detail> Details { get; set; } = new HashSet<Detail>();
 
-        public GroupProduct()
-        {
-            Details = new List<Detail>();
-        }
     }
 }

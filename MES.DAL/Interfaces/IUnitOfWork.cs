@@ -10,6 +10,7 @@ namespace MES.DAL.Interfaces
         IBaseRepository<ArrivalOfDetail> ArrivalOfDetails { get; }
         IBaseRepository<Detail> Details { get; }
         IBaseRepository<GroupProduct> GroupProducts { get; }
+        IBaseRepository<Soldering> Solderings { get; }
         IBaseRepository<Product> Products { get; }
         IBaseRepository<StructureOfTheProduct> StructureOfTheProducts { get; }
         IBaseRepository<DefectDetail> DefectDetails { get; }

@@ -17,6 +17,7 @@ namespace MES.DAL.EF
         private IBaseRepository<ArrivalOfDetail> _arrivalOfDetailRepository;
         private IBaseRepository<Detail> _detailRepository;
         private IBaseRepository<Product> _productRepository;
+        private IBaseRepository<Soldering> _solderingRepository;
         private IBaseRepository<StructureOfTheProduct> _structureOfTheProductRepository;
         private IBaseRepository<GroupProduct> _groupProductRepository;
         private IBaseRepository<DefectDetail> _defectDetailRepository;
@@ -38,6 +39,9 @@ namespace MES.DAL.EF
 
         public IBaseRepository<DefectDetail> DefectDetails => _defectDetailRepository ??
                                                   (_defectDetailRepository = new BaseRepository<DefectDetail>(_context));
+
+        public IBaseRepository<Soldering> Solderings => _solderingRepository ??
+                                                        (_solderingRepository = new BaseRepository<Soldering>(_context));
 
         public IBaseRepository<GroupProduct> GroupProducts => _groupProductRepository ??
                                                   (_groupProductRepository = new BaseRepository<GroupProduct>(_context));

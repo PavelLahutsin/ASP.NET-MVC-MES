@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using MES.BLL.DTO;
@@ -86,14 +85,14 @@ namespace MES.WEB.Controllers
         //История прихода на склад
         public async Task<ActionResult> HistArrival()
         {
-            var arrivals = Mapper.Map<IEnumerable<DisplayArrivalOfDetailDto>, List<DisplayArrivalOfDetailVm>>(await _stockOn.ShowArryvalOfDedails());
+            var arrivals = Mapper.Map<IEnumerable<DisplayArrivalOfDetailDto>, List<DisplayArrivalOfDetailVm>>(await _stockOn.ShowArryvalOfDedailsAsync());
             return View(arrivals);
         }
 
         //Удаление Данных о добавлении на склад
         public async Task<ActionResult> DeleteArrival(int id)
         {
-            var result = await _stockOn.DeleteArrivalOfDetail(id);
+            var result = await _stockOn.DeleteArrivalOfDetailAsync(id);
             return RedirectToAction("HistArrival");
         }
 
@@ -118,7 +117,7 @@ namespace MES.WEB.Controllers
 
             if (!ModelState.IsValid) return View(arrival);
 
-            var result = await _stockOn.EditArrivalOfDetail(Mapper.Map<ArrivalOfDetail>(arrival));
+            var result = await _stockOn.EditArrivalOfDetailAsync(Mapper.Map<ArrivalOfDetail>(arrival));
 
             return RedirectToAction("HistArrival");
         }
@@ -161,7 +160,7 @@ namespace MES.WEB.Controllers
         //Удаление Данных о браковке деталей
         public async Task<ActionResult> DeleteDefect(int id)
         {
-            var result = await _stockOn.DeleteDefectDetail(id);
+            var result = await _stockOn.DeleteDefectDetailAsync(id);
             return RedirectToAction("HistDefect");
         }
 
@@ -186,7 +185,7 @@ namespace MES.WEB.Controllers
 
             if (!ModelState.IsValid) return View(defect);
 
-            var result = await _stockOn.EditDefectDetail(Mapper.Map<DefectDetail>(defect));
+            var result = await _stockOn.EditDefectDetailAsync(Mapper.Map<DefectDetail>(defect));
 
             return RedirectToAction("HistDefect");
         }

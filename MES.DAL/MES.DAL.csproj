@@ -65,6 +65,7 @@
     <Compile Include="Entities\GroupProduct.cs" />
     <Compile Include="Entities\IdProvider.cs" />
     <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\Soldering.cs" />
     <Compile Include="Entities\StructureOfTheProduct.cs" />
     <Compile Include="Identity\ApplicationRoleManager.cs" />
     <Compile Include="Identity\ApplicationUserManager.cs" />

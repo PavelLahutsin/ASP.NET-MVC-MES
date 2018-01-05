@@ -2,16 +2,12 @@
 
 namespace MES.DAL.Entities
 {
-    public sealed class Product : IdProvider
+    public  class Product : IdProvider
     {
         public string Name { get; set; }
         
 
-        public ICollection<StructureOfTheProduct> StructureOfTheProducts { get; set; }
-
-        public Product()
-        {
-            StructureOfTheProducts = new List<StructureOfTheProduct>();
-        }
+        public virtual ICollection<StructureOfTheProduct> StructureOfTheProducts { get; set; } = new HashSet<StructureOfTheProduct>();
+        public virtual ICollection<Soldering> Solderings { get; set; } = new HashSet<Soldering>();
     }
 }

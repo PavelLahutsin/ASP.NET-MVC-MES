@@ -1,12 +1,16 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/modernizr")
+    @*<link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/dist/css/AdminLTE.css" rel="stylesheet" />
+    <link href="~/Content/dist/css/skins/_all-skins.css" rel="stylesheet" />*@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -96,7 +100,7 @@
                             </li>
                         </ul>
                     </li>
-                    
+
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-fire"></i> <span>Пайки</span>
@@ -124,7 +128,7 @@
                         </ul>
                     </li>
 
-                     <li class="treeview">
+                    <li class="treeview">
                         <a href="#">
                             <i class="fa fa-check"></i> <span>Проверка</span>
                             <span class="pull-right-container">
@@ -133,10 +137,10 @@
                         </a>
                         <ul class="treeview-menu" style="display: none;">
                             <li><a href="#"><i class="fa fa-circle-o"></i>ЖМТ</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i>ЕГР</a></li>                            
+                            <li><a href="#"><i class="fa fa-circle-o"></i>ЕГР</a></li>
                         </ul>
                     </li>
-                    
+
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-shopping-basket"></i> <span>Склад готовой продукции</span>
@@ -146,7 +150,7 @@
                         </a>
                         <ul class="treeview-menu" style="display: none;">
                             <li><a href="#"><i class="fa fa-circle-o"></i>ЖМТ</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i>ЕГР</a></li>                            
+                            <li><a href="#"><i class="fa fa-circle-o"></i>ЕГР</a></li>
                         </ul>
                     </li>
 
@@ -166,7 +170,6 @@
         </div>
         <!-- /.content-wrapper -->
         <!-- Control Sidebar -->
-       
         <!-- /.control-sidebar -->
         <!-- Add the sidebar's background. This div must be placed
              immediately after the control sidebar -->
@@ -175,8 +178,15 @@
     <!-- ./wrapper -->
     <!-- jQuery 3 -->
 
+
+
+@*<script src="~/Scripts/jquery-3.2.1.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/dist/js/adminlte.min.js"></script>
+    <script src="~/Scripts/respond.min.js"></script>*@
+
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", false)
 
 </body>
