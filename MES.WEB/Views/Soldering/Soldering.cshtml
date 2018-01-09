@@ -1,0 +1,169 @@
+﻿@model MES.WEB.Models.DateVm
+
+@{
+    ViewBag.Title = "Soldering";
+}
+
+<link href="~/Content/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
+
+<div id="modDialog" class="modal fade">
+    <div id="dialogContent" class="modal-dialog"></div>
+</div>
+
+<section class="content">
+    <p>
+        <a href="@Url.Action("AddSolderingPartial")" id="addId" class="btn btn-success">Добавить пайку</a>
+    </p>
+
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Диапазон дат</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            @using (Ajax.BeginForm("ShowSolderingListPartial", new AjaxOptions { UpdateTargetId = "results" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-inline">
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="????????" class="btn btn-default" />
+                            </div>
+                        </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">История паек</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div id="results">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Количество спаяных теплообменников</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div id="results2">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section scripts
+{
+
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap-datepicker")
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script>
+        $(function () {
+            $(document.body).on('click',
+                '[data-val-required]',
+                function (ev) {
+                    $(ev.target).attr('required', 'true');
+                });
+
+            //Date picker
+            $('#StartDate').datepicker({
+                language: "ru",
+                orientation: "bottom auto",
+                todayHighlight: true,
+                todayBtn: "linked"
+
+            });
+
+            //Date picker
+            $('#EndDate').datepicker({
+                language: "ru",
+                orientation: "bottom auto",
+                todayHighlight: true,
+                todayBtn: "linked"
+
+            });
+        })
+    </script>
+
+    <script>
+        $(function () {
+            var idToUpdate = $('#results');
+            $.get("/Soldering/ShowSolderingListPartial",
+                function (data) {
+                    $(idToUpdate).html(data);
+                });
+        });
+
+        //$('#results').on("click", function(e) {
+        //    e.preventDefault();
+
+
+        //})
+    </script>
+
+    <script>
+        $(function () {
+            var idToUpdate = $('#results2');
+            $.get("/Soldering/ShowSolderingCountPartial",
+                function (data) {
+                    $(idToUpdate).html(data);
+                });
+        });
+
+        //$('#results').on("click", function(e) {
+        //    e.preventDefault();
+
+
+        //})
+    </script>
+
+    <script>
+        $(function () {
+            $.ajaxSetup({ cache: false });
+            $("#addId").click(function (e) {
+
+                e.preventDefault();
+                $.get(this.href,
+                    function (data) {
+                        $('#dialogContent').html(data);
+                        $('#modDialog').modal('show');
+                    });
+            });
+        })
+    </script>
+
+    <script>document.getElementById("solderings").className = "active";</script>
+
+}

@@ -89,6 +89,7 @@
     <Compile Include="DTO\IdProvider.cs" />
     <Compile Include="DTO\DisplayArrivalOfDetailDto.cs" />
     <Compile Include="DTO\ProductDTO.cs" />
+    <Compile Include="DTO\SolderingCountDto.cs" />
     <Compile Include="DTO\SolderingDto.cs" />
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Infrastructure\AutmapperConfigBLL.cs" />

@@ -207,13 +207,17 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ArrivalOfDetailVm.cs" />
+    <Compile Include="Models\DateVm.cs" />
     <Compile Include="Models\DefectDetailDisplayVm.cs" />
     <Compile Include="Models\DefectDetailVm.cs" />
     <Compile Include="Models\DetailVm.cs" />
     <Compile Include="Models\IdProvider.cs" />
     <Compile Include="Models\DisplayArrivalOfDetailVm.cs" />
     <Compile Include="Models\LoginVm.cs" />
+    <Compile Include="Models\ProductVm.cs" />
     <Compile Include="Models\RegisterVm.cs" />
+    <Compile Include="Models\SolderingCountVm.cs" />
+    <Compile Include="Models\SolderingVm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -464,14 +468,17 @@
     <Content Include="Views\Stock\AddJmtDetail.cshtml" />
     <Content Include="Views\Stock\HistArrival.cshtml" />
     <Content Include="Views\Stock\EditArrival.cshtml" />
-    <Content Include="Views\Stock\EditJmtDetail.cshtml" />
+    <Content Include="Views\Stock\EditJmtDetailPartial.cshtml" />
     <Content Include="Views\Stock\HistDefect.cshtml" />
-    <Content Include="Views\Stock\AddDefectJmtDetail.cshtml" />
-    <Content Include="Views\Stock\EditDefect.cshtml" />
+    <Content Include="Views\Stock\AddDefectJmtDetailPartial.cshtml" />
+    <Content Include="Views\Stock\EditDefectPartial.cshtml" />
+    <Content Include="Views\Soldering\AddSolderingPartial.cshtml" />
+    <Content Include="Views\Soldering\ShowSolderingListPartial.cshtml" />
+    <Content Include="Views\Soldering\Soldering.cshtml" />
+    <Content Include="Views\Soldering\ShowSolderingCountPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Soldering\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

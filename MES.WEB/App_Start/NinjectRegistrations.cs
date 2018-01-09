@@ -17,6 +17,7 @@ namespace MES.WEB
             Bind(typeof(IBaseRepository<>)).To(typeof(BaseRepository<>));
             Bind<IUserService>().To<UserService>();
             Bind<IClientManager>().To<ClientManager>();
+            Bind<ISolderingService>().To<SolderingService>();
         }
     }
 }

@@ -57,7 +57,7 @@ namespace MES.WEB.Controllers
         public async Task<ActionResult> AddJmtDetail(ArrivalOfDetailVm arrival)
         {
             var details = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(_stockOn.GetDetailsJmt());
-            SelectList detailList = new SelectList(details, "Id", "Name");
+            var detailList = new SelectList(details, "Id", "Name");
             ViewBag.Detail = detailList;
 
             if (!ModelState.IsValid) return View(arrival);
@@ -67,13 +67,13 @@ namespace MES.WEB.Controllers
         }
 
         //Редактирование деталей
-        public async Task<ActionResult> EditJmtDetail(int id)
+        public async Task<ActionResult> EditJmtDetailPartial(int id)
         {
             var detail = Mapper.Map<DetailVm>(await _db.Details.GetAsync(id));
             return PartialView(detail);
         }
         [HttpPost]
-        public async Task<ActionResult> EditJmtDetail(DetailVm detail)
+        public async Task<ActionResult> EditJmtDetailPartial(DetailVm detail)
         {
             if (!ModelState.IsValid) return PartialView(detail);
             
@@ -126,7 +126,7 @@ namespace MES.WEB.Controllers
         /// Добавить детали в брак
         /// </summary>
         /// <returns>PartialView</returns>
-        public ActionResult AddDefectJmtDetail()
+        public ActionResult AddDefectJmtDetailPartial()
         {
             var details = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(_stockOn.GetDetailsJmt());
             SelectList detailList = new SelectList(details, "Id", "Name");
@@ -136,7 +136,7 @@ namespace MES.WEB.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddDefectJmtDetail(DefectDetailVm defect)
+        public async Task<ActionResult> AddDefectJmtDetailPartial(DefectDetailVm defect)
         {
             var details = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(_stockOn.GetDetailsJmt());
             SelectList detailList = new SelectList(details, "Id", "Name");
@@ -165,7 +165,7 @@ namespace MES.WEB.Controllers
         }
 
         //Редактирование Данных о браковке деталей
-        public async Task<ActionResult> EditDefect(int id)
+        public async Task<ActionResult> EditDefectPartial(int id)
         {
             var defect = Mapper.Map<DefectDetailVm>(await _db.DefectDetails.GetAsync(id));
 
@@ -177,7 +177,7 @@ namespace MES.WEB.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> EditDefect(DefectDetailVm defect)
+        public async Task<ActionResult> EditDefectPartial(DefectDetailVm defect)
         {
             var details = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(_stockOn.GetDetailsJmt());
             SelectList detailList = new SelectList(details, "Id", "Name");

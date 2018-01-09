@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using MES.DAL.Entities;
 using MES.DAL.Identity;
@@ -7,7 +8,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MES.DAL.EF
 {
-    public class MesDbInitializer : CreateDatabaseIfNotExists<MesContext>
+    public class MesDbInitializer : DropCreateDatabaseIfModelChanges<MesContext>
     {
         protected override void Seed(MesContext db)
         {
@@ -128,6 +129,21 @@ namespace MES.DAL.EF
                 userManager.AddToRole(admin.Id, role1.Name);
                 userManager.AddToRole(admin.Id, role2.Name);
             }
+            var products = new List<Product> {p, p2, p3};
+            Random random = new Random();
+            for (int i = 0; i < 500; i++)
+            {
+                var soldering1 = new Soldering
+                {
+                    Quantity = random.Next(10,100),
+                    Date = new DateTime(2016, 10, 20).AddDays(i), Product = products[random.Next(0, 3)]
+                };
+
+                db.Solderings.Add(soldering1);
+            }
+
+            
+
 
             db.SaveChanges();
         }
