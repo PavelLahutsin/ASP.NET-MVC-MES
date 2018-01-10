@@ -67,6 +67,8 @@
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\Soldering.cs" />
     <Compile Include="Entities\StructureOfTheProduct.cs" />
+    <Compile Include="Enums\GoupProduct.cs" />
+    <Compile Include="Enums\ProductState.cs" />
     <Compile Include="Identity\ApplicationRoleManager.cs" />
     <Compile Include="Identity\ApplicationUserManager.cs" />
     <Compile Include="Interfaces\IBaseRepository.cs" />

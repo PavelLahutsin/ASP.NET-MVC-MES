@@ -67,9 +67,22 @@ namespace MES.BLL.Services
         /// <param name="startDate"></param>
         /// <param name="endDate"></param>
         /// <returns></returns>
-        public async Task<IEnumerable<SolderingDto>> ShowSolderingsAsync(DateTime startDate, DateTime endDate)
+        public async Task<IEnumerable<SolderingDto>> ShowSolderingsAsync(string startDate, string endDate)
         {
-            var s = await _uof.Solderings.Entities.Where(w => w.Date >= startDate && w.Date <= endDate).Select(x =>
+            DateTime myEndDate;
+            DateTime myStartDate;
+            if (string.IsNullOrEmpty(startDate) || string.IsNullOrEmpty(endDate))
+            {
+                myEndDate = DateTime.Now;
+                myStartDate = new DateTime(myEndDate.Year, myEndDate.Month, 1);
+            }
+            else
+            {
+                myEndDate = DateTime.Parse(endDate);
+                myStartDate = DateTime.Parse(startDate);
+            }
+
+            var s = await _uof.Solderings.Entities.Where(w => w.Date >= myStartDate && w.Date <= myEndDate).Select(x =>
                 new SolderingDto
                 {
                     Quantity = x.Quantity,
@@ -87,9 +100,21 @@ namespace MES.BLL.Services
         /// <param name="startDate"></param>
         /// <param name="endDate"></param>
         /// <returns>Количество отпаяной продукции за период</returns>
-        public async Task<IEnumerable<SolderingCountDto>> ShowSolderingsCountAsync(DateTime startDate, DateTime endDate)
+        public async Task<IEnumerable<SolderingCountDto>> ShowSolderingsCountAsync(string startDate, string endDate)
         {
-            return await _uof.Solderings.Entities.Where(w => w.Date >= startDate && w.Date <= endDate).GroupBy(x=>x.ProductId).Select(s=>new SolderingCountDto()
+            DateTime myEndDate;
+            DateTime myStartDate;
+            if (string.IsNullOrEmpty(startDate) || string.IsNullOrEmpty(endDate))
+            {
+                myEndDate = DateTime.Now;
+                myStartDate = new DateTime(myEndDate.Year, myEndDate.Month, 1);
+            }
+            else
+            {
+                myEndDate = DateTime.Parse(endDate);
+                myStartDate = DateTime.Parse(startDate);
+            }
+            return await _uof.Solderings.Entities.Where(w => w.Date >= myStartDate && w.Date <= myEndDate).GroupBy(x=>x.ProductId).Select(s=>new SolderingCountDto()
             {
                 Quantity = s.Sum(x=>x.Quantity),
                 ProductName = s.FirstOrDefault().Product.Name

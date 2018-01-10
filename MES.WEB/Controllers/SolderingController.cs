@@ -65,24 +65,45 @@ namespace MES.WEB.Controllers
         }
 
 
-        public async Task<ActionResult> ShowSolderingListPartial(DateTime? startDate, DateTime? endDate)
-        {
-            var myEndDate = endDate ?? DateTime.Now;
-            var myStartDate = startDate ?? new DateTime(myEndDate.Year, myEndDate.Month, 1);
+        //public async Task<ActionResult> ShowSolderingListPartial(DateTime? startDate, DateTime? endDate)
+        //{
+        //    var myEndDate = endDate ?? DateTime.Now;
+        //    var myStartDate = startDate ?? new DateTime(myEndDate.Year, myEndDate.Month, 1);
 
+        //    var solderings = Mapper.Map<IEnumerable<SolderingDto>, List<SolderingVm>>(
+        //         await _solderingService.ShowSolderingsAsync(myStartDate, myEndDate));
+        //    return PartialView(solderings);
+        //}
+
+
+        //public async Task<ActionResult> ShowSolderingCountPartial(DateTime? startDate, DateTime? endDate)
+        //{
+        //    var myEndDate = endDate ?? DateTime.Now;
+        //    var myStartDate = startDate ?? new DateTime(myEndDate.Year, myEndDate.Month, 1);
+
+        //    var solderings = Mapper.Map<IEnumerable<SolderingCountDto>, List<SolderingCountVm>>(
+        //        await _solderingService.ShowSolderingsCountAsync(myStartDate, myEndDate));
+
+        //    return PartialView(solderings);
+
+        //}
+
+        public async Task<ActionResult> ShowSolderingListPartial(string startDate, string endDate)
+        {
+            
+         
             var solderings = Mapper.Map<IEnumerable<SolderingDto>, List<SolderingVm>>(
-                 await _solderingService.ShowSolderingsAsync(myStartDate, myEndDate));
+                await _solderingService.ShowSolderingsAsync(startDate, endDate));
             return PartialView(solderings);
         }
 
 
-        public async Task<ActionResult> ShowSolderingCountPartial(DateTime? startDate, DateTime? endDate)
+        public async Task<ActionResult> ShowSolderingCountPartial(string startDate, string endDate)
         {
-            var myEndDate = endDate ?? DateTime.Now;
-            var myStartDate = startDate ?? new DateTime(myEndDate.Year, myEndDate.Month, 1);
+           
 
             var solderings = Mapper.Map<IEnumerable<SolderingCountDto>, List<SolderingCountVm>>(
-                await _solderingService.ShowSolderingsCountAsync(myStartDate, myEndDate));
+                await _solderingService.ShowSolderingsCountAsync(startDate, endDate));
 
             return PartialView(solderings);
 
