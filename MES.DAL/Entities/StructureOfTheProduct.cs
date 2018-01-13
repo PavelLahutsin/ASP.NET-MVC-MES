@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MES.DAL.Entities
 {
+    //показывает из каких деталей состоит продукт
     public class StructureOfTheProduct : IdProvider
     {
         [Key]

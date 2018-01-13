@@ -4,7 +4,7 @@
     ViewBag.Title = "Soldering";
 }
 
-<link href="~/Content/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
+@Styles.Render("~/Data&Date/css")
 
 <div id="modDialog" class="modal fade">
     <div id="dialogContent" class="modal-dialog"></div>
@@ -78,18 +78,14 @@
 @section scripts
 {
 
-    @Scripts.Render("~/bundles/jqueryval")
+    
     @Scripts.Render("~/bundles/bootstrap-datepicker")
+    @Scripts.Render("~/bundles/DataTables")
 
-    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
 
     <script>
-        $(function () {
-            $(document.body).on('click',
-                '[data-val-required]',
-                function (ev) {
-                    $(ev.target).attr('required', 'true');
-                });
+
 
             //Date picker
             $('#StartDate').datepicker({
@@ -106,9 +102,36 @@
                 orientation: "bottom auto",
                 todayHighlight: true,
                 todayBtn: "linked"
+        });
 
+
+
+
+            $('#StartDate').on('changeDate',
+            function(ev) {
+                view();
             });
-        })
+
+        $('#EndDate').on('changeDate',
+            function(ev) {
+                 view();
+            });
+
+        function view() {
+            var startDate = $('#StartDate').val();
+            startDate = encodeURIComponent(startDate);
+            var endDate = $('#EndDate').val();
+            endDate = encodeURIComponent(endDate);
+            $('#results').load('@Url.Action("ShowSolderingListPartial", "Soldering")?startDate=' +
+                startDate +
+                '&endDate=' +
+                endDate);
+            $('#results2').load('@Url.Action("ShowSolderingCountPartial", "Soldering")?startDate=' +
+                startDate +
+                '&endDate=' +
+                endDate);
+        }
+
     </script>
 
     <script>
@@ -120,11 +143,6 @@
                 });
         });
 
-        //$('#results').on("click", function(e) {
-        //    e.preventDefault();
-
-
-        //})
     </script>
 
     <script>
@@ -136,11 +154,7 @@
                 });
         });
 
-        //$('#results').on("click", function(e) {
-        //    e.preventDefault();
 
-
-        //})
     </script>
 
     <script>
@@ -158,19 +172,9 @@
         })
     </script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.form-control').click(function (e) {
-                e.preventDefault();
-                var startDate = $('#StartDate').val();
-                //startDate = encodeURIComponent(startDate);
-                var endDate = $('#EndDate').val();
-                //endDate = encodeURIComponent(endDate);
-                $('#results').load('@Url.Action("ShowSolderingListPartial", "Soldering")?startDate=' + startDate + '&endDate='  + endDate);
-                $('#results2').load('@Url.Action("ShowSolderingCountPartial", "Soldering")?startDate=' + startDate + '&endDate=' + endDate);
-            });
-        });
-    </script>
+
+
+
 
     <script>document.getElementById("solderings").className = "active";</script>
 

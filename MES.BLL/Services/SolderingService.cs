@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
-using AutoMapper;
 using MES.BLL.DTO;
 using MES.BLL.Infrastructure;
 using MES.BLL.Interfaces;
@@ -46,6 +44,20 @@ namespace MES.BLL.Services
                     Quantity = soldering.Quantity,
                     Date = soldering.Date
                 };
+
+                var prSt1 = await _uof.ProductStates.Entities.Where(w =>
+                    w.ProductId == soldering.ProductId && w.VariantStateProductId == 1).FirstOrDefaultAsync();
+
+                prSt1.Quantity -= soldering.Quantity;
+
+                var prSt2 = await _uof.ProductStates.Entities.Where(w =>
+                    w.ProductId == soldering.ProductId && w.VariantStateProductId == 2).FirstOrDefaultAsync();
+
+                prSt2.Quantity += soldering.Quantity;
+
+                _uof.ProductStates.Update(prSt1);
+                _uof.ProductStates.Update(prSt2);
+
                 _uof.Solderings.Create(sol);
                 await _uof.Commit();
                 return new OperationDetails(true, "Пайка успешно добавлена", "");
@@ -137,7 +149,20 @@ namespace MES.BLL.Services
                 _uof.Details.Update(detail);
             }
 
-            _uof.Solderings.Delete(id);
+                var prSt1 = await _uof.ProductStates.Entities.Where(w =>
+                    w.ProductId == soldering.ProductId && w.VariantStateProductId == 1).FirstOrDefaultAsync();
+
+                prSt1.Quantity += soldering.Quantity;
+
+                var prSt2 = await _uof.ProductStates.Entities.Where(w =>
+                    w.ProductId == soldering.ProductId && w.VariantStateProductId == 2).FirstOrDefaultAsync();
+
+                prSt2.Quantity -= soldering.Quantity;
+
+                _uof.ProductStates.Update(prSt1);
+                _uof.ProductStates.Update(prSt2);
+
+                _uof.Solderings.Delete(id);
             await _uof.Commit();
 
             return true;

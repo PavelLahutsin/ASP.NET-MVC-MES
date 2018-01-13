@@ -1,7 +1,10 @@
-﻿namespace MES.BLL.DTO
+﻿
+
+namespace MES.BLL.DTO
 {
-    public class ProductDTO : IdProvider
+    public class ProductDto : IdProvider
     {
         public string Name { get; set; }
+        public int Quantity { get; set; }
     }
 }

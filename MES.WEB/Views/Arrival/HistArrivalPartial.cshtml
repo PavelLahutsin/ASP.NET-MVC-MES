@@ -1,0 +1,55 @@
+﻿@model IEnumerable<MES.WEB.Models.DisplayArrivalOfDetailVm>
+
+
+<table id="example" class="table table-striped table-bordered">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NameDetail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Count)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameDetail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Count)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditArrivalPartial", new {id = item.Id}, new { @class = "text-orange" }) |
+                @Html.ActionLink("Delete", "DeleteArrival", new {id = item.Id}, new { @class = "text-red" })
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+
+<script>
+    $(function() {
+        $.ajaxSetup({ cache: false });
+        $(".text-orange").click(function(e) {
+
+            e.preventDefault();
+            $.get(this.href,
+                function(data) {
+                    $('#dialogContent').html(data);
+                    $('#modDialog').modal('show');
+                });
+        });
+    })
+</script>

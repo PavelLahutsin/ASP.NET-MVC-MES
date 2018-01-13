@@ -70,10 +70,9 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                                    <li id="stockBalanceJmt"><a href="@Url.Action("StockBalanceJmt", "Stock")"><i class="fa fa-circle-o"></i>Остаток на складе</a></li>
-                                    <li id="addJmtDetail"><a href="@Url.Action("AddJmtDetail", "Stock")"><i class="fa fa-circle-o"></i> Добавить на склад</a></li>
-                                    <li id="defectJmtDetail"><a href="@Url.Action("HistDefect", "Stock")"><i class="fa fa-circle-o"></i> Брак</a></li>
-                                    <li id="histArrival"><a href="@Url.Action("HistArrival", "Stock")"><i class="fa fa-circle-o"></i> История</a></li>
+                            <li id="stockBalanceJmt"><a href="@Url.Action("StockBalanceJmt", "Stock")"><i class="fa fa-circle-o"></i>Остаток на складе</a></li>
+                            <li id="defectJmtDetail"><a href="@Url.Action("HistDefect", "Stock")"><i class="fa fa-circle-o"></i> Брак</a></li>
+                            <li id="histArrival"><a href="@Url.Action("Index", "Arrival")"><i class="fa fa-circle-o"></i>Приход деталей на склад</a></li>
                         </ul>
                     </li>
 
@@ -146,16 +145,10 @@
     </div>
     <!-- ./wrapper -->
     <!-- jQuery 3 -->
-
-
-
-@*<script src="~/Scripts/jquery-3.2.1.js"></script>
-<script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/dist/js/adminlte.min.js"></script>
-    <script src="~/Scripts/respond.min.js"></script>*@
-
+ 
+    @Scripts.Render("~/bundles/jquery-val")
     @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", false)
 
 </body>

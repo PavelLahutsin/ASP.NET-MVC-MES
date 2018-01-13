@@ -13,6 +13,8 @@ namespace MES.DAL.Interfaces
         IBaseRepository<Soldering> Solderings { get; }
         IBaseRepository<Product> Products { get; }
         IBaseRepository<StructureOfTheProduct> StructureOfTheProducts { get; }
+        IBaseRepository<VariantStateProduct> VariantStateProducts { get; }
+        IBaseRepository<ProductState> ProductStates { get; }
         IBaseRepository<DefectDetail> DefectDetails { get; }
         ApplicationUserManager UserManager { get; }
         ApplicationRoleManager RoleManager { get; }

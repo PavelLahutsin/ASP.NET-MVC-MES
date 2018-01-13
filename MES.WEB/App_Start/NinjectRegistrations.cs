@@ -18,6 +18,7 @@ namespace MES.WEB
             Bind<IUserService>().To<UserService>();
             Bind<IClientManager>().To<ClientManager>();
             Bind<ISolderingService>().To<SolderingService>();
+            Bind<IArrivalService>().To<ArrivalService>();
         }
     }
 }

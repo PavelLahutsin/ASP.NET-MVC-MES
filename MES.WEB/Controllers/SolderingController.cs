@@ -14,7 +14,7 @@ namespace MES.WEB.Controllers
     public class SolderingController : Controller
     {
         private readonly ISolderingService _solderingService;
-        private IUnitOfWork _db;
+        private readonly IUnitOfWork _db;
 
         public SolderingController(ISolderingService solderingService, IUnitOfWork db)
         {
@@ -65,28 +65,7 @@ namespace MES.WEB.Controllers
         }
 
 
-        //public async Task<ActionResult> ShowSolderingListPartial(DateTime? startDate, DateTime? endDate)
-        //{
-        //    var myEndDate = endDate ?? DateTime.Now;
-        //    var myStartDate = startDate ?? new DateTime(myEndDate.Year, myEndDate.Month, 1);
-
-        //    var solderings = Mapper.Map<IEnumerable<SolderingDto>, List<SolderingVm>>(
-        //         await _solderingService.ShowSolderingsAsync(myStartDate, myEndDate));
-        //    return PartialView(solderings);
-        //}
-
-
-        //public async Task<ActionResult> ShowSolderingCountPartial(DateTime? startDate, DateTime? endDate)
-        //{
-        //    var myEndDate = endDate ?? DateTime.Now;
-        //    var myStartDate = startDate ?? new DateTime(myEndDate.Year, myEndDate.Month, 1);
-
-        //    var solderings = Mapper.Map<IEnumerable<SolderingCountDto>, List<SolderingCountVm>>(
-        //        await _solderingService.ShowSolderingsCountAsync(myStartDate, myEndDate));
-
-        //    return PartialView(solderings);
-
-        //}
+       
 
         public async Task<ActionResult> ShowSolderingListPartial(string startDate, string endDate)
         {
@@ -116,6 +95,13 @@ namespace MES.WEB.Controllers
             return RedirectToAction("Soldering");
 
         }
+
+        //public async Task<ActionResult> EditSoldering(int id)
+        //{
+        //    var soldering = Mapper.Map<SolderingVm>(await _db.Solderings.GetAsync(id));
+        //    return PartialView(soldering);
+
+        //}
 
 
     }

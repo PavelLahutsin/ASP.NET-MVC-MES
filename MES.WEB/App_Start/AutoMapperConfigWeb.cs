@@ -22,6 +22,7 @@ namespace MES.WEB
             cfg.CreateMap<SolderingVm, SolderingDto>().ReverseMap();
             cfg.CreateMap<ProductVm, Product>().ReverseMap();
             cfg.CreateMap<SolderingCountVm, SolderingCountDto>().ReverseMap();
+            cfg.CreateMap<ProductState, ProductStateVm>().ReverseMap();
         };
     }
 }

@@ -6,7 +6,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
         </button>
-        <h4 class="modal-title">Добавить Пайку</h4>
+        <h4 class="modal-title">Добавить пайку</h4>
     </div>
 
     @using (Html.BeginForm())
@@ -16,7 +16,7 @@
 
             <div class="form-horizontal">
                
-                <hr />
+               
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
                     @Html.LabelFor(model => model.ProductId, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -55,3 +55,10 @@
 
 </div>
 
+<script>//Date picker
+    $('#Date').datepicker({
+        language: "ru",
+        orientation: "bottom auto",
+        todayHighlight: true,
+        todayBtn: "linked"
+    });</script>

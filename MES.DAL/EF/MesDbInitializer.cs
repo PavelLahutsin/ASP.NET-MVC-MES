@@ -58,7 +58,7 @@ namespace MES.DAL.EF
             db.Products.Add(p2);
             db.Products.Add(p3);
 
-            List<StructureOfTheProduct> list = new List<StructureOfTheProduct>
+            var list = new List<StructureOfTheProduct>
             { 
             new StructureOfTheProduct { Product = p, Detail = s1, Quantity = 1 },
             new StructureOfTheProduct { Product = p, Detail = s2, Quantity = 1 },
@@ -130,8 +130,8 @@ namespace MES.DAL.EF
                 userManager.AddToRole(admin.Id, role2.Name);
             }
             var products = new List<Product> {p, p2, p3};
-            Random random = new Random();
-            for (int i = 0; i < 500; i++)
+            var random = new Random();
+            for (var i = 0; i < 500; i++)
             {
                 var soldering1 = new Soldering
                 {
@@ -142,7 +142,28 @@ namespace MES.DAL.EF
                 db.Solderings.Add(soldering1);
             }
 
-            
+            var listVariant = new List<VariantStateProduct>
+            {
+                new VariantStateProduct {Name = "На пайку"},
+                new VariantStateProduct {Name = "На проверку"},
+                new VariantStateProduct {Name = "На упаковку"},
+                new VariantStateProduct {Name = "На отгрузку"},
+                new VariantStateProduct {Name = "На ремонт медь"},
+                new VariantStateProduct {Name = "На ремонт никель"},
+                new VariantStateProduct {Name = "На ремонт центр"},
+                new VariantStateProduct {Name = "На вторичку"},
+                new VariantStateProduct {Name = "Запаски"}
+            };
+
+            db.VariantStateProducts.AddRange(listVariant);
+
+            foreach (var vaStPr in listVariant)
+            {
+                db.ProductStates.Add(new ProductState {Product = p, VariantStateProduct = vaStPr, Quantity = 110});
+                db.ProductStates.Add(new ProductState {Product = p2, VariantStateProduct = vaStPr, Quantity = 110});
+                db.ProductStates.Add(new ProductState {Product = p3, VariantStateProduct = vaStPr, Quantity = 110});
+            }
+
 
 
             db.SaveChanges();

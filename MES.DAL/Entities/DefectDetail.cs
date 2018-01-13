@@ -2,6 +2,7 @@
 
 namespace MES.DAL.Entities
 {
+    //Ушло деталей в брак
     public class DefectDetail : IdProvider
     {
         public int DetailId { get; set; }

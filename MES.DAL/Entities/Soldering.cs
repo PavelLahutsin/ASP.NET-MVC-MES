@@ -2,7 +2,7 @@
 
 namespace MES.DAL.Entities
 {
-
+    //Информация о пайке
     public class Soldering : IdProvider
     {
         public DateTime Date { get; set; }
