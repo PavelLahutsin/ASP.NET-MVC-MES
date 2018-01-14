@@ -3,18 +3,19 @@
 
 <table id="example" class="table table-striped table-bordered">
     <thead>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NameDetail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Count)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th></th>
-    </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NameDetail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Count)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            
+            <th></th>
+        </tr>
     </thead>
     <tbody>
     @foreach (var item in Model)
@@ -29,6 +30,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
+            
             <td>
                 @Html.ActionLink("Edit", "EditArrivalPartial", new {id = item.Id}, new { @class = "text-orange" }) |
                 @Html.ActionLink("Delete", "DeleteArrival", new {id = item.Id}, new { @class = "text-red" })

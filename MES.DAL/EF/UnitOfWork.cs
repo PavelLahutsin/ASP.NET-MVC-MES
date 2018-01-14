@@ -23,6 +23,7 @@ namespace MES.DAL.EF
         private IBaseRepository<DefectDetail> _defectDetailRepository;
         private IBaseRepository<VariantStateProduct> _variantStateProducts;
         private IBaseRepository<ProductState> _productStates;
+        private IBaseRepository<Assembly> _assembly;
 
 
         public UnitOfWork()
@@ -35,6 +36,9 @@ namespace MES.DAL.EF
 
         public IBaseRepository<ArrivalOfDetail> ArrivalOfDetails => _arrivalOfDetailRepository ??
                 (_arrivalOfDetailRepository = new BaseRepository<ArrivalOfDetail>(_context));
+
+        public IBaseRepository<Assembly> Assemblys => _assembly ??
+                                                                    (_assembly = new BaseRepository<Assembly>(_context));
 
         public IBaseRepository<Detail> Details => _detailRepository ??
                                                   (_detailRepository = new BaseRepository<Detail>(_context));

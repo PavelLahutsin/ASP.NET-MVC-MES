@@ -1,45 +1,24 @@
-﻿@model IEnumerable<MES.WEB.Models.ProductStateVm>
-
+﻿
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VariantStateProductId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VariantStateProductId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quantity)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+<div class="col-md-6">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Количество спаяных теплообменников</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div id="results2">
+                @ViewBag.table
+            </div>
+        </div>
+    </div>
+</div>
 
-</table>
+
+

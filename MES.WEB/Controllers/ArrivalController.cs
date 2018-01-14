@@ -8,6 +8,7 @@ using MES.BLL.Interfaces;
 using MES.DAL.Entities;
 using MES.DAL.Interfaces;
 using MES.WEB.Models;
+using Microsoft.AspNet.Identity;
 
 namespace MES.WEB.Controllers
 {
@@ -92,7 +93,7 @@ namespace MES.WEB.Controllers
             ViewBag.Detail = detailList;
 
             if (!ModelState.IsValid) return View(arrival);
-
+            
             var result = await _service.AddArrivalOfDetailAsync(Mapper.Map<ArrivalOfDetailDto>(arrival));
             return RedirectToAction("Index");
         }

@@ -17,6 +17,7 @@ namespace MES.DAL.EF
         public DbSet<GroupProduct> GroupProducts { get; set; }
         public DbSet<VariantStateProduct> VariantStateProducts { get; set; }
         public DbSet<ProductState> ProductStates { get; set; }
+        public DbSet<Assembly> Assemblys { get; set; }
 
 
         static MesContext()

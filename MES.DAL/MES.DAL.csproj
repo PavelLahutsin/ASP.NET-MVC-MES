@@ -59,6 +59,7 @@
     <Compile Include="Entities\ApplicationRole.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Entities\ArrivalOfDetail.cs" />
+    <Compile Include="Entities\Assembly.cs" />
     <Compile Include="Entities\ClientProfile.cs" />
     <Compile Include="Entities\DefectDetail.cs" />
     <Compile Include="Entities\Detail.cs" />

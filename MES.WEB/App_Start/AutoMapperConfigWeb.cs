@@ -18,6 +18,7 @@ namespace MES.WEB
             cfg.CreateMap<ArrivalOfDetailVm, ArrivalOfDetail>().ReverseMap();
             cfg.CreateMap<DisplayArrivalOfDetailVm, DisplayArrivalOfDetailDto>().ReverseMap();
             cfg.CreateMap<DefectDetailVm, DefectDetailDto>().ReverseMap();
+            cfg.CreateMap<DefectDetailVm, DefectDetail>().ReverseMap();
             cfg.CreateMap<DefectDetailDisplayVm, DefectDetailDisplayDto>().ReverseMap();
             cfg.CreateMap<SolderingVm, SolderingDto>().ReverseMap();
             cfg.CreateMap<ProductVm, Product>().ReverseMap();

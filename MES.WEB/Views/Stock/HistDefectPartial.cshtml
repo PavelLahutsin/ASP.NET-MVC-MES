@@ -1,0 +1,58 @@
+﻿@model IEnumerable<MES.WEB.Models.DefectDetailDisplayVm>
+
+<table class="table table-bordered table-striped dataTable">
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameDetail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Count)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameDetail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Count)
+            </td>
+
+            <td>
+                @Html.ActionLink("Редактировать", "EditDefectPartial", new {id = item.Id}, new {@class = "text-orange"}) |
+
+
+                @Html.ActionLink("Удалить", "DeleteDefect", new {id = item.Id}, new {@class = "text-red"})
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+<script>
+    $(function() {
+        $.ajaxSetup({ cache: false });
+        $(".text-orange").click(function(e) {
+
+            e.preventDefault();
+            $.get(this.href,
+                function(data) {
+                    $('#dialogContent').html(data);
+                    $('#modDialog').modal('show');
+                });
+        });
+    })
+</script>

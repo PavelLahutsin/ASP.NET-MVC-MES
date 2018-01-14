@@ -1,0 +1,65 @@
+﻿@model IEnumerable<MES.WEB.Models.AssemblyVm>
+
+<table id="example" class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th> @Html.DisplayNameFor(model => model.Date)</th>
+            <th> @Html.DisplayNameFor(model => model.ProductName)</th>
+            <th> @Html.DisplayNameFor(model => model.Quantity)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Редактировать", "EditSoldering", new { id = item.Id }, new { @class = "text-orange" }) |*@
+                    @Html.ActionLink("Удалить", "DeleteAssembly", new { id = item.Id }, new { @class = "text-red" })
+
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<script type="text/javascript" charset="utf-8">
+    $("#example").dataTable({
+
+        language: {
+            "processing": "Подождите...",
+            "search": "Поиск:",
+            "lengthMenu": "Показать _MENU_ записей",
+            "info": "Записи с _START_ до _END_ из _TOTAL_ записей",
+            "infoEmpty": "Записи с 0 до 0 из 0 записей",
+            "infoFiltered": "(отфильтровано из _MAX_ записей)",
+            "infoPostFix": "",
+            "loadingRecords": "Загрузка записей...",
+            "zeroRecords": "Записи отсутствуют.",
+            "emptyTable": "В таблице отсутствуют данные",
+            "paginate": {
+                "first": "Первая",
+                "previous": "Предыдущая",
+                "next": "Следующая",
+                "last": "Последняя"
+            },
+            "aria": {
+                "sortAscending": ": активировать для сортировки столбца по возрастанию",
+                "sortDescending": ": активировать для сортировки столбца по убыванию"
+            }
+        }
+    });
+</script>
+
+

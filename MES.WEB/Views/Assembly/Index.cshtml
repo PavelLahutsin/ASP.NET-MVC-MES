@@ -1,0 +1,142 @@
+﻿@model MES.WEB.Models.DateVm
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@Styles.Render("~/Data&Date/css")
+
+
+
+
+<div id="modDialog" class="modal fade">
+    <div id="dialogContent" class="modal-dialog"></div>
+</div>
+<a href="@Url.Action("AddAssemblyPartial")" id="addId" class="btn btn-success ">Добавить сборку</a>
+
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title">История прихода деталей на склад</h3>
+    </div>
+    <!-- /.box-header -->
+    <br />
+    <div class="form-inline">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+    <hr />
+    <div class="box-body">
+        <div id="results">
+        </div>
+    </div>
+</div>
+
+
+
+
+@section scripts
+{
+
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap-datepicker")
+    @Scripts.Render("~/bundles/DataTables")
+
+
+
+    <script>
+
+
+        //Date picker
+        $('#StartDate').datepicker({
+            language: "ru",
+            orientation: "bottom auto",
+            todayHighlight: true,
+            todayBtn: "linked"
+
+        });
+
+        //Date picker
+        $('#EndDate').datepicker({
+            language: "ru",
+            orientation: "bottom auto",
+            todayHighlight: true,
+            todayBtn: "linked"
+        });
+
+        //Обновить при выборе даты
+        $('#StartDate').on('changeDate',
+            function(ev) {
+                view();
+            });
+
+        $('#EndDate').on('changeDate',
+            function(ev) {
+                view();
+            });
+
+        function view() {
+            var startDate = $('#StartDate').val();
+            startDate = encodeURIComponent(startDate);
+            var endDate = $('#EndDate').val();
+            endDate = encodeURIComponent(endDate);
+            $('#results').load('@Url.Action("ShowAssemblyListPartial", "Assembly")?startDate=' +
+                startDate +
+                '&endDate=' +
+                endDate);
+
+        }
+
+    </script>
+
+    <script>
+        $(function() {
+            var idToUpdate = $('#results');
+            $.get("/Assembly/ShowAssemblyListPartial",
+                function(data) {
+                    $(idToUpdate).html(data);
+                });
+        });
+
+    </script>
+
+
+    <script>
+        $(function() {
+            $.ajaxSetup({ cache: false });
+            $("#addId").click(function(e) {
+
+                e.preventDefault();
+                $.get(this.href,
+                    function(data) {
+                        $('#dialogContent').html(data);
+                        $('#modDialog').modal('show');
+                    });
+            });
+        })
+    </script>
+
+    <script>
+       
+        document.getElementById("assembly").className = "active";
+    </script>
+
+
+
+}

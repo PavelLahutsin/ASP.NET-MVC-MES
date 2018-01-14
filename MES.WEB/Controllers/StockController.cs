@@ -67,15 +67,26 @@ namespace MES.WEB.Controllers
             if (!ModelState.IsValid) return PartialView(defect);
 
             var result = await _stockOn.AddDefectDetailAsync(Mapper.Map<DefectDetailDto>(defect));
-            return RedirectToAction("HistDefect");
+            return RedirectToAction("Defect");
         }
 
 
         //История брака на склад
-        public async Task<ActionResult> HistDefect()
+        public async Task<ActionResult> HistDefectPartial()
         {
             var defect = Mapper.Map<IEnumerable<DefectDetailDisplayDto>, List<DefectDetailDisplayVm>>(await _stockOn.ShowDefectDetailAsync());
-            return View(defect);
+            return PartialView(defect);
+        }
+
+        public ActionResult Defect()
+        {
+            var now = DateTime.Now;
+            var date = new DateVm
+            {
+                StartDate = new DateTime(now.Year, now.Month, 1),
+                EndDate = now
+            };
+            return View(date);
         }
 
 
@@ -83,7 +94,7 @@ namespace MES.WEB.Controllers
         public async Task<ActionResult> DeleteDefect(int id)
         {
             var result = await _stockOn.DeleteDefectDetailAsync(id);
-            return RedirectToAction("HistDefect");
+            return RedirectToAction("Defect");
         }
 
         //Редактирование Данных о браковке деталей
@@ -109,7 +120,7 @@ namespace MES.WEB.Controllers
 
             var result = await _stockOn.EditDefectDetailAsync(Mapper.Map<DefectDetail>(defect));
 
-            return RedirectToAction("HistDefect");
+            return RedirectToAction("Defect");
         }
 
     }
