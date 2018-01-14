@@ -1,9 +1,11 @@
-﻿namespace MES.BLL.DTO
+﻿using MES.DAL.Enums;
+
+namespace MES.BLL.DTO
 {
     public class ProductStateDto : IdProvider
     {
         public int ProductId { get; set; }
-        public int VariantStateProductId { get; set; }
+        public VariantStateProduct StateProduct { get; set; }
         public int Quantity { get; set; }
     }
 }

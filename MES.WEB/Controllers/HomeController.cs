@@ -1,27 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
-using AutoMapper;
 using MES.BLL.Interfaces;
-using MES.DAL.Entities;
+using MES.DAL.Enums;
 using MES.DAL.Interfaces;
-using MES.WEB.Models;
 
 namespace MES.WEB.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IStockService _stockOn;
+       
         private readonly IUnitOfWork _db;
 
-        public HomeController(IStockService stockOn, IUnitOfWork db)
+        public HomeController(IUnitOfWork db)
         {
-            _stockOn = stockOn;
+           
             _db = db;
         }
 
@@ -37,11 +33,11 @@ namespace MES.WEB.Controllers
         {
             //Получаем все имена и статусы
             var names = await _db.ProductStates.Entities.Select(x => x.Product.Name).Distinct().ToListAsync();
-            var states = await _db.ProductStates.Entities.Select(x => x.VariantStateProduct.Name).Distinct().ToListAsync();
+           
 
             //Далее генерирую HTML таблицу
             var stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine("<table class=\"table table - striped\">");
+            stringBuilder.AppendLine("<table class=\"table\">");
 
             stringBuilder.AppendLine("<tr>");
             AddCell(stringBuilder, string.Empty);
@@ -52,14 +48,14 @@ namespace MES.WEB.Controllers
             }
 
             stringBuilder.AppendLine("</tr>");
-            foreach (var state in states)
+            foreach (VariantStateProduct state in Enum.GetValues(typeof(VariantStateProduct)))
             {
                 stringBuilder.AppendLine("<tr>");
-                AddCell(stringBuilder, state);
+                AddCell(stringBuilder, state.ToString());
                 foreach (var name in names)
                 {
                     var item = _db.ProductStates.Entities.First(x =>
-                        x.VariantStateProduct.Name == state && x.Product.Name == name);
+                        x.StateProduct == state && x.Product.Name == name);
                     AddCell(stringBuilder, item.Quantity.ToString());
                 }
                 stringBuilder.AppendLine("</tr>");

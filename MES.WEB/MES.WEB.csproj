@@ -723,6 +723,7 @@
     <Content Include="Views\CheckJmt\AddCheckJmtPartial.cshtml" />
     <Content Include="Views\CheckJmt\HistCheckJmtNewPartial.cshtml" />
     <Content Include="Views\CheckJmt\HistCheckJmtOldPartial.cshtml" />
+    <Content Include="Views\CheckJmt\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

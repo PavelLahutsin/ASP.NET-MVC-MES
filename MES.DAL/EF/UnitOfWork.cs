@@ -21,7 +21,6 @@ namespace MES.DAL.EF
         private IBaseRepository<StructureOfTheProduct> _structureOfTheProductRepository;
         private IBaseRepository<GroupProduct> _groupProductRepository;
         private IBaseRepository<DefectDetail> _defectDetailRepository;
-        private IBaseRepository<VariantStateProduct> _variantStateProducts;
         private IBaseRepository<ProductState> _productStates;
         private IBaseRepository<Assembly> _assembly;
         private IBaseRepository<CheckJmt> _checkJmt;
@@ -62,8 +61,7 @@ namespace MES.DAL.EF
         public IBaseRepository<StructureOfTheProduct> StructureOfTheProducts => _structureOfTheProductRepository ??
                                (_structureOfTheProductRepository = new BaseRepository<StructureOfTheProduct>(_context));
 
-        public IBaseRepository<VariantStateProduct> VariantStateProducts => _variantStateProducts ??
-                                                                                (_variantStateProducts = new BaseRepository<VariantStateProduct>(_context));
+       
 
         public IBaseRepository<ProductState> ProductStates => _productStates ??
                                                                                 (_productStates = new BaseRepository<ProductState>(_context));

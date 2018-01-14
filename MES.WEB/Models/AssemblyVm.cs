@@ -15,10 +15,10 @@ namespace MES.WEB.Models
         [Required]
         public int Quantity { get; set; }
 
-        [Display(Name = "Название Продукта")]
+        [Display(Name = "Название продукта")]
         public string ProductName { get; set; }
 
-        [Display(Name = "Название Продукта")]
+        [Display(Name = "Название продукта")]
         [Required]
         public int ProductId { get; set; }
     }

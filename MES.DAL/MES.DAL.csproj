@@ -70,8 +70,8 @@
     <Compile Include="Entities\ProductState.cs" />
     <Compile Include="Entities\Soldering.cs" />
     <Compile Include="Entities\StructureOfTheProduct.cs" />
-    <Compile Include="Entities\VariantStateProduct.cs" />
     <Compile Include="Enums\StateFoTest.cs" />
+    <Compile Include="Enums\VariantStateProduct.cs" />
     <Compile Include="Identity\ApplicationRoleManager.cs" />
     <Compile Include="Identity\ApplicationUserManager.cs" />
     <Compile Include="Interfaces\IBaseRepository.cs" />

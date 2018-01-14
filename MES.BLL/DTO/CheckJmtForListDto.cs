@@ -1,5 +1,4 @@
 ﻿using System;
-using MES.DAL.Enums;
 
 namespace MES.BLL.DTO
 {

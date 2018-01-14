@@ -1,9 +1,11 @@
-﻿namespace MES.WEB.Models
+﻿using MES.DAL.Enums;
+
+namespace MES.WEB.Models
 {
     public class ProductStateVm : IdProvider
     {
         public int ProductId { get; set; }
-        public int VariantStateProductId { get; set; }
+        public VariantStateProduct StateProduct { get; set; }
         public int Quantity { get; set; }
     }
 }

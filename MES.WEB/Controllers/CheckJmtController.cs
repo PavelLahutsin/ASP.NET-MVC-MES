@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using MES.BLL.DTO;
@@ -75,6 +73,14 @@ namespace MES.WEB.Controllers
                     ModelState.AddModelError(result.Property, result.Message);
             }
             return PartialView(chek);
+        }
+
+        public async Task<ActionResult> Details(int id)
+        {
+            var check = Mapper.Map<CheckJmtVm>(await _db.CheckJmts.GetAsync(id));
+            ViewBag.prodname = (await _db.Products.GetAsync(check.ProductId)).Name;
+            
+            return PartialView(check);
         }
     }
 }

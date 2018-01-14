@@ -5,11 +5,11 @@ namespace MES.WEB.Models
 {
     public class SolderingVm : IdProvider
     {
-        [Display(Name = "Название Продукта")]
+        [Display(Name = "Название продукта")]
         [Required]
         public int ProductId { get; set; }
 
-        [Display(Name = "Название Продукта")]
+        [Display(Name = "Название продукта")]
         public string ProductName { get; set; }
 
         [Display(Name = "Количество")]

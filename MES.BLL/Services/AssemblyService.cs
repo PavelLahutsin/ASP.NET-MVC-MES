@@ -7,6 +7,7 @@ using MES.BLL.DTO;
 using MES.BLL.Infrastructure;
 using MES.BLL.Interfaces;
 using MES.DAL.Entities;
+using MES.DAL.Enums;
 using MES.DAL.Interfaces;
 
 namespace MES.BLL.Services
@@ -41,7 +42,7 @@ namespace MES.BLL.Services
                 };
 
                 var prSt1 = await _uof.ProductStates.Entities.Where(w =>
-                    w.ProductId == assembly.ProductId && w.VariantStateProductId == 1).FirstOrDefaultAsync();
+                    w.ProductId == assembly.ProductId && w.StateProduct == VariantStateProduct.Собрано).FirstOrDefaultAsync();
 
                 prSt1.Quantity += assembly.Quantity;
 
@@ -104,7 +105,7 @@ namespace MES.BLL.Services
                 }
 
                 var prSt1 = await _uof.ProductStates.Entities.Where(w =>
-                    w.ProductId == assembly.ProductId && w.VariantStateProductId == 1).FirstOrDefaultAsync();
+                    w.ProductId == assembly.ProductId && w.StateProduct == VariantStateProduct.Собрано).FirstOrDefaultAsync();
 
                 if ((prSt1.Quantity -= assembly.Quantity)<0) throw new Exception();
 

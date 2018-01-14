@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Diagnostics;
 using MES.DAL.Entities;
 using MES.DAL.Enums;
 using MES.DAL.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+
 
 namespace MES.DAL.EF
 {
@@ -144,27 +144,13 @@ namespace MES.DAL.EF
                 db.Solderings.Add(soldering1);
             }
 
-            var listVariant = new List<VariantStateProduct>
+            foreach (VariantStateProduct vaStPr in Enum.GetValues(typeof(VariantStateProduct)))
             {
-                new VariantStateProduct {Name = "На пайку"},
-                new VariantStateProduct {Name = "На проверку"},
-                new VariantStateProduct {Name = "На упаковку"},
-                new VariantStateProduct {Name = "На отгрузку"},
-                new VariantStateProduct {Name = "На ремонт медь"},
-                new VariantStateProduct {Name = "На ремонт никель"},
-                new VariantStateProduct {Name = "На ремонт центр"},
-                new VariantStateProduct {Name = "На вторичку"},
-                new VariantStateProduct {Name = "Запаски"}
-            };
-
-            db.VariantStateProducts.AddRange(listVariant);
-
-            foreach (var vaStPr in listVariant)
-            {
-                db.ProductStates.Add(new ProductState {Product = p, VariantStateProduct = vaStPr, Quantity = 110});
-                db.ProductStates.Add(new ProductState {Product = p2, VariantStateProduct = vaStPr, Quantity = 110});
-                db.ProductStates.Add(new ProductState {Product = p3, VariantStateProduct = vaStPr, Quantity = 110});
+                db.ProductStates.Add(new ProductState { Product = p, StateProduct = vaStPr, Quantity = 110 });
+                db.ProductStates.Add(new ProductState { Product = p2, StateProduct = vaStPr, Quantity = 110 });
+                db.ProductStates.Add(new ProductState { Product = p3, StateProduct = vaStPr, Quantity = 110 });
             }
+
 
             CheckJmt chek = new CheckJmt
             {
@@ -184,4 +170,5 @@ namespace MES.DAL.EF
             db.SaveChanges();
         }
     }
+   
 }

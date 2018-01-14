@@ -6,7 +6,7 @@ namespace MES.WEB.Models
 {
     public class CheckJmtVm
     {
-        [Display(Name = "Название Продукта")]
+        [Display(Name = "Название продукта")]
         [Required]
         public int ProductId { get; set; }
 

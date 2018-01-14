@@ -7,6 +7,7 @@ using MES.BLL.DTO;
 using MES.BLL.Infrastructure;
 using MES.BLL.Interfaces;
 using MES.DAL.Entities;
+using MES.DAL.Enums;
 using MES.DAL.Interfaces;
 
 namespace MES.BLL.Services
@@ -29,15 +30,6 @@ namespace MES.BLL.Services
         {
             try
             {
-                //var structureOfTheProducts = _uof.StructureOfTheProducts.Entities
-                //    .Where(w => w.ProductId == soldering.ProductId).ToList();
-
-                //foreach (var structureOfTheProduct in structureOfTheProducts)
-                //{
-                //    var detail = await _uof.Details.GetAsync(structureOfTheProduct.DetailId);
-                //    if ((detail.Quantityq -= (structureOfTheProduct.Quantity * soldering.Quantity))<0) throw new Exception($"Число деталей ({detail.Name}) на складе не может быть отрицательным");
-                //    _uof.Details.Update(detail);
-                //}
                 var sol = new Soldering
                 {
                     ProductId = soldering.ProductId,
@@ -46,12 +38,12 @@ namespace MES.BLL.Services
                 };
 
                 var prSt1 = await _uof.ProductStates.Entities.Where(w =>
-                    w.ProductId == soldering.ProductId && w.VariantStateProductId == 1).FirstOrDefaultAsync();
+                    w.ProductId == soldering.ProductId && w.StateProduct == VariantStateProduct.Собрано).FirstOrDefaultAsync();
 
                 prSt1.Quantity -= soldering.Quantity;
 
                 var prSt2 = await _uof.ProductStates.Entities.Where(w =>
-                    w.ProductId == soldering.ProductId && w.VariantStateProductId == 2).FirstOrDefaultAsync();
+                    w.ProductId == soldering.ProductId && w.StateProduct == VariantStateProduct.Спаяно).FirstOrDefaultAsync();
 
                 prSt2.Quantity += soldering.Quantity;
 
@@ -139,23 +131,15 @@ namespace MES.BLL.Services
             try
             {
             var soldering = await _uof.Solderings.GetAsync(id);
-            //var structureOfTheProducts = _uof.StructureOfTheProducts.Entities
-            //    .Where(w => w.ProductId == soldering.ProductId).ToList();
-
-            //foreach (var structureOfTheProduct in structureOfTheProducts)
-            //{
-            //    var detail = await _uof.Details.GetAsync(structureOfTheProduct.DetailId);
-            //    detail.Quantityq += (structureOfTheProduct.Quantity * soldering.Quantity);
-            //    _uof.Details.Update(detail);
-            //}
+           
 
                 var prSt1 = await _uof.ProductStates.Entities.Where(w =>
-                    w.ProductId == soldering.ProductId && w.VariantStateProductId == 1).FirstOrDefaultAsync();
+                    w.ProductId == soldering.ProductId && w.StateProduct == VariantStateProduct.Собрано).FirstOrDefaultAsync();
 
                 prSt1.Quantity += soldering.Quantity;
 
                 var prSt2 = await _uof.ProductStates.Entities.Where(w =>
-                    w.ProductId == soldering.ProductId && w.VariantStateProductId == 2).FirstOrDefaultAsync();
+                    w.ProductId == soldering.ProductId && w.StateProduct == VariantStateProduct.Спаяно).FirstOrDefaultAsync();
 
                 prSt2.Quantity -= soldering.Quantity;
 

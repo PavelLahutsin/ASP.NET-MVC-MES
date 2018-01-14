@@ -11,8 +11,38 @@
 </div>
 
 <p>
-    <a href="@Url.Action("AddCheckJmtPartial")" id="addId" class="btn btn-success ">Добавить сборку</a>
+    <a href="@Url.Action("AddCheckJmtPartial")" id="addId" class="btn btn-success ">Добавить проверку</a>
 </p>
+
+<div class="box-header with-border">
+    <h3 class="box-title">Диапазон дат</h3>
+</div>
+<!-- /.box-header -->
+<div class="box-body">
+    @Html.AntiForgeryToken()
+
+    <div class="form-inline">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <div class="nav-tabs-custom">
     <ul class="nav nav-tabs">
         <li class="active"><a href="#tab_1-1" data-toggle="tab">После пайки</a></li>
@@ -21,37 +51,6 @@
     <div class="tab-content">
         <div class="tab-pane active" id="tab_1-1">
             <section class="content">
-                
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Диапазон дат</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        @Html.AntiForgeryToken()
-
-                        <div class="form-inline">
-
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-               
-
                 
                             <div class="box-header with-border">
                                 <h3 class="box-title">История паек</h3>
@@ -72,38 +71,7 @@
         <!-- /.tab-pane -->
         <div class="tab-pane" id="tab_2-2">
             <section class="content">
-
-                <div class="box-header with-border">
-                    <h3 class="box-title">Диапазон дат</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    @Html.AntiForgeryToken()
-
-                    <div class="form-inline">
-
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-
-
+                
                 <div class="box-header with-border">
                     <h3 class="box-title">История паек</h3>
                 </div>
@@ -178,7 +146,7 @@
                 startDate +
                 '&endDate=' +
                 endDate);
-            $('#oldResults').load('@Url.Action("ShowSolderingCountPartial", "Soldering")?startDate=' +
+            $('#oldResults').load('@Url.Action("HistCheckJmtOldPartial", "CheckJmt")?startDate=' +
                 startDate +
                 '&endDate=' +
                 endDate);
@@ -224,7 +192,7 @@
         })
     </script>
 
-
+    
 
 
 

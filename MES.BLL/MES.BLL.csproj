@@ -96,8 +96,6 @@
     <Compile Include="DTO\SolderingCountDto.cs" />
     <Compile Include="DTO\SolderingDto.cs" />
     <Compile Include="DTO\UserDTO.cs" />
-    <Compile Include="DTO\VariantStateProductDto.cs" />
-    <Compile Include="Enums\ProductState.cs" />
     <Compile Include="Infrastructure\AutmapperConfigBLL.cs" />
     <Compile Include="Infrastructure\OperationDetails.cs" />
     <Compile Include="Infrastructure\ServiceModule.cs" />

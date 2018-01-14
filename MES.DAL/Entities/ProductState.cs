@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using MES.DAL.Enums;
 
 
 namespace MES.DAL.Entities
@@ -11,16 +12,14 @@ namespace MES.DAL.Entities
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ProductId { get; set; }
-
         [Key]
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int VariantStateProductId { get; set; }
-
-        [Range(0, 100000, ErrorMessage = "Min = 0, Max = 1000000")]
+        public VariantStateProduct StateProduct { get; set; }
+        
         public int Quantity { get; set; }
 
         public virtual Product Product { get; set; }
-        public virtual VariantStateProduct VariantStateProduct { get; set; }
+        
     }
 }

@@ -1,0 +1,66 @@
+﻿@model MES.WEB.Models.CheckJmtVm
+
+<div class="modal-content">
+    <div class="modal-header bg-blue">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title">Детали проверки</h4>
+    </div>
+    <div class="modal-body">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <th style="width:50%"> @Html.DisplayNameFor(model => model.ProductId)</th>
+                        <td>@ViewBag.prodname</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Date)</th>
+                        <td>@Html.DisplayFor(model => model.Date)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Count)</th>
+                        <td>@Html.DisplayFor(model => model.Count)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Airtight)</th>
+                        <td>@Html.DisplayFor(model => model.Airtight)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.CapM)</th>
+                        <td>@Html.DisplayFor(model => model.CapM)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.CapN)</th>
+                        <td>@Html.DisplayFor(model => model.CapN)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Housing)</th>
+                        <td>@Html.DisplayFor(model => model.Housing)</td>
+                    </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Tube)</th>
+                    <td>@Html.DisplayFor(model => model.Tube)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Center)</th>
+                    <td>@Html.DisplayFor(model => model.Center)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Defect)</th>
+                    <td>@Html.DisplayFor(model => model.Defect)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Other)</th>
+                    <td>@Html.DisplayFor(model => model.Other)</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer ">
+        <button type="button" class="btn btn-adn" data-dismiss="modal">Ok</button>
+
+    </div>
+</div>

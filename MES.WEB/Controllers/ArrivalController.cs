@@ -8,7 +8,6 @@ using MES.BLL.Interfaces;
 using MES.DAL.Entities;
 using MES.DAL.Interfaces;
 using MES.WEB.Models;
-using Microsoft.AspNet.Identity;
 
 namespace MES.WEB.Controllers
 {

@@ -4,7 +4,7 @@ namespace MES.WEB.Models
 {
     public class SolderingCountVm
     {
-        [Display(Name = "Название Продукта")]
+        [Display(Name = "Название продукта")]
         [Required]
         public string ProductName { get; set; }
         [Display(Name = "Количество")]

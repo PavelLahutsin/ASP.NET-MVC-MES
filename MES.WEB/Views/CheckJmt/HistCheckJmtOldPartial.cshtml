@@ -34,7 +34,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id }, new { @class = "text-info" }) |
                 @Html.ActionLink("Delete", "Delete", new { id=item.Id })
             </td>
         </tr>
@@ -42,3 +42,17 @@
 
 </table>
 
+<script>
+    $(function () {
+        $.ajaxSetup({ cache: false });
+        $(".text-info").click(function (e) {
+
+            e.preventDefault();
+            $.get(this.href,
+                function (data) {
+                    $('#dialogContent').html(data);
+                    $('#modDialog').modal('show');
+                });
+        });
+    })
+</script>

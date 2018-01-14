@@ -2,6 +2,7 @@
 using System.Data.Entity.Infrastructure;
 using MES.DAL.Entities;
 
+
 namespace MES.DAL.Interfaces
 {
     public interface IMesContext
@@ -14,7 +15,6 @@ namespace MES.DAL.Interfaces
         DbSet<StructureOfTheProduct> StructureOfTheProducts { get; set; }
         DbSet<ClientProfile> ClientProfiles { get; set; }
         DbSet<GroupProduct> GroupProducts { get; set; }
-        DbSet<VariantStateProduct> VariantStateProducts { get; set; }
         DbSet<ProductState> ProductStates { get; set; }
         DbSet<Assembly> Assemblys { get; set; }
         DbSet<CheckJmt> CheckJmts { get; set; }
