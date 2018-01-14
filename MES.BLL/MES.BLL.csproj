@@ -84,6 +84,8 @@
   <ItemGroup>
     <Compile Include="DTO\ArrivalOfDetailDTO.cs" />
     <Compile Include="DTO\AssemblyDto.cs" />
+    <Compile Include="DTO\CheckJmtDto.cs" />
+    <Compile Include="DTO\CheckJmtForListDto.cs" />
     <Compile Include="DTO\DefectDetailDisplayDto.cs" />
     <Compile Include="DTO\DefectDetailDto.cs" />
     <Compile Include="DTO\DetailDTO.cs" />
@@ -101,12 +103,14 @@
     <Compile Include="Infrastructure\ServiceModule.cs" />
     <Compile Include="Interfaces\IArrivalService.cs" />
     <Compile Include="Interfaces\IAssemblyService.cs" />
+    <Compile Include="Interfaces\ICheckJmtService.cs" />
     <Compile Include="Interfaces\ISolderingService.cs" />
     <Compile Include="Interfaces\IStockService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ArrivalService.cs" />
     <Compile Include="Services\AssemblyService.cs" />
+    <Compile Include="Services\CheckJmtService.cs" />
     <Compile Include="Services\SolderingService.cs" />
     <Compile Include="Services\StockService.cs" />
     <Compile Include="Services\UserService.cs" />

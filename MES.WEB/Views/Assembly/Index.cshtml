@@ -13,8 +13,9 @@
 <div id="modDialog" class="modal fade">
     <div id="dialogContent" class="modal-dialog"></div>
 </div>
+<p>
 <a href="@Url.Action("AddAssemblyPartial")" id="addId" class="btn btn-success ">Добавить сборку</a>
-
+</p>
 <div class="box">
     <div class="box-header with-border">
         <h3 class="box-title">История прихода деталей на склад</h3>
@@ -106,10 +107,10 @@
     </script>
 
     <script>
-        $(function() {
+        $(function () {
             var idToUpdate = $('#results');
             $.get("/Assembly/ShowAssemblyListPartial",
-                function(data) {
+                function (data) {
                     $(idToUpdate).html(data);
                 });
         });
@@ -118,13 +119,13 @@
 
 
     <script>
-        $(function() {
+        $(function () {
             $.ajaxSetup({ cache: false });
-            $("#addId").click(function(e) {
+            $("#addId").click(function (e) {
 
                 e.preventDefault();
                 $.get(this.href,
-                    function(data) {
+                    function (data) {
                         $('#dialogContent').html(data);
                         $('#modDialog').modal('show');
                     });
@@ -133,7 +134,7 @@
     </script>
 
     <script>
-       
+
         document.getElementById("assembly").className = "active";
     </script>
 

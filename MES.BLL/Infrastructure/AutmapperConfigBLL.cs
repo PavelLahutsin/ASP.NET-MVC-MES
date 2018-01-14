@@ -14,6 +14,7 @@ namespace MES.BLL.Infrastructure
             cfg.CreateMap<ArrivalOfDetail, ArrivalOfDetailDto>().ReverseMap();
             cfg.CreateMap<DefectDetail, DefectDetailDto>().ReverseMap();
             cfg.CreateMap<Soldering, SolderingDto>().ReverseMap();
+            cfg.CreateMap<CheckJmt, CheckJmtDto>().ReverseMap();
         };
     }
 }

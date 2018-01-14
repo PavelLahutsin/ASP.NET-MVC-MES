@@ -1,0 +1,234 @@
+﻿@model MES.WEB.Models.DateVm
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@Styles.Render("~/Data&Date/css")
+
+<div id="modDialog" class="modal fade">
+    <div id="dialogContent" class="modal-dialog"></div>
+</div>
+
+<p>
+    <a href="@Url.Action("AddCheckJmtPartial")" id="addId" class="btn btn-success ">Добавить сборку</a>
+</p>
+<div class="nav-tabs-custom">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab_1-1" data-toggle="tab">После пайки</a></li>
+        <li><a href="#tab_2-2" data-toggle="tab">После ремонта</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab_1-1">
+            <section class="content">
+                
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Диапазон дат</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-inline">
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+               
+
+                
+                            <div class="box-header with-border">
+                                <h3 class="box-title">История паек</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div id="newResults">
+                                </div>
+                            </div>
+                        
+                   
+                                <div id="newResults2">
+                              
+                    </div>
+                
+            </section>
+        </div>
+        <!-- /.tab-pane -->
+        <div class="tab-pane" id="tab_2-2">
+            <section class="content">
+
+                <div class="box-header with-border">
+                    <h3 class="box-title">Диапазон дат</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-inline">
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+                <div class="box-header with-border">
+                    <h3 class="box-title">История паек</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div id="oldResults">
+                    </div>
+                </div>
+
+
+                <div id="oldResults2">
+
+                </div>
+
+            </section>
+        </div>
+        <!-- /.tab-pane -->
+    </div>
+    <!-- /.tab-content -->
+</div>
+
+
+
+@section scripts
+{
+
+
+    @Scripts.Render("~/bundles/bootstrap-datepicker")
+    @Scripts.Render("~/bundles/DataTables")
+
+
+
+    <script>
+
+
+            //Date picker
+            $('#StartDate').datepicker({
+                language: "ru",
+                orientation: "bottom auto",
+                todayHighlight: true,
+                todayBtn: "linked"
+
+            });
+
+            //Date picker
+            $('#EndDate').datepicker({
+                language: "ru",
+                orientation: "bottom auto",
+                todayHighlight: true,
+                todayBtn: "linked"
+        });
+
+
+
+
+            $('#StartDate').on('changeDate',
+            function(ev) {
+                view();
+            });
+
+        $('#EndDate').on('changeDate',
+            function(ev) {
+                 view();
+            });
+
+        function view() {
+            var startDate = $('#StartDate').val();
+            startDate = encodeURIComponent(startDate);
+            var endDate = $('#EndDate').val();
+            endDate = encodeURIComponent(endDate);
+            $('#newResults').load('@Url.Action("HistCheckJmtNewPartial", "CheckJmt")?startDate=' +
+                startDate +
+                '&endDate=' +
+                endDate);
+            $('#oldResults').load('@Url.Action("ShowSolderingCountPartial", "Soldering")?startDate=' +
+                startDate +
+                '&endDate=' +
+                endDate);
+        }
+
+    </script>
+
+    <script>
+        $(function () {
+            var idToUpdate = $('#newResults');
+            $.get("/CheckJmt/HistCheckJmtNewPartial",
+                function (data) {
+                    $(idToUpdate).html(data);
+                });
+        });
+
+    </script>
+
+    <script>
+        $(function () {
+            var idToUpdate = $('#oldResults');
+            $.get("/CheckJmt/HistCheckJmtOldPartial",
+                function (data) {
+                    $(idToUpdate).html(data);
+                });
+        });
+
+
+    </script>
+
+    <script>
+        $(function () {
+            $.ajaxSetup({ cache: false });
+            $("#addId").click(function (e) {
+
+                e.preventDefault();
+                $.get(this.href,
+                    function (data) {
+                        $('#dialogContent').html(data);
+                        $('#modDialog').modal('show');
+                    });
+            });
+        })
+    </script>
+
+
+
+
+
+    <script>document.getElementById("checkJmt").className = "active";</script>
+
+}
+

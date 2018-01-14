@@ -20,6 +20,7 @@ namespace MES.WEB
             Bind<ISolderingService>().To<SolderingService>();
             Bind<IArrivalService>().To<ArrivalService>();
             Bind<IAssemblyService>().To<AssemblyService>();
+            Bind<ICheckJmtService>().To<CheckJmtService>();
         }
     }
 }

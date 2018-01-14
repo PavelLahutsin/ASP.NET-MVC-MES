@@ -17,6 +17,7 @@ namespace MES.DAL.Interfaces
         DbSet<VariantStateProduct> VariantStateProducts { get; set; }
         DbSet<ProductState> ProductStates { get; set; }
         DbSet<Assembly> Assemblys { get; set; }
+        DbSet<CheckJmt> CheckJmts { get; set; }
         DbChangeTracker ChangeTracker { get; }
 
         int SaveChanges();

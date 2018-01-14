@@ -202,6 +202,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArrivalController.cs" />
     <Compile Include="Controllers\AssemblyController.cs" />
+    <Compile Include="Controllers\CheckJmtController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SolderingController.cs" />
     <Compile Include="Controllers\StockController.cs" />
@@ -210,6 +211,8 @@
     </Compile>
     <Compile Include="Models\ArrivalOfDetailVm.cs" />
     <Compile Include="Models\AssemblyVm.cs" />
+    <Compile Include="Models\CheckJmtForListVm.cs" />
+    <Compile Include="Models\CheckJmtVm.cs" />
     <Compile Include="Models\DateVm.cs" />
     <Compile Include="Models\DefectDetailDisplayVm.cs" />
     <Compile Include="Models\DefectDetailVm.cs" />
@@ -716,6 +719,10 @@
     <Content Include="Views\Assembly\Index.cshtml" />
     <Content Include="Views\Assembly\AddAssemblyPartial.cshtml" />
     <Content Include="Views\Assembly\ShowAssemblyListPartial.cshtml" />
+    <Content Include="Views\CheckJmt\Index.cshtml" />
+    <Content Include="Views\CheckJmt\AddCheckJmtPartial.cshtml" />
+    <Content Include="Views\CheckJmt\HistCheckJmtNewPartial.cshtml" />
+    <Content Include="Views\CheckJmt\HistCheckJmtOldPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

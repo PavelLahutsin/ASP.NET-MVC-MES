@@ -17,6 +17,7 @@ namespace MES.DAL.Interfaces
         IBaseRepository<ProductState> ProductStates { get; }
         IBaseRepository<DefectDetail> DefectDetails { get; }
         IBaseRepository<Assembly> Assemblys { get; }
+        IBaseRepository<CheckJmt> CheckJmts { get; }
         ApplicationUserManager UserManager { get; }
         ApplicationRoleManager RoleManager { get; }
         IClientManager ClientManager { get; }

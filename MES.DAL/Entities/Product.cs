@@ -13,5 +13,6 @@ namespace MES.DAL.Entities
         public virtual ICollection<Soldering> Solderings { get; set; } = new HashSet<Soldering>();
         public virtual ICollection<Assembly> Assemblys { get; set; } = new HashSet<Assembly>();
         public virtual ICollection<ProductState> ProductStates { get; set; } = new HashSet<ProductState>();
+        public virtual ICollection<CheckJmt> CheckJmts { get; set; } = new HashSet<CheckJmt>();
     }
 }

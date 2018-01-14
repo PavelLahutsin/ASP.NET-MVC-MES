@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics;
 using MES.DAL.Entities;
+using MES.DAL.Enums;
 using MES.DAL.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -136,7 +138,7 @@ namespace MES.DAL.EF
                 var soldering1 = new Soldering
                 {
                     Quantity = random.Next(10,100),
-                    Date = new DateTime(2016, 10, 20).AddDays(i), Product = products[random.Next(0, 3)]
+                    Date = DateTime.Now.AddDays(-i), Product = products[random.Next(0, 3)]
                 };
 
                 db.Solderings.Add(soldering1);
@@ -164,6 +166,19 @@ namespace MES.DAL.EF
                 db.ProductStates.Add(new ProductState {Product = p3, VariantStateProduct = vaStPr, Quantity = 110});
             }
 
+            CheckJmt chek = new CheckJmt
+            {
+                Count = 70,
+                Product = p,
+                Airtight = 60,
+                CapM = 2,
+                Housing = 5,
+                Tube = 3,
+                Date = DateTime.Now,
+                State = StateFoTest.Новые
+            };
+
+            db.CheckJmts.Add(chek);
 
 
             db.SaveChanges();
