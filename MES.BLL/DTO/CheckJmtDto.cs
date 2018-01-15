@@ -28,5 +28,11 @@ namespace MES.BLL.DTO
         public int? Defect { get; set; }
 
         public int? Other { get; set; }
+       
+        public int? RepairCu { get; set; }
+        
+        public int? RepairNi { get; set; }
+       
+        public int? RepairCentre { get; set; }
     }
 }

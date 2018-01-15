@@ -49,5 +49,13 @@ namespace MES.WEB.Models
 
         [Display(Name = "Прочее")]
         public int? Other { get; set; }
+
+        [Display(Name = "На медь")]
+        public int? RepairCu { get; set; }
+        [Display(Name = "На никель")]
+        public int? RepairNi { get; set; }
+        [Display(Name = "На центр")]
+        public int? RepairCentre { get; set; }
+
     }
 }

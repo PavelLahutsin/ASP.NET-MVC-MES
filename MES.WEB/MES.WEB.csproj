@@ -720,10 +720,11 @@
     <Content Include="Views\Assembly\AddAssemblyPartial.cshtml" />
     <Content Include="Views\Assembly\ShowAssemblyListPartial.cshtml" />
     <Content Include="Views\CheckJmt\Index.cshtml" />
-    <Content Include="Views\CheckJmt\AddCheckJmtPartial.cshtml" />
+    <Content Include="Views\CheckJmt\AddCheckJmtPartial2.cshtml" />
     <Content Include="Views\CheckJmt\HistCheckJmtNewPartial.cshtml" />
     <Content Include="Views\CheckJmt\HistCheckJmtOldPartial.cshtml" />
     <Content Include="Views\CheckJmt\Details.cshtml" />
+    <Content Include="Views\CheckJmt\AddCheckJmtPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

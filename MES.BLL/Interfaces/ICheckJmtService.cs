@@ -10,5 +10,6 @@ namespace MES.BLL.Interfaces
         Task<OperationDetails> AddCheckJmtAsync(CheckJmtDto checkJmtDto);
         Task<IEnumerable<CheckJmtForListDto>> ShowCheckJmtNewAsync(string startDate, string endDate);
         Task<IEnumerable<CheckJmtForListDto>> ShowCheckJmtOldAsync(string startDate, string endDate);
+        Task<OperationDetails> DeleteCheck(int id);
     }
 }
