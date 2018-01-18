@@ -27,6 +27,7 @@ namespace MES.WEB
             cfg.CreateMap<CheckJmtForListDto, CheckJmtForListVm>().ReverseMap();
             cfg.CreateMap<CheckJmtDto, CheckJmtVm>().ReverseMap();
             cfg.CreateMap<CheckJmt, CheckJmtVm>().ReverseMap();
+            cfg.CreateMap<ProductStateDto, ProductStateVm>().ReverseMap();
         };
     }
 }

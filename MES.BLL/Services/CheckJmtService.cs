@@ -37,27 +37,27 @@ namespace MES.BLL.Services
                      checkJmtDto.Defect +
                      checkJmtDto.Center +
                      checkJmtDto.Housing +
-                     checkJmtDto.Tube + checkJmtDto.Other) < (checkJmtDto.Count + checkJmtDto.Airtight)) return new OperationDetails(false, "В ремонт + целые != поступившие", "");
+                     checkJmtDto.Tube + checkJmtDto.Other) < (checkJmtDto.Count - checkJmtDto.Airtight)) return new OperationDetails(false, "В ремонт + целые != поступившие", "");
 
                 _uof.CheckJmts.Create(Mapper.Map<CheckJmt>(checkJmtDto));
                 var prod = await _uof.ProductStates.Entities.Where(w => w.ProductId == checkJmtDto.ProductId && w.StateProduct == VariantStateProduct.Спаяно).FirstOrDefaultAsync();
-                prod.Quantity -= checkJmtDto.Airtight ?? 0;
+                prod.Quantity -= checkJmtDto.Count;
 
                 var prSt2 = await _uof.ProductStates.Entities.Where(w =>
                     w.ProductId == checkJmtDto.ProductId && w.StateProduct == VariantStateProduct.Проверено).FirstOrDefaultAsync();
-                prSt2.Quantity += checkJmtDto.Airtight ?? 0;
+                prSt2.Quantity += checkJmtDto.Airtight;
 
                 var prSt3 = await _uof.ProductStates.Entities.Where(w =>
                     w.ProductId == checkJmtDto.ProductId && w.StateProduct == VariantStateProduct.Ремонт_медью).FirstOrDefaultAsync();
-                prSt2.Quantity += checkJmtDto.RepairCu ?? 0;
+                prSt3.Quantity += checkJmtDto.RepairCu;
 
                 var prSt4 = await _uof.ProductStates.Entities.Where(w =>
                     w.ProductId == checkJmtDto.ProductId && w.StateProduct == VariantStateProduct.Ремонт_никелем).FirstOrDefaultAsync();
-                prSt2.Quantity += checkJmtDto.RepairNi ?? 0;
+                prSt4.Quantity += checkJmtDto.RepairNi;
 
                 var prSt5 = await _uof.ProductStates.Entities.Where(w =>
                     w.ProductId == checkJmtDto.ProductId && w.StateProduct == VariantStateProduct.Ремонт_центр).FirstOrDefaultAsync();
-                prSt2.Quantity += checkJmtDto.RepairCentre ?? 0;
+                prSt5.Quantity += checkJmtDto.RepairCentre;
 
 
 
@@ -151,18 +151,19 @@ namespace MES.BLL.Services
 
                 var prSt2 = await _uof.ProductStates.Entities.Where(w =>
                     w.ProductId == check.ProductId && w.StateProduct == VariantStateProduct.Проверено).FirstOrDefaultAsync();
+                if((prSt2.Quantity -= check.Airtight ?? 0)<0) return new OperationDetails(false, "Не может быть удалено больше, чем добавлено!", "");
 
                 var prSt3 = await _uof.ProductStates.Entities.Where(w =>
                     w.ProductId == check.ProductId && w.StateProduct == VariantStateProduct.Ремонт_медью).FirstOrDefaultAsync();
-                prSt2.Quantity -= check.RepairCu ?? 0;
+                if((prSt3.Quantity -= check.RepairCu ?? 0)<0)return new OperationDetails(false, "Не может быть удалено больше, чем добавлено!", "");
 
                 var prSt4 = await _uof.ProductStates.Entities.Where(w =>
                     w.ProductId == check.ProductId && w.StateProduct == VariantStateProduct.Ремонт_никелем).FirstOrDefaultAsync();
-                prSt2.Quantity -= check.RepairNi ?? 0;
+                if((prSt4.Quantity -= check.RepairNi ?? 0)< 0)return new OperationDetails(false, "Не может быть удалено больше, чем добавлено!", "");
 
                 var prSt5 = await _uof.ProductStates.Entities.Where(w =>
                     w.ProductId == check.ProductId && w.StateProduct == VariantStateProduct.Ремонт_центр).FirstOrDefaultAsync();
-                prSt2.Quantity -= check.RepairCentre ?? 0;
+                if((prSt5.Quantity -= check.RepairCentre ?? 0)< 0)return new OperationDetails(false, "Не может быть удалено больше, чем добавлено!", "");
 
                 _uof.ProductStates.Update(prod);
                 _uof.ProductStates.Update(prSt2);
@@ -170,7 +171,7 @@ namespace MES.BLL.Services
                 _uof.ProductStates.Update(prSt4);
                 _uof.ProductStates.Update(prSt5);
 
-                if ((prSt2.Quantity -= check.Airtight??0)<0) throw new Exception();
+                
 
                 _uof.CheckJmts.Delete(id);
                 await _uof.Commit();
@@ -180,7 +181,7 @@ namespace MES.BLL.Services
             catch (Exception)
             {
 
-                return new OperationDetails(true, "Не прошло", "");
+                return new OperationDetails(false, "Не прошло", "");
             }
         }
     }

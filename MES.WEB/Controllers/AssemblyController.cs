@@ -49,10 +49,11 @@ namespace MES.WEB.Controllers
         [HttpPost]
         public async Task<ActionResult> AddAssemblyPartial(AssemblyVm assembly)
         {
+            var products = Mapper.Map<IEnumerable<Product>, List<ProductVm>>(await _db.Products.GetAllAsync());
+            ViewBag.Products = new SelectList(products, "Id", "Name");
             if (ModelState.IsValid)
             {
-                var products = Mapper.Map<IEnumerable<Product>, List<ProductVm>>(await _db.Products.GetAllAsync());
-                ViewBag.Products = new SelectList(products, "Id", "Name");
+                
 
                 var result = await _service.AddAssemblyAsync(Mapper.Map<AssemblyDto>(assembly));
 

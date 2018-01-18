@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/modernizr")
+   
     @*<link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link href="~/Content/dist/css/AdminLTE.css" rel="stylesheet" />
-    <link href="~/Content/dist/css/skins/_all-skins.css" rel="stylesheet" />*@
+        <link href="~/Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link href="~/Content/dist/css/AdminLTE.css" rel="stylesheet" />
+        <link href="~/Content/dist/css/skins/_all-skins.css" rel="stylesheet" />*@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -121,18 +122,13 @@
                         </ul>
                     </li>
 
-                    <li class="treeview">
-                        <a href="#">
+                    <li id="finishedGoodsWarehouse">
+                        <a href="@Url.Action("Index", "FinishedGoodsWarehouse")">
                             <i class="fa fa-shopping-basket"></i> <span>Склад готовой продукции</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
                         </a>
-                        <ul class="treeview-menu" style="display: none;">
-                            <li><a href="#"><i class="fa fa-circle-o"></i>ЖМТ</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i>ЕГР</a></li>
-                        </ul>
                     </li>
+
+
 
 
                 </ul>
@@ -157,10 +153,13 @@
     </div>
     <!-- ./wrapper -->
     <!-- jQuery 3 -->
- 
-    @Scripts.Render("~/bundles/jquery-val")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/bootstrap-datepicker")
+    @Scripts.Render("~/bundles/DataTables")
+    @Scripts.Render("~/bundles/mes")
+    
+
     @RenderSection("scripts", false)
 
 </body>

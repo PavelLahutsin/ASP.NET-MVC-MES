@@ -1,6 +1,6 @@
 ﻿@model MES.WEB.Models.CheckJmtVm
 
-<div class="modal-content modal-success">
+<div id="modalContent" class="modal-content modal-success">
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">×</span>
@@ -8,8 +8,13 @@
     <h4 class="modal-title">Добавить проверку</h4>
 </div>
 
-
-@using (Html.BeginForm()) 
+    @using (Ajax.BeginForm("AddCheckJmtPartial",  new AjaxOptions
+    {
+        UpdateTargetId = "modalContent",
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        OnSuccess = "unloadModal"
+    }))
 {
     <div class="modal-body">
     @Html.AntiForgeryToken()

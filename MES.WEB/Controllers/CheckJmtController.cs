@@ -82,12 +82,13 @@ namespace MES.WEB.Controllers
             
             return PartialView(check);
         }
-
+        
         public async Task<ActionResult> Delete(int id)
         {
             var result = await _service.DeleteCheck(id);
 
-            return RedirectToAction("Index");
+
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -4,15 +4,18 @@
     ViewBag.Title = "Index";
 }
 
-
+<link href="~/Content/themes/base/all.css" rel="stylesheet" />
 @Styles.Render("~/Data&Date/css")
 
-<a href="@Url.Action("AddJmtDetailPartial")" id="addId" class="btn btn-success">Добавить</a>
-
+<div id="alert-message"></div>
+<p>
+    <a href="@Url.Action("AddJmtDetailPartial")" id="addId" class="btn btn-success">Добавить</a>
+    @*<p> @Html.ActionLink("Добавить", "AddJmtDetailPartial", new { }, new { @class = "viewDialog", data_dialog_title = "Добавить на склад" })</p>*@
+</p>
 <div id="modDialog" class="modal fade">
     <div id="dialogContent" class="modal-dialog"></div>
 </div>
-   
+
 <div class="box">
     <div class="box-header with-border">
         <h3 class="box-title">История прихода деталей на склад</h3>
@@ -45,18 +48,15 @@
         </div>
     </div>
 </div>
-    
+
 
 
 
 @section scripts
 {
-
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/bootstrap-datepicker")
     
-
-
+    
+    
 
     <script>
 
@@ -98,23 +98,23 @@
                 startDate +
                 '&endDate=' +
                 endDate);
-           
+
         }
 
     </script>
 
     <script>
-        $(function() {
+        $(function () {
             var idToUpdate = $('#results');
             $.get("/Arrival/HistArrivalPartial",
-                function(data) {
+                function (data) {
                     $(idToUpdate).html(data);
                 });
         });
 
     </script>
 
-   
+
     <script>
         $(function() {
             $.ajaxSetup({ cache: false });
@@ -128,8 +128,9 @@
                     });
             });
         })
+       
     </script>
-   
+
     <script>
         document.getElementById("stock").className = "active treeview menu-open";
         document.getElementById("histArrival").className = "active";

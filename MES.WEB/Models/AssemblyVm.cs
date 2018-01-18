@@ -13,7 +13,7 @@ namespace MES.WEB.Models
         [Display(Name = "Количество")]
         [Range(1, 100000, ErrorMessage = "Min = 1, Max = 100000")]
         [Required]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         [Display(Name = "Название продукта")]
         public string ProductName { get; set; }

@@ -9,14 +9,14 @@ namespace MES.WEB
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                 "~/Scripts/jquery-{version}.js",
-                "~/Scripts/dist/js/adminlte.js"));
-
-            
-
-            bundles.Add(new ScriptBundle("~/bundles/jquery-val").Include(
+                "~/Scripts/dist/js/adminlte.js",
                 "~/Scripts/jquery.validate*",
                 "~/Scripts/jquery.unobtrusive-ajax.min.js"
-            ));
+               ));
+
+
+
+
 
             bundles.Add(new ScriptBundle("~/bundles/DataTables").Include(
                 "~/Scripts/DataTables/jquery.dataTables.min.js",
@@ -35,6 +35,10 @@ namespace MES.WEB
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/bootstrap.js",
                 "~/Scripts/respond.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/mes").Include(
+                "~/Scripts/mes.js"));
+
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/bootstrap.css",

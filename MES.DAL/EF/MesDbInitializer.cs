@@ -146,9 +146,9 @@ namespace MES.DAL.EF
 
             foreach (VariantStateProduct vaStPr in Enum.GetValues(typeof(VariantStateProduct)))
             {
-                db.ProductStates.Add(new ProductState { Product = p, StateProduct = vaStPr, Quantity = 110 });
-                db.ProductStates.Add(new ProductState { Product = p2, StateProduct = vaStPr, Quantity = 110 });
-                db.ProductStates.Add(new ProductState { Product = p3, StateProduct = vaStPr, Quantity = 110 });
+                db.ProductStates.Add(new ProductState { Product = p, StateProduct = vaStPr, Quantity = 0});
+                db.ProductStates.Add(new ProductState { Product = p2, StateProduct = vaStPr, Quantity =0 });
+                db.ProductStates.Add(new ProductState { Product = p3, StateProduct = vaStPr, Quantity =0 });
             }
 
 

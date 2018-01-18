@@ -33,26 +33,11 @@
             @Html.DisplayFor(modelItem => item.Airtight)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }, new { @class = "text-info" }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |*@
+            @Html.ActionLink("Подробнее", "Details", new { id=item.Id }, new { @class = "text-info" }) |
+            <a class="text-danger" onclick="deleteElement(event, this)" href="@Url.Action("Delete", "CheckJmt", new { id = item.Id })">Удалить</a>
         </td>
     </tr>
 }
 
 </table>
-
-<script>
-    $(function () {
-        $.ajaxSetup({ cache: false });
-        $(".text-info").click(function (e) {
-
-            e.preventDefault();
-            $.get(this.href,
-                function (data) {
-                    $('#dialogContent').html(data);
-                    $('#modDialog').modal('show');
-                });
-        });
-    })
-</script>

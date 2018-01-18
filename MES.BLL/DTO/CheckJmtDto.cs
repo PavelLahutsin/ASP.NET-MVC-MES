@@ -13,26 +13,26 @@ namespace MES.BLL.DTO
 
         public int Count { get; set; }
 
-        public int? Airtight { get; set; }
+        public int Airtight { get; set; }
 
-        public int? CapM { get; set; } //КрышкаМ
+        public int CapM { get; set; } //КрышкаМ
 
-        public int? CapN { get; set; } //Крышка№
+        public int CapN { get; set; } //Крышка№
 
-        public int? Housing { get; set; } //Корпус
+        public int Housing { get; set; } //Корпус
 
-        public int? Tube { get; set; }
+        public int Tube { get; set; }
 
-        public int? Center { get; set; }
+        public int Center { get; set; }
 
-        public int? Defect { get; set; }
+        public int Defect { get; set; }
 
-        public int? Other { get; set; }
+        public int Other { get; set; }
        
-        public int? RepairCu { get; set; }
+        public int RepairCu { get; set; }
         
-        public int? RepairNi { get; set; }
+        public int RepairNi { get; set; }
        
-        public int? RepairCentre { get; set; }
+        public int RepairCentre { get; set; }
     }
 }

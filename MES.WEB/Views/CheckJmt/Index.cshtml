@@ -10,7 +10,10 @@
     <div id="dialogContent" class="modal-dialog"></div>
 </div>
 
+<div id="alert-message"></div>
+
 <p>
+    
     <a href="@Url.Action("AddCheckJmtPartial")" id="addId" class="btn btn-success ">Добавить проверку</a>
 </p>
 
@@ -99,42 +102,38 @@
 {
 
 
-    @Scripts.Render("~/bundles/bootstrap-datepicker")
-    @Scripts.Render("~/bundles/DataTables")
 
 
 
     <script>
 
 
-            //Date picker
-            $('#StartDate').datepicker({
-                language: "ru",
-                orientation: "bottom auto",
-                todayHighlight: true,
-                todayBtn: "linked"
+        //Date picker
+        $('#StartDate').datepicker({
+            language: "ru",
+            orientation: "bottom auto",
+            todayHighlight: true,
+            todayBtn: "linked"
 
-            });
+        });
 
-            //Date picker
-            $('#EndDate').datepicker({
-                language: "ru",
-                orientation: "bottom auto",
-                todayHighlight: true,
-                todayBtn: "linked"
+        //Date picker
+        $('#EndDate').datepicker({
+            language: "ru",
+            orientation: "bottom auto",
+            todayHighlight: true,
+            todayBtn: "linked"
         });
 
 
-
-
-            $('#StartDate').on('changeDate',
+        $('#StartDate').on('changeDate',
             function(ev) {
                 view();
             });
 
         $('#EndDate').on('changeDate',
             function(ev) {
-                 view();
+                view();
             });
 
         function view() {
@@ -150,15 +149,15 @@
                 startDate +
                 '&endDate=' +
                 endDate);
+           
         }
-
     </script>
 
     <script>
-        $(function () {
+        $(function() {
             var idToUpdate = $('#newResults');
             $.get("/CheckJmt/HistCheckJmtNewPartial",
-                function (data) {
+                function(data) {
                     $(idToUpdate).html(data);
                 });
         });
@@ -166,10 +165,10 @@
     </script>
 
     <script>
-        $(function () {
+        $(function() {
             var idToUpdate = $('#oldResults');
             $.get("/CheckJmt/HistCheckJmtOldPartial",
-                function (data) {
+                function(data) {
                     $(idToUpdate).html(data);
                 });
         });
@@ -178,13 +177,13 @@
     </script>
 
     <script>
-        $(function () {
+        $(function() {
             $.ajaxSetup({ cache: false });
-            $("#addId").click(function (e) {
+            $("#addId").click(function(e) {
 
                 e.preventDefault();
                 $.get(this.href,
-                    function (data) {
+                    function(data) {
                         $('#dialogContent').html(data);
                         $('#modDialog').modal('show');
                     });
@@ -192,7 +191,7 @@
         })
     </script>
 
-    
+
 
 
 

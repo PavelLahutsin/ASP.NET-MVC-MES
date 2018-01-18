@@ -83,18 +83,20 @@ namespace MES.WEB.Controllers
             ArrivalOfDetailVm arrivalOfDetail = new ArrivalOfDetailVm { Date = DateTime.Now };
             return PartialView(arrivalOfDetail);
         }
+       
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> AddJmtDetailPartial(ArrivalOfDetailVm arrival)
         {
             var details = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(_service.GetDetailsJmt());
             var detailList = new SelectList(details, "Id", "Name");
             ViewBag.Detail = detailList;
 
-            if (!ModelState.IsValid) return View(arrival);
+            if (!ModelState.IsValid) return PartialView(arrival);
             
             var result = await _service.AddArrivalOfDetailAsync(Mapper.Map<ArrivalOfDetailDto>(arrival));
-            return RedirectToAction("Index");
+            return PartialView("Success");
         }
     }
 }

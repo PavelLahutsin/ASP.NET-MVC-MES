@@ -3,15 +3,21 @@
 @{
     ViewBag.Title = "Редактор";
 }
-<div class="modal-content modal-warning">
+<div id="modalContent" class="modal-content modal-warning">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
         </button>
         <h4 class="modal-title">Добавить на склад</h4>
     </div>
-
-    @using (Html.BeginForm())
+    
+    @using (Ajax.BeginForm("AddJmtDetailPartial", "Arrival", new AjaxOptions
+    {
+        UpdateTargetId = "modalContent",
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        OnSuccess = "unloadModal"
+    }))
     {
         <div class="modal-body">
             @Html.AntiForgeryToken()
