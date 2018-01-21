@@ -18,6 +18,7 @@ namespace MES.DAL.EF
         public DbSet<ProductState> ProductStates { get; set; }
         public DbSet<Assembly> Assemblys { get; set; }
         public DbSet<CheckJmt> CheckJmts { get; set; }
+        public DbSet<Boxing> Boxings { get; set; }
 
 
         static MesContext()

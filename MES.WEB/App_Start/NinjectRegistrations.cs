@@ -21,6 +21,7 @@ namespace MES.WEB
             Bind<IArrivalService>().To<ArrivalService>();
             Bind<IAssemblyService>().To<AssemblyService>();
             Bind<ICheckJmtService>().To<CheckJmtService>();
+            Bind<IBoxingService>().To<BoxingService>();
             Bind<IFinishedGoodsWarehouseService>().To<FinishedGoodsWarehouseServiceService>();
         }
     }

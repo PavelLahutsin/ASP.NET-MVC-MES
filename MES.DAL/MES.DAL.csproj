@@ -60,6 +60,7 @@
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Entities\ArrivalOfDetail.cs" />
     <Compile Include="Entities\Assembly.cs" />
+    <Compile Include="Entities\Boxing.cs" />
     <Compile Include="Entities\CheckJmt.cs" />
     <Compile Include="Entities\ClientProfile.cs" />
     <Compile Include="Entities\DefectDetail.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Entities\ProductState.cs" />
     <Compile Include="Entities\Soldering.cs" />
     <Compile Include="Entities\StructureOfTheProduct.cs" />
+    <Compile Include="Enums\BoxingVariant.cs" />
     <Compile Include="Enums\StateFoTest.cs" />
     <Compile Include="Enums\VariantStateProduct.cs" />
     <Compile Include="Identity\ApplicationRoleManager.cs" />

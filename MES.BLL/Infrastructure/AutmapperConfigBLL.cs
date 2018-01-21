@@ -16,6 +16,7 @@ namespace MES.BLL.Infrastructure
             cfg.CreateMap<Soldering, SolderingDto>().ReverseMap();
             cfg.CreateMap<CheckJmt, CheckJmtDto>().ReverseMap();
             cfg.CreateMap<ProductState, ProductStateDto>().ReverseMap();
+            cfg.CreateMap<Boxing, BoxingDto>().ReverseMap();
         };
     }
 }

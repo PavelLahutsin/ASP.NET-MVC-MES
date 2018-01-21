@@ -18,6 +18,7 @@ namespace MES.DAL.Interfaces
         DbSet<ProductState> ProductStates { get; set; }
         DbSet<Assembly> Assemblys { get; set; }
         DbSet<CheckJmt> CheckJmts { get; set; }
+        DbSet<Boxing> Boxings { get; set; }
         DbChangeTracker ChangeTracker { get; }
 
         int SaveChanges();

@@ -202,6 +202,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArrivalController.cs" />
     <Compile Include="Controllers\AssemblyController.cs" />
+    <Compile Include="Controllers\BoxingController.cs" />
     <Compile Include="Controllers\CheckJmtController.cs" />
     <Compile Include="Controllers\FinishedGoodsWarehouseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -774,6 +775,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Boxing\" />
     <Folder Include="Views\Product\" />
   </ItemGroup>
   <ItemGroup>

@@ -24,6 +24,7 @@ namespace MES.DAL.EF
         private IBaseRepository<ProductState> _productStates;
         private IBaseRepository<Assembly> _assembly;
         private IBaseRepository<CheckJmt> _checkJmt;
+        private IBaseRepository<Boxing> _boxing;
 
 
         public UnitOfWork()
@@ -36,6 +37,9 @@ namespace MES.DAL.EF
 
         public IBaseRepository<ArrivalOfDetail> ArrivalOfDetails => _arrivalOfDetailRepository ??
                 (_arrivalOfDetailRepository = new BaseRepository<ArrivalOfDetail>(_context));
+
+        public IBaseRepository<Boxing> Boxings => _boxing ??
+                                                                    (_boxing = new BaseRepository<Boxing>(_context));
 
         public IBaseRepository<CheckJmt> CheckJmts => _checkJmt ??
                                                                     (_checkJmt = new BaseRepository<CheckJmt>(_context));
