@@ -105,6 +105,7 @@
     <Compile Include="Interfaces\IBoxingService.cs" />
     <Compile Include="Interfaces\ICheckJmtService.cs" />
     <Compile Include="Interfaces\IFinishedGoodsWarehouseService.cs" />
+    <Compile Include="Interfaces\IServiceCreator.cs" />
     <Compile Include="Interfaces\ISolderingService.cs" />
     <Compile Include="Interfaces\IStockService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Services\BoxingService.cs" />
     <Compile Include="Services\CheckJmtService.cs" />
     <Compile Include="Services\FinishedGoodsWarehouseServiceService.cs" />
+    <Compile Include="Services\ServiceCreator.cs" />
     <Compile Include="Services\SolderingService.cs" />
     <Compile Include="Services\StockService.cs" />
     <Compile Include="Services\UserService.cs" />

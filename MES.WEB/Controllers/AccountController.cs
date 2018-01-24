@@ -1,28 +1,36 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using MES.BLL.DTO;
+using MES.BLL.Infrastructure;
 using MES.BLL.Interfaces;
 using MES.WEB.Models;
+using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 
 namespace MES.WEB.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly IUserService _userService;
-
-        public AccountController(
-            IUserService userService)
+        private IUserService UserService
         {
-            _userService = userService ?? throw new ArgumentNullException(nameof(userService));
+            get
+            {
+                return HttpContext.GetOwinContext().GetUserManager<IUserService>();
+            }
         }
-        //private IUserService UserService => HttpContext.GetOwinContext().GetUserManager<IUserService>();
 
-        private IAuthenticationManager AuthenticationManager => HttpContext.GetOwinContext().Authentication;
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
+        }
 
         public ActionResult Login()
         {
@@ -33,21 +41,25 @@ namespace MES.WEB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginVm model)
         {
-            if (!ModelState.IsValid) return View(model);
-            var userDto = Mapper.Map<UserDTO>(model);
-            ClaimsIdentity claim = await _userService.Authenticate(userDto);
-            if (claim == null)
+            await SetInitialDataAsync();
+
+            if (ModelState.IsValid)
             {
-                ModelState.AddModelError("", "Неверный логин или пароль.");
-            }
-            else
-            {
-                AuthenticationManager.SignOut();
-                AuthenticationManager.SignIn(new AuthenticationProperties
+                UserDTO userDto = new UserDTO { Email = model.Email, Password = model.Password };
+                ClaimsIdentity claim = await UserService.Authenticate(userDto);
+                if (claim == null)
                 {
-                    IsPersistent = true
-                }, claim);
-                return RedirectToAction("Index", "Home");
+                    ModelState.AddModelError("", "Неверный логин или пароль.");
+                }
+                else
+                {
+                    AuthenticationManager.SignOut();
+                    AuthenticationManager.SignIn(new AuthenticationProperties
+                    {
+                        IsPersistent = true
+                    }, claim);
+                    return RedirectToAction("Index", "Home");
+                }
             }
             return View(model);
         }
@@ -65,19 +77,40 @@ namespace MES.WEB.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "admin")]
         public async Task<ActionResult> Register(RegisterVm model)
         {
-            if (!ModelState.IsValid) return View(model);
+            await SetInitialDataAsync();
 
-            var userDto = Mapper.Map<UserDTO>(model);
-            var operationDetails = await _userService.Create(userDto);
-            if (operationDetails.Succedeed)
-                return RedirectToAction("Index", "Home");
-            else
-                ModelState.AddModelError(operationDetails.Accessory, operationDetails.Message);
-            return View(model);
+            if (ModelState.IsValid)
+            {
+                UserDTO userDto = new UserDTO
+                {
+                    Email = model.Email,
+                    Password = model.Password,
+                    Address = model.Address,
+                    Name = model.Name,
+                    Role = "user"
+                };
+                OperationDetails operationDetails = await UserService.Create(userDto);
+                if (operationDetails.Succedeed)
+                    return RedirectToAction("Index","Home");
+                else
+                    ModelState.AddModelError(operationDetails.Accessory, operationDetails.Message);
+            }
+            return RedirectToAction("Index", "Home");
         }
 
+        private async Task SetInitialDataAsync()
+        {
+            await UserService.SetInitialData(new UserDTO
+            {
+                Email = "somemail@mail.ru",
+                UserName = "somemail@mail.ru",
+                Password = "ad46D_ewr3",
+                Name = "Семен Семенович Горбунков",
+                Address = "ул. Спортивная, д.30, кв.75",
+                Role = "admin",
+            }, new List<string> { "user", "admin" });
+        }
     }
 }

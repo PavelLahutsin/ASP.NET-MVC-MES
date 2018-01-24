@@ -14,7 +14,7 @@ namespace MES.BLL.Services
 {
     public class UserService : IUserService
     {
-        private IUnitOfWork Database { get; }
+        IUnitOfWork Database { get; set; }
 
         public UserService(IUnitOfWork uow)
         {
@@ -23,20 +23,19 @@ namespace MES.BLL.Services
 
         public async Task<OperationDetails> Create(UserDTO userDto)
         {
-            var user = await Database.UserManager.FindByEmailAsync(userDto.Email);
+            ApplicationUser user = await Database.UserManager.FindByEmailAsync(userDto.Email);
             if (user == null)
             {
-                user = Mapper.Map<ApplicationUser>(userDto);
-                var result = await Database.UserManager.CreateAsync(user, userDto.Password);
-                if (result.Errors.Any())
-                    return new OperationDetails(false, result.Errors.FirstOrDefault(), "");
+                user = new ApplicationUser { Email = userDto.Email, UserName = userDto.Email };
+                await Database.UserManager.CreateAsync(user, userDto.Password);
                 // добавляем роль
                 await Database.UserManager.AddToRoleAsync(user.Id, userDto.Role);
                 // создаем профиль клиента
-                var clientProfile = new ClientProfile { Id = user.Id, Address = userDto.Address, Name = userDto.Name };
+                ClientProfile clientProfile = new ClientProfile { Id = user.Id, Address = userDto.Address, Name = userDto.Name };
                 Database.ClientManager.Create(clientProfile);
                 await Database.Commit();
                 return new OperationDetails(true, "Регистрация успешно пройдена", "");
+
             }
             else
             {
@@ -48,7 +47,7 @@ namespace MES.BLL.Services
         {
             ClaimsIdentity claim = null;
             // находим пользователя
-            var user = await Database.UserManager.FindAsync(userDto.Name, userDto.Password);
+            ApplicationUser user = await Database.UserManager.FindAsync(userDto.Email, userDto.Password);
             // авторизуем его и возвращаем объект ClaimsIdentity
             if (user != null)
                 claim = await Database.UserManager.CreateIdentityAsync(user,
@@ -59,13 +58,16 @@ namespace MES.BLL.Services
         // начальная инициализация бд
         public async Task SetInitialData(UserDTO adminDto, List<string> roles)
         {
-            //foreach (var roleName in roles)
-            //{
-            //    var role = await Database.RoleManager.FindByNameAsync(roleName);
-            //    if (role != null) continue;
-            //    role = new ApplicationRole { Name = roleName };
-            //    await Database.RoleManager.CreateAsync(role);
-            //}
+            foreach (string roleName in roles)
+            {
+                var role = await Database.RoleManager.FindByNameAsync(roleName);
+                if (role == null)
+                {
+                    role = new ApplicationRole { Name = roleName };
+                    await Database.RoleManager.CreateAsync(role);
+                }
+            }
+
             await Create(adminDto);
         }
 
@@ -75,3 +77,4 @@ namespace MES.BLL.Services
         }
     }
 }
+

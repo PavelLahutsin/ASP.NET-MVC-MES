@@ -103,34 +103,34 @@ namespace MES.DAL.EF
             db.StructureOfTheProducts.AddRange(list);
            
 
-            var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(db));
+            //var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(db));
 
-            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+            //var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
 
-            // создаем 4 роли
-            var role1 = new IdentityRole { Name = "admin" };
-            var role2 = new IdentityRole { Name = "user" };
-            var role3 = new IdentityRole { Name = "tester" };
-            var role4 = new IdentityRole { Name = "fitter" };
+            //// создаем 4 роли
+            //var role1 = new IdentityRole { Name = "admin" };
+            //var role2 = new IdentityRole { Name = "user" };
+            //var role3 = new IdentityRole { Name = "tester" };
+            //var role4 = new IdentityRole { Name = "fitter" };
 
-            roleManager.Create(role1);
-            roleManager.Create(role2);
-            roleManager.Create(role3);
-            roleManager.Create(role4);
+            //roleManager.Create(role1);
+            //roleManager.Create(role2);
+            //roleManager.Create(role3);
+            //roleManager.Create(role4);
 
-            var admin = new ApplicationUser
-            { Email = "555@mail.ru", UserName = "Admin" };
-            const string password = "111111";
+            //var admin = new ApplicationUser
+            //{ Email = "555@mail.ru", UserName = "Admin" };
+            //const string password = "111111";
 
-            var result = userManager.Create(admin, password);
+            //var result = userManager.Create(admin, password);
 
-            // если создание пользователя прошло успешно
-            if (result.Succeeded)
-            {
-                // добавляем для пользователя роль
-                userManager.AddToRole(admin.Id, role1.Name);
-                userManager.AddToRole(admin.Id, role2.Name);
-            }
+            //// если создание пользователя прошло успешно
+            //if (result.Succeeded)
+            //{
+            //    // добавляем для пользователя роль
+            //    userManager.AddToRole(admin.Id, role1.Name);
+            //    userManager.AddToRole(admin.Id, role2.Name);
+            //}
             var products = new List<Product> {p, p2, p3};
             var random = new Random();
             for (var i = 0; i < 500; i++)

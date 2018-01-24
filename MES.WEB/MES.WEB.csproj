@@ -777,6 +777,7 @@
     <Content Include="Views\Boxing\HistBoxingPartial.cshtml" />
     <Content Include="Views\Boxing\AddBoxingPartial.cshtml" />
     <Content Include="Views\Shared\_Error.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
