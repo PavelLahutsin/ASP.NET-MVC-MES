@@ -26,12 +26,12 @@ namespace MES.BLL.Services
         {
             try
             {
-                var box = Mapper.Map<Boxing>(boxing);
+                var box = new Boxing{Date = boxing.Date, ProductId =boxing.ProductId, Quantity = boxing.Quantity, BoxingVariant = boxing.BoxingVariant};
 
                 var prSt1 = await _uof.ProductStates.Entities.Where(w =>
                     w.ProductId == boxing.ProductId && w.StateProduct == VariantStateProduct.Проверено).FirstOrDefaultAsync();
 
-                prSt1.Quantity -= boxing.Quantity;
+                if((prSt1.Quantity -= boxing.Quantity)<0) throw new Exception("Столько не проверено");
 
                 ProductState prSt2 = new ProductState();
                 switch (boxing.BoxingVariant)
@@ -66,12 +66,12 @@ namespace MES.BLL.Services
 
                 _uof.Boxings.Create(box);
                 await _uof.Commit();
-                return new OperationDetails(true, "Упаковка успешно добавлена", "");
+                return new OperationDetails(true, "Упаковка успешно добавлена", "/Boxing/HistBoxingPartial");
             }
             catch (Exception e)
             {
                 _uof.Rollback();
-                return new OperationDetails(true, e.Message, "");
+                return new OperationDetails(false, e.Message, "/Boxing/HistBoxingPartial");
             }
         }
 
@@ -106,7 +106,7 @@ namespace MES.BLL.Services
         {
             try
             {
-                var boxing = await _uof.Boxings.GetAsync(id);
+                var boxing = await _uof.Boxings.Entities.FirstOrDefaultAsync(f=>f.Id==id);
 
 
                 var prSt1 = await _uof.ProductStates.Entities.Where(w =>
@@ -121,7 +121,7 @@ namespace MES.BLL.Services
                     {
                         prSt2 = await _uof.ProductStates.Entities.Where(w =>
                             w.ProductId == boxing.ProductId && w.StateProduct == VariantStateProduct.Упаковано).FirstOrDefaultAsync();
-                        prSt2.Quantity -= boxing.Quantity;
+                        if((prSt2.Quantity -= boxing.Quantity)<0) throw new Exception("Нельзя удалить больше, чем есть");
                         break;
                     }
 
@@ -145,7 +145,7 @@ namespace MES.BLL.Services
                 _uof.ProductStates.Update(prSt1);
                 _uof.ProductStates.Update(prSt2);
 
-                _uof.Solderings.Delete(id);
+                _uof.Boxings.Delete(id);
                 await _uof.Commit();
 
                 return new OperationDetails(true, "Упаковка успешно удалена", "");
@@ -153,7 +153,7 @@ namespace MES.BLL.Services
             catch (Exception e)
             {
                 _uof.Rollback();
-                return new OperationDetails(true, e.Message, "");
+                return new OperationDetails(false, e.Message, "");
             }
         }
     }

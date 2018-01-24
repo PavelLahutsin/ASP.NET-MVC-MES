@@ -11,20 +11,16 @@ namespace MES.WEB
                 "~/Scripts/jquery-{version}.js",
                 "~/Scripts/dist/js/adminlte.js",
                 "~/Scripts/jquery.validate*",
-                "~/Scripts/jquery.unobtrusive-ajax.min.js"
+                "~/Scripts/jquery.unobtrusive-ajax.js"
                ));
 
-
-
-
-
             bundles.Add(new ScriptBundle("~/bundles/DataTables").Include(
-                "~/Scripts/DataTables/jquery.dataTables.min.js",
-                "~/Scripts/DataTables/dataTables.bootstrap.min.js"));
+                "~/Scripts/DataTables/jquery.dataTables.js",
+                "~/Scripts/DataTables/dataTables.bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap-datepicker").Include(
                 "~/Scripts/bootstrap-datepicker/bootstrap-datepicker.js",
-                "~/Scripts/bootstrap-datepicker/locales/bootstrap-datepicker.ru.min.js"));
+                "~/Scripts/bootstrap-datepicker/locales/bootstrap-datepicker.ru.js"));
 
 
             // Используйте версию Modernizr для разработчиков, чтобы учиться работать. Когда вы будете готовы перейти к работе,
@@ -44,12 +40,9 @@ namespace MES.WEB
                 "~/Content/bootstrap.css",
                 "~/Content/font-awesome/css/font-awesome.css",
                 "~/Content/dist/css/AdminLTE.css",
-                "~/Content/dist/css/skins/_all-skins.css"));
-
-            bundles.Add(new StyleBundle("~/Data&Date/css").Include(
-                "~/Content/DataTables/css/dataTables.bootstrap.min.css",
-                "~/Content/bootstrap-datepicker/bootstrap-datepicker.min.css"));
-
+                "~/Content/dist/css/skins/_all-skins.css",
+                "~/Content/DataTables/css/dataTables.bootstrapcss",
+                "~/Content/bootstrap-datepicker/bootstrap-datepicker.css"));
         }
     }
 }

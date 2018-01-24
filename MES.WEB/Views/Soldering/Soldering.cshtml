@@ -4,7 +4,6 @@
     ViewBag.Title = "Soldering";
 }
 
-@Styles.Render("~/Data&Date/css")
 
 <div id="modDialog" class="modal fade">
     <div id="dialogContent" class="modal-dialog"></div>
@@ -77,50 +76,14 @@
 </section>
 @section scripts
 {
-
-    
-  
-
-
     <script>
-
-
-            //Date picker
-            $('#StartDate').datepicker({
-                language: "ru",
-                orientation: "bottom auto",
-                todayHighlight: true,
-                todayBtn: "linked"
-
-            });
-
-            //Date picker
-            $('#EndDate').datepicker({
-                language: "ru",
-                orientation: "bottom auto",
-                todayHighlight: true,
-                todayBtn: "linked"
-        });
-
-
-
-
-            $('#StartDate').on('changeDate',
-            function(ev) {
-                view();
-            });
-
-        $('#EndDate').on('changeDate',
-            function(ev) {
-                 view();
-            });
-
+    
         function view() {
             var startDate = $('#StartDate').val();
             startDate = encodeURIComponent(startDate);
             var endDate = $('#EndDate').val();
             endDate = encodeURIComponent(endDate);
-            $('#results').load('@Url.Action("ShowSolderingListPartial", "Soldering")?startDate=' +
+            $('#results').load('@Url.Action("ListPartial", "Soldering")?startDate=' +
                 startDate +
                 '&endDate=' +
                 endDate);
@@ -130,20 +93,16 @@
                 endDate);
         }
 
-    </script>
-
-    <script>
+    
         $(function () {
             var idToUpdate = $('#results');
-            $.get("/Soldering/ShowSolderingListPartial",
+            $.get("/Soldering/ListPartial",
                 function (data) {
                     $(idToUpdate).html(data);
                 });
         });
 
-    </script>
-
-    <script>
+   
         $(function () {
             var idToUpdate = $('#results2');
             $.get("/Soldering/ShowSolderingCountPartial",
@@ -153,27 +112,6 @@
         });
 
 
-    </script>
-
-    <script>
-        $(function () {
-            $.ajaxSetup({ cache: false });
-            $("#addId").click(function (e) {
-
-                e.preventDefault();
-                $.get(this.href,
-                    function (data) {
-                        $('#dialogContent').html(data);
-                        $('#modDialog').modal('show');
-                    });
-            });
-        })
-    </script>
-
-
-
-
-
-    <script>document.getElementById("solderings").className = "active";</script>
+    $('#solderings').className = "active";</script>
 
 }

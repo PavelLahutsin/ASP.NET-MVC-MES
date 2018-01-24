@@ -8,7 +8,7 @@
 <div id="modDialog" class="modal fade">
     <div id="dialogContent" class="modal-dialog"></div>
 </div>
-
+<div id="alert-message"></div>
 <p>
     <a href="@Url.Action("AddDefectJmtDetailPartial")" id="addId" class="btn btn-danger">Добавить в брак</a>
 </p>
@@ -54,43 +54,7 @@
 @section scripts
 {
 
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/bootstrap-datepicker")
-
-
-
-
     <script>
-
-
-        //Date picker
-        $('#StartDate').datepicker({
-            language: "ru",
-            orientation: "bottom auto",
-            todayHighlight: true,
-            todayBtn: "linked"
-
-        });
-
-        //Date picker
-        $('#EndDate').datepicker({
-            language: "ru",
-            orientation: "bottom auto",
-            todayHighlight: true,
-            todayBtn: "linked"
-        });
-
-        //Обновить при выборе даты
-        $('#StartDate').on('changeDate',
-            function(ev) {
-                view();
-            });
-
-        $('#EndDate').on('changeDate',
-            function(ev) {
-                view();
-            });
-
         function view() {
             var startDate = $('#StartDate').val();
             startDate = encodeURIComponent(startDate);
@@ -103,9 +67,7 @@
 
         }
 
-    </script>
-
-    <script>
+    
         $(function () {
             var idToUpdate = $('#results');
             $.get("/Stock/HistDefectPartial",
@@ -114,27 +76,8 @@
                 });
         });
 
-    </script>
-
-
-    <script>
-        $(function () {
-            $.ajaxSetup({ cache: false });
-            $("#addId").click(function (e) {
-
-                e.preventDefault();
-                $.get(this.href,
-                    function (data) {
-                        $('#dialogContent').html(data);
-                        $('#modDialog').modal('show');
-                    });
-            });
-        })
-    </script>
-
-    <script>
-        var cto = document.getElementById("stock").className = "active treeview menu-open";
-        var met = document.getElementById("defectJmtDetail").className = "active";
+        $("#stock").className = "active treeview menu-open";
+        $("#defectJmtDetail").className = "active";
     </script>
 
 

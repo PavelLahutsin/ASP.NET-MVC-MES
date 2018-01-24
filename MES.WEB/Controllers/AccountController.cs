@@ -75,7 +75,7 @@ namespace MES.WEB.Controllers
             if (operationDetails.Succedeed)
                 return RedirectToAction("Index", "Home");
             else
-                ModelState.AddModelError(operationDetails.Property, operationDetails.Message);
+                ModelState.AddModelError(operationDetails.Accessory, operationDetails.Message);
             return View(model);
         }
 

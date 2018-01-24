@@ -38,10 +38,11 @@ namespace MES.BLL.Services
                      checkJmtDto.Center +
                      checkJmtDto.Housing +
                      checkJmtDto.Tube + checkJmtDto.Other) < (checkJmtDto.Count - checkJmtDto.Airtight)) return new OperationDetails(false, "В ремонт + целые != поступившие", "");
+                if (checkJmtDto.Count!=(checkJmtDto.Airtight+checkJmtDto.CapM+checkJmtDto.CapN+checkJmtDto.Center+checkJmtDto.Defect+checkJmtDto.Housing + checkJmtDto.Other+checkJmtDto.Tube)) return new OperationDetails(false, "В ремонт + целые != поступившие", "");
 
                 _uof.CheckJmts.Create(Mapper.Map<CheckJmt>(checkJmtDto));
                 var prod = await _uof.ProductStates.Entities.Where(w => w.ProductId == checkJmtDto.ProductId && w.StateProduct == VariantStateProduct.Спаяно).FirstOrDefaultAsync();
-                prod.Quantity -= checkJmtDto.Count;
+                if ((prod.Quantity -= checkJmtDto.Count)<0) throw new Exception("Столько не спаяли");
 
                 var prSt2 = await _uof.ProductStates.Entities.Where(w =>
                     w.ProductId == checkJmtDto.ProductId && w.StateProduct == VariantStateProduct.Проверено).FirstOrDefaultAsync();
@@ -67,11 +68,17 @@ namespace MES.BLL.Services
                 _uof.ProductStates.Update(prSt4);
                 _uof.ProductStates.Update(prSt5);
                 await _uof.Commit();
-                return new OperationDetails(true, "Проверка успешно добавлена", "");
+
+                if (checkJmtDto.State == StateFoTest.Новые)
+                return new OperationDetails(true, "Проверка успешно добавлена", "/CheckJmt/HistCheckJmtNewPartial");
+                else
+                {
+                    return new OperationDetails(true, "Проверка успешно добавлена", "/CheckJmt/HistCheckJmtOldPartial");
+                }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return new OperationDetails(false, "Bad", "");
+                return new OperationDetails(false, e.Message, "");
             }   
             
         }

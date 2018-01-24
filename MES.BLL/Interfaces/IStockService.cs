@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using MES.BLL.DTO;
+using MES.BLL.Infrastructure;
 using MES.DAL.Entities;
 
 namespace MES.BLL.Interfaces
@@ -9,9 +10,9 @@ namespace MES.BLL.Interfaces
     {
         IEnumerable<DetailDTO> GetDetail(string name);
         List<DetailDTO> GetDetailsJmt();
-        Task<bool> AddDefectDetailAsync(DefectDetailDto defect);
+        Task<OperationDetails> AddDefectDetailAsync(DefectDetailDto defect);
         Task<IEnumerable<DefectDetailDisplayDto>> ShowDefectDetailAsync();
-        Task<bool> DeleteDefectDetailAsync(int id);
-        Task<bool> EditDefectDetailAsync(DefectDetail defect);
+        Task<OperationDetails> DeleteDefectDetailAsync(int id);
+        Task<OperationDetails> EditDefectDetailAsync(DefectDetail defect);
     }
 }

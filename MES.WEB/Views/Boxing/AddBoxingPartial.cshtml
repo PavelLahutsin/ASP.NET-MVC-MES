@@ -1,28 +1,27 @@
-﻿@model MES.WEB.Models.AssemblyVm
+﻿@model MES.WEB.Models.BoxingVm
 
 <div id="modalContent" class="modal-content modal-success">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
         </button>
-        <h4 class="modal-title">Добавить сборку</h4>
+        <h4 class="modal-title">Добавить проверку</h4>
     </div>
-    @using (Ajax.BeginForm("AddAssemblyPartial",  new AjaxOptions
+
+    @using (Ajax.BeginForm("AddBoxingPartial", new AjaxOptions
     {
         UpdateTargetId = "modalContent",
         HttpMethod = "POST",
         InsertionMode = InsertionMode.Replace,
-        OnSuccess = "unloadModal",
-        
+        OnSuccess = "unloadModal"
     }))
-
     {
         <div class="modal-body">
             @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
-
-
+                <h4>BoxingVm</h4>
+                <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
                     @Html.LabelFor(model => model.ProductId, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -32,7 +31,13 @@
                     </div>
                 </div>
 
-
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BoxingVariant, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EnumDropDownListFor(model => model.BoxingVariant, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.BoxingVariant, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -50,7 +55,6 @@
                     </div>
                 </div>
 
-
             </div>
         </div>
         <div class="modal-footer">
@@ -62,10 +66,18 @@
 </div>
 
 <script>
-//Date picker
+    //Date picker
     $('#Date').datepicker({
         language: "ru",
         orientation: "bottom auto",
         todayHighlight: true,
         todayBtn: "linked"
-    });</script>
+    });
+
+    @*function unloadModal(data) {
+        if (data.success) {
+            $('#addId').modal('hide');
+            window.location.href = "@Url.Action("Index", "Home")";
+        }
+    };*@
+</script>

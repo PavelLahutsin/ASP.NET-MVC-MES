@@ -40,7 +40,7 @@ namespace MES.BLL.Services
                 var prSt1 = await _uof.ProductStates.Entities.Where(w =>
                     w.ProductId == soldering.ProductId && w.StateProduct == VariantStateProduct.Собрано).FirstOrDefaultAsync();
 
-                prSt1.Quantity -= soldering.Quantity;
+                if ((prSt1.Quantity -= soldering.Quantity)<0) throw new Exception("Столько не собрали");
 
                 var prSt2 = await _uof.ProductStates.Entities.Where(w =>
                     w.ProductId == soldering.ProductId && w.StateProduct == VariantStateProduct.Спаяно).FirstOrDefaultAsync();
@@ -52,12 +52,12 @@ namespace MES.BLL.Services
 
                 _uof.Solderings.Create(sol);
                 await _uof.Commit();
-                return new OperationDetails(true, "Пайка успешно добавлена", "");
+                return new OperationDetails(true, "Пайка успешно добавлена", "/Soldering/ListPartial");
             }
             catch (Exception e)
             {
                 _uof.Rollback();
-                return new OperationDetails(true, e.Message, ""); ;
+                return new OperationDetails(false, e.Message, ""); ;
             }
 
 
@@ -126,7 +126,7 @@ namespace MES.BLL.Services
             
         }
 
-        public async Task<bool> DeleteSoldering(int id)
+        public async Task<OperationDetails> DeleteSoldering(int id)
         {
             try
             {
@@ -141,7 +141,7 @@ namespace MES.BLL.Services
                 var prSt2 = await _uof.ProductStates.Entities.Where(w =>
                     w.ProductId == soldering.ProductId && w.StateProduct == VariantStateProduct.Спаяно).FirstOrDefaultAsync();
 
-                prSt2.Quantity -= soldering.Quantity;
+                if((prSt2.Quantity -= soldering.Quantity)<0) throw new Exception();
 
                 _uof.ProductStates.Update(prSt1);
                 _uof.ProductStates.Update(prSt2);
@@ -149,12 +149,12 @@ namespace MES.BLL.Services
                 _uof.Solderings.Delete(id);
             await _uof.Commit();
 
-            return true;
+                return new OperationDetails(true, "Пайка успешно удалена", "");
             }
             catch (Exception)
             {
                 _uof.Rollback();
-                return false;
+                return new OperationDetails(false, "Пайка не удалена", "");
             }
         }
     }

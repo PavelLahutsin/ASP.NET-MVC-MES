@@ -9,6 +9,6 @@ namespace MES.BLL.Interfaces
     {
         Task<OperationDetails> AddAssemblyAsync(AssemblyDto assembly);
         Task<IEnumerable<AssemblyDto>> ShowAssemblysAsync(string startDate, string endDate);
-        Task<bool> DeleteAssembly(int id);
+        Task<OperationDetails> DeleteAssembly(int id);
     }
 }

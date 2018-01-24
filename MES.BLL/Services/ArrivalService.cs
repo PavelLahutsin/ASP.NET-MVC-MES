@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using MES.BLL.DTO;
+using MES.BLL.Infrastructure;
 using MES.BLL.Interfaces;
 using MES.DAL.Entities;
 using MES.DAL.Interfaces;
@@ -26,7 +27,7 @@ namespace MES.BLL.Services
         /// </summary>
         /// <param name="arrival">данные о приходе на склад</param>
         /// <returns>успешна ли операция</returns>
-        public async Task<bool> AddArrivalOfDetailAsync(ArrivalOfDetailDto arrival)
+        public async Task<OperationDetails> AddArrivalOfDetailAsync(ArrivalOfDetailDto arrival)
         {
             try
             {
@@ -38,12 +39,12 @@ namespace MES.BLL.Services
                 detail.Quantityq += arrival.Count;
                 _uof.Details.Update(detail);
                 await _uof.Commit();
-                return true;
+                return new OperationDetails(true, $"{detail.Name} успешно добавлена", "/Arrival/HistArrivalPartial");
             }
             catch (Exception)
             {
                 _uof.Rollback();
-                return false;
+                return new OperationDetails(false, "Данные не удалось добавить", "");
             }
 
         }
@@ -81,7 +82,7 @@ namespace MES.BLL.Services
         /// </summary>
         /// <param name="id">ArrivalOfDetail.Id</param>
         /// <returns>успешна ли операция</returns>
-        public async Task<bool> DeleteArrivalOfDetailAsync(int id)
+        public async Task<OperationDetails> DeleteArrivalOfDetailAsync(int id)
         {
             try
             {
@@ -89,18 +90,18 @@ namespace MES.BLL.Services
                 var detail = await _uof.Details.GetAsync(arrival.DetailId);
                 if (detail == null) throw new Exception();
 
-                if ((detail.Quantityq -= arrival.Count) < 0) return false;
+                if ((detail.Quantityq -= arrival.Count) < 0) throw new Exception();
 
                 _uof.ArrivalOfDetails.Delete(id);
                 _uof.Details.Update(detail);
                 await _uof.Commit();
 
-                return true;
+                return new OperationDetails(true, "Данные успешно удалены", "");
             }
             catch (Exception)
             {
                 _uof.Rollback();
-                return false;
+                return new OperationDetails(false, "Данные не удалены", "");
             }
 
         }
@@ -110,7 +111,7 @@ namespace MES.BLL.Services
         /// </summary>
         /// <param name="arrival">Обнавленные данные о приходе</param>
         /// <returns>успешно ли обнавление бд</returns>
-        public async Task<bool> EditArrivalOfDetailAsync(ArrivalOfDetail arrival)
+        public async Task<OperationDetails> EditArrivalOfDetailAsync(ArrivalOfDetail arrival)
         {
             try
             {
@@ -119,13 +120,13 @@ namespace MES.BLL.Services
 
                 if (oldDetail == null) throw new Exception();
 
-                if ((oldDetail.Quantityq -= oldArrival.Count) < 0) return false;
+                if ((oldDetail.Quantityq -= oldArrival.Count) < 0) throw new Exception();
 
                 var newDetail = await _uof.Details.GetAsync(arrival.DetailId);
 
                 if (newDetail == null) throw new Exception();
 
-                if ((newDetail.Quantityq += arrival.Count) < 0) return false;
+                if ((newDetail.Quantityq += arrival.Count) < 0) throw new Exception();
 
 
                 oldArrival.Count = arrival.Count;
@@ -137,12 +138,12 @@ namespace MES.BLL.Services
                 _uof.Details.Update(oldDetail);
                 _uof.Details.Update(newDetail);
                 await _uof.Commit();
-                return true;
+                return new OperationDetails(true, "Данные успешно изменены", "/Arrival/HistArrivalPartial");
             }
             catch (Exception)
             {
                 _uof.Rollback();
-                return false;
+                return new OperationDetails(false, "Данные не изменены", "");
             }
 
         }

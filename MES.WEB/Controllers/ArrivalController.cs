@@ -45,7 +45,7 @@ namespace MES.WEB.Controllers
         public async Task<ActionResult> DeleteArrival(int id)
         {
             var result = await _service.DeleteArrivalOfDetailAsync(id);
-            return RedirectToAction("Index");
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         //Редактирование Данных о добавлении на склад
@@ -71,7 +71,7 @@ namespace MES.WEB.Controllers
 
             var result = await _service.EditArrivalOfDetailAsync(Mapper.Map<ArrivalOfDetail>(arrival));
 
-            return RedirectToAction("Index");
+            return Json(result);
         }
 
         //прихон на склад 
@@ -96,7 +96,7 @@ namespace MES.WEB.Controllers
             if (!ModelState.IsValid) return PartialView(arrival);
             
             var result = await _service.AddArrivalOfDetailAsync(Mapper.Map<ArrivalOfDetailDto>(arrival));
-            return PartialView("Success");
+            return Json(result);
         }
     }
 }

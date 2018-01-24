@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using AutoMapper;
@@ -46,29 +48,21 @@ namespace MES.WEB.Controllers
             return PartialView(assembly);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public async Task<ActionResult> AddAssemblyPartial(AssemblyVm assembly)
         {
             var products = Mapper.Map<IEnumerable<Product>, List<ProductVm>>(await _db.Products.GetAllAsync());
             ViewBag.Products = new SelectList(products, "Id", "Name");
-            if (ModelState.IsValid)
-            {
-                
-
-                var result = await _service.AddAssemblyAsync(Mapper.Map<AssemblyDto>(assembly));
-
-                if (result.Succedeed)
-                    return RedirectToAction("Index");
-                else
-                    ModelState.AddModelError(result.Property, result.Message);
-            }
-            return PartialView(assembly);
+            if (!ModelState.IsValid) return PartialView(assembly);//Json(new{ success = false});
+            var result = await _service.AddAssemblyAsync(Mapper.Map<AssemblyDto>(assembly));
+            return Json(result);
         }
 
 
 
 
-        public async Task<ActionResult> ShowAssemblyListPartial(string startDate, string endDate)
+        public async Task<ActionResult> ListPartial(string startDate, string endDate)
         {
 
 
@@ -84,8 +78,38 @@ namespace MES.WEB.Controllers
         {
 
             var result = await _service.DeleteAssembly(id);
-            return RedirectToAction("Index");
+            return Json(result, JsonRequestBehavior.AllowGet);
 
+        }
+    }
+
+    public class ValidateAjaxAttribute : ActionFilterAttribute
+    {
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            if (!filterContext.HttpContext.Request.IsAjaxRequest())
+                return;
+
+            var modelState = filterContext.Controller.ViewData.ModelState;
+            if (!modelState.IsValid)
+            {
+                var errorModel =
+                    from x in modelState.Keys
+                    where modelState[x].Errors.Count > 0
+                    select new
+                    {
+                        key = x,
+                        errors = modelState[x].Errors.
+                            Select(y => y.ErrorMessage).
+                            ToArray()
+                    };
+                filterContext.Result = new JsonResult()
+                {
+                    Data = errorModel
+                };
+                filterContext.HttpContext.Response.StatusCode =
+                    (int)HttpStatusCode.BadRequest;
+            }
         }
     }
 }

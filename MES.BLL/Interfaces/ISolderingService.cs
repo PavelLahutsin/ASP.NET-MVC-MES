@@ -10,6 +10,6 @@ namespace MES.BLL.Interfaces
         Task<OperationDetails> AddSolderingAsync(SolderingDto soldering);
         Task<IEnumerable<SolderingDto>> ShowSolderingsAsync(string startDate, string endDate);
         Task<IEnumerable<SolderingCountDto>> ShowSolderingsCountAsync(string startDate, string endDate);
-        Task<bool> DeleteSoldering(int id);
+        Task<OperationDetails> DeleteSoldering(int id);
     }
 }

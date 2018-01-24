@@ -2,14 +2,8 @@
     $.ajaxSetup({ cache: false });
     event.preventDefault();
     $.get(element.href, function (data) {
-        
-        //alert(data.Message);
         if (data.Succedeed) {
-            //view();
             $(element).closest("tr").remove();
-            //var a = '<span id="span_one">Brower RDU </span>' + data.Message + '</span>';
-            //$("#messageTrue").innerHTML = a;
-            //$("#messageTrue").show();
             alertGood(data.Message);
         } else {
             alertBad(data.Message);
@@ -22,23 +16,17 @@ function alertGood(message) {
     var result = '<div class="alert alert-success alert-dismissable">' +
         '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' +
         '<h4><i class="icon fa fa-check"></i> Успешно!</h4>' + message + '</div>';
-    $('#alert-message').html(result);
-    setTimeout(function() {
-            $('#alert-message').hide();
-        },
-        3000);
+    $('#alert-message').html(result).delay(2500).slideUp(300);
+    $('#alert-message').show();
 }
 
 function alertBad(message) {
     var result = '<div class="alert alert-danger alert-dismissable">' +
         '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' +
-        '<h4><i class="icon fa fa-ban"></i> Неудачно!</h4>' + message + '</div>';
-    $('#alert-message').html(result);
-    setTimeout(function () {
-            $('#alert-message').hide();
-        },
-        3000);
-}
+        '<h4><i class="icon fa fa-ban"></i> Не сохранено!</h4>' + message + '</div>';
+    $('#alert-message').html(result).delay(2500).slideUp(300);
+    $('#alert-message').show();
+};
 
 
 
@@ -58,16 +46,57 @@ function alertBad(message) {
 //});
 
 
-//$(function() {
-//    $.ajaxSetup({ cache: false });
-//    $("#addId").click(function(e) {
+$(function() {
+    $.ajaxSetup({ cache: false });
+    $("#addId").click(function(e) {
 
-//        e.preventDefault();
-//        $.get(this.href,
-//            function(data) {
-//                $('#dialogContent').html(data);
-//                $('#modDialog').modal('show');
-//            });
-//    });
-//});
+        e.preventDefault();
+        $.get(this.href,
+            function(data) {
+                $('#dialogContent').html(data);
+                $('#modDialog').modal('show');
+            });
+    });
+});
   
+function unloadModal(data) {
+    if (data.Succedeed===true) {
+        $('#modDialog').modal('hide');
+        $("#results").load(data.Accessory);
+        alertGood(data.Message);
+    } else if (data.Succedeed === undefined) {}
+    else {
+        $('#modDialog').modal('hide');       
+        $("#results").load(data.Accessory);
+        alertBad(data.Message);
+    }
+};
+
+//Date picker
+$('#StartDate').datepicker({
+    language: "ru",
+    orientation: "bottom auto",
+    todayHighlight: true,
+    todayBtn: "linked"
+
+});
+
+
+$('#EndDate').datepicker({
+    language: "ru",
+    orientation: "bottom auto",
+    todayHighlight: true,
+    todayBtn: "linked"
+});
+
+//Обновить при выборе даты
+$('#StartDate').on('changeDate',
+    function(ev) {
+        view();
+    });
+
+$('#EndDate').on('changeDate',
+    function(ev) {
+        view();
+    });
+

@@ -53,7 +53,7 @@ namespace MES.BLL.Services
 
                 _uof.Assemblys.Create(ass);
                 await _uof.Commit();
-                return new OperationDetails(true, "Сборка успешно добавлена", "");
+                return new OperationDetails(true, "Сборка успешно добавлена", "/Assembly/ListPartial");
             }
             catch (Exception e)
             {
@@ -89,7 +89,7 @@ namespace MES.BLL.Services
             return s;
         }
 
-        public async Task<bool> DeleteAssembly(int id)
+        public async Task<OperationDetails> DeleteAssembly(int id)
         {
             try
             {
@@ -116,12 +116,12 @@ namespace MES.BLL.Services
                 _uof.Assemblys.Delete(id);
                 await _uof.Commit();
 
-                return true;
+                return new OperationDetails(true, "Сборка успешно удалена", "");
             }
             catch (Exception)
             {
                 _uof.Rollback();
-                return false;
+                return new OperationDetails(false, "Сборка не добавлена", "");
             }
         }
     }

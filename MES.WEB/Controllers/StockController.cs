@@ -67,7 +67,7 @@ namespace MES.WEB.Controllers
             if (!ModelState.IsValid) return PartialView(defect);
 
             var result = await _stockOn.AddDefectDetailAsync(Mapper.Map<DefectDetailDto>(defect));
-            return RedirectToAction("Defect");
+            return Json(result);
         }
 
 
@@ -94,7 +94,7 @@ namespace MES.WEB.Controllers
         public async Task<ActionResult> DeleteDefect(int id)
         {
             var result = await _stockOn.DeleteDefectDetailAsync(id);
-            return RedirectToAction("Defect");
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         //Редактирование Данных о браковке деталей
@@ -120,7 +120,7 @@ namespace MES.WEB.Controllers
 
             var result = await _stockOn.EditDefectDetailAsync(Mapper.Map<DefectDetail>(defect));
 
-            return RedirectToAction("Defect");
+            return Json(result);
         }
 
     }

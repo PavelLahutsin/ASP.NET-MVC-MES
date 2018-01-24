@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
+using MES.BLL.DTO;
 using MES.BLL.Interfaces;
+using MES.DAL.Entities;
 using MES.DAL.Interfaces;
 using MES.WEB.Models;
 
@@ -11,10 +15,10 @@ namespace MES.WEB.Controllers
 {
     public class BoxingController : Controller
     {
-        private readonly IAssemblyService _service;
+        private readonly IBoxingService _service;
         private readonly IUnitOfWork _db;
 
-        public BoxingController(IAssemblyService service, IUnitOfWork db)
+        public BoxingController(IBoxingService service, IUnitOfWork db)
         {
             _service = service;
             _db = db;
@@ -30,6 +34,41 @@ namespace MES.WEB.Controllers
                 EndDate = now
             };
             return View(date);
+        }
+
+        public async Task<ActionResult> AddBoxingPartial()
+        {
+            var boxing = new BoxingVm() { Date = DateTime.Now };
+            var products = Mapper.Map<IEnumerable<Product>, List<ProductVm>>(await _db.Products.GetAllAsync());
+            ViewBag.Products = new SelectList(products, "Id", "Name");
+            return PartialView(boxing);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AddBoxingPartial(BoxingVm boxing)
+        {
+            var products = Mapper.Map<IEnumerable<Product>, List<ProductVm>>(await _db.Products.GetAllAsync());
+            ViewBag.Products = new SelectList(products, "Id", "Name");
+            
+            if (!ModelState.IsValid)
+            {
+                return PartialView(boxing);
+            }
+
+            var result = await _service.AddBoxingAsync(Mapper.Map<BoxingDto>(boxing));
+            return Json(result);
+        }
+
+        public async Task<ActionResult> HistBoxingPartial(string startDate, string endDate)
+        {
+            var boxings = Mapper.Map<IEnumerable<BoxingDto>, List<BoxingVm>>(await _service.ShowBoxingsAsync(startDate, endDate));
+            return PartialView(boxings);
+        }
+
+        public async Task<ActionResult> Delete(int id)
+        {
+            var result = await _service.DeleteBoxing(id);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }

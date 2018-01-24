@@ -51,24 +51,15 @@ namespace MES.WEB.Controllers
         {
             var products = Mapper.Map<IEnumerable<Product>, List<ProductVm>>(await _db.Products.GetAllAsync());
             ViewBag.Products = new SelectList(products, "Id", "Name");
-            if (ModelState.IsValid)
-            {
-               
-
-                var result = await _solderingService.AddSolderingAsync(Mapper.Map<SolderingDto>(soldering));
-
-                if (result.Succedeed)
-                    return RedirectToAction("Soldering");
-                else
-                    ModelState.AddModelError(result.Property, result.Message);
-            }
-            return PartialView(soldering);
+            if (!ModelState.IsValid) return PartialView(soldering);
+            var result = await _solderingService.AddSolderingAsync(Mapper.Map<SolderingDto>(soldering));
+            return Json(result);
         }
 
 
        
 
-        public async Task<ActionResult> ShowSolderingListPartial(string startDate, string endDate)
+        public async Task<ActionResult> ListPartial(string startDate, string endDate)
         {
             
          
@@ -93,17 +84,9 @@ namespace MES.WEB.Controllers
         {
 
             var result = await _solderingService.DeleteSoldering(id);
-            return RedirectToAction("Soldering");
+            return Json(result, JsonRequestBehavior.AllowGet);
 
         }
-
-        //public async Task<ActionResult> EditSoldering(int id)
-        //{
-        //    var soldering = Mapper.Map<SolderingVm>(await _db.Solderings.GetAsync(id));
-        //    return PartialView(soldering);
-
-        //}
-
-
+        
     }
 }

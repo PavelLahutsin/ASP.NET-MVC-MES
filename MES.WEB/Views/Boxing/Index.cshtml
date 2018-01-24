@@ -4,17 +4,15 @@
     ViewBag.Title = "Index";
 }
 
-<link href="~/Content/themes/base/all.css" rel="stylesheet" />
-
-
-<div id="alert-message"></div>
-<p>
-    <a href="@Url.Action("AddJmtDetailPartial")" id="addId" class="btn btn-success">Добавить</a>
-</p>
 <div id="modDialog" class="modal fade">
     <div id="dialogContent" class="modal-dialog"></div>
 </div>
 
+
+    <div id="alert-message"></div>
+    <p>
+        <a href="@Url.Action("AddBoxingPartial")" id="addId" class="btn btn-success ">Добавить упаковку</a>
+    </p>
 <div class="box">
     <div class="box-header with-border">
         <h3 class="box-title">История прихода деталей на склад</h3>
@@ -53,29 +51,36 @@
 
 @section scripts
 {
+
+
+
+
+
     <script>
+
         function view() {
             var startDate = $('#StartDate').val();
             startDate = encodeURIComponent(startDate);
             var endDate = $('#EndDate').val();
             endDate = encodeURIComponent(endDate);
-            $('#results').load('@Url.Action("HistArrivalPartial", "Arrival")?startDate=' +
+            $('#results').load('@Url.Action("HistBoxingPartial", "Boxing")?startDate=' +
                 startDate +
                 '&endDate=' +
                 endDate);
 
         }
 
+  
         $(function () {
             var idToUpdate = $('#results');
-            $.get("/Arrival/HistArrivalPartial",
+            $.get("/Boxing/HistBoxingPartial",
                 function (data) {
                     $(idToUpdate).html(data);
                 });
         });
+        
 
-        $("#stock").className = "active treeview menu-open";
-        $("#histArrival").className = "active";
+        $("#boxing").className = "active";
     </script>
 
 

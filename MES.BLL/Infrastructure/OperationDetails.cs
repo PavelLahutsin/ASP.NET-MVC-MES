@@ -6,10 +6,10 @@
         {
             Succedeed = succedeed;
             Message = message;
-            Property = prop;
+            Accessory = prop;
         }
         public bool Succedeed { get; }
         public string Message { get; }
-        public string Property { get; }
+        public string Accessory { get; }
     }
 }

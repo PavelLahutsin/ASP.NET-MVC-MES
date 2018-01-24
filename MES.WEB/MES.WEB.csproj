@@ -213,6 +213,7 @@
     </Compile>
     <Compile Include="Models\ArrivalOfDetailVm.cs" />
     <Compile Include="Models\AssemblyVm.cs" />
+    <Compile Include="Models\BoxingVm.cs" />
     <Compile Include="Models\CheckJmtForListVm.cs" />
     <Compile Include="Models\CheckJmtVm.cs" />
     <Compile Include="Models\DateVm.cs" />
@@ -750,7 +751,7 @@
     <Content Include="Views\Stock\EditJmtDetailPartial.cshtml" />
     <Content Include="Views\Stock\AddDefectJmtDetailPartial.cshtml" />
     <Content Include="Views\Soldering\AddSolderingPartial.cshtml" />
-    <Content Include="Views\Soldering\ShowSolderingListPartial.cshtml" />
+    <Content Include="Views\Soldering\ListPartial.cshtml" />
     <Content Include="Views\Soldering\Soldering.cshtml" />
     <Content Include="Views\Soldering\ShowSolderingCountPartial.cshtml" />
     <Content Include="Views\Soldering\EditSoldering.cshtml" />
@@ -764,7 +765,7 @@
     <Content Include="Views\Stock\EditDefectPartial.cshtml" />
     <Content Include="Views\Assembly\Index.cshtml" />
     <Content Include="Views\Assembly\AddAssemblyPartial.cshtml" />
-    <Content Include="Views\Assembly\ShowAssemblyListPartial.cshtml" />
+    <Content Include="Views\Assembly\ListPartial.cshtml" />
     <Content Include="Views\CheckJmt\Index.cshtml" />
     <Content Include="Views\CheckJmt\HistCheckJmtNewPartial.cshtml" />
     <Content Include="Views\CheckJmt\HistCheckJmtOldPartial.cshtml" />
@@ -772,10 +773,13 @@
     <Content Include="Views\CheckJmt\AddCheckJmtPartial.cshtml" />
     <Content Include="Views\FinishedGoodsWarehouse\Index.cshtml" />
     <Content Include="Views\Arrival\Success.cshtml" />
+    <Content Include="Views\Boxing\Index.cshtml" />
+    <Content Include="Views\Boxing\HistBoxingPartial.cshtml" />
+    <Content Include="Views\Boxing\AddBoxingPartial.cshtml" />
+    <Content Include="Views\Shared\_Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Boxing\" />
     <Folder Include="Views\Product\" />
   </ItemGroup>
   <ItemGroup>

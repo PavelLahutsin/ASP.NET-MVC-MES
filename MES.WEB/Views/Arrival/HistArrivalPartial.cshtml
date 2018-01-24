@@ -33,7 +33,7 @@
             
             <td>
                 @Html.ActionLink("Edit", "EditArrivalPartial", new {id = item.Id}, new { @class = "text-orange" }) |
-                @Html.ActionLink("Delete", "DeleteArrival", new {id = item.Id}, new { @class = "text-red" })
+                <a class="text-danger" onclick="deleteElement(event, this)" href="@Url.Action("DeleteArrival", new { id = item.Id })">Удалить</a>
             </td>
         </tr>
     }

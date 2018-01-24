@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using MES.BLL.DTO;
+using MES.BLL.Infrastructure;
 using MES.BLL.Interfaces;
 using MES.DAL.Entities;
 using MES.DAL.Interfaces;
@@ -51,7 +52,7 @@ namespace MES.BLL.Services
         /// </summary>
         /// <param name="defect">данные о браке</param>
         /// <returns>успешна ли операция</returns>
-        public async Task<bool> AddDefectDetailAsync(DefectDetailDto defect)
+        public async Task<OperationDetails> AddDefectDetailAsync(DefectDetailDto defect)
         {
             try
             {
@@ -60,16 +61,16 @@ namespace MES.BLL.Services
                 var defectDetail = Mapper.Map<DefectDetail>(defect);
                 _uof.DefectDetails.Create(defectDetail);
 
-                if ((detail.Quantityq -= defect.Count) < 0) return false;
+                if ((detail.Quantityq -= defect.Count) < 0) throw new Exception("Нельзя добавить в брак больше, чем есть!");
 
                 _uof.Details.Update(detail);
                 await _uof.Commit();
-                return true;
+                return new OperationDetails(true, $"{detail.Name} добавлена в брак", "/Stock/HistDefectPartial");
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 _uof.Rollback();
-                return false;
+                return new OperationDetails(false, $"{e.Message}", "");
             }
 
         }
@@ -95,7 +96,7 @@ namespace MES.BLL.Services
         /// </summary>
         /// <param name="id">Записи для удаления</param>
         /// <returns>успешна ли операция</returns>
-        public async Task<bool> DeleteDefectDetailAsync(int id)
+        public async Task<OperationDetails> DeleteDefectDetailAsync(int id)
         {
             try
             {
@@ -109,12 +110,12 @@ namespace MES.BLL.Services
                 _uof.Details.Update(detail);
                 await _uof.Commit();
 
-                return true;
+                return new OperationDetails(true, "Данные удалены", "");
             }
             catch (Exception)
             {
                 _uof.Rollback();
-                return false;
+                return new OperationDetails(false, "Данные удалены", "");
             }
 
         }
@@ -124,7 +125,7 @@ namespace MES.BLL.Services
         /// </summary>
         /// <param name="defect">измененные данные</param>
         /// <returns>успешна ли операция</returns>
-        public async Task<bool> EditDefectDetailAsync(DefectDetail defect)
+        public async Task<OperationDetails> EditDefectDetailAsync(DefectDetail defect)
         {
             try
             {
@@ -139,7 +140,7 @@ namespace MES.BLL.Services
 
                 if (newDetail == null) throw new Exception();
 
-                if ((newDetail.Quantityq -= defect.Count) < 0) return false;
+                if ((newDetail.Quantityq -= defect.Count) < 0) throw new Exception();
 
 
                 oldDefectDetail.Count = defect.Count;
@@ -151,12 +152,12 @@ namespace MES.BLL.Services
                 _uof.Details.Update(oldDetail);
                 _uof.Details.Update(newDetail);
                 await _uof.Commit();
-                return true;
+                return new OperationDetails(true, "Данные изменены", "/Stock/HistDefectPartial");
             }
             catch (Exception)
             {
                 _uof.Rollback();
-                return false;
+                return new OperationDetails(false, "Данные не изменены", "");
             }
 
         }

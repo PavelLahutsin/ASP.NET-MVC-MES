@@ -61,18 +61,9 @@ namespace MES.WEB.Controllers
         {
             var products = Mapper.Map<IEnumerable<Product>, List<ProductVm>>(await _db.Products.GetAllAsync());
             ViewBag.Products = new SelectList(products, "Id", "Name");
-            if (ModelState.IsValid)
-            {
-                
-
-                var result = await _service.AddCheckJmtAsync(Mapper.Map<CheckJmtDto>(chek));
-
-                if (result.Succedeed)
-                    return RedirectToAction("Index");
-                else
-                    ModelState.AddModelError(result.Property, result.Message);
-            }
-            return PartialView(chek);
+            if (!ModelState.IsValid) return PartialView(chek);
+            var result = await _service.AddCheckJmtAsync(Mapper.Map<CheckJmtDto>(chek));
+            return Json(result);
         }
 
         public async Task<ActionResult> Details(int id)
