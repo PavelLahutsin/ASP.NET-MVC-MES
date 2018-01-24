@@ -98,6 +98,7 @@
     <Compile Include="DTO\SolderingDto.cs" />
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Infrastructure\AutmapperConfigBLL.cs" />
+    <Compile Include="Infrastructure\IdentityExtensions.cs" />
     <Compile Include="Infrastructure\OperationDetails.cs" />
     <Compile Include="Infrastructure\ServiceModule.cs" />
     <Compile Include="Interfaces\IArrivalService.cs" />
@@ -115,10 +116,8 @@
     <Compile Include="Services\BoxingService.cs" />
     <Compile Include="Services\CheckJmtService.cs" />
     <Compile Include="Services\FinishedGoodsWarehouseServiceService.cs" />
-    <Compile Include="Services\ServiceCreator.cs" />
     <Compile Include="Services\SolderingService.cs" />
     <Compile Include="Services\StockService.cs" />
-    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

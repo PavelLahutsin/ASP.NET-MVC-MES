@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using AutoMapper;
 using MES.BLL.DTO;
+using MES.BLL.Infrastructure;
 using MES.BLL.Interfaces;
 using MES.DAL.Entities;
 using MES.DAL.Interfaces;
@@ -52,6 +53,7 @@ namespace MES.WEB.Controllers
         [HttpPost]
         public async Task<ActionResult> AddAssemblyPartial(AssemblyVm assembly)
         {
+            assembly.UserId= User.Identity.GetUserId<int>();
             var products = Mapper.Map<IEnumerable<Product>, List<ProductVm>>(await _db.Products.GetAllAsync());
             ViewBag.Products = new SelectList(products, "Id", "Name");
             if (!ModelState.IsValid) return PartialView(assembly);//Json(new{ success = false});

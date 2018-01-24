@@ -15,8 +15,6 @@ namespace MES.WEB
             Bind<IUnitOfWork>().To<UnitOfWork>();
             Bind<IStockService>().To<StockService>();
             Bind(typeof(IBaseRepository<>)).To(typeof(BaseRepository<>));
-            Bind<IUserService>().To<UserService>();
-            Bind<IClientManager>().To<ClientManager>();
             Bind<ISolderingService>().To<SolderingService>();
             Bind<IArrivalService>().To<ArrivalService>();
             Bind<IAssemblyService>().To<AssemblyService>();

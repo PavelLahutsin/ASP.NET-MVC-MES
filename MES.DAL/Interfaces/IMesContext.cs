@@ -13,7 +13,8 @@ namespace MES.DAL.Interfaces
         DbSet<Soldering> Solderings { get; set; }
         DbSet<DefectDetail> DefectDetails { get; set; }
         DbSet<StructureOfTheProduct> StructureOfTheProducts { get; set; }
-        DbSet<ClientProfile> ClientProfiles { get; set; }
+        DbSet<User> Users { get; set; }
+        DbSet<Role> Roles { get; set; }
         DbSet<GroupProduct> GroupProducts { get; set; }
         DbSet<ProductState> ProductStates { get; set; }
         DbSet<Assembly> Assemblys { get; set; }

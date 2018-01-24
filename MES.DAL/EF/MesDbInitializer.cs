@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using MES.DAL.Entities;
 using MES.DAL.Enums;
-using MES.DAL.Identity;
+
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -101,36 +101,24 @@ namespace MES.DAL.EF
             };
 
             db.StructureOfTheProducts.AddRange(list);
-           
 
-            //var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(db));
 
-            //var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+            db.Roles.Add(new Role { Id = 1, Name = "admin" });
+            db.Roles.Add(new Role { Id = 2, Name = "user" });
+            db.Users.Add(new User
+            {
+                Email = "alice@gmail.com",
+                Password = "123456",
+                RoleId = 1
+            });
+            db.Users.Add(new User
+            {
+                Email = "tom@gmail.com",
+                Password = "123456",
+                RoleId = 2
+            });
 
-            //// создаем 4 роли
-            //var role1 = new IdentityRole { Name = "admin" };
-            //var role2 = new IdentityRole { Name = "user" };
-            //var role3 = new IdentityRole { Name = "tester" };
-            //var role4 = new IdentityRole { Name = "fitter" };
 
-            //roleManager.Create(role1);
-            //roleManager.Create(role2);
-            //roleManager.Create(role3);
-            //roleManager.Create(role4);
-
-            //var admin = new ApplicationUser
-            //{ Email = "555@mail.ru", UserName = "Admin" };
-            //const string password = "111111";
-
-            //var result = userManager.Create(admin, password);
-
-            //// если создание пользователя прошло успешно
-            //if (result.Succeeded)
-            //{
-            //    // добавляем для пользователя роль
-            //    userManager.AddToRole(admin.Id, role1.Name);
-            //    userManager.AddToRole(admin.Id, role2.Name);
-            //}
             var products = new List<Product> {p, p2, p3};
             var random = new Random();
             for (var i = 0; i < 500; i++)

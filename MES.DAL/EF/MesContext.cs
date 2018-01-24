@@ -5,7 +5,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MES.DAL.EF
 {
-    public class MesContext : IdentityDbContext<ApplicationUser>, IMesContext
+    public class MesContext : DbContext, IMesContext
     {
         public DbSet<Detail> Details { get; set; }
         public DbSet<Product> Products { get; set; }
@@ -13,7 +13,8 @@ namespace MES.DAL.EF
         public DbSet<Soldering> Solderings { get; set; }
         public DbSet<DefectDetail> DefectDetails { get; set; }
         public DbSet<StructureOfTheProduct> StructureOfTheProducts { get; set; }
-        public DbSet<ClientProfile> ClientProfiles { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
         public DbSet<GroupProduct> GroupProducts { get; set; }
         public DbSet<ProductState> ProductStates { get; set; }
         public DbSet<Assembly> Assemblys { get; set; }

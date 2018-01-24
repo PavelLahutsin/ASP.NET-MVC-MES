@@ -21,5 +21,7 @@ namespace MES.WEB.Models
         [Display(Name = "Название продукта")]
         [Required]
         public int ProductId { get; set; }
+
+        public int UserId { get; set; }
     }
 }

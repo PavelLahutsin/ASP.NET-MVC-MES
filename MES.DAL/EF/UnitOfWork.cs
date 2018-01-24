@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using MES.DAL.Entities;
-using MES.DAL.Identity;
+
 using MES.DAL.Interfaces;
 using MES.DAL.Repositories;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -25,24 +25,26 @@ namespace MES.DAL.EF
         private IBaseRepository<Assembly> _assembly;
         private IBaseRepository<CheckJmt> _checkJmt;
         private IBaseRepository<Boxing> _boxing;
+        private IBaseRepository<Role> _role;
+        private IBaseRepository<User> _user;
 
 
         public UnitOfWork()
         {
             _context = new MesContext();
-            UserManager = new ApplicationUserManager(new UserStore<ApplicationUser>(_context));
-            RoleManager = new ApplicationRoleManager(new RoleStore<ApplicationRole>(_context));
-            ClientManager = new ClientManager(_context);
+           
         }
 
         public IBaseRepository<ArrivalOfDetail> ArrivalOfDetails => _arrivalOfDetailRepository ??
                 (_arrivalOfDetailRepository = new BaseRepository<ArrivalOfDetail>(_context));
 
-        public IBaseRepository<Boxing> Boxings => _boxing ??
-                                                                    (_boxing = new BaseRepository<Boxing>(_context));
+        public IBaseRepository<Role> Roles => _role ?? (_role = new BaseRepository<Role>(_context));
 
-        public IBaseRepository<CheckJmt> CheckJmts => _checkJmt ??
-                                                                    (_checkJmt = new BaseRepository<CheckJmt>(_context));
+        public IBaseRepository<User> Users => _user ?? (_user = new BaseRepository<User>(_context));
+
+        public IBaseRepository<Boxing> Boxings => _boxing ?? (_boxing = new BaseRepository<Boxing>(_context));
+
+        public IBaseRepository<CheckJmt> CheckJmts => _checkJmt ?? (_checkJmt = new BaseRepository<CheckJmt>(_context));
 
         public IBaseRepository<Assembly> Assemblys => _assembly ??
                                                                     (_assembly = new BaseRepository<Assembly>(_context));
@@ -69,13 +71,7 @@ namespace MES.DAL.EF
 
         public IBaseRepository<ProductState> ProductStates => _productStates ??
                                                                                 (_productStates = new BaseRepository<ProductState>(_context));
-
-        public ApplicationUserManager UserManager { get; }
-
-        public IClientManager ClientManager { get; }
-
-        public ApplicationRoleManager RoleManager { get; }
-
+        
 
         public async Task Commit()
             => await _context.SaveChangesAsync();

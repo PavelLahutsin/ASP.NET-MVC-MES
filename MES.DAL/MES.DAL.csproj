@@ -65,33 +65,28 @@
     <Compile Include="EF\MesContext.cs" />
     <Compile Include="EF\MesDbInitializer.cs" />
     <Compile Include="EF\UnitOfWork.cs" />
-    <Compile Include="Entities\ApplicationRole.cs" />
-    <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Entities\ArrivalOfDetail.cs" />
     <Compile Include="Entities\Assembly.cs" />
     <Compile Include="Entities\Boxing.cs" />
     <Compile Include="Entities\CheckJmt.cs" />
-    <Compile Include="Entities\ClientProfile.cs" />
     <Compile Include="Entities\DefectDetail.cs" />
     <Compile Include="Entities\Detail.cs" />
     <Compile Include="Entities\GroupProduct.cs" />
     <Compile Include="Entities\IdProvider.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ProductState.cs" />
+    <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\Soldering.cs" />
     <Compile Include="Entities\StructureOfTheProduct.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="Enums\BoxingVariant.cs" />
     <Compile Include="Enums\StateFoTest.cs" />
     <Compile Include="Enums\VariantStateProduct.cs" />
-    <Compile Include="Identity\ApplicationRoleManager.cs" />
-    <Compile Include="Identity\ApplicationUserManager.cs" />
     <Compile Include="Interfaces\IBaseRepository.cs" />
-    <Compile Include="Interfaces\IClientManager.cs" />
     <Compile Include="Interfaces\IMesContext.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
-    <Compile Include="Repositories\ClientManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

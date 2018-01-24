@@ -13,9 +13,6 @@ namespace MES.WEB.Models
         [DataType(DataType.Password)]
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
-        [Required]
-        public string Address { get; set; }
-        [Required]
-        public string Name { get; set; }
+        
     }
 }

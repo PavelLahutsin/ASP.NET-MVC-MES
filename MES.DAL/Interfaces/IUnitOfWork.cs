@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MES.DAL.Entities;
-using MES.DAL.Identity;
 
 namespace MES.DAL.Interfaces
 {
@@ -17,14 +16,10 @@ namespace MES.DAL.Interfaces
         IBaseRepository<DefectDetail> DefectDetails { get; }
         IBaseRepository<Assembly> Assemblys { get; }
         IBaseRepository<CheckJmt> CheckJmts { get; }
+        IBaseRepository<Role> Roles { get; }
+        IBaseRepository<User> Users { get; }
         IBaseRepository<Boxing> Boxings { get; }
-        ApplicationUserManager UserManager { get; }
-        ApplicationRoleManager RoleManager { get; }
-        IClientManager ClientManager { get; }
-
-
-
-
+        
         Task Commit();
 
         void Rollback();
