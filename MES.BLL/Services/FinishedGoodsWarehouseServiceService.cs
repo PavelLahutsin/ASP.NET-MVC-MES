@@ -2,11 +2,9 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper;
 using MES.BLL.DTO;
 using MES.BLL.Infrastructure;
 using MES.BLL.Interfaces;
-using MES.DAL.Entities;
 using MES.DAL.Enums;
 using MES.DAL.Interfaces;
 

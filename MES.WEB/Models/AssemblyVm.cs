@@ -23,5 +23,8 @@ namespace MES.WEB.Models
         public int ProductId { get; set; }
 
         public int UserId { get; set; }
+
+        [Display(Name = "Добавил")]
+        public string UserName { get; set; }
     }
 }

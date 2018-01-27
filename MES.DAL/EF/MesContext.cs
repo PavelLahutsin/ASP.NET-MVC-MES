@@ -1,7 +1,6 @@
 ﻿using System.Data.Entity;
 using MES.DAL.Entities;
 using MES.DAL.Interfaces;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MES.DAL.EF
 {

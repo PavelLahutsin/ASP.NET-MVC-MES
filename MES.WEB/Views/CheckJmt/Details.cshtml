@@ -1,4 +1,4 @@
-﻿@model MES.WEB.Models.CheckJmtVm
+﻿@model MES.WEB.Models.ChekDetailsVm
 
 <div class="modal-content">
     <div class="modal-header bg-blue">
@@ -12,8 +12,9 @@
             <table class="table table-striped">
                 <tbody>
                     <tr>
-                        <th style="width:50%"> @Html.DisplayNameFor(model => model.ProductId)</th>
-                        <td>@ViewBag.prodname</td>
+
+                        <th>@Html.DisplayNameFor(model => model.ProductName)</th>
+                        <td>@Html.DisplayFor(model => model.ProductName)</td>
                     </tr>
                     <tr>
                         <th>@Html.DisplayNameFor(model => model.Date)</th>
@@ -54,6 +55,11 @@
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.Other)</th>
                     <td>@Html.DisplayFor(model => model.Other)</td>
+                </tr>
+                    
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.UserName)</th>
+                    <td>@Html.DisplayFor(model => model.UserName)</td>
                 </tr>
                 </tbody>
             </table>

@@ -5,7 +5,6 @@ using MES.DAL.Entities;
 
 using MES.DAL.Interfaces;
 using MES.DAL.Repositories;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MES.DAL.EF
 {

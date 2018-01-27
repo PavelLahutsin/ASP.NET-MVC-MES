@@ -12,30 +12,39 @@
         <th>
             @Html.DisplayNameFor(model => model.Count)
         </th>
-
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        @if (User.IsInRole("admin"))
+    {
         <th></th>
+}
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NameDetail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Count)
-            </td>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameDetail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Count)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        @if (User.IsInRole("admin"))
+    {
+        <td>
+            @Html.ActionLink("Редактировать", "EditDefectPartial", new { id = item.Id }, new { @class = "text-orange" }) |
+            <a class="text-danger" onclick="deleteElement(event, this)" href="@Url.Action("DeleteDefect", new { id = item.Id })">Удалить</a>
+        </td>
+}
 
-            <td>
-                @Html.ActionLink("Редактировать", "EditDefectPartial", new {id = item.Id}, new {@class = "text-orange"}) |
-
-
-                <a class="text-danger" onclick="deleteElement(event, this)" href="@Url.Action("DeleteDefect", new { id = item.Id })">Удалить</a>
-            </td>
-        </tr>
+    </tr>
     }
 
 </table>

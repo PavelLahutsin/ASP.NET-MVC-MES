@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using AutoMapper;
 using MES.BLL.DTO;
+using MES.BLL.Infrastructure;
 using MES.BLL.Interfaces;
 using MES.DAL.Entities;
 using MES.DAL.Interfaces;
@@ -12,6 +13,7 @@ using MES.WEB.Models;
 
 namespace MES.WEB.Controllers
 {
+    [Authorize]
     public class StockController : Controller
     {
         private readonly IStockService _stockOn;
@@ -60,6 +62,7 @@ namespace MES.WEB.Controllers
         [HttpPost]
         public async Task<ActionResult> AddDefectJmtDetailPartial(DefectDetailVm defect)
         {
+            defect.UserId = User.Identity.GetUserId<int>();
             var details = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(_stockOn.GetDetailsJmt());
             SelectList detailList = new SelectList(details, "Id", "Name");
             ViewBag.Detail = detailList;

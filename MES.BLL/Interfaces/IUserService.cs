@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MES.BLL.DTO;
 using MES.BLL.Infrastructure;
 
 namespace MES.BLL.Interfaces
 {
-    public interface IUserService : IDisposable
+    public interface IUserService
     {
-        Task<OperationDetails> Create(UserDTO userDto);
-        Task<ClaimsIdentity> Authenticate(UserDTO userDto);
-        Task SetInitialData(UserDTO adminDto, List<string> roles);
+        Task<OperationDetails> Register(UserDto userDto);
     }
 }

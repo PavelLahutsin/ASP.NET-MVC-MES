@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper;
 using MES.BLL.DTO;
 using MES.BLL.Infrastructure;
 using MES.BLL.Interfaces;
@@ -26,39 +25,46 @@ namespace MES.BLL.Services
         {
             try
             {
-                var box = new Boxing{Date = boxing.Date, ProductId =boxing.ProductId, Quantity = boxing.Quantity, BoxingVariant = boxing.BoxingVariant};
+                var box = new Boxing
+                {
+                    Date = boxing.Date,
+                    ProductId = boxing.ProductId,
+                    Quantity = boxing.Quantity,
+                    BoxingVariant = boxing.BoxingVariant,
+                    UserId = boxing.UserId
+                };
 
                 var prSt1 = await _uof.ProductStates.Entities.Where(w =>
                     w.ProductId == boxing.ProductId && w.StateProduct == VariantStateProduct.Проверено).FirstOrDefaultAsync();
 
-                if((prSt1.Quantity -= boxing.Quantity)<0) throw new Exception("Столько не проверено");
+                if ((prSt1.Quantity -= boxing.Quantity) < 0) throw new Exception("Столько не проверено");
 
                 ProductState prSt2 = new ProductState();
                 switch (boxing.BoxingVariant)
                 {
                     case BoxingVariant.Годная:
-                    {
-                        prSt2 = await _uof.ProductStates.Entities.Where(w =>
-                            w.ProductId == boxing.ProductId && w.StateProduct == VariantStateProduct.Упаковано).FirstOrDefaultAsync();
-                        prSt2.Quantity += boxing.Quantity;
+                        {
+                            prSt2 = await _uof.ProductStates.Entities.Where(w =>
+                                w.ProductId == boxing.ProductId && w.StateProduct == VariantStateProduct.Упаковано).FirstOrDefaultAsync();
+                            prSt2.Quantity += boxing.Quantity;
                             break;
-                    }
+                        }
 
                     case BoxingVariant.Вторичка:
-                    {
-                        prSt2 = await _uof.ProductStates.Entities.Where(w =>
-                            w.ProductId == boxing.ProductId && w.StateProduct == VariantStateProduct.Вторичка).FirstOrDefaultAsync();
-                        prSt2.Quantity += boxing.Quantity;
-                        break;
-                    }
+                        {
+                            prSt2 = await _uof.ProductStates.Entities.Where(w =>
+                                w.ProductId == boxing.ProductId && w.StateProduct == VariantStateProduct.Вторичка).FirstOrDefaultAsync();
+                            prSt2.Quantity += boxing.Quantity;
+                            break;
+                        }
 
                     case BoxingVariant.Запаски:
-                    {
-                        prSt2 = await _uof.ProductStates.Entities.Where(w =>
-                            w.ProductId == boxing.ProductId && w.StateProduct == VariantStateProduct.Запаски).FirstOrDefaultAsync();
-                        prSt2.Quantity += boxing.Quantity;
-                        break;
-                    }
+                        {
+                            prSt2 = await _uof.ProductStates.Entities.Where(w =>
+                                w.ProductId == boxing.ProductId && w.StateProduct == VariantStateProduct.Запаски).FirstOrDefaultAsync();
+                            prSt2.Quantity += boxing.Quantity;
+                            break;
+                        }
                 }
 
                 _uof.ProductStates.Update(prSt1);
@@ -89,7 +95,7 @@ namespace MES.BLL.Services
                 myEndDate = DateTime.Parse(endDate);
                 myStartDate = DateTime.Parse(startDate);
             }
-            
+
             return await _uof.Boxings.Entities.Where(w => w.Date >= myStartDate && w.Date <= myEndDate).Select(x =>
                 new BoxingDto()
                 {
@@ -98,7 +104,8 @@ namespace MES.BLL.Services
                     Id = x.Id,
                     ProductId = x.ProductId,
                     ProductName = x.Product.Name,
-                    BoxingVariant = x.BoxingVariant
+                    BoxingVariant = x.BoxingVariant,
+                    UserName = x.User.UserName
                 }).OrderByDescending(x => x.Date).ToListAsync();
         }
 
@@ -106,7 +113,7 @@ namespace MES.BLL.Services
         {
             try
             {
-                var boxing = await _uof.Boxings.Entities.FirstOrDefaultAsync(f=>f.Id==id);
+                var boxing = await _uof.Boxings.Entities.FirstOrDefaultAsync(f => f.Id == id);
 
 
                 var prSt1 = await _uof.ProductStates.Entities.Where(w =>
@@ -118,28 +125,28 @@ namespace MES.BLL.Services
                 switch (boxing.BoxingVariant)
                 {
                     case BoxingVariant.Годная:
-                    {
-                        prSt2 = await _uof.ProductStates.Entities.Where(w =>
-                            w.ProductId == boxing.ProductId && w.StateProduct == VariantStateProduct.Упаковано).FirstOrDefaultAsync();
-                        if((prSt2.Quantity -= boxing.Quantity)<0) throw new Exception("Нельзя удалить больше, чем есть");
-                        break;
-                    }
+                        {
+                            prSt2 = await _uof.ProductStates.Entities.Where(w =>
+                                w.ProductId == boxing.ProductId && w.StateProduct == VariantStateProduct.Упаковано).FirstOrDefaultAsync();
+                            if ((prSt2.Quantity -= boxing.Quantity) < 0) throw new Exception("Нельзя удалить больше, чем есть");
+                            break;
+                        }
 
                     case BoxingVariant.Вторичка:
-                    {
-                        prSt2 = await _uof.ProductStates.Entities.Where(w =>
-                            w.ProductId == boxing.ProductId && w.StateProduct == VariantStateProduct.Вторичка).FirstOrDefaultAsync();
-                        prSt2.Quantity -= boxing.Quantity;
-                        break;
-                    }
+                        {
+                            prSt2 = await _uof.ProductStates.Entities.Where(w =>
+                                w.ProductId == boxing.ProductId && w.StateProduct == VariantStateProduct.Вторичка).FirstOrDefaultAsync();
+                            prSt2.Quantity -= boxing.Quantity;
+                            break;
+                        }
 
                     case BoxingVariant.Запаски:
-                    {
-                        prSt2 = await _uof.ProductStates.Entities.Where(w =>
-                            w.ProductId == boxing.ProductId && w.StateProduct == VariantStateProduct.Запаски).FirstOrDefaultAsync();
-                        prSt2.Quantity -= boxing.Quantity;
-                        break;
-                    }
+                        {
+                            prSt2 = await _uof.ProductStates.Entities.Where(w =>
+                                w.ProductId == boxing.ProductId && w.StateProduct == VariantStateProduct.Запаски).FirstOrDefaultAsync();
+                            prSt2.Quantity -= boxing.Quantity;
+                            break;
+                        }
                 }
 
                 _uof.ProductStates.Update(prSt1);

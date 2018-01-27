@@ -1,0 +1,55 @@
+﻿@using MES.BLL.Infrastructure
+@model byte[]
+<div class="navbar-custom-menu">
+    <ul class="nav navbar-nav">
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <li>@Html.ActionLink("Войти", "Login", "Account")</li>
+            <li>@Html.ActionLink("Регистрация", "Register", "Account")</li>
+        }
+        else
+        {
+            <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    @if (Model == null)
+    {
+                <img src="~/Content/Image/avatar.png" class="user-image" alt="User Image">
+}
+else
+{
+                <img src="@Url.Action("GetImage", "Account", new {id = User.Identity.GetUserId<int>()})" class="user-image" alt="User Image">
+}
+
+
+                    <span class="hidden-xs">@User.Identity.Name</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <!-- User image -->
+                    <li class="user-header">
+                        @if (Model == null)
+                        {
+                            <img src="~/Content/Image/avatar.png" class="img-circle" alt="User Image">
+                        }
+                        else
+                        {
+                        <img src="@Url.Action("GetImage", "Account", new {id = User.Identity.GetUserId<int>()})" class="img-circle" alt="User Image">
+                        }
+                        <p>
+                            @User.Identity.Name
+                        </p>
+                    </li>
+                    <!-- Menu Footer-->
+                    <li class="user-footer">
+                        <div class="pull-left">
+                            <a href="@Url.Action("EdinProfile", "Account")" class="btn btn-default btn-flat">Изменить профиль</a>
+                        </div>
+                        <div class="pull-right">
+                            <a href="@Url.Action("Logout", "Account")" class="btn btn-default btn-flat">Выход</a>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+
+        }
+    </ul>
+</div>

@@ -20,7 +20,7 @@ namespace MES.WEB
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap-datepicker").Include(
                 "~/Scripts/bootstrap-datepicker/bootstrap-datepicker.js",
-                "~/Scripts/bootstrap-datepicker/locales/bootstrap-datepicker.ru.js"));
+                "~/Scripts/bootstrap-datepicker/locales/bootstrap-datepicker.ru.min.js"));
 
 
             // Используйте версию Modernizr для разработчиков, чтобы учиться работать. Когда вы будете готовы перейти к работе,

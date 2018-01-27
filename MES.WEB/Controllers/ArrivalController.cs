@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using AutoMapper;
 using MES.BLL.DTO;
+using MES.BLL.Infrastructure;
 using MES.BLL.Interfaces;
 using MES.DAL.Entities;
 using MES.DAL.Interfaces;
@@ -11,6 +12,7 @@ using MES.WEB.Models;
 
 namespace MES.WEB.Controllers
 {
+    [Authorize]
     public class ArrivalController : Controller
     {
         private readonly IArrivalService _service;
@@ -89,6 +91,7 @@ namespace MES.WEB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> AddJmtDetailPartial(ArrivalOfDetailVm arrival)
         {
+            arrival.UserId = User.Identity.GetUserId<int>();
             var details = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(_service.GetDetailsJmt());
             var detailList = new SelectList(details, "Id", "Name");
             ViewBag.Detail = detailList;

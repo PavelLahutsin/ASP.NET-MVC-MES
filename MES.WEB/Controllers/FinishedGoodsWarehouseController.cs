@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using MES.BLL.DTO;
 using MES.BLL.Interfaces;
-using MES.DAL.Enums;
 using MES.DAL.Interfaces;
 using MES.WEB.Models;
 
 namespace MES.WEB.Controllers
 {
+    [Authorize]
     public class FinishedGoodsWarehouseController : Controller
     {
         private IUnitOfWork _setvice;

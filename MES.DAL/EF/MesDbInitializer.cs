@@ -4,9 +4,6 @@ using System.Data.Entity;
 using MES.DAL.Entities;
 using MES.DAL.Enums;
 
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-
 
 namespace MES.DAL.EF
 {
@@ -107,30 +104,19 @@ namespace MES.DAL.EF
             db.Roles.Add(new Role { Id = 2, Name = "user" });
             db.Users.Add(new User
             {
-                Email = "alice@gmail.com",
+                UserName = "Дима",
                 Password = "123456",
                 RoleId = 1
             });
             db.Users.Add(new User
             {
-                Email = "tom@gmail.com",
+                UserName = "Влад",
                 Password = "123456",
                 RoleId = 2
             });
 
 
-            var products = new List<Product> {p, p2, p3};
-            var random = new Random();
-            for (var i = 0; i < 500; i++)
-            {
-                var soldering1 = new Soldering
-                {
-                    Quantity = random.Next(10,100),
-                    Date = DateTime.Now.AddDays(-i), Product = products[random.Next(0, 3)]
-                };
-
-                db.Solderings.Add(soldering1);
-            }
+           
 
             foreach (VariantStateProduct vaStPr in Enum.GetValues(typeof(VariantStateProduct)))
             {
@@ -138,23 +124,7 @@ namespace MES.DAL.EF
                 db.ProductStates.Add(new ProductState { Product = p2, StateProduct = vaStPr, Quantity =0 });
                 db.ProductStates.Add(new ProductState { Product = p3, StateProduct = vaStPr, Quantity =0 });
             }
-
-
-            CheckJmt chek = new CheckJmt
-            {
-                Count = 70,
-                Product = p,
-                Airtight = 60,
-                CapM = 2,
-                Housing = 5,
-                Tube = 3,
-                Date = DateTime.Now,
-                State = StateFoTest.Новые
-            };
-
-            db.CheckJmts.Add(chek);
-
-
+            
             db.SaveChanges();
         }
     }

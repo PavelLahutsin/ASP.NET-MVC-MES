@@ -1,7 +1,4 @@
-﻿using MES.BLL.Interfaces;
-using MES.BLL.Services;
-using Microsoft.AspNet.Identity;
-using Microsoft.Owin;
+﻿using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 

@@ -73,7 +73,8 @@ namespace MES.BLL.Services
                 Date = x.Date,
                 Count = x.Count,
                 NameDetail = _uof.Details.Entities.Where(w => w.Id == x.DetailId).Select(s => s.Name).FirstOrDefault(),
-                Id = x.Id
+                Id = x.Id,
+                UserName = x.User.UserName
             }).ToListAsync();
         }
 

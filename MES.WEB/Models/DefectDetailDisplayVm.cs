@@ -13,5 +13,7 @@ namespace MES.WEB.Models
         [Display(Name = "Дата")]
         [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
+        [Display(Name = "Добавил")]
+        public string UserName { get; set; }
     }
 }

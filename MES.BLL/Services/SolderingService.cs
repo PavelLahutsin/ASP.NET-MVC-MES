@@ -34,7 +34,8 @@ namespace MES.BLL.Services
                 {
                     ProductId = soldering.ProductId,
                     Quantity = soldering.Quantity,
-                    Date = soldering.Date
+                    Date = soldering.Date,
+                    UserId = soldering.UserId
                 };
 
                 var prSt1 = await _uof.ProductStates.Entities.Where(w =>
@@ -93,7 +94,8 @@ namespace MES.BLL.Services
                     Date = x.Date,
                     Id = x.Id,
                     ProductId = x.ProductId,
-                    ProductName = x.Product.Name
+                    ProductName = x.Product.Name,
+                    UserName = x.User.UserName
                 }).OrderByDescending(x=>x.Date).ToListAsync();
             return s;
         }

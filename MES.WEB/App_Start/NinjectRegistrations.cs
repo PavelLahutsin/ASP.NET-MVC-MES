@@ -12,6 +12,7 @@ namespace MES.WEB
         public override void Load()
         {
             Bind<IMesContext>().To<MesContext>();
+            Bind<IUserService>().To<UserService>();
             Bind<IUnitOfWork>().To<UnitOfWork>();
             Bind<IStockService>().To<StockService>();
             Bind(typeof(IBaseRepository<>)).To(typeof(BaseRepository<>));

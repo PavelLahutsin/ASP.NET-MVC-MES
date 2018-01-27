@@ -11,6 +11,7 @@ namespace MES.WEB.Models
         public int Count { get; set; }
         [Display(Name = "Дата")]
         public DateTime Date { get; set; }
-        public string User { get; set; }
+        [Display(Name = "Добавил")]
+        public string UserName { get; set; }
     }
 }

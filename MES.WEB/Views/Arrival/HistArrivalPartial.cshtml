@@ -13,8 +13,14 @@
             <th>
                 @Html.DisplayNameFor(model => model.Date)
             </th>
-            
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+
+            @if (User.IsInRole("admin"))
+    {
+        <th></th>
+}
         </tr>
     </thead>
     <tbody>
@@ -30,11 +36,17 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
-            
             <td>
-                @Html.ActionLink("Edit", "EditArrivalPartial", new {id = item.Id}, new { @class = "text-orange" }) |
-                <a class="text-danger" onclick="deleteElement(event, this)" href="@Url.Action("DeleteArrival", new { id = item.Id })">Удалить</a>
+                @Html.DisplayFor(modelItem => item.UserName)
             </td>
+            @if (User.IsInRole("admin"))
+    {
+        <td>
+            @Html.ActionLink("Edit", "EditArrivalPartial", new { id = item.Id }, new { @class = "text-orange" }) |
+            <a class="text-danger" onclick="deleteElement(event, this)" href="@Url.Action("DeleteArrival", new { id = item.Id })">Удалить</a>
+        </td>
+}
+
         </tr>
     }
     </tbody>

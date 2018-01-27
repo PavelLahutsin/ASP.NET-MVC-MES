@@ -216,6 +216,7 @@
     <Compile Include="Models\BoxingVm.cs" />
     <Compile Include="Models\CheckJmtForListVm.cs" />
     <Compile Include="Models\CheckJmtVm.cs" />
+    <Compile Include="Models\ChekDetailsVm.cs" />
     <Compile Include="Models\DateVm.cs" />
     <Compile Include="Models\DefectDetailDisplayVm.cs" />
     <Compile Include="Models\DefectDetailVm.cs" />
@@ -441,6 +442,7 @@
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="Content\Image\avatar.png" />
     <Content Include="Content\StyleSheet1.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -746,7 +748,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Login2.cshtml" />
     <Content Include="Views\Stock\StockBalanceJmt.cshtml" />
     <Content Include="Views\Stock\EditJmtDetailPartial.cshtml" />
     <Content Include="Views\Stock\AddDefectJmtDetailPartial.cshtml" />
@@ -778,6 +780,9 @@
     <Content Include="Views\Boxing\AddBoxingPartial.cshtml" />
     <Content Include="Views\Shared\_Error.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\SuccessRegister.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\ShowProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -29,22 +29,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <div class="navbar-custom-menu">
-                    <ul class="nav navbar-nav">
-                        @if (!User.Identity.IsAuthenticated)
-                        {
-                            <li>@Html.ActionLink("Войти", "Login", "Account")</li>
-                            <li>@Html.ActionLink("Регистрация", "Register", "Account")</li>
-                        }
-                        else
-                        {
-                            <li>
-                                <a>Привет @User.Identity.Name</a>
-                            </li>
-                            <li>@Html.ActionLink("Выход", "Logout", "Account")</li>
-                        }
-                    </ul>
-                </div>
+                @{Html.RenderAction("ShowProfile", "Account");}
             </nav>
         </header>
         <!-- Left side column. contains the logo and sidebar -->
@@ -98,7 +83,7 @@
                         </a>
                     </li>
 
-                   
+
 
                     <li id="finishedGoodsWarehouse">
                         <a href="@Url.Action("Index", "FinishedGoodsWarehouse")">
@@ -106,8 +91,16 @@
                         </a>
                     </li>
 
-
-
+                    
+                    @if (User.IsInRole("admin"))
+                    {
+                        <li class="header">Администрирование</li>
+                        <li id="finishedGoodsWarehouse">
+                            <a href="@Url.Action("Register", "Account")">
+                                <i class="fa fa-registered"></i> <span>Добавить пользователя</span>
+                            </a>
+                        </li>
+                    }
 
                 </ul>
             </section>

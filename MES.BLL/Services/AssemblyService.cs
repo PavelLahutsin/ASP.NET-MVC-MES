@@ -86,8 +86,8 @@ namespace MES.BLL.Services
                     Id = x.Id,
                     ProductId = x.ProductId,
                     ProductName = x.Product.Name,
-                    UserId = x.UserId
-
+                    UserId = x.UserId,
+                    UserName = x.User.UserName
                 }).OrderByDescending(x => x.Date).ToListAsync();
             return s;
         }

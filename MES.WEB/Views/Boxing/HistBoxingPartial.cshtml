@@ -16,9 +16,13 @@
             <th>
                 @Html.DisplayNameFor(model => model.Quantity)
             </th>
-
-
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            @if (User.IsInRole("admin"))
+    {
+        <th></th>
+}
         </tr>
     </thead>
     <tbody>
@@ -37,10 +41,16 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Quantity)
             </td>
-
             <td>
-                <a class="text-danger" onclick="deleteElement(event, this)" href="@Url.Action("Delete", new { id = item.Id })">Удалить</a>
+                @Html.DisplayFor(modelItem => item.UserName)
             </td>
+            @if (User.IsInRole("admin"))
+            {
+                <td>
+                    <a class="text-danger" onclick="deleteElement(event, this)" href="@Url.Action("Delete", new { id = item.Id })">Удалить</a>
+                </td>
+            }
+            
         </tr>
         }
     </tbody>

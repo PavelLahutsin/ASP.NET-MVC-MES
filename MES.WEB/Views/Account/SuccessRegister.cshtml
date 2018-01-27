@@ -1,0 +1,27 @@
+﻿@model MES.BLL.Infrastructure.OperationDetails
+@{
+    ViewBag.Title = "Окончание регистрации";
+}
+
+
+@{
+    if (Model.Succedeed)
+    {
+        <div class="callout callout-success">
+            <h4>@Model.Message</h4>
+        </div>
+    }
+    
+        else
+
+    {
+        <div class="callout callout-danger">
+            <h4>@Model.Message</h4>
+
+            <p>@Model.Accessory</p>
+        </div>
+    }
+}
+
+
+

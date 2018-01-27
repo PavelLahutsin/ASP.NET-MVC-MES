@@ -1,41 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
-using System.Web.Configuration;
 using System.Web.Mvc;
 using AutoMapper;
 using MES.BLL.DTO;
 using MES.BLL.Infrastructure;
 using MES.BLL.Interfaces;
-using MES.DAL.EF;
-using MES.DAL.Entities;
 using MES.DAL.Interfaces;
 using MES.WEB.Models;
-using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 
 namespace MES.WEB.Controllers
 {
     public class AccountController : Controller
     {
-        MesContext db = new MesContext();
-        private IUnitOfWork _serviceOfWork;
 
-        public AccountController(IUnitOfWork serviceOfWork)
+        private readonly IUnitOfWork _serviceOfWork;
+        private readonly IUserService _service;
+
+        public AccountController(IUnitOfWork serviceOfWork, IUserService service)
         {
             _serviceOfWork = serviceOfWork;
+            this._service = service;
         }
 
-        private IAuthenticationManager AuthenticationManager
-        {
-            get
-            {
-                return HttpContext.GetOwinContext().Authentication;
-            }
-        }
+        private IAuthenticationManager AuthenticationManager => HttpContext.GetOwinContext().Authentication;
 
         public ActionResult Login()
         {
@@ -46,55 +37,75 @@ namespace MES.WEB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginVm model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View(model);
+            var user = await _serviceOfWork.Users.Entities.FirstOrDefaultAsync(u =>
+                u.UserName == model.UserName && u.Password == model.Password);
+
+            if (user == null)
             {
-                User user = await db.Users.Include(u => u.Role).FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
+                ModelState.AddModelError("", "Неверный логин или пароль.");
+            }
+            else
+            {
+                ClaimsIdentity claim = new ClaimsIdentity("ApplicationCookie", ClaimsIdentity.DefaultNameClaimType,
+                    ClaimsIdentity.DefaultRoleClaimType);
+                claim.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString(), ClaimValueTypes.String));
+                claim.AddClaim(new Claim(ClaimsIdentity.DefaultNameClaimType, user.UserName, ClaimValueTypes.String));
+                claim.AddClaim(new Claim(
+                    "http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider",
+                    "OWIN Provider", ClaimValueTypes.String));
+                if (user.Role != null)
+                    claim.AddClaim(new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role.Name,
+                        ClaimValueTypes.String));
 
-                if (user == null)
+                AuthenticationManager.SignOut();
+                AuthenticationManager.SignIn(new AuthenticationProperties
                 {
-                    ModelState.AddModelError("", "Неверный логин или пароль.");
-                }
-                else
-                {
-                    ClaimsIdentity claim = new ClaimsIdentity("ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
-                    claim.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString(), ClaimValueTypes.String));
-                    claim.AddClaim(new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email, ClaimValueTypes.String));
-                    claim.AddClaim(new Claim("http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider",
-                        "OWIN Provider", ClaimValueTypes.String));
-                    if (user.Role != null)
-                        claim.AddClaim(new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role.Name, ClaimValueTypes.String));
-
-                    AuthenticationManager.SignOut();
-                    AuthenticationManager.SignIn(new AuthenticationProperties
-                    {
-                        IsPersistent = true
-                    }, claim);
-                    return RedirectToAction("Index", "Home");
-                }
+                    IsPersistent = true
+                }, claim);
+                return RedirectToAction("Index", "Home");
             }
             return View(model);
         }
-
+        [Authorize(Roles = "admin")]
         public ActionResult Register()
         {
             return View();
         }
-
+        [Authorize(Roles = "admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterVm modal)
+        public async Task<ActionResult> Register(RegisterVm modal, HttpPostedFileBase imageUpload = null)
         {
-            if(!ModelState.IsValid) return View(modal);
-            var user = new User{Email = modal.Email, Password = modal.Password, RoleId = 2};
-            _serviceOfWork.Users.Create(user);
-            _serviceOfWork.Commit();
-            return RedirectToAction("Index", "Home");
+            if (!ModelState.IsValid) return View(modal);
+            if (imageUpload != null)
+            {
+                var count = imageUpload.ContentLength;
+                modal.Image = new byte[count];
+                imageUpload.InputStream.Read(modal.Image, 0, count);
+                modal.MimeType = imageUpload.ContentType;
+            }
+            var result = await _service.Register(Mapper.Map<UserDto>(modal));
+            return View("SuccessRegister", result);
         }
-
+        [Authorize]
         public ActionResult Logout()
         {
             AuthenticationManager.SignOut();
             return RedirectToAction("Index", "Home");
+        }
+        [Authorize]
+        public async Task<FileResult> GetImage(int id)
+        {
+            var user = await _serviceOfWork.Users.GetAsync(id);
+            return user != null ? File(user.Image, user.MimeType) : null;
+        }
+
+        public  ActionResult ShowProfile()
+        {
+            var id = User.Identity.GetUserId<int>();
+            var image = _serviceOfWork.Users.Entities.Where(w=>w.Id==id).Select(x => x.Image).FirstOrDefault();
+            return PartialView(image);
         }
     }
 }

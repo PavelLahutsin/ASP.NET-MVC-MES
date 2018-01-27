@@ -4,11 +4,11 @@ using MES.DAL.Enums;
 
 namespace MES.WEB.Models
 {
-    public class CheckJmtVm
+    public class ChekDetailsVm :IdProvider
     {
         [Display(Name = "Название продукта")]
         [Required]
-        public int ProductId { get; set; }
+        public string ProductName { get; set; }
 
         [Display(Name = "От куда")]
         [Required]
@@ -57,6 +57,7 @@ namespace MES.WEB.Models
         [Display(Name = "На центр")]
         public int? RepairCentre { get; set; }
 
-        public int UserId { get; set; }
+        [Display(Name = "Добавил")]
+        public string UserName { get; set; }
     }
 }

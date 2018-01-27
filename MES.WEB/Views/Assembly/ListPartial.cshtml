@@ -6,32 +6,44 @@
             <th> @Html.DisplayNameFor(model => model.Date)</th>
             <th> @Html.DisplayNameFor(model => model.ProductName)</th>
             <th> @Html.DisplayNameFor(model => model.Quantity)</th>
-            <th> @Html.DisplayNameFor(model => model.UserId)</th>
-            <th></th>
+            <th> @Html.DisplayNameFor(model => model.UserName)</th>
+
+            @if (User.IsInRole("admin"))
+            {
+                <th></th>
+            }
+
+
+
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserId)
-            </td>
-            <td>
-                <a class="text-danger" onclick="deleteElement(event, this)" href="@Url.Action("DeleteAssembly", new { id = item.Id })">Удалить</a>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
 
-            </td>
+                @if (User.IsInRole("admin"))
+                {
+                    <td>
+                        <a class="text-danger" onclick="deleteElement(event, this)" href="@Url.Action("DeleteAssembly", new { id = item.Id })">Удалить</a>
+                    </td>
+                }
 
-        </tr>
+
+
+            </tr>
         }
     </tbody>
 </table>

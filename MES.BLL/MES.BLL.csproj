@@ -45,11 +45,20 @@
     <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="Ninject, Version=3.3.3.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.3.3\lib\net45\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -87,6 +96,7 @@
     <Compile Include="DTO\BoxingDto.cs" />
     <Compile Include="DTO\CheckJmtDto.cs" />
     <Compile Include="DTO\CheckJmtForListDto.cs" />
+    <Compile Include="DTO\ChekDetailsDto.cs" />
     <Compile Include="DTO\DefectDetailDisplayDto.cs" />
     <Compile Include="DTO\DefectDetailDto.cs" />
     <Compile Include="DTO\DetailDTO.cs" />
@@ -96,7 +106,7 @@
     <Compile Include="DTO\ProductStateDto.cs" />
     <Compile Include="DTO\SolderingCountDto.cs" />
     <Compile Include="DTO\SolderingDto.cs" />
-    <Compile Include="DTO\UserDTO.cs" />
+    <Compile Include="DTO\UserDto.cs" />
     <Compile Include="Infrastructure\AutmapperConfigBLL.cs" />
     <Compile Include="Infrastructure\IdentityExtensions.cs" />
     <Compile Include="Infrastructure\OperationDetails.cs" />
@@ -106,7 +116,6 @@
     <Compile Include="Interfaces\IBoxingService.cs" />
     <Compile Include="Interfaces\ICheckJmtService.cs" />
     <Compile Include="Interfaces\IFinishedGoodsWarehouseService.cs" />
-    <Compile Include="Interfaces\IServiceCreator.cs" />
     <Compile Include="Interfaces\ISolderingService.cs" />
     <Compile Include="Interfaces\IStockService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
@@ -118,6 +127,7 @@
     <Compile Include="Services\FinishedGoodsWarehouseServiceService.cs" />
     <Compile Include="Services\SolderingService.cs" />
     <Compile Include="Services\StockService.cs" />
+    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

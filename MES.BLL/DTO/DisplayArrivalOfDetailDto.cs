@@ -7,6 +7,6 @@ namespace MES.BLL.DTO
         public string NameDetail { get; set; }
         public int Count { get; set; }
         public DateTime Date { get; set; }
-        public string User { get; set; }
+        public string UserName { get; set; }
     }
 }

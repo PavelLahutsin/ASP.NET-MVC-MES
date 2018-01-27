@@ -34,5 +34,8 @@ namespace MES.BLL.DTO
         public int RepairNi { get; set; }
        
         public int RepairCentre { get; set; }
+
+        public int UserId { get; set; }
+        
     }
 }

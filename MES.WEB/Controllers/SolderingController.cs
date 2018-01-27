@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using AutoMapper;
 using MES.BLL.DTO;
+using MES.BLL.Infrastructure;
 using MES.BLL.Interfaces;
 using MES.DAL.Entities;
 using MES.DAL.Interfaces;
@@ -11,6 +12,7 @@ using MES.WEB.Models;
 
 namespace MES.WEB.Controllers
 {
+    [Authorize]
     public class SolderingController : Controller
     {
         private readonly ISolderingService _solderingService;
@@ -49,6 +51,7 @@ namespace MES.WEB.Controllers
         [HttpPost]
         public async Task<ActionResult> AddSolderingPartial(SolderingVm soldering)
         {
+            soldering.UserId = User.Identity.GetUserId<int>();
             var products = Mapper.Map<IEnumerable<Product>, List<ProductVm>>(await _db.Products.GetAllAsync());
             ViewBag.Products = new SelectList(products, "Id", "Name");
             if (!ModelState.IsValid) return PartialView(soldering);

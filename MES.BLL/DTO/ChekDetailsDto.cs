@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using MES.DAL.Enums;
 
-namespace MES.DAL.Entities
+namespace MES.BLL.DTO
 {
-    public class CheckJmt : IdProvider
+   public class ChekDetailsDto
     {
-        public int ProductId { get; set; }
+        public string ProductName { get; set; }
 
         public StateFoTest State { get; set; }
 
@@ -34,10 +38,7 @@ namespace MES.DAL.Entities
         public int? RepairNi { get; set; }
 
         public int? RepairCentre { get; set; }
-
-        public virtual Product Product { get; set; }
-
-        public int UserId { get; set; }
-        public virtual User User { get; set; }
+        
+        public string UserName { get; set; }
     }
 }
