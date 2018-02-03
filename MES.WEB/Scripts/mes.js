@@ -24,7 +24,7 @@ function alertBad(message) {
     var result = '<div class="alert alert-danger alert-dismissable">' +
         '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' +
         '<h4><i class="icon fa fa-ban"></i> Не сохранено!</h4>' + message + '</div>';
-    $('#alert-message').html(result).delay(2500).slideUp(300);
+    $('#alert-message').html(result).delay(9500).slideUp(300);
     $('#alert-message').show();
 };
 
@@ -55,10 +55,32 @@ $(function() {
             function(data) {
                 $('#dialogContent').html(data);
                 $('#modDialog').modal('show');
+
             });
     });
 });
-  
+
+$(function () {
+    $.ajaxSetup({ cache: false });
+    $(".charts").click(function (e) {
+
+        var startDate = $('#StartDate').val();
+        startDate = encodeURIComponent(startDate);
+        var endDate = $('#EndDate').val();
+
+        e.preventDefault();
+        $.get(this.href + '?startDate=' +
+            startDate +
+            '&endDate=' +
+            endDate,
+            function (data) {
+                $('#dialogContent').html(data);
+                $('#modDialog').modal('show');
+
+            });
+    });
+});
+
 function unloadModal(data) {
     if (data.Succedeed===true) {
         $('#modDialog').modal('hide');

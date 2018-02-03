@@ -71,6 +71,12 @@
                         </a>
                     </li>
 
+                    <li id="repair">
+                        <a href="@Url.Action("Index", "Repair")">
+                            <i class="fa fa-paint-brush"></i> <span>Ремонт</span>
+                        </a>
+                    </li>
+
                     <li id="checkJmt">
                         <a href="@Url.Action("Index", "CheckJmt")">
                             <i class="fa fa-check"></i> <span>Проверка</span>
@@ -79,7 +85,7 @@
 
                     <li id="boxing">
                         <a href="@Url.Action("Index", "Boxing")">
-                            <i class="fa fa-check"></i> <span>Упаковка</span>
+                            <i class="fa fa-shopping-basket"></i> <span>Упаковка</span>
                         </a>
                     </li>
 
@@ -87,20 +93,25 @@
 
                     <li id="finishedGoodsWarehouse">
                         <a href="@Url.Action("Index", "FinishedGoodsWarehouse")">
-                            <i class="fa fa-shopping-basket"></i> <span>Склад готовой продукции</span>
+                            <i class="fa fa-truck"></i> <span>Склад готовой продукции</span>
                         </a>
                     </li>
 
-                    
+                    <li id="analytics">
+                        <a href="@Url.Action("Index", "Analytics")">
+                            <i class="fa fa-truck"></i> <span>Аналитика</span>
+                        </a>
+                    </li>
+
                     @if (User.IsInRole("admin"))
-                    {
-                        <li class="header">Администрирование</li>
-                        <li id="finishedGoodsWarehouse">
-                            <a href="@Url.Action("Register", "Account")">
-                                <i class="fa fa-registered"></i> <span>Добавить пользователя</span>
-                            </a>
-                        </li>
-                    }
+    {
+                <li class="header">Администрирование</li>
+                <li id="finishedGoodsWarehouse">
+                    <a href="@Url.Action("Register", "Account")">
+                        <i class="fa fa-registered"></i> <span>Добавить пользователя</span>
+                    </a>
+                </li>
+}
 
                 </ul>
             </section>
@@ -129,6 +140,7 @@
     @Scripts.Render("~/bundles/bootstrap-datepicker")
     @Scripts.Render("~/bundles/DataTables")
     @Scripts.Render("~/bundles/mes")
+<script src="~/Scripts/Chart.min.js"></script>
     
 
     @RenderSection("scripts", false)

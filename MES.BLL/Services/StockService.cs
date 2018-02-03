@@ -28,14 +28,14 @@ namespace MES.BLL.Services
         /// </summary>
         /// <param name="name">Название продукта</param>
         /// <returns>список деталей</returns>
-        public IEnumerable<DetailDTO> GetDetail(string name)
+        public async Task<IEnumerable<DetailDTO>> GetDetail(string name)
         {
-            return _uof.StructureOfTheProducts.Entities.Where(w => w.Product.Name == name).Select(x => new DetailDTO
+            return await _uof.StructureOfTheProducts.Entities.Where(w => w.Product.Name == name).Select(x => new DetailDTO
             {
                 Name = x.Detail.Name,
                 GroupProductId = x.Detail.GroupProductId,
                 Quantityq = x.Detail.Quantityq / x.Quantity
-            });
+            }).ToListAsync();
             
         }
 

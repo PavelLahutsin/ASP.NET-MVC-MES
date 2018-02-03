@@ -1,4 +1,6 @@
-﻿namespace MES.DAL.Enums
+﻿using System.ComponentModel;
+
+namespace MES.DAL.Enums
 {
     public enum VariantStateProduct
     {
@@ -6,11 +8,12 @@
         Спаяно,
         Проверено,
         Упаковано,
-        Отгружено,
         Запаски,
         Вторичка,
-        Ремонт_медью,
-        Ремонт_никелем,
-        Ремонт_центр
+        Отгружено,
+        МЕДЬ,
+        НИКЕЛЬ,
+        ЦЕНТР
+
     }
 }

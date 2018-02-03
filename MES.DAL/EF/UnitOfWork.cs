@@ -26,6 +26,8 @@ namespace MES.DAL.EF
         private IBaseRepository<Boxing> _boxing;
         private IBaseRepository<Role> _role;
         private IBaseRepository<User> _user;
+        private IBaseRepository<Shipment> _shipment;
+        private IBaseRepository<Repair> _repair;
 
 
         public UnitOfWork()
@@ -34,8 +36,14 @@ namespace MES.DAL.EF
            
         }
 
+        public IBaseRepository<Repair> Repairs => _repair ??
+                (_repair = new BaseRepository<Repair>(_context));
+
+        public IBaseRepository<Shipment> Shipments => _shipment ??
+                                                      (_shipment = new BaseRepository<Shipment>(_context));
+
         public IBaseRepository<ArrivalOfDetail> ArrivalOfDetails => _arrivalOfDetailRepository ??
-                (_arrivalOfDetailRepository = new BaseRepository<ArrivalOfDetail>(_context));
+                                                                    (_arrivalOfDetailRepository = new BaseRepository<ArrivalOfDetail>(_context));
 
         public IBaseRepository<Role> Roles => _role ?? (_role = new BaseRepository<Role>(_context));
 

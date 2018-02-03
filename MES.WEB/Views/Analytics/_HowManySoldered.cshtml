@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MES.WEB.Models.SolderingCountVm>
+<div class="box external-event">
+    <div class="box-header with-border">
+        <h3 class="box-title">Сколько спаяно</h3>
+
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                <i class="fa fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+    </div>
+    <div class="box-body">
+        <div class="chart">
+            <div id="container" width="800" height="450">
+                <canvas id="solderingsChart"></canvas>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script>
+    new Chart(document.getElementById("solderingsChart"), {
+        type: 'pie',
+        data: {
+            labels: @Html.Raw(Json.Encode(Model.Select(x=>x.ProductName))),
+            datasets: [{
+                label: "Population (millions)",
+                backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+                data:  @Html.Raw(Json.Encode(Model.Select(x => x.Quantity)))
+            }]
+        }
+    });
+</script>
+  

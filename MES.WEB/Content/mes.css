@@ -1,0 +1,14 @@
+﻿
+
+table tr:first-child {
+   
+    font-weight: bold
+}
+
+table tr:nth-child(-n+4) td:first-child {
+    color: green;
+    font-weight: bold
+}
+
+
+

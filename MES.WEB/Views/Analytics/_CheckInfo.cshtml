@@ -1,0 +1,44 @@
+﻿@model MES.WEB.Models.ChekDetailsVm
+
+<div class="box external-event">
+    <div class="box-header with-border">
+        <h3 class="box-title">Результаты проверки</h3>
+
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                <i class="fa fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+    </div>
+    <div class="box-body">
+        <div class="chart">
+            <div id="container" width="800" height="450">
+                <canvas id="chekChart"></canvas>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script>
+    new Chart(document.getElementById("chekChart"), {
+        type: 'pie',
+        data: {
+            labels: ["Целые", "Крышка М", "Крышка №", "Трубка", "Корпус", "Брак", "Прочее", "Центр"],
+            datasets: [{
+                label: "Population (millions)",
+                backgroundColor: ["#00a65a", "#f39c12", "#00c0ef'", "#3c8dbc", "#d2d6de", "#f56954","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+                data: [@Html.Raw(Json.Encode(Model.Airtight)),@Html.Raw(Json.Encode(Model.CapM)),
+                    @Html.Raw(Json.Encode(Model.CapN)),@Html.Raw(Json.Encode(Model.Tube)),
+                    @Html.Raw(Json.Encode(Model.Housing)),
+                    @Html.Raw(Json.Encode(Model.Defect)),@Html.Raw(Json.Encode(Model.Other)),
+                    @Html.Raw(Json.Encode(Model.Center))]
+            }]
+        }
+    });
+</script>

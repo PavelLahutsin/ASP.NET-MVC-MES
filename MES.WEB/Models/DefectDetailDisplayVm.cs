@@ -11,7 +11,7 @@ namespace MES.WEB.Models
         public int Count { get; set; }
         [Required]
         [Display(Name = "Дата")]
-        [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd'.'MM'.'yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
         [Display(Name = "Добавил")]
         public string UserName { get; set; }

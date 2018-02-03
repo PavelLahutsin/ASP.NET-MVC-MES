@@ -9,6 +9,7 @@ namespace MES.WEB.Models
         public string NameDetail { get; set; }
         [Display(Name = "Количество")]
         public int Count { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd'.'MM'.'yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Дата")]
         public DateTime Date { get; set; }
         [Display(Name = "Добавил")]

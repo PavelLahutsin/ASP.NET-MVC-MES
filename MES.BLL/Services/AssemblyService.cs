@@ -58,8 +58,8 @@ namespace MES.BLL.Services
             }
             catch (Exception e)
             {
-                _uof.Rollback();
-                return new OperationDetails(true, e.Message, ""); ;
+                //_uof.Rollback();
+                return new OperationDetails(false, e.Message, ""); ;
             }
         }
 

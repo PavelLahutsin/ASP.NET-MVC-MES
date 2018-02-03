@@ -19,7 +19,9 @@ namespace MES.DAL.Interfaces
         IBaseRepository<Role> Roles { get; }
         IBaseRepository<User> Users { get; }
         IBaseRepository<Boxing> Boxings { get; }
-        
+        IBaseRepository<Shipment> Shipments { get; }
+        IBaseRepository<Repair> Repairs { get; }
+
         Task Commit();
 
         void Rollback();

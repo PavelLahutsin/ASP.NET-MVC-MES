@@ -1,0 +1,53 @@
+﻿@model IEnumerable<MES.WEB.Models.DetailVm>
+
+
+<div id="modalContent" class="modal-content" style="width: 98vw; height: 100%">
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h4 class="modal-title">Сколько теплообменников 5200-01 можно собрать</h4>
+</div>
+    <div class="modal-body">
+        <div class="chart">
+            <canvas id="Chart5200012"  style="height: 229px; width: 594px;" width="742" height="286"></canvas>
+        </div>
+    </div>
+</div>
+
+
+
+
+ <script>
+     var ctx = document.getElementById("Chart5200012").getContext('2d');
+     var myChart = new Chart(ctx, {
+         type: 'bar',
+         data: {
+             labels: @Html.Raw(Json.Encode(Model.Select(x=>x.Name))),
+             datasets: [{
+                 label: '5200-01',
+                 data: @Html.Raw(Json.Encode(Model.Select(x=>x.Quantityq))),
+                 backgroundColor:
+                     'rgba(255, 159, 64, 1)'
+                 ,
+                 borderColor:
+                     'rgba(255, 159, 64, 1)'
+                 ,
+                 borderWidth: 1
+             }]
+         },
+         options: {
+             scales: {
+                 yAxes: [{
+                     ticks: {
+                         beginAtZero: true
+                           
+                     }
+                 }]
+             }
+                
+         }
+     });
+
+     
+ </script>

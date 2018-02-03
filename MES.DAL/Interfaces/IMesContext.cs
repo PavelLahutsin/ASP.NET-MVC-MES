@@ -20,6 +20,8 @@ namespace MES.DAL.Interfaces
         DbSet<Assembly> Assemblys { get; set; }
         DbSet<CheckJmt> CheckJmts { get; set; }
         DbSet<Boxing> Boxings { get; set; }
+        DbSet<Shipment> Shipments { get; set; }
+        DbSet<Repair> Repairs { get; set; }
         DbChangeTracker ChangeTracker { get; }
 
         int SaveChanges();

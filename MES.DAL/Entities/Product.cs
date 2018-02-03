@@ -15,5 +15,6 @@ namespace MES.DAL.Entities
         public virtual ICollection<ProductState> ProductStates { get; set; } = new HashSet<ProductState>();
         public virtual ICollection<CheckJmt> CheckJmts { get; set; } = new HashSet<CheckJmt>();
         public virtual ICollection<Boxing> Boxings { get; set; } = new HashSet<Boxing>();
+        public virtual ICollection<Repair> Repairs { get; set; } = new HashSet<Repair>();
     }
 }

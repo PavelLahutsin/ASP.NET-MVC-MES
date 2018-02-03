@@ -116,7 +116,7 @@ namespace MES.DAL.EF
             });
 
 
-           
+           Random random = new Random();
 
             foreach (VariantStateProduct vaStPr in Enum.GetValues(typeof(VariantStateProduct)))
             {
@@ -124,6 +124,20 @@ namespace MES.DAL.EF
                 db.ProductStates.Add(new ProductState { Product = p2, StateProduct = vaStPr, Quantity =0 });
                 db.ProductStates.Add(new ProductState { Product = p3, StateProduct = vaStPr, Quantity =0 });
             }
+
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    DateTime date1 = new DateTime(2017, random.Next(1, 12), random.Next(1,30));
+            //    db.Shipments.Add(new Shipment
+            //    {
+            //        Date = date1,
+            //        BoxingVariant = BoxingVariant.Годная,
+            //        Product = p,
+            //        UserId = 1,
+            //        Quantity = random.Next(300, 3000)
+
+            //    });
+            //}
             
             db.SaveChanges();
         }

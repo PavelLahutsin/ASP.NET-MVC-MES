@@ -72,12 +72,12 @@ namespace MES.BLL.Services
 
                 _uof.Boxings.Create(box);
                 await _uof.Commit();
-                return new OperationDetails(true, "Упаковка успешно добавлена", "/Boxing/HistBoxingPartial");
+                return new OperationDetails(true, "Упаковка успешно добавлена", "/Boxing/RemainingDetails");
             }
             catch (Exception e)
             {
                 _uof.Rollback();
-                return new OperationDetails(false, e.Message, "/Boxing/HistBoxingPartial");
+                return new OperationDetails(false, e.Message, "/Boxing/RemainingDetails");
             }
         }
 

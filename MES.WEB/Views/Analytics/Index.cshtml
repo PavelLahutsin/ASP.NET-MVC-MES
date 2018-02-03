@@ -1,0 +1,139 @@
+﻿@model MES.WEB.Models.DateVm
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div id="modDialog" class="modal fade ">
+    <div id="dialogContent" class="modal-dialog col-md-10"></div>
+</div>
+
+<div class="box-body">
+    @Html.AntiForgeryToken()
+
+    <div class="form-inline">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-6">
+            <!-- AREA CHART -->
+            <a href="@Url.Action("CheckInfoModal")" class="charts">
+                <div id="results3">
+                </div>
+            </a>
+            <!-- /.box -->
+            <!-- DONUT CHART -->
+            <a href="@Url.Action("ShipmentChart")" class="charts">
+                <div id="results4">
+                </div>
+            </a>
+            
+            <!-- /.box -->
+
+        </div>
+        <!-- /.col (LEFT) -->
+        <div class="col-md-6">
+            <!-- LINE CHART -->
+            <a href="@Url.Action("HowManySolderedModal")" class="charts">
+                <div id="results2">
+                </div>
+            </a>
+            <!-- /.box -->
+            <!-- BAR CHART -->
+            <a href="@Url.Action("RemainingDetails")" class="charts">
+            <div id="results">
+            </div>
+            </a>
+                <!-- /.box -->
+
+        </div>
+        <!-- /.col (RIGHT) -->
+    </div>
+    <!-- /.row -->
+
+</section>
+
+
+@section scripts
+{
+    
+<script>
+
+
+
+        $(function () {
+            var idToUpdate = $('#results');
+            $.get("/Analytics/RemainingDetailsIndex",
+                function (data) {
+                    $(idToUpdate).html(data);
+                });
+        });
+
+        $(function () {
+            var idToUpdate = $('#results2');
+            $.get("/Analytics/HowManySoldered",
+                function (data) {
+                    $(idToUpdate).html(data);
+                });
+        });
+
+        $(function () {
+            var idToUpdate = $('#results3');
+            $.get("/Analytics/CheckInfo",
+                function (data) {
+                    $(idToUpdate).html(data);
+                });
+        });
+
+        $(function () {
+            var idToUpdate = $('#results4');
+            $.get("/Analytics/ShipmentChart",
+                function (data) {
+                    $(idToUpdate).html(data);
+                });
+        });
+
+        function view() {
+            var startDate = $('#StartDate').val();
+            startDate = encodeURIComponent(startDate);
+            var endDate = $('#EndDate').val();
+            endDate = encodeURIComponent(endDate);
+            $('#results').load('@Url.Action("RemainingDetailsIndex", "Analytics")');
+            $('#results2').load('@Url.Action("HowManySoldered", "Analytics")?startDate=' +
+                startDate +
+                '&endDate=' +
+                endDate);
+            $('#results3').load('@Url.Action("CheckInfo", "Analytics")?startDate=' +
+                startDate +
+                '&endDate=' +
+                endDate);
+            $('#results4').load('@Url.Action("ShipmentChart", "Analytics")?startDate=' +
+                startDate +
+                '&endDate=' +
+                endDate);
+        }
+
+
+</script>
+
+}

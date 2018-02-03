@@ -41,7 +41,7 @@ namespace MES.WEB
                 "~/Content/font-awesome/css/font-awesome.css",
                 "~/Content/dist/css/AdminLTE.css",
                 "~/Content/dist/css/skins/_all-skins.css",
-                "~/Content/DataTables/css/dataTables.bootstrapcss",
+                "~/Content/DataTables/css/dataTables.bootstrap.css",
                 "~/Content/bootstrap-datepicker/bootstrap-datepicker.css"));
         }
     }

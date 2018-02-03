@@ -19,6 +19,8 @@ namespace MES.DAL.EF
         public DbSet<Assembly> Assemblys { get; set; }
         public DbSet<CheckJmt> CheckJmts { get; set; }
         public DbSet<Boxing> Boxings { get; set; }
+        public DbSet<Shipment> Shipments { get; set; }
+        public DbSet<Repair> Repairs { get; set; }
 
 
         static MesContext()

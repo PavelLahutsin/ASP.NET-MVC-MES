@@ -50,31 +50,93 @@
 
 
 <script type="text/javascript" charset="utf-8">
-    $("#example").dataTable({
+    $("#example").dataTable(
+        {
 
-        language: {
-            "processing": "Подождите...",
-            "search": "Поиск:",
-            "lengthMenu": "Показать _MENU_ записей",
-            "info": "Записи с _START_ до _END_ из _TOTAL_ записей",
-            "infoEmpty": "Записи с 0 до 0 из 0 записей",
-            "infoFiltered": "(отфильтровано из _MAX_ записей)",
-            "infoPostFix": "",
-            "loadingRecords": "Загрузка записей...",
-            "zeroRecords": "Записи отсутствуют.",
-            "emptyTable": "В таблице отсутствуют данные",
-            "paginate": {
-                "first": "Первая",
-                "previous": "Предыдущая",
-                "next": "Следующая",
-                "last": "Последняя"
+            language: {
+                "processing": "Подождите...",
+                "search": "Поиск:",
+                "lengthMenu": "Показать _MENU_ записей",
+                "info": "Записи с _START_ до _END_ из _TOTAL_ записей",
+                "infoEmpty": "Записи с 0 до 0 из 0 записей",
+                "infoFiltered": "(отфильтровано из _MAX_ записей)",
+                "infoPostFix": "",
+                "loadingRecords": "Загрузка записей...",
+                "zeroRecords": "Записи отсутствуют.",
+                "emptyTable": "В таблице отсутствуют данные",
+                "paginate": {
+                    "first": "Первая",
+                    "previous": "Предыдущая",
+                    "next": "Следующая",
+                    "last": "Последняя"
+                },
+                "aria": {
+                    "sortAscending": ": активировать для сортировки столбца по возрастанию",
+                    "sortDescending": ": активировать для сортировки столбца по убыванию"
+                }
             },
-            "aria": {
-                "sortAscending": ": активировать для сортировки столбца по возрастанию",
-                "sortDescending": ": активировать для сортировки столбца по убыванию"
+
+            "aoColumns": [
+
+                { "sType": "ruDate" },
+                null,
+                null,
+                null,
+                null
+            ]
+        });
+
+    jQuery.extend(jQuery.fn.dataTableExt.oSort,
+        {
+            "ruDate-asc": function(a, b) {
+                var ruDatea = $.trim(a).split('.');
+                var ruDateb = $.trim(b).split('.');
+
+                if (ruDatea[2] * 1 < ruDateb[2] * 1)
+                    return 1;
+                if (ruDatea[2] * 1 > ruDateb[2] * 1)
+                    return -1;
+                if (ruDatea[2] * 1 == ruDateb[2] * 1) {
+                    if (ruDatea[1] * 1 < ruDateb[1] * 1)
+                        return 1;
+                    if (ruDatea[1] * 1 > ruDateb[1] * 1)
+                        return -1;
+                    if (ruDatea[1] * 1 == ruDateb[1] * 1) {
+                        if (ruDatea[0] * 1 < ruDateb[0] * 1)
+                            return 1;
+                        if (ruDatea[0] * 1 > ruDateb[0] * 1)
+                            return -1;
+                    } else
+                        return 0;
+                }
+            },
+
+            "ruDate-desc": function(a, b) {
+                var ruDatea = $.trim(a).split('.');
+                var ruDateb = $.trim(b).split('.');
+
+                if (ruDatea[2] * 1 < ruDateb[2] * 1)
+                    return -1;
+                if (ruDatea[2] * 1 > ruDateb[2] * 1)
+                    return 1;
+                if (ruDatea[2] * 1 == ruDateb[2] * 1) {
+                    if (ruDatea[1] * 1 < ruDateb[1] * 1)
+                        return -1;
+                    if (ruDatea[1] * 1 > ruDateb[1] * 1)
+                        return 1;
+                    if (ruDatea[1] * 1 == ruDateb[1] * 1) {
+                        if (ruDatea[0] * 1 < ruDateb[0] * 1)
+                            return -1;
+                        if (ruDatea[0] * 1 > ruDateb[0] * 1)
+                            return 1;
+                    } else
+                        return 0;
+                }
             }
-        }
-    });
+        });
+
+
 </script>
+
 
 

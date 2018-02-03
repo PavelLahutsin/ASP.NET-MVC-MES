@@ -8,7 +8,7 @@ namespace MES.BLL.Interfaces
 {
     public interface IStockService
     {
-        IEnumerable<DetailDTO> GetDetail(string name);
+        Task<IEnumerable<DetailDTO>> GetDetail(string name);
         List<DetailDTO> GetDetailsJmt();
         Task<OperationDetails> AddDefectDetailAsync(DefectDetailDto defect);
         Task<IEnumerable<DefectDetailDisplayDto>> ShowDefectDetailAsync();

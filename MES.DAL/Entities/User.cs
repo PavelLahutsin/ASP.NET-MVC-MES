@@ -22,6 +22,7 @@ namespace MES.DAL.Entities
         public virtual ICollection<CheckJmt> CheckJmts { get; set; } = new HashSet<CheckJmt>();
         public virtual ICollection<DefectDetail> DefectDetails { get; set; } = new HashSet<DefectDetail>();
         public virtual ICollection<Soldering> Solderings { get; set; } = new HashSet<Soldering>();
+        public virtual ICollection<Repair> Repairs { get; set; } = new HashSet<Repair>();
 
     }
 }

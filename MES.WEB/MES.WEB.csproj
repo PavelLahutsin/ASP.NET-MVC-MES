@@ -134,6 +134,9 @@
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -141,6 +144,12 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -200,12 +209,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AnalyticsController.cs" />
     <Compile Include="Controllers\ArrivalController.cs" />
     <Compile Include="Controllers\AssemblyController.cs" />
     <Compile Include="Controllers\BoxingController.cs" />
     <Compile Include="Controllers\CheckJmtController.cs" />
     <Compile Include="Controllers\FinishedGoodsWarehouseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RepairController.cs" />
     <Compile Include="Controllers\SolderingController.cs" />
     <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Global.asax.cs">
@@ -227,6 +238,9 @@
     <Compile Include="Models\ProductStateVm.cs" />
     <Compile Include="Models\ProductVm.cs" />
     <Compile Include="Models\RegisterVm.cs" />
+    <Compile Include="Models\RepairVm.cs" />
+    <Compile Include="Models\ShipmentChartVm.cs" />
+    <Compile Include="Models\ShipmentVm.cs" />
     <Compile Include="Models\SolderingCountVm.cs" />
     <Compile Include="Models\SolderingVm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -443,6 +457,8 @@
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\font-awesome\HELP-US-OUT.txt" />
     <Content Include="Content\Image\avatar.png" />
+    <Content Include="Content\mes.css" />
+    <Content Include="Content\modal.css" />
     <Content Include="Content\StyleSheet1.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -783,6 +799,20 @@
     <Content Include="Views\Account\SuccessRegister.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\ShowProfile.cshtml" />
+    <Content Include="Views\FinishedGoodsWarehouse\AddShipmentPartial.cshtml" />
+    <Content Include="Views\FinishedGoodsWarehouse\ListPartial.cshtml" />
+    <Content Include="Views\FinishedGoodsWarehouse\PackagedCount.cshtml" />
+    <Content Include="Views\Repair\Index.cshtml" />
+    <Content Include="Views\Repair\AddRepairPartial.cshtml" />
+    <Content Include="Views\Repair\ListPartial.cshtml" />
+    <Content Include="Views\Analytics\Index.cshtml" />
+    <Content Include="Views\Analytics\_RemainingDetails.cshtml" />
+    <Content Include="Views\Analytics\_RemainingDetailsIndex.cshtml" />
+    <Content Include="Views\Analytics\_HowManySoldered.cshtml" />
+    <Content Include="Views\Analytics\_HowManySolderedModal.cshtml" />
+    <Content Include="Views\Analytics\_CheckInfo.cshtml" />
+    <Content Include="Views\Analytics\_CheckInfoModal.cshtml" />
+    <Content Include="Views\Analytics\_ShipmentChart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

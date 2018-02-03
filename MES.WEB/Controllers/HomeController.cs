@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using MES.DAL.Enums;
 using MES.DAL.Interfaces;
+using Microsoft.Ajax.Utilities;
 
 namespace MES.WEB.Controllers
 {
@@ -31,15 +32,24 @@ namespace MES.WEB.Controllers
 
         public async Task<ActionResult> Index()
         {
-            //Получаем все имена и статусы
-            var names = await _db.ProductStates.Entities.Select(x => x.Product.Name).Distinct().ToListAsync();
+            //public class ProductStateVm : IdProvider
+            //{
+            //public string ProductName { get; set; }
+
+            //public VariantStateProduct StateProduct { get; set; }
+            
+            //public int Quantity { get; set; }
+            //}
+
+        //Получаем все имена
+        var names = await _db.ProductStates.Entities.Select(x => x.Product.Name).Distinct().ToListAsync();
            
 
             //Далее генерирую HTML таблицу
             var stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine("<table class=\"table\">");
+            stringBuilder.AppendLine("<table class=\"table table-striped table-bordered\">");
 
-            stringBuilder.AppendLine("<tr>");
+            stringBuilder.AppendLine("<tr class=\"text-red\">");
             AddCell(stringBuilder, string.Empty);
 
             foreach (var name in names)
@@ -48,15 +58,21 @@ namespace MES.WEB.Controllers
             }
 
             stringBuilder.AppendLine("</tr>");
+           
             foreach (VariantStateProduct state in Enum.GetValues(typeof(VariantStateProduct)))
             {
-                stringBuilder.AppendLine("<tr>");
-                AddCell(stringBuilder, state.ToString());
+                    stringBuilder.AppendLine("<tr class=\"text-green\">");
+
+                    AddCell(stringBuilder, state.ToString());
+
+                //Проходим по именам
                 foreach (var name in names)
                 {
+                    //находим в бд объект где имя и статус совподают с нашими и добовляем к нам в string 
                     var item = _db.ProductStates.Entities.First(x =>
                         x.StateProduct == state && x.Product.Name == name);
                     AddCell(stringBuilder, item.Quantity.ToString());
+                   
                 }
                 stringBuilder.AppendLine("</tr>");
             }

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<MES.WEB.Models.ProductStateVm>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<table class="table table-striped table-condensed">
+    <tr>
+        @foreach (var item in Model)
+        {
+
+            <th>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </th>
+
+
+        }
+    </tr>
+    <tr>
+        @foreach (var item in Model)
+        {
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+
+       
+        }
+    </tr>
+</table>

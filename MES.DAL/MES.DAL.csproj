@@ -75,11 +75,14 @@
     <Compile Include="Entities\IdProvider.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ProductState.cs" />
+    <Compile Include="Entities\Repair.cs" />
     <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\Shipment.cs" />
     <Compile Include="Entities\Soldering.cs" />
     <Compile Include="Entities\StructureOfTheProduct.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Enums\BoxingVariant.cs" />
+    <Compile Include="Enums\RepairsVariant.cs" />
     <Compile Include="Enums\StateFoTest.cs" />
     <Compile Include="Enums\VariantStateProduct.cs" />
     <Compile Include="Interfaces\IBaseRepository.cs" />

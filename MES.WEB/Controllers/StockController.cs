@@ -29,9 +29,9 @@ namespace MES.WEB.Controllers
         // Остаток деталей на складе
         public async Task<ActionResult> StockBalanceJmt()
         {
-            var d52001 = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(_stockOn.GetDetail("5200-01"));
+            var d52001 = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(await _stockOn.GetDetail("5200-01"));
 
-            var d6500 = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(_stockOn.GetDetail("6500"));
+            var d6500 = Mapper.Map<IEnumerable<DetailDTO>, List<DetailVm>>(await _stockOn.GetDetail("6500"));
             var detail = Mapper.Map<IEnumerable<Detail>, List<DetailVm>>(await _db.Details.GetAllAsync());
 
             ViewBag.d52001 = d52001.Select(t => t.Name);

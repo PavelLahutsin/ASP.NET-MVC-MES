@@ -59,17 +59,17 @@ namespace MES.BLL.Services
                 prSt2.Quantity += checkJmtDto.Airtight;
 
                 var prSt3 = await _uof.ProductStates.Entities.Where(w =>
-                        w.ProductId == checkJmtDto.ProductId && w.StateProduct == VariantStateProduct.Ремонт_медью)
+                        w.ProductId == checkJmtDto.ProductId && w.StateProduct == VariantStateProduct.МЕДЬ)
                     .FirstOrDefaultAsync();
                 prSt3.Quantity += checkJmtDto.RepairCu;
 
                 var prSt4 = await _uof.ProductStates.Entities.Where(w =>
-                        w.ProductId == checkJmtDto.ProductId && w.StateProduct == VariantStateProduct.Ремонт_никелем)
+                        w.ProductId == checkJmtDto.ProductId && w.StateProduct == VariantStateProduct.НИКЕЛЬ)
                     .FirstOrDefaultAsync();
                 prSt4.Quantity += checkJmtDto.RepairNi;
 
                 var prSt5 = await _uof.ProductStates.Entities.Where(w =>
-                        w.ProductId == checkJmtDto.ProductId && w.StateProduct == VariantStateProduct.Ремонт_центр)
+                        w.ProductId == checkJmtDto.ProductId && w.StateProduct == VariantStateProduct.ЦЕНТР)
                     .FirstOrDefaultAsync();
                 prSt5.Quantity += checkJmtDto.RepairCentre;
 
@@ -180,19 +180,19 @@ namespace MES.BLL.Services
                     return new OperationDetails(false, "Не может быть удалено больше, чем добавлено!", "");
 
                 var prSt3 = await _uof.ProductStates.Entities.Where(w =>
-                        w.ProductId == check.ProductId && w.StateProduct == VariantStateProduct.Ремонт_медью)
+                        w.ProductId == check.ProductId && w.StateProduct == VariantStateProduct.МЕДЬ)
                     .FirstOrDefaultAsync();
                 if ((prSt3.Quantity -= check.RepairCu ?? 0) < 0)
                     return new OperationDetails(false, "Не может быть удалено больше, чем добавлено!", "");
 
                 var prSt4 = await _uof.ProductStates.Entities.Where(w =>
-                        w.ProductId == check.ProductId && w.StateProduct == VariantStateProduct.Ремонт_никелем)
+                        w.ProductId == check.ProductId && w.StateProduct == VariantStateProduct.НИКЕЛЬ)
                     .FirstOrDefaultAsync();
                 if ((prSt4.Quantity -= check.RepairNi ?? 0) < 0)
                     return new OperationDetails(false, "Не может быть удалено больше, чем добавлено!", "");
 
                 var prSt5 = await _uof.ProductStates.Entities.Where(w =>
-                        w.ProductId == check.ProductId && w.StateProduct == VariantStateProduct.Ремонт_центр)
+                        w.ProductId == check.ProductId && w.StateProduct == VariantStateProduct.ЦЕНТР)
                     .FirstOrDefaultAsync();
                 if ((prSt5.Quantity -= check.RepairCentre ?? 0) < 0)
                     return new OperationDetails(false, "Не может быть удалено больше, чем добавлено!", "");
