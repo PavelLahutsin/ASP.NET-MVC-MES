@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<section class="invoice bg-gray-light">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="page-header">
+                <i class="fa fa-globe"></i> AdminLTE, Inc.
+                <small class="pull-right">Date: 2/10/2014</small>
+            </h2>
+        </div>
+        <!-- /.col -->
+    </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div id="results"></div>
+            </div>
+            <div class="col-md-6">
+                <div id="results2"></div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+@section scripts
+{
+    <script>
+        $(function () {
+            var idToUpdate = $('#results');
+            $.get("/Admin/ListProduct",
+                function (data) {
+                    $(idToUpdate).html(data);
+                });
+        });
+
+        function showElement(event, element) {
+            $.ajaxSetup({ cache: false });
+            event.preventDefault();
+            var idToUpdate = $('#results2');
+            $('li').removeClass('active text-bold');
+            $(element).parent().addClass('active text-bold');
+            $.get(element.href, function (data) {
+                $(idToUpdate).html(data);
+            });
+        };
+
+       
+    </script>
+}

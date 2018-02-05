@@ -101,6 +101,7 @@ namespace MES.BLL.Services
                 var s =  await _uof.Shipments.Entities.Where(w => w.Date >= myStartDate && w.Date <= myEndDate).Select(x =>
                     new ShipmentChartDto()
                     {
+                        ProducName = x.Product.Name,
                         Quantity = x.Quantity,
                         Date = x.Date
                     }).OrderBy(x => x.Date).ToListAsync();
@@ -110,6 +111,7 @@ namespace MES.BLL.Services
             {
                 list.Add(new ShipmentChartDto
                 {
+                    ProducName = dto.ProducName,
                     Quantity = dto.Quantity,
                     Date = new DateTime(dto.Date.Year, dto.Date.Month, 1)
                 });
@@ -117,6 +119,7 @@ namespace MES.BLL.Services
 
             var list2 = list.GroupBy(x => x.Date).Select(x=>new ShipmentChartDto
             {
+                ProducName = x.First().ProducName,
                 Quantity = x.Sum(q=>q.Quantity),
                 Date = x.First().Date
             });

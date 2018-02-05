@@ -11,7 +11,7 @@
         {
             <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    @if (Model == null)
+                    @if (Model == null || Model.Length==0)
     {
                 <img src="~/Content/Image/avatar.png" class="user-image" alt="User Image">
 }
@@ -26,7 +26,7 @@ else
                 <ul class="dropdown-menu">
                     <!-- User image -->
                     <li class="user-header">
-                        @if (Model == null)
+                        @if (Model == null || Model.Length==0)
                         {
                             <img src="~/Content/Image/avatar.png" class="img-circle" alt="User Image">
                         }
@@ -41,7 +41,7 @@ else
                     <!-- Menu Footer-->
                     <li class="user-footer">
                         <div class="pull-left">
-                            <a href="@Url.Action("EdinProfile", "Account")" class="btn btn-default btn-flat">Изменить профиль</a>
+                            <a href="@Url.Action("Edit", "Account")" class="btn btn-default btn-flat">Изменить профиль</a>
                         </div>
                         <div class="pull-right">
                             <a href="@Url.Action("Logout", "Account")" class="btn btn-default btn-flat">Выход</a>

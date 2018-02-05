@@ -209,6 +209,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AnalyticsController.cs" />
     <Compile Include="Controllers\ArrivalController.cs" />
     <Compile Include="Controllers\AssemblyController.cs" />
@@ -231,6 +232,7 @@
     <Compile Include="Models\DateVm.cs" />
     <Compile Include="Models\DefectDetailDisplayVm.cs" />
     <Compile Include="Models\DefectDetailVm.cs" />
+    <Compile Include="Models\DetailInProductVm.cs" />
     <Compile Include="Models\DetailVm.cs" />
     <Compile Include="Models\IdProvider.cs" />
     <Compile Include="Models\DisplayArrivalOfDetailVm.cs" />
@@ -563,6 +565,7 @@
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\bootstrap-datepicker\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker\bootstrap-datepicker.min.js" />
@@ -813,6 +816,10 @@
     <Content Include="Views\Analytics\_CheckInfo.cshtml" />
     <Content Include="Views\Analytics\_CheckInfoModal.cshtml" />
     <Content Include="Views\Analytics\_ShipmentChart.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\_ListProduct.cshtml" />
+    <Content Include="Views\Admin\_ListStructProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

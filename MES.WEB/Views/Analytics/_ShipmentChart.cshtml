@@ -4,7 +4,7 @@
 
 <div class="box external-event">
     <div class="box-header with-border">
-        <h3 class="box-title">Сколько теплообменников 5200-01 можно собрать</h3>
+        <h3 class="box-title">Отгрузки</h3>
 
         <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -35,12 +35,23 @@
             labels: @Html.Raw(Json.Encode(Model.Select(x=> x.Date.ToString("MMMM", new CultureInfo("ru-RU"))))),
             datasets: [{
                             label: '5200-01',
-                data: @Html.Raw(Json.Encode(Model.Select(x=>x.Quantity))),
-               
-                borderColor:
-                            "#8e5ea2"
-                ,
-                
+                data: @Html.Raw(Json.Encode(Model.Where(w=>w.ProducName== "5200-01").Select(x=>x.Quantity))),
+
+                borderColor: "#8e5ea2",
+                fill: false
+
+            },
+            {
+                            label: '6500',
+                data: @Html.Raw(Json.Encode(Model.Where(w=>w.ProducName== "6500").Select(x=>x.Quantity))),
+                borderColor: "#4e3ea2",
+                fill: false
+
+                },
+            {
+                            label: '5200',
+                data: @Html.Raw(Json.Encode(Model.Where(w=>w.ProducName== "5200").Select(x=>x.Quantity))),
+                borderColor: "#5e5ea2",
                 fill: false
 
             }]
@@ -55,7 +66,7 @@
                     }
             }]
             }
-                
+
         }
     });
 </script>

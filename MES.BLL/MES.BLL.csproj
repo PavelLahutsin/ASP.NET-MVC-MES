@@ -100,6 +100,7 @@
     <Compile Include="DTO\DefectDetailDisplayDto.cs" />
     <Compile Include="DTO\DefectDetailDto.cs" />
     <Compile Include="DTO\DetailDTO.cs" />
+    <Compile Include="DTO\DetailInProductDto.cs" />
     <Compile Include="DTO\IdProvider.cs" />
     <Compile Include="DTO\DisplayArrivalOfDetailDto.cs" />
     <Compile Include="DTO\ProductDTO.cs" />
@@ -109,11 +110,13 @@
     <Compile Include="DTO\ShipmentDto.cs" />
     <Compile Include="DTO\SolderingCountDto.cs" />
     <Compile Include="DTO\SolderingDto.cs" />
+    <Compile Include="DTO\StructureOfTheProductDto.cs" />
     <Compile Include="DTO\UserDto.cs" />
     <Compile Include="Infrastructure\AutmapperConfigBLL.cs" />
     <Compile Include="Infrastructure\IdentityExtensions.cs" />
     <Compile Include="Infrastructure\OperationDetails.cs" />
     <Compile Include="Infrastructure\ServiceModule.cs" />
+    <Compile Include="Interfaces\IAdminService.cs" />
     <Compile Include="Interfaces\IAnalyticsService.cs" />
     <Compile Include="Interfaces\IArrivalService.cs" />
     <Compile Include="Interfaces\IAssemblyService.cs" />
@@ -125,6 +128,7 @@
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Interfaces\IShipmentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\AnalyticsService.cs" />
     <Compile Include="Services\ArrivalService.cs" />
     <Compile Include="Services\AssemblyService.cs" />

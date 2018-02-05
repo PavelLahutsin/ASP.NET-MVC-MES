@@ -88,7 +88,7 @@ namespace MES.WEB.Controllers
             var result = await _service.Register(Mapper.Map<UserDto>(modal));
             return View("SuccessRegister", result);
         }
-        [Authorize]
+        [Authorize]     
         public ActionResult Logout()
         {
             AuthenticationManager.SignOut();
@@ -101,10 +101,36 @@ namespace MES.WEB.Controllers
             return user != null ? File(user.Image, user.MimeType) : null;
         }
 
+        [Authorize]
+        public async Task<ActionResult> Edit()
+        {
+            var id = User.Identity.GetUserId<int>();
+            var user = Mapper.Map<RegisterVm>(await _serviceOfWork.Users.GetAsync(id));
+            return View(user);
+        }
+
+        [Authorize]
+        [HttpPost]        
+        public async Task<ActionResult> Edit(RegisterVm modal, HttpPostedFileBase imageUpload = null)
+        {
+            if (!ModelState.IsValid) return View(modal);
+            if (imageUpload != null)
+            {
+                var count = imageUpload.ContentLength;
+                modal.Image = new byte[count];
+                imageUpload.InputStream.Read(modal.Image, 0, count);
+                modal.MimeType = imageUpload.ContentType;
+            }
+            var result = await _service.EditUser(Mapper.Map<UserDto>(modal));
+            if (result.Succedeed) Logout();
+            return RedirectToAction("Index", "Home");
+        }
+
         public  ActionResult ShowProfile()
         {
             var id = User.Identity.GetUserId<int>();
             var image = _serviceOfWork.Users.Entities.Where(w=>w.Id==id).Select(x => x.Image).FirstOrDefault();
+            
             return PartialView(image);
         }
     }

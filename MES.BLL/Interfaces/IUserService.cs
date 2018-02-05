@@ -7,5 +7,6 @@ namespace MES.BLL.Interfaces
     public interface IUserService
     {
         Task<OperationDetails> Register(UserDto userDto);
+        Task<OperationDetails> EditUser(UserDto userDto);
     }
 }

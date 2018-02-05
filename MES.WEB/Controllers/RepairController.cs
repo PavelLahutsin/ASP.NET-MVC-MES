@@ -14,6 +14,7 @@ using MES.WEB.Models;
 
 namespace MES.WEB.Controllers
 {
+    [Authorize]
     public class RepairController : Controller
     {
         private readonly IUnitOfWork _db;

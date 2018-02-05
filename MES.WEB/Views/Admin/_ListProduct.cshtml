@@ -1,0 +1,20 @@
+﻿@model IEnumerable<MES.WEB.Models.ProductVm>
+
+
+
+
+<div class="box box-group">
+    <div class="box-header with-border">
+        <h3 class="box-title">Список продукции</h3>
+    </div>
+    <div class="box-body no-padding" style="">
+        <ul class="nav nav-stacked">
+            @foreach (var item in Model)
+            {
+                <li ><a onclick="showElement(event, this)" href="@Url.Action("ListStructProduct", new { id = item.Id })">@item.Name</a></li>
+            }
+        </ul>
+    </div>
+    <!-- /.box-body -->
+</div>
+

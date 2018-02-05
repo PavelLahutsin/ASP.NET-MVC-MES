@@ -18,9 +18,9 @@
         </th>
         <th></th>
         @if (User.IsInRole("admin"))
-    {
-        <th></th>
-}
+        {
+            <th></th>
+        }
     </tr>
 
     @foreach (var item in Model)
@@ -39,9 +39,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Airtight)
             </td>
-            
+
             <td>
-                @Html.ActionLink("Подробнее", "Details", new {id = item.Id}, new {@class = "text-info"}) 
+                @Html.ActionLink("Подробнее", "Details", new { id = item.Id }, new { @class = "text-info" })
             </td>
 
             @if (User.IsInRole("admin"))
@@ -58,41 +58,82 @@
 
 
 <script type="text/javascript" charset="utf-8">
-    $("#example").dataTable(
-        {
+    if (@Html.Raw(Json.Encode(User.IsInRole("admin"))))
+    {
+        $("#example").dataTable(
+            {
 
-            language: {
-                "processing": "Подождите...",
-                "search": "Поиск:",
-                "lengthMenu": "Показать _MENU_ записей",
-                "info": "Записи с _START_ до _END_ из _TOTAL_ записей",
-                "infoEmpty": "Записи с 0 до 0 из 0 записей",
-                "infoFiltered": "(отфильтровано из _MAX_ записей)",
-                "infoPostFix": "",
-                "loadingRecords": "Загрузка записей...",
-                "zeroRecords": "Записи отсутствуют.",
-                "emptyTable": "В таблице отсутствуют данные",
-                "paginate": {
-                    "first": "Первая",
-                    "previous": "Предыдущая",
-                    "next": "Следующая",
-                    "last": "Последняя"
+                language: {
+                    "processing": "Подождите...",
+                    "search": "Поиск:",
+                    "lengthMenu": "Показать _MENU_ записей",
+                    "info": "Записи с _START_ до _END_ из _TOTAL_ записей",
+                    "infoEmpty": "Записи с 0 до 0 из 0 записей",
+                    "infoFiltered": "(отфильтровано из _MAX_ записей)",
+                    "infoPostFix": "",
+                    "loadingRecords": "Загрузка записей...",
+                    "zeroRecords": "Записи отсутствуют.",
+                    "emptyTable": "В таблице отсутствуют данные",
+                    "paginate": {
+                        "first": "Первая",
+                        "previous": "Предыдущая",
+                        "next": "Следующая",
+                        "last": "Последняя"
+                    },
+                    "aria": {
+                        "sortAscending": ": активировать для сортировки столбца по возрастанию",
+                        "sortDescending": ": активировать для сортировки столбца по убыванию"
+                    }
                 },
-                "aria": {
-                    "sortAscending": ": активировать для сортировки столбца по возрастанию",
-                    "sortDescending": ": активировать для сортировки столбца по убыванию"
-                }
-            },
 
-            "aoColumns": [
+                "aoColumns": [
 
-                { "sType": "ruDate" },
-                null,
-                null,
-                null,
-                null
-            ]
-        });
+                    { "sType": "ruDate" },
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            });
+    }
+    else{
+        $("#example").dataTable(
+            {
+
+                language: {
+                    "processing": "Подождите...",
+                    "search": "Поиск:",
+                    "lengthMenu": "Показать _MENU_ записей",
+                    "info": "Записи с _START_ до _END_ из _TOTAL_ записей",
+                    "infoEmpty": "Записи с 0 до 0 из 0 записей",
+                    "infoFiltered": "(отфильтровано из _MAX_ записей)",
+                    "infoPostFix": "",
+                    "loadingRecords": "Загрузка записей...",
+                    "zeroRecords": "Записи отсутствуют.",
+                    "emptyTable": "В таблице отсутствуют данные",
+                    "paginate": {
+                        "first": "Первая",
+                        "previous": "Предыдущая",
+                        "next": "Следующая",
+                        "last": "Последняя"
+                    },
+                    "aria": {
+                        "sortAscending": ": активировать для сортировки столбца по возрастанию",
+                        "sortDescending": ": активировать для сортировки столбца по убыванию"
+                    }
+                },
+
+                "aoColumns": [
+
+                    { "sType": "ruDate" },
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            });
+    }
 
     jQuery.extend(jQuery.fn.dataTableExt.oSort,
         {

@@ -12,6 +12,7 @@ using MES.WEB.Models;
 
 namespace MES.WEB.Controllers
 {
+    [Authorize]
     public class AnalyticsController : Controller
     {
         private readonly IAnalyticsService _service;
@@ -46,7 +47,7 @@ namespace MES.WEB.Controllers
             //    {
             //        Date = date1,
             //        BoxingVariant = BoxingVariant.Годная,
-            //        ProductId = 1,
+            //        ProductId = 3,
             //        UserId = 1,
             //        Quantity = random.Next(300, 3000)
 

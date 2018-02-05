@@ -14,10 +14,9 @@
         <div class="register-box-body">
             <p class="login-box-msg">Register a new membership</p>
 
-            @using (Html.BeginForm("Register", "Account", FormMethod.Post,
+            @using (Html.BeginForm("Edit", "Account", FormMethod.Post,
 new { enctype = "multipart/form-data" }))
             {
-
                 @Html.AntiForgeryToken()
                 <div class="form-group has-feedback">
                     @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Имя" } })
@@ -40,15 +39,16 @@ new { enctype = "multipart/form-data" }))
                 </div>
 
 
-                <div class="form-group has-feedback">                    
-                        <input type="file" name="imageUpload" class="form-control" placeholder="Фото" />
-                        <span class="glyphicon glyphicon-picture form-control-feedback"></span>
-                    </div>              
+                <div class="form-group has-feedback">
+                    <input type="file" name="imageUpload" class="form-control" placeholder="Фото" />
+                    <span class="glyphicon glyphicon-picture form-control-feedback"></span>
+                </div>
+
                 <div class="row">
 
                     <!-- /.col -->
                     <div class="col-xs-4">
-                        <button type="submit" class="btn btn-primary btn-flat">Регистрация</button>
+                        <button type="submit" class="btn btn-primary btn-flat">Изменить профиль</button>
                     </div>
                     <!-- /.col -->
                 </div>

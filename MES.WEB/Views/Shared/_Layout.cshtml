@@ -7,8 +7,8 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-   
-  
+
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -99,19 +99,25 @@
 
                     <li id="analytics">
                         <a href="@Url.Action("Index", "Analytics")">
-                            <i class="fa fa-truck"></i> <span>Аналитика</span>
+                            <i class="fa fa-bar-chart"></i> <span>Аналитика</span>
                         </a>
                     </li>
 
                     @if (User.IsInRole("admin"))
-    {
-                <li class="header">Администрирование</li>
-                <li id="finishedGoodsWarehouse">
-                    <a href="@Url.Action("Register", "Account")">
-                        <i class="fa fa-registered"></i> <span>Добавить пользователя</span>
-                    </a>
-                </li>
-}
+                    {
+                        <li class="header">Администрирование</li>
+                        <li id="finishedGoodsWarehouse">
+                            <a href="@Url.Action("Register", "Account")">
+                                <i class="fa fa-registered"></i> <span>Добавить пользователя</span>
+                            </a>
+                        </li>
+
+                        <li id="finishedGoodsWarehouse">
+                            <a href="@Url.Action("Index", "Admin")">
+                                <i class="fa fa-registered"></i> <span>Admin</span>
+                            </a>
+                        </li>
+                    }
 
                 </ul>
             </section>
@@ -140,8 +146,8 @@
     @Scripts.Render("~/bundles/bootstrap-datepicker")
     @Scripts.Render("~/bundles/DataTables")
     @Scripts.Render("~/bundles/mes")
-<script src="~/Scripts/Chart.min.js"></script>
-    
+    <script src="~/Scripts/Chart.min.js"></script>
+
 
     @RenderSection("scripts", false)
 

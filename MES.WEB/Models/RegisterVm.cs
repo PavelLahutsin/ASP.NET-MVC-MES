@@ -2,7 +2,7 @@
 
 namespace MES.WEB.Models
 {
-    public class RegisterVm
+    public class RegisterVm 
     {
         [Display(Name = "Имя")]
         [Required]
