@@ -11,7 +11,7 @@
         <ul class="nav nav-stacked">
             @foreach (var item in Model)
             {
-                <li ><a onclick="showElement(event, this)" href="@Url.Action("ListStructProduct", new { id = item.Id })">@item.Name</a></li>
+            <li ><a style="display: inline-block" onclick="showElement(event, this)" href="@Url.Action("ListStructProduct", new { id = item.Id })">@item.Name</a><span><a  class="text-danger pull-right margin" onclick="deleteElementFromList(event, this)" href="@Url.Action("DeleteProduct", new {id=item.Id} )">Удалить</a></span></li>
             }
         </ul>
     </div>

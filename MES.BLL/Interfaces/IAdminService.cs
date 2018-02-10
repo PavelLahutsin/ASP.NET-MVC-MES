@@ -9,8 +9,10 @@ namespace MES.BLL.Interfaces
     {
         Task<OperationDetails> CreateDetail(DetailDTO detailDto);
         Task<OperationDetails> CreateProduct(ProductDto productDto);
-        Task<OperationDetails> CreateStructProduct(StructureOfTheProductDto dto);
+        Task<OperationDetails> CreateStructProduct(DetailInProductDto dto);
         Task<IEnumerable<ProductDto>> ListProduct();
         Task<IEnumerable<DetailInProductDto>> ListStructOfTheProduct(int id);
+        Task<OperationDetails> DeleteDetailOnStructProduct(int detailid, int productId);
+        Task<OperationDetails> DeleteProduct(int id);
     }
 }

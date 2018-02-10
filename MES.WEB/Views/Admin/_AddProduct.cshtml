@@ -1,0 +1,40 @@
+﻿@model MES.WEB.Models.ProductVm
+
+
+<div id="modalContent" class="modal-content modal-success">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title">Добавить продукт</h4>
+    </div>
+
+    @using (Ajax.BeginForm("AddProduct", new AjaxOptions
+    {
+        UpdateTargetId = "modalContent",
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        OnSuccess = "unloadModal"
+    }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="modal-body">
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Отмена</button>
+            <button type="submit" value="Create" class="btn btn-outline">Сохранить изменения</button>
+        </div>
+    }
+
+
+</div>

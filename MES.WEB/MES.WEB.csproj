@@ -215,6 +215,7 @@
     <Compile Include="Controllers\AssemblyController.cs" />
     <Compile Include="Controllers\BoxingController.cs" />
     <Compile Include="Controllers\CheckJmtController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FinishedGoodsWarehouseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RepairController.cs" />
@@ -820,6 +821,11 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\_ListProduct.cshtml" />
     <Content Include="Views\Admin\_ListStructProduct.cshtml" />
+    <Content Include="Views\Admin\_AddProduct.cshtml" />
+    <Content Include="Views\Admin\_AddStructProduct.cshtml" />
+    <Content Include="Views\Analytics\_ShipmentChartModal.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\Forbidden.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

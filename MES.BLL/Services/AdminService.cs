@@ -1,17 +1,15 @@
 ﻿using MES.DAL.Interfaces;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using MES.BLL.DTO;
 using MES.BLL.Infrastructure;
 using MES.BLL.Interfaces;
 using MES.DAL.Entities;
+using MES.DAL.Enums;
 
 namespace MES.BLL.Services
 {
@@ -46,7 +44,7 @@ namespace MES.BLL.Services
             }
             catch (Exception e)
             {
-                return new OperationDetails(true, e.Message, "");
+                return new OperationDetails(false, e.Message, "");
             }
 
         }
@@ -64,35 +62,43 @@ namespace MES.BLL.Services
 
                 };
 
+
                 _uof.Products.Create(newProduct);
+
+                foreach (VariantStateProduct vaStPr in Enum.GetValues(typeof(VariantStateProduct)))
+                {
+                    _uof.ProductStates.Create(new ProductState { Product = newProduct, StateProduct = vaStPr, Quantity = 0 });
+                   
+                }
+
                 await _uof.Commit();
-                return new OperationDetails(true, "Продукт успешно добавлен", "");
+                return new OperationDetails(true, "Продукт успешно добавлен", "/Admin/ListProduct");
             }
             catch (Exception e)
             {
-                return new OperationDetails(true, e.Message, "");
+                return new OperationDetails(false, e.Message, "");
             }
 
         }
 
-        public async Task<OperationDetails> CreateStructProduct(StructureOfTheProductDto dto)
+        public async Task<OperationDetails> CreateStructProduct(DetailInProductDto dto)
         {
             try
             {
                 if (await _uof.StructureOfTheProducts.Entities.AnyAsync(a =>
-                    a.DetailId == dto.DetailId && a.ProductId == dto.ProductId))
+                    a.DetailId == dto.Id && a.ProductId == dto.ProductId))
                     throw new Exception("Такая деталь уже существует");
 
                 var structureOfTheProduct =
-                    new StructureOfTheProduct {DetailId = dto.DetailId, ProductId = dto.ProductId};
+                    new StructureOfTheProduct {DetailId = dto.Id, ProductId = dto.ProductId, Quantity = dto.Quantity};
 
                 _uof.StructureOfTheProducts.Create(structureOfTheProduct);
                 await _uof.Commit();
-                return new OperationDetails(true, "Деталь успешно добавлена", "");
+                return new OperationDetails(true, "Деталь успешно добавлена", $"/Admin/ListStructProduct/{dto.ProductId}");
             }
             catch (Exception e)
             {
-                return new OperationDetails(true, e.Message, "");
+                return new OperationDetails(false, e.Message, $"/Admin/ListStructProduct/{dto.ProductId}");
             }
 
         }
@@ -106,13 +112,60 @@ namespace MES.BLL.Services
         public async Task<IEnumerable<DetailInProductDto>> ListStructOfTheProduct(int id)
         {
             var structProduct = await _uof.StructureOfTheProducts.Entities.Where(w => w.ProductId == id).ToListAsync();
-
+            if (structProduct.Count == 0)
+            {
+                return new List<DetailInProductDto>
+                {
+                    new DetailInProductDto
+                    {
+                        Id = -1,
+                        ProductId = id
+                    }
+                };
+            }
             return structProduct.Select(x => new DetailInProductDto
             {
+                ProductId = x.ProductId,
                 Id = x.DetailId,
                 Name = x.Detail.Name,
                 Quantity = x.Quantity
             });
+        }
+
+        public async Task<OperationDetails> DeleteDetailOnStructProduct(int detailid, int productId)
+        {
+            try
+            {
+                var structureOfTheProduct = await _uof.StructureOfTheProducts.Entities.FirstAsync(a =>
+                    a.DetailId == detailid && a.ProductId == productId);
+                
+                _uof.StructureOfTheProducts.Entities.Remove(structureOfTheProduct);
+                await _uof.Commit();
+                return new OperationDetails(true, "Успешно удалена!", "");
+            }
+            catch (InvalidOperationException)
+            {
+                return new OperationDetails(false, "Нет в составе", "");
+            }
+            catch (Exception e)
+            {
+                return new OperationDetails(false, e.Message, "");
+            }
+        }
+
+        public async Task<OperationDetails> DeleteProduct(int id)
+        {
+            try
+            {
+                if(!await _uof.Products.Entities.AnyAsync(a=>a.Id==id)) throw new Exception("Этого продукта нет в базе");
+                _uof.Products.Delete(id);
+                await _uof.Commit();
+                return new OperationDetails(true, "Успешно удалена!", "");
+            }
+            catch (Exception e)
+            {
+                return new OperationDetails(false, e.Message, "");
+            }
         }
     }
 }

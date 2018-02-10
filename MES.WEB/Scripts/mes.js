@@ -11,6 +11,23 @@
     });
 };
 
+function deleteElementFromList(event, element) {
+    $.ajaxSetup({ cache: false });
+    event.preventDefault();
+    $.get(element.href, function (data) {
+        if (data.Succedeed) {
+            unloadModal(data);
+            $("#results2").html('<div class="callout callout-success">' +
+                '<h4>' + data.Message +'</h4 ></div >');
+            alertGood(data.Message);
+        } else {
+            alertBad(data.Message);
+        }
+    });
+};
+
+
+
 //Alert
 function alertGood(message) {
     var result = '<div class="alert alert-success alert-dismissable">' +
@@ -48,7 +65,7 @@ function alertBad(message) {
 
 $(function() {
     $.ajaxSetup({ cache: false });
-    $("#addId").click(function(e) {
+    $(".addtn").click(function(e) {
 
         e.preventDefault();
         $.get(this.href,
@@ -90,6 +107,19 @@ function unloadModal(data) {
     else {
         $('#modDialog').modal('hide');       
         $("#results").load(data.Accessory);
+        alertBad(data.Message);
+    }
+};
+
+function unloadPartial(data) {
+    if (data.Succedeed === true) {
+        $('#modDialog').modal('hide');
+        $("#results2").load(data.Accessory);
+        alertGood(data.Message);
+    } else if (data.Succedeed === undefined) { }
+    else {
+        $('#modDialog').modal('hide');
+        $("#results2").load(data.Accessory);
         alertBad(data.Message);
     }
 };

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using MES.DAL.Entities;
 using MES.DAL.Enums;
 
 namespace MES.WEB.Models

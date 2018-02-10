@@ -70,7 +70,7 @@ namespace MES.WEB.Controllers
             if (!ModelState.IsValid) return PartialView(defect);
 
             var result = await _stockOn.AddDefectDetailAsync(Mapper.Map<DefectDetailDto>(defect));
-            return Json(result);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
 
@@ -123,7 +123,7 @@ namespace MES.WEB.Controllers
 
             var result = await _stockOn.EditDefectDetailAsync(Mapper.Map<DefectDetail>(defect));
 
-            return Json(result);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
     }

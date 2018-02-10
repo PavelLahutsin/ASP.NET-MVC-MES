@@ -99,7 +99,7 @@ namespace MES.WEB.Controllers
             if (!ModelState.IsValid) return PartialView(arrival);
             
             var result = await _service.AddArrivalOfDetailAsync(Mapper.Map<ArrivalOfDetailDto>(arrival));
-            return Json(result);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }

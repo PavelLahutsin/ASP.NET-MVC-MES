@@ -5,8 +5,6 @@ using System.Web.Mvc;
 using AutoMapper;
 using MES.BLL.DTO;
 using MES.BLL.Interfaces;
-using MES.DAL.Entities;
-using MES.DAL.Enums;
 using MES.DAL.Interfaces;
 using MES.WEB.Models;
 
@@ -100,6 +98,14 @@ namespace MES.WEB.Controllers
                  await _service.ShowShipmentAsync(startDate, endDate));
 
             return PartialView("_ShipmentChart", check);
+        }
+
+        public async Task<ActionResult> ShipmentChartModal(string startDate, string endDate)
+        {
+            var check = Mapper.Map<IEnumerable<ShipmentChartDto>, List<ShipmentChartVm>>(
+                await _service.ShowShipmentAsync(startDate, endDate));
+
+            return PartialView("_ShipmentChartModal", check);
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace MES.DAL.Enums
+﻿namespace MES.DAL.Enums
 {
     public enum VariantStateProduct
     {
