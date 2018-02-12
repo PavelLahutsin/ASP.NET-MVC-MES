@@ -25,6 +25,8 @@ namespace MES.WEB
             Bind<IRepairService>().To<RepairService>();
             Bind<IAnalyticsService>().To<AnalyticsService>();
             Bind<IAdminService>().To<AdminService>();
+            Bind<IDefectService>().To<DefectService>();
+            Bind<IHomeService>().To<HomeService>();
 
         }
     }

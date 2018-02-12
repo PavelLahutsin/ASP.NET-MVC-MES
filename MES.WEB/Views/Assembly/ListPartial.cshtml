@@ -37,7 +37,7 @@
                 @if (User.IsInRole("admin"))
                 {
                     <td>
-                        <a class="text-danger" onclick="deleteElement(event, this)" href="@Url.Action("DeleteAssembly", new { id = item.Id })">Удалить</a>
+                        <a class="btn btn-default btn-delete-item" onclick="deleteElement(event, this)" href="@Url.Action("DeleteAssembly", new { id = item.Id })">Удалить</a>
                     </td>
                 }
 
@@ -50,6 +50,7 @@
 
 
 <script type="text/javascript" charset="utf-8">
+   
     $("#example").dataTable(
         {
 

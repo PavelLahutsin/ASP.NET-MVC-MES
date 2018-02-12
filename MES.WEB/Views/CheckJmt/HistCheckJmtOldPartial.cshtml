@@ -60,6 +60,20 @@
 
 
 <script type="text/javascript" charset="utf-8">
+    $(function() {
+        $.ajaxSetup({ cache: false });
+        $(".addtn").click(function(e) {
+
+            e.preventDefault();
+            $.get(this.href,
+                function(data) {
+                    $('#dialogContent').html(data);
+                    $('#modDialog').modal('show');
+
+                });
+        });
+    });
+
 
     if (@Html.Raw(Json.Encode(User.IsInRole("admin"))))
     {

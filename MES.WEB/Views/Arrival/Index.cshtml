@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<link href="~/Content/themes/base/all.css" rel="stylesheet" />
+@*<link href="~/Content/themes/base/all.css" rel="stylesheet" />*@
 
 
 <div id="alert-message"></div>
@@ -74,8 +74,8 @@
                 });
         });
 
-        $("#stock").className = "active treeview menu-open";
-        $("#histArrival").className = "active";
+        document.getElementById("stock").className = "active treeview menu-open";
+        document.getElementById("histArrival").className = "active";
     </script>
 
 

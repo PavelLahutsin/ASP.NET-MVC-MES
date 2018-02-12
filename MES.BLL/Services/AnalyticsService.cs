@@ -90,7 +90,7 @@ namespace MES.BLL.Services
             if (string.IsNullOrEmpty(startDate) || string.IsNullOrEmpty(endDate))
             {
                 myEndDate = DateTime.Now;
-                myStartDate = new DateTime(myEndDate.Year-1);
+                myStartDate = new DateTime(myEndDate.Year, myEndDate.Month, 1).AddYears(-1);
             }
             else
             {
@@ -117,15 +117,41 @@ namespace MES.BLL.Services
                 });
             }
 
-            var list2 = list.GroupBy(x => x.Date).Select(x=>new ShipmentChartDto
+            var date = new DateTime(myStartDate.Year, myStartDate.Month, 1);
+            var date2 = new DateTime(myEndDate.Year, myEndDate.Month, 1);
+            var prod = _uof.Products.Entities.Select(x => x.Name);
+            var shpList = new List<ShipmentChartDto>();
+            for (DateTime i = date; i <= date2; i=i.AddMonths(1))
             {
-                ProducName = x.First().ProducName,
-                Quantity = x.Sum(q=>q.Quantity),
-                Date = x.First().Date
-            });
+                foreach (string p in prod)
+                {
+                    if (list.Any(a => a.ProducName == p && a.Date == i))
+                    {
+                        shpList.Add(list.First(a => a.ProducName == p && a.Date == i));
+                    }
+                    else
+                    {
+                        shpList.Add(new ShipmentChartDto
+                        {
+                            ProducName = p,
+                            Date = i,
+                            Quantity = 0
+                        });
+                    }
+                }
 
-           
-            return list2;
+
+            }
+
+            //var list2 = list.GroupBy(x => x.Date).Select(x=>new ShipmentChartDto
+            //{
+            //    ProducName = x.First().ProducName,
+            //    Quantity = x.Sum(q=>q.Quantity),
+            //    Date = x.First().Date
+            //});
+
+
+            return shpList;
         }
     }
 }

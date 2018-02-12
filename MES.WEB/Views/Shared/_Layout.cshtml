@@ -7,7 +7,7 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
+    
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -53,9 +53,9 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li id="stockBalanceJmt"><a href="@Url.Action("StockBalanceJmt", "Stock")"><i class="fa fa-circle-o"></i>Остаток на складе</a></li>
+                            <li id="stockBalanceJmt"><a href="@Url.Action("Index", "Stock")"><i class="fa fa-circle-o"></i>Остаток на складе</a></li>
                             <li id="histArrival"><a href="@Url.Action("Index", "Arrival")"><i class="fa fa-circle-o"></i>Приход деталей на склад</a></li>
-                            <li id="defectJmtDetail"><a href="@Url.Action("Defect", "Stock")"><i class="fa fa-circle-o"></i> Брак</a></li>
+                            <li id="defectJmtDetail"><a href="@Url.Action("Defect", "Defect")"><i class="fa fa-circle-o"></i> Брак</a></li>
                         </ul>
                     </li>
 
@@ -91,7 +91,7 @@
 
 
 
-                    <li id="finishedGoodsWarehouse">
+                    <li id="finishe">
                         <a href="@Url.Action("Index", "FinishedGoodsWarehouse")">
                             <i class="fa fa-truck"></i> <span>Склад готовой продукции</span>
                         </a>
@@ -112,9 +112,9 @@
                             </a>
                         </li>
 
-                        <li id="finishedGoodsWarehouse">
+                        <li id="admin">
                             <a href="@Url.Action("Index", "Admin")">
-                                <i class="fa fa-registered"></i> <span>Admin</span>
+                                <i class="fa fa-gears"></i> <span>Конструктор</span>
                             </a>
                         </li>
                     }
@@ -141,12 +141,14 @@
     </div>
     <!-- ./wrapper -->
     <!-- jQuery 3 -->
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/bootstrap-datepicker")
     @Scripts.Render("~/bundles/DataTables")
     @Scripts.Render("~/bundles/mes")
     <script src="~/Scripts/Chart.min.js"></script>
 
+    <script src="~/Scripts/bootbox.js"></script>
 
     @RenderSection("scripts", false)
 

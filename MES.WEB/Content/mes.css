@@ -1,14 +1,11 @@
 ﻿
 
+table tr:first-child {
+    font-weight: bolder
+}
 
-/*table tr {
-    text-align:center
-}*/
-
-
-    table tr:td {
-        text-align: center
-    }
-
+table tr td:first-child {
+    font-weight: bolder
+}
 
 

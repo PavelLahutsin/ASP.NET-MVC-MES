@@ -1,9 +1,9 @@
-﻿
+﻿@model MvcHtmlString
 @{
     ViewBag.Title = "Index";
 }
-
 <link href="~/Content/mes.css" rel="stylesheet" />
+
 
     <div class="box">
         <div class="box-header with-border">
@@ -12,103 +12,14 @@
         <!-- /.box-header -->
         <div class="box-body">
             <div id="results2">
-                @ViewBag.table
+                @Model
             </div>
         </div>
     </div>
 
+    
 
 
-
-    <div class="box">
-        <div class="box-header with-border">
-            <h3 class="box-title"></h3>
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-            <table class="table table-bordered">
-                <tbody>
-                    <tr>
-                        <td>Категория</td>
-                        <td>Состояние</td>
-                        <td>5200</td>
-                        <td>5200-01</td>
-                        <td>6500</td>
-                    </tr>
-                    <tr>
-                        <td rowspan="3">Этапы производства</td>
-                        <td>Собрано</td>
-                        <td>1000</td>
-                        <td>345</td>
-                        <td>354</td>
-                    </tr>
-                    <tr>
-
-                        <td>Спаяно</td>
-                        <td>34</td>
-                        <td>65</td>
-                        <td>100</td>
-                    </tr>
-                    <tr>
-
-                        <td>Проверено</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td rowspan="3">Готовая продукция</td>
-                        <td>Упаковано</td>
-                        <td>200</td>
-                        <td>54</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-
-                        <td>Запаски</td>
-                        <td>0</td>
-                        <td>34</td>
-                        <td>5</td>
-                    </tr>
-                    <tr>
-
-                        <td>Вторичка</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">Отгружено</td>
-
-                        <td>456</td>
-                        <td>1056</td>
-                        <td>3456</td>
-                    </tr>
-                    <tr>
-                        <td rowspan="3">В ремонт</td>
-                        <td>МЕДЬ</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-
-                        <td>НИКЕЛЬ</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-
-                        <td>ЦЕНТР</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                    </tr>
-                </tbody>
-            </table>
-
-        </div>
-    </div>
+   
 
 

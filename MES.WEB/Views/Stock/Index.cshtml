@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div id="modDialog" class="modal fade">
+    <div id="dialogContent" class="modal-dialog"></div>
+</div>
+<div id="alert-message"></div>
+
+@if (User.IsInRole("admin"))
+{
+    <p>
+        <a href="@Url.Action("AddDetail")" class="btn btn-success addtn">Добавить новую деталь</a>
+    </p>
+}
+
+
+<div id="results"></div>
+
+
+@section scripts
+{
+
+    <script>
+        function view() {
+            var startDate = $('#StartDate').val();
+            startDate = encodeURIComponent(startDate);
+            var endDate = $('#EndDate').val();
+            endDate = encodeURIComponent(endDate);
+            $('#results').load('@Url.Action("StockBalanceJmt", "Stock")?startDate=' +
+                startDate +
+                '&endDate=' +
+                endDate);
+
+        }
+
+
+        $(function () {
+            var idToUpdate = $('#results');
+            $.get("/Stock/StockBalanceJmt",
+                function (data) {
+                    $(idToUpdate).html(data);
+                });
+        });
+
+        document.getElementById("stock").className = "active treeview menu-open";
+        document.getElementById("stockBalanceJmt").className = "active";
+    </script>
+
+
+}

@@ -1,12 +1,22 @@
 ﻿function deleteElement(event, element) {
     $.ajaxSetup({ cache: false });
     event.preventDefault();
-    $.get(element.href, function (data) {
-        if (data.Succedeed) {
-            $(element).closest("tr").remove();
-            alertGood(data.Message);
-        } else {
-            alertBad(data.Message);
+    bootbox.confirm({
+        size: "small",
+        message: "Вы уверены?",
+       
+        callback: function(result) {
+            if (result) {
+                $.get(element.href,
+                    function(data) {
+                        if (data.Succedeed) {
+                            $(element).closest("tr").remove();
+                            alertGood(data.Message);
+                        } else {
+                            alertBad(data.Message);
+                        }
+                    });
+            }
         }
     });
 };
@@ -14,14 +24,30 @@
 function deleteElementFromList(event, element) {
     $.ajaxSetup({ cache: false });
     event.preventDefault();
-    $.get(element.href, function (data) {
-        if (data.Succedeed) {
-            unloadModal(data);
-            $("#results2").html('<div class="callout callout-success">' +
-                '<h4>' + data.Message +'</h4 ></div >');
-            alertGood(data.Message);
-        } else {
-            alertBad(data.Message);
+    bootbox.confirm({
+        size: "small",
+        message: "Вы уверены?",
+
+        callback: function(result) {
+            if (result) {
+                $.get(element.href,
+                    function(data) {
+                        if (data.Succedeed) {
+                            var idToUpdate = $('#results');
+                            $.get("/Admin/ListProduct",
+                                function (data) {
+                                    $(idToUpdate).html(data);
+                                });
+                            $("#results2").html('<div class="callout callout-success">' +
+                                '<h4>' +
+                                data.Message +
+                                '</h4 ></div >');
+                            alertGood(data.Message);
+                        } else {
+                            alertBad(data.Message);
+                        }
+                    });
+            }
         }
     });
 };
@@ -45,22 +71,6 @@ function alertBad(message) {
     $('#alert-message').show();
 };
 
-
-
-
-
-//$(function () {
-//    $.ajaxSetup({ cache: false });
-//    $(".text-info").click(function (e) {
-
-//        e.preventDefault();
-//        $.get(this.href,
-//            function (data) {
-//                $('#dialogContent').html(data);
-//                $('#modDialog').modal('show');
-//            });
-//    });
-//});
 
 
 $(function() {
@@ -151,5 +161,4 @@ $('#EndDate').on('changeDate',
     function(ev) {
         view();
     });
-
 

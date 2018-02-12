@@ -8,10 +8,7 @@ namespace MES.WEB
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                "~/Scripts/jquery-{version}.js",
-                "~/Scripts/dist/js/adminlte.js",
-                "~/Scripts/jquery.validate*",
-                "~/Scripts/jquery.unobtrusive-ajax.js"
+                "~/Scripts/jquery-{version}.js"
                ));
 
             bundles.Add(new ScriptBundle("~/bundles/DataTables").Include(
@@ -30,7 +27,10 @@ namespace MES.WEB
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/bootstrap.js",
-                "~/Scripts/respond.js"));
+                "~/Scripts/respond.js",
+                "~/Scripts/dist/js/adminlte.js",
+                "~/Scripts/jquery.validate*",
+                "~/Scripts/jquery.unobtrusive-ajax.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/mes").Include(
                 "~/Scripts/mes.js"));

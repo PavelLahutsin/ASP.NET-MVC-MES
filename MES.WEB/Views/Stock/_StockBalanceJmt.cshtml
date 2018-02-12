@@ -1,0 +1,74 @@
+﻿@model IEnumerable<MES.WEB.Models.DetailVm>
+
+@{
+    ViewBag.Title = "Остаток на складе";
+}
+
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">ЖМТ</h3>
+    </div>
+    <div class="box-body">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VendorCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantityq)
+                </th>
+                @if (User.IsInRole("admin"))
+                {
+                    <th></th>
+                    
+                }
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VendorCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantityq)
+                    </td>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <td>
+                            @Html.ActionLink("Edit", "EditJmtDetail", new { id = item.Id }, new { @class = "btn btn-warning" })
+                       |
+                            <a class="btn btn-danger" onclick="deleteElement(event, this)" href="@Url.Action("Delete", new { id = item.Id })">Удалить</a>
+
+                        </td>
+                    }
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+        $.ajaxSetup({ cache: false });
+        $(".btn-warning").click(function (e) {
+
+            e.preventDefault();
+            $.get(this.href,
+                function (data) {
+                    $('#dialogContent').html(data);
+                    $('#modDialog').modal('show');
+                });
+        });
+    })
+</script>
+
+

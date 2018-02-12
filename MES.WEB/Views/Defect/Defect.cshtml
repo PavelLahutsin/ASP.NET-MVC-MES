@@ -60,7 +60,7 @@
             startDate = encodeURIComponent(startDate);
             var endDate = $('#EndDate').val();
             endDate = encodeURIComponent(endDate);
-            $('#results').load('@Url.Action("HistDefectPartial", "Stock")?startDate=' +
+            $('#results').load('@Url.Action("HistDefectPartial", "Defect")?startDate=' +
                 startDate +
                 '&endDate=' +
                 endDate);
@@ -70,14 +70,14 @@
     
         $(function () {
             var idToUpdate = $('#results');
-            $.get("/Stock/HistDefectPartial",
+            $.get("/Defect/HistDefectPartial",
                 function (data) {
                     $(idToUpdate).html(data);
                 });
         });
 
-        $("#stock").className = "active treeview menu-open";
-        $("#defectJmtDetail").className = "active";
+        document.getElementById("stock").className = "active treeview menu-open";
+        document.getElementById("defectJmtDetail").className = "active";
     </script>
 
 

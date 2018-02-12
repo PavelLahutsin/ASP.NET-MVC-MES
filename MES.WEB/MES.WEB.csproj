@@ -215,6 +215,7 @@
     <Compile Include="Controllers\AssemblyController.cs" />
     <Compile Include="Controllers\BoxingController.cs" />
     <Compile Include="Controllers\CheckJmtController.cs" />
+    <Compile Include="Controllers\DefectController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FinishedGoodsWarehouseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -568,6 +569,10 @@
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="Scripts\bootbox.js" />
+    <Content Include="Scripts\bootbox.min.js" />
+    <Content Include="Scripts\bootstrap-confirmation.js" />
+    <Content Include="Scripts\bootstrap-confirmation.min.js" />
     <Content Include="Scripts\bootstrap-datepicker\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap-datepicker\locales\bootstrap-datepicker-en-CA.min.js" />
@@ -755,6 +760,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\tooltip.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -769,9 +775,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Account\Login2.cshtml" />
-    <Content Include="Views\Stock\StockBalanceJmt.cshtml" />
-    <Content Include="Views\Stock\EditJmtDetailPartial.cshtml" />
-    <Content Include="Views\Stock\AddDefectJmtDetailPartial.cshtml" />
+    <Content Include="Views\Stock\_StockBalanceJmt.cshtml" />
+    <Content Include="Views\Defect\AddDefectJmtDetailPartial.cshtml" />
     <Content Include="Views\Soldering\AddSolderingPartial.cshtml" />
     <Content Include="Views\Soldering\ListPartial.cshtml" />
     <Content Include="Views\Soldering\Soldering.cshtml" />
@@ -782,9 +787,9 @@
     <Content Include="Views\Arrival\EditArrivalPartial.cshtml" />
     <Content Include="Views\Arrival\AddJmtDetailPartial.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Stock\Defect.cshtml" />
-    <Content Include="Views\Stock\HistDefectPartial.cshtml" />
-    <Content Include="Views\Stock\EditDefectPartial.cshtml" />
+    <Content Include="Views\Defect\Defect.cshtml" />
+    <Content Include="Views\Defect\HistDefectPartial.cshtml" />
+    <Content Include="Views\Defect\EditDefectPartial.cshtml" />
     <Content Include="Views\Assembly\Index.cshtml" />
     <Content Include="Views\Assembly\AddAssemblyPartial.cshtml" />
     <Content Include="Views\Assembly\ListPartial.cshtml" />
@@ -826,10 +831,12 @@
     <Content Include="Views\Analytics\_ShipmentChartModal.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Error\Forbidden.cshtml" />
+    <Content Include="Views\Stock\_AddDetail.cshtml" />
+    <Content Include="Views\Stock\Index.cshtml" />
+    <Content Include="Views\Stock\_EditJmtDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Product\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -845,6 +852,9 @@
       <Project>{bf99918d-861d-4ac2-a849-bfbdab61bb9d}</Project>
       <Name>MES.DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
