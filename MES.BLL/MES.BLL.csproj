@@ -103,6 +103,7 @@
     <Compile Include="DTO\DetailInProductDto.cs" />
     <Compile Include="DTO\IdProvider.cs" />
     <Compile Include="DTO\DisplayArrivalOfDetailDto.cs" />
+    <Compile Include="DTO\LoginDto.cs" />
     <Compile Include="DTO\ProductDTO.cs" />
     <Compile Include="DTO\ProductStateDto.cs" />
     <Compile Include="DTO\RepairDto.cs" />

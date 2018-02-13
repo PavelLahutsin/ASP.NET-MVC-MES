@@ -2,7 +2,7 @@
 
 namespace MES.BLL.DTO
 {
-    public class UserDto
+    public class UserDto : IdProvider
     {
         public string UserName { get; set; }
         public string Password { get; set; }

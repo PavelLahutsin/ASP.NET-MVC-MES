@@ -25,29 +25,32 @@
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: @Html.Raw(Json.Encode(Model.Select(x=> x.Date.ToString("MMMM", new CultureInfo("ru-RU"))))),
+            labels: @Html.Raw(Json.Encode(Model.Where(w=>w.ProducName== "6500").Select(x=> x.Date.ToString("MMMM", new CultureInfo("ru-RU"))))),
             datasets: [{
-                            label: '5200-01',
-                data: @Html.Raw(Json.Encode(Model.Where(w=>w.ProducName== "5200-01").Select(x=>x.Quantity))),
+                    label: '5200-01',
+                    data: @Html.Raw(Json.Encode(Model.Where(w=>w.ProducName== "5200-01").Select(x=>x.Quantity))),
 
-                borderColor: "#8e5ea2",
-                fill: false
-
-            },
-            {
-                            label: '6500',
-                data: @Html.Raw(Json.Encode(Model.Where(w=>w.ProducName== "6500").Select(x=>x.Quantity))),
-                borderColor: "#4e3ea2",
-                fill: false
+                    backgroundColor: "red",
+                    borderColor: "red",
+                    fill: false
 
                 },
-            {
-                            label: '5200',
-                data: @Html.Raw(Json.Encode(Model.Where(w=>w.ProducName== "5200").Select(x=>x.Quantity))),
-                borderColor: "#5e5ea2",
-                fill: false
+                {
+                    label: '6500',
+                    data: @Html.Raw(Json.Encode(Model.Where(w=>w.ProducName== "6500").Select(x=>x.Quantity))),
+                    borderColor: "green",
+                    backgroundColor: "green",
+                    fill: false
 
-            }]
+                },
+                {
+                    label: '5200',
+                    data: @Html.Raw(Json.Encode(Model.Where(w=>w.ProducName== "5200").Select(x=>x.Quantity))),
+                    borderColor: "blue",
+                    backgroundColor: "blue",
+                    fill: false
+
+                }]
         },
         options: {
             scales: {
@@ -57,7 +60,7 @@
 
 
                     }
-            }]
+                }]
             }
 
         }

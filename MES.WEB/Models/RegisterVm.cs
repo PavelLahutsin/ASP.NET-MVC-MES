@@ -2,7 +2,7 @@
 
 namespace MES.WEB.Models
 {
-    public class RegisterVm 
+    public class RegisterVm : IdProvider
     {
         [Display(Name = "Имя")]
         [Required]

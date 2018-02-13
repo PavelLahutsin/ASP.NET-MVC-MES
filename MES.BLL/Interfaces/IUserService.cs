@@ -8,5 +8,6 @@ namespace MES.BLL.Interfaces
     {
         Task<OperationDetails> Register(UserDto userDto);
         Task<OperationDetails> EditUser(UserDto userDto);
+        
     }
 }

@@ -16,43 +16,44 @@
 
             @using (Html.BeginForm("Edit", "Account", FormMethod.Post,
 new { enctype = "multipart/form-data" }))
-            {
-                @Html.AntiForgeryToken()
-                <div class="form-group has-feedback">
-                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Имя" } })
-                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Id)
+        <div class="form-group has-feedback">
+            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Имя" } })
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
 
-                </div>
+        </div>
 
-                <div class="form-group has-feedback">
-                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Пароль" } })
-                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        <div class="form-group has-feedback">
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Пароль" } })
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
 
-                </div>
-                <div class="form-group has-feedback">
-                    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Повторить пароль" } })
-                    <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
-                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group has-feedback">
+            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Повторить пароль" } })
+            <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
 
-                </div>
+        </div>
 
 
-                <div class="form-group has-feedback">
-                    <input type="file" name="imageUpload" class="form-control" placeholder="Фото" />
-                    <span class="glyphicon glyphicon-picture form-control-feedback"></span>
-                </div>
+        <div class="form-group has-feedback">
+            <input type="file" name="imageUpload" class="form-control" placeholder="Фото" />
+            <span class="glyphicon glyphicon-picture form-control-feedback"></span>
+        </div>
 
-                <div class="row">
+        <div class="row">
 
-                    <!-- /.col -->
-                    <div class="col-xs-4">
-                        <button type="submit" class="btn btn-primary btn-flat">Изменить профиль</button>
-                    </div>
-                    <!-- /.col -->
-                </div>
-            }
+            <!-- /.col -->
+            <div class="col-xs-4">
+                <button type="submit" class="btn btn-primary btn-flat">Изменить профиль</button>
+            </div>
+            <!-- /.col -->
+        </div>
+}
 
         </div>
         <!-- /.form-box -->

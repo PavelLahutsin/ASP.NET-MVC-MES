@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using MES.BLL.DTO;
 using MES.BLL.Infrastructure;
 using MES.BLL.Interfaces;
@@ -17,26 +19,30 @@ namespace MES.BLL.Services
         {
             _uof = uof;
         }
-      
+
 
         public async Task<OperationDetails> Register(UserDto userDto)
         {
             try
             {
-                if (_uof.Users.Entities.Any(u => u.UserName==userDto.UserName)) throw new Exception("Пользователь с таким именем уже существует");
+                if (_uof.Users.Entities.Any(u => u.UserName == userDto.UserName))
+                    throw new Exception("Пользователь с таким именем уже существует");
                 var user = new User
                 {
-                    UserName = userDto.UserName, Password = userDto.Password, RoleId = 2,
-                    Image = userDto.Image, MimeType = userDto.MimeType
+                    UserName = userDto.UserName,
+                    Password = userDto.Password,
+                    RoleId = 2,
+                    Image = userDto.Image,
+                    MimeType = userDto.MimeType
                 };
                 _uof.Users.Create(user);
                 await _uof.Commit();
-                return new OperationDetails(true,$"Пользователь {userDto.UserName} удачно зарегестрирован", "");
+                return new OperationDetails(true, $"Пользователь {userDto.UserName} удачно зарегестрирован", "");
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return new OperationDetails(false, "Регистрация не прошла:" , e.Message);
+                return new OperationDetails(false, "Регистрация не прошла:", e.Message);
             }
         }
 
@@ -44,12 +50,12 @@ namespace MES.BLL.Services
         {
             try
             {
-                var user = await _uof.Users.GetAsync(2);
+                var user = await _uof.Users.GetAsync(userDto.Id);
                 user.UserName = userDto.UserName;
                 user.Password = userDto.Password;
                 user.Image = userDto.Image;
                 user.MimeType = userDto.MimeType;
-                
+
                 _uof.Users.Update(user);
                 await _uof.Commit();
                 return new OperationDetails(true, $"Пользователь {userDto.UserName} удачно зарегестрирован", "");
@@ -60,5 +66,8 @@ namespace MES.BLL.Services
                 return new OperationDetails(false, "Регистрация не прошла:", e.Message);
             }
         }
+
+       
+
     }
 }

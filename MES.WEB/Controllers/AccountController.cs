@@ -110,6 +110,7 @@ namespace MES.WEB.Controllers
         }
 
         [Authorize]
+        [ValidateAntiForgeryToken]
         [HttpPost]        
         public async Task<ActionResult> Edit(RegisterVm modal, HttpPostedFileBase imageUpload = null)
         {
