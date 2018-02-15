@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
+using System.Text;
 using System.Threading.Tasks;
 using MES.BLL.DTO;
 using MES.BLL.Infrastructure;
@@ -53,6 +56,7 @@ namespace MES.BLL.Services
                 
 
                 _uof.Assemblys.Create(ass);
+                await SendEmailAsync();
                 await _uof.Commit();
                 return new OperationDetails(true, "Сборка успешно добавлена", "/Assembly/ListPartial");
             }
@@ -126,6 +130,45 @@ namespace MES.BLL.Services
                 _uof.Rollback();
                 return new OperationDetails(false, "Сборка не добавлена", "");
             }
+        }
+
+        private async Task SendEmailAsync()
+        {
+            var details = await _uof.StructureOfTheProducts.Entities.Where(w => w.Product.Name == "5200-01").Select(x => new DetailDTO
+            {
+                Name = x.Detail.Name,
+                GroupProductId = x.Detail.GroupProductId,
+                Quantityq = x.Detail.Quantityq / x.Quantity,
+                VendorCode = x.Detail.VendorCode
+            }).ToListAsync();
+
+            var i = 0;
+            var str = new StringBuilder();
+            foreach (var dto in details)
+            {
+                if (dto.Quantityq > 500) continue;
+                str.AppendLine($"{dto.Name} ({dto.VendorCode}) осталось на {dto.Quantityq} теплообменника\n");
+                i++;
+            }
+
+            if (i > 0)
+            {
+                var from = new MailAddress("zavet.glade@gmail.com", "Tom");
+                var to = new MailAddress("p.lahutsin@gmail.com");
+                var m = new MailMessage(@from, to)
+                {
+                    Subject = "Остаток деталей на складе",
+                    Body = str.ToString()
+                };
+                var smtp = new SmtpClient("smtp.gmail.com", 587)
+                {
+                    Credentials = new NetworkCredential("zavet.glade@gmail.com", "7553311df"),
+                    EnableSsl = true
+                };
+                await smtp.SendMailAsync(m);
+            }
+
+            
         }
     }
 }

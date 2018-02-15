@@ -67,8 +67,11 @@ namespace MES.BLL.Services
                 myStartDate = DateTime.Parse(startDate);
             }
 
-            return await _uof.CheckJmts.Entities.Where(w =>
-                    w.Date >= myStartDate && w.Date <= myEndDate && w.State == StateFoTest.Новые && w.Product.Name == "5200-01")
+
+
+            var check = await _uof.CheckJmts.Entities.Where(w =>
+                    w.Date >= myStartDate && w.Date <= myEndDate && w.State == StateFoTest.Новые &&
+                    w.Product.Name == "5200-01")
                 .GroupBy(dt => dt.ProductId)
                 .Select(x => new ChekDetailsDto()
                 {
@@ -81,6 +84,19 @@ namespace MES.BLL.Services
                     CapM = x.Sum(s => s.CapM),
                     Center = x.Sum(s => s.Center)
                 }).FirstOrDefaultAsync();
+
+            if (check != null) return check;
+            return new ChekDetailsDto()
+            {
+                Airtight = 0,
+                Defect = 0,
+                Housing = 0,
+                Other = 0,
+                Tube = 0,
+                CapN = 0,
+                CapM = 0,
+                Center = 0
+            };
         }
 
         public async Task<IEnumerable<ShipmentChartDto>> ShowShipmentAsync(string startDate, string endDate)
@@ -117,6 +133,13 @@ namespace MES.BLL.Services
                 });
             }
 
+            var list2 = list.GroupBy(x => x.Date).Select(x=>new ShipmentChartDto
+            {
+                ProducName = x.First().ProducName,
+                Quantity = x.Sum(q=>q.Quantity),
+                Date = x.First().Date
+            }).ToList();
+
             var date = new DateTime(myStartDate.Year, myStartDate.Month, 1);
             var date2 = new DateTime(myEndDate.Year, myEndDate.Month, 1);
             var prod = _uof.Products.Entities.Select(x => x.Name);
@@ -127,7 +150,7 @@ namespace MES.BLL.Services
                 {
                     if (list.Any(a => a.ProducName == p && a.Date == i))
                     {
-                        shpList.Add(list.First(a => a.ProducName == p && a.Date == i));
+                        shpList.Add(list2.First(a => a.ProducName == p && a.Date == i));
                     }
                     else
                     {
@@ -142,15 +165,7 @@ namespace MES.BLL.Services
 
 
             }
-
-            //var list2 = list.GroupBy(x => x.Date).Select(x=>new ShipmentChartDto
-            //{
-            //    ProducName = x.First().ProducName,
-            //    Quantity = x.Sum(q=>q.Quantity),
-            //    Date = x.First().Date
-            //});
-
-
+            
             return shpList;
         }
     }
