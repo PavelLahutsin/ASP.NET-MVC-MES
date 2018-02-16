@@ -133,7 +133,9 @@ namespace MES.BLL.Services
                 });
             }
 
-            var list2 = list.GroupBy(x => x.Date).Select(x=>new ShipmentChartDto
+            
+
+            var list2 = list.GroupBy(x => new {x.ProducName, x.Date}).Select(x=>new ShipmentChartDto
             {
                 ProducName = x.First().ProducName,
                 Quantity = x.Sum(q=>q.Quantity),

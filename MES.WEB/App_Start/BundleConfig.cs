@@ -38,8 +38,8 @@ namespace MES.WEB
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/bootstrap.css",
-                "~/Content/font-awesome/css/font-awesome.css",
-                "~/Content/font-awesome/css/font-awesome.min.css",
+                "~/Content/font-awesome.css",
+                "~/Content/font-awesome.min.css",
                 "~/Content/dist/css/AdminLTE.css",
                 "~/Content/dist/css/skins/_all-skins.css",
                 "~/Content/DataTables/css/dataTables.bootstrap.css",

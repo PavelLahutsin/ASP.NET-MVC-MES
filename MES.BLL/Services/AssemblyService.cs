@@ -56,7 +56,7 @@ namespace MES.BLL.Services
                 
 
                 _uof.Assemblys.Create(ass);
-                await SendEmailAsync();
+                //await SendEmailAsync();
                 await _uof.Commit();
                 return new OperationDetails(true, "Сборка успешно добавлена", "/Assembly/ListPartial");
             }
