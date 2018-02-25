@@ -740,7 +740,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Account\Login2.cshtml" />
     <Content Include="Views\Stock\_StockBalanceJmt.cshtml" />
     <Content Include="Views\Defect\AddDefectJmtDetailPartial.cshtml" />
     <Content Include="Views\Soldering\AddSolderingPartial.cshtml" />

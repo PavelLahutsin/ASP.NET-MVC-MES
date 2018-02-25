@@ -75,6 +75,7 @@ function alertBad(message) {
 
 $(function() {
     $.ajaxSetup({ cache: false });
+    console.log('handle add');
     $(".addtn").click(function(e) {
 
         e.preventDefault();
@@ -118,6 +119,8 @@ function unloadModal(data) {
         $('#modDialog').modal('hide');       
         $("#results").load(data.Accessory);
         alertBad(data.Message);
+        $(document).off("submit", "form[data-ajax=true]");
+
     }
 };
 

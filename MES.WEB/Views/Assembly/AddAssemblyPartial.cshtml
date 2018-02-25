@@ -13,13 +13,12 @@
         HttpMethod = "POST",
         InsertionMode = InsertionMode.Replace,
         OnSuccess = "unloadModal",
-        
     }))
 
     {
         <div class="modal-body">
             @Html.AntiForgeryToken()
-
+            
             <div class="form-horizontal">
 
 
