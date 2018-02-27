@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MES.DAL.Entities.ArrivalOfDetail">
+    <Position X="11.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAwAQAAAAAABAAAAAAAACAA=</HashCode>
+      <FileName>Entities\ArrivalOfDetail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.DAL.Entities.Assembly">
+    <Position X="15.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAADAAAAAAAAAAAAAAAAAAgAAAAAAAABAAAAgAAAAAA=</HashCode>
+      <FileName>Entities\Assembly.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.DAL.Entities.Boxing">
+    <Position X="19.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAADAAAAAAAAAAAAAAAAAAgAAAAAAAABAAAAggAAAAA=</HashCode>
+      <FileName>Entities\Boxing.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.DAL.Entities.CheckJmt">
+    <Position X="23.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FAADAQAAAJAAIAAAAgAAEAwAAAAAAYABAAAABAAIAAA=</HashCode>
+      <FileName>Entities\CheckJmt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.DAL.Entities.DefectDetail">
+    <Position X="12.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAwAQAAAAAABAAAAAAAACAA=</HashCode>
+      <FileName>Entities\DefectDetail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.DAL.Entities.Detail">
+    <Position X="16.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAACAAAAAAAAAAAAAAAAAAQAAQAQAAAAQAAAgAAAAAA=</HashCode>
+      <FileName>Entities\Detail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.DAL.Entities.GroupProduct">
+    <Position X="20.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\GroupProduct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.DAL.Entities.IdProvider">
+    <Position X="18.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\IdProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.DAL.Entities.Product">
+    <Position X="13.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEQAgAAAAAAAQAAwAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.DAL.Entities.ProductState">
+    <Position X="17.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAACAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Entities\ProductState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.DAL.Entities.Repair">
+    <Position X="21.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAADAAAAACAAAAAAAAAAAAgAAAAAAAABAAAAgAAAAAA=</HashCode>
+      <FileName>Entities\Repair.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.DAL.Entities.Role">
+    <Position X="24.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Role.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.DAL.Entities.Shipment">
+    <Position X="14.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAADAAAAAAAAAAAAAAAAAAgAAAAAAAABAAAAggAAAAA=</HashCode>
+      <FileName>Entities\Shipment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.DAL.Entities.Soldering">
+    <Position X="18.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAADAAAAAAAAAAAAAAAAAAgAAAAAAAABAAAAgAAAAAA=</HashCode>
+      <FileName>Entities\Soldering.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.DAL.Entities.StructureOfTheProduct">
+    <Position X="22.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAACAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAgAAACAA=</HashCode>
+      <FileName>Entities\StructureOfTheProduct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.DAL.Entities.User">
+    <Position X="25.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAEQAyAEAAAAAAAAgAAAJAiAQAAAAAAAAA=</HashCode>
+      <FileName>Entities\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

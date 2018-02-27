@@ -1,0 +1,637 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="MES.DAL.EF.MesContext" BaseTypeListCollapsed="true">
+    <Position X="37" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MES.DAL.EF.MesDbInitializer">
+    <Position X="35.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.DAL.EF.UnitOfWork" BaseTypeListCollapsed="true">
+    <Position X="38.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MES.DAL.Entities.ArrivalOfDetail">
+    <Position X="26.5" Y="3" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.DAL.Entities.Assembly">
+    <Position X="29.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.DAL.Entities.Boxing">
+    <Position X="31.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.DAL.Entities.CheckJmt">
+    <Position X="19.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.DAL.Entities.DefectDetail">
+    <Position X="22.5" Y="3" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.DAL.Entities.Detail">
+    <Position X="24.5" Y="3" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.DAL.Entities.GroupProduct">
+    <Position X="27.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.DAL.Entities.IdProvider">
+    <Position X="26.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.DAL.Entities.Product">
+    <Position X="32.5" Y="3" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.DAL.Entities.ProductState">
+    <Position X="20.5" Y="3" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.DAL.Entities.Repair">
+    <Position X="23.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.DAL.Entities.Role">
+    <Position X="25.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.DAL.Entities.Shipment">
+    <Position X="28.5" Y="3" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.DAL.Entities.Soldering">
+    <Position X="30.5" Y="3" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.DAL.Entities.StructureOfTheProduct">
+    <Position X="33.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.DAL.Entities.User">
+    <Position X="21.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.DAL.Repositories.BaseRepository&lt;T&gt;" BaseTypeListCollapsed="true">
+    <Position X="35.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MES.BLL.DTO.ArrivalOfDetailDto">
+    <Position X="18.75" Y="17.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.DTO.AssemblyDto">
+    <Position X="21.25" Y="17.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.DTO.BoxingDto">
+    <Position X="25" Y="20.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.DTO.CheckJmtDto">
+    <Position X="27.25" Y="20.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.DTO.CheckJmtForListDto">
+    <Position X="29.5" Y="20.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.DTO.ChekDetailsDto">
+    <Position X="41.75" Y="16.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.DTO.DefectDetailDisplayDto">
+    <Position X="32.75" Y="17.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.DTO.DefectDetailDto">
+    <Position X="34.75" Y="17.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.DTO.DetailDTO">
+    <Position X="20" Y="20.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.DTO.DetailInProductDto">
+    <Position X="22.5" Y="20.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.DTO.DisplayArrivalOfDetailDto">
+    <Position X="26.25" Y="17.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.DTO.IdProvider">
+    <Position X="27.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.DTO.LoginDto">
+    <Position X="40" Y="19.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.DTO.ProductDto">
+    <Position X="30.75" Y="17.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.DTO.ProductStateDto">
+    <Position X="33.75" Y="20.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.DTO.RepairDto">
+    <Position X="35.75" Y="20.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.DTO.ShipmentChartDto">
+    <Position X="38.25" Y="20.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.DTO.ShipmentDto">
+    <Position X="23.75" Y="17.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.DTO.SolderingCountDto">
+    <Position X="41.75" Y="23.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.DTO.SolderingDto">
+    <Position X="28.25" Y="17.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.DTO.StructureOfTheProductDto">
+    <Position X="38.25" Y="23" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.DTO.UserDto">
+    <Position X="31.75" Y="20.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.Infrastructure.AutmapperConfigBll">
+    <Position X="43.5" Y="23.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.Infrastructure.IdentityExtensions">
+    <Position X="38.25" Y="19.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.Infrastructure.OperationDetails">
+    <Position X="41.75" Y="21.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.Infrastructure.ServiceModule">
+    <Position X="38.25" Y="25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="MES.BLL.Services.AdminService" BaseTypeListCollapsed="true">
+    <Position X="38.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MES.BLL.Services.AnalyticsService" BaseTypeListCollapsed="true">
+    <Position X="40" Y="14.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MES.BLL.Services.ArrivalService" BaseTypeListCollapsed="true">
+    <Position X="41.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MES.BLL.Services.AssemblyService" BaseTypeListCollapsed="true">
+    <Position X="43.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MES.BLL.Services.BoxingService" BaseTypeListCollapsed="true">
+    <Position X="38.25" Y="17.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MES.BLL.Services.CheckJmtService" BaseTypeListCollapsed="true">
+    <Position X="40" Y="16.75" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MES.BLL.Services.DefectService" BaseTypeListCollapsed="true">
+    <Position X="43.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MES.BLL.Services.HomeService" BaseTypeListCollapsed="true">
+    <Position X="43.5" Y="24.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MES.BLL.Services.RepairService" BaseTypeListCollapsed="true">
+    <Position X="43.5" Y="19" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MES.BLL.Services.ShipmentService" BaseTypeListCollapsed="true">
+    <Position X="40" Y="21.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MES.BLL.Services.SolderingService" BaseTypeListCollapsed="true">
+    <Position X="43.5" Y="21" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MES.BLL.Services.StockService" BaseTypeListCollapsed="true">
+    <Position X="40" Y="25.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MES.BLL.Services.UserService" BaseTypeListCollapsed="true">
+    <Position X="40" Y="23.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MES.WEB.AutoMapperConfigWeb">
+    <Position X="31.5" Y="38.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\AutoMapperConfigWeb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.BundleConfig">
+    <Position X="37.25" Y="38.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\BundleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.FilterConfig">
+    <Position X="40.75" Y="31.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\FilterConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.NinjectRegistrations">
+    <Position X="39" Y="31.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\NinjectRegistrations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.RouteConfig">
+    <Position X="19.25" Y="38.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Startup">
+    <Position X="39" Y="33.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\Startup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.MvcApplication">
+    <Position X="37.25" Y="31.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Controllers.AccountController">
+    <Position X="35.5" Y="31.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQEAAAAAIQAAABAAICAAAQAQAAAAA=</HashCode>
+      <FileName>Controllers\AccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Controllers.AdminController">
+    <Position X="37.25" Y="34.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BCAAAAAAAAAAAAAQAAIAQAoAAAAAAAAAAAEAAAAAgAA=</HashCode>
+      <FileName>Controllers\AdminController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Controllers.AnalyticsController">
+    <Position X="39" Y="34.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAIgAAAAAAIAAAQAQAAAAAEAQAAAAAAAAEgAAAACAA=</HashCode>
+      <FileName>Controllers\AnalyticsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Controllers.ArrivalController">
+    <Position X="40.75" Y="39" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgBgAAAAAAAAAAQAAAAAAACAAAIAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\ArrivalController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Controllers.AssemblyController">
+    <Position X="31.5" Y="40" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAIAAAAAAAQAAAAAAAgAAAAAABAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\AssemblyController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Controllers.BoxingController">
+    <Position X="35.5" Y="35.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAgAAAAAQAAAAAAAAAAEBAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\BoxingController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Controllers.CheckJmtController">
+    <Position X="39" Y="38.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAABBAAAQABBAAAAAAAEAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\CheckJmtController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Controllers.DefectController">
+    <Position X="29.75" Y="38.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAQAAAAAAAAACAAAQAAAIAAgAAAAAA=</HashCode>
+      <FileName>Controllers\DefectController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Controllers.ErrorController">
+    <Position X="37.25" Y="39.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\ErrorController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Controllers.FinishedGoodsWarehouseController">
+    <Position X="24.5" Y="38.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAQAAAAAQAAAAAAAAAAEQAABAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\FinishedGoodsWarehouseController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Controllers.HomeController">
+    <Position X="26.25" Y="38.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Controllers.RepairController">
+    <Position X="40.75" Y="33.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAEAAAAQAAAAAAAAAAEAAABAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\RepairController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Controllers.SolderingController">
+    <Position X="22.75" Y="38.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAggAAAAAAIAAAAAAAAAEAAAAAIABAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\SolderingController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Controllers.StockController">
+    <Position X="40.75" Y="36" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAIAEAAABAAAAAAAAAAEAAABAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\StockController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Models.ArrivalOfDetailVm">
+    <Position X="18.5" Y="36.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAwAQAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ArrivalOfDetailVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Models.AssemblyVm">
+    <Position X="22.5" Y="36.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAgAAAAAAAABAQAAgAAIAAA=</HashCode>
+      <FileName>Models\AssemblyVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Models.BoxingVm">
+    <Position X="25.5" Y="33.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAgAAAAAAAABAQAAggAIAAA=</HashCode>
+      <FileName>Models\BoxingVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Models.CheckJmtForListVm">
+    <Position X="27.5" Y="33.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAQAAAAAAAABAAAAAAAIAAA=</HashCode>
+      <FileName>Models\CheckJmtForListVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Models.CheckJmtVm">
+    <Position X="33.25" Y="38.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FAAAAQAAAJAAIAAAAgAAEAwAAAAAAYABAAAABAAIAAA=</HashCode>
+      <FileName>Models\CheckJmtVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Models.ChekDetailsVm">
+    <Position X="33.25" Y="33.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAQAAAJAAIAAAAgAAEAQAAAAAAYABAQAABAAIAAA=</HashCode>
+      <FileName>Models\ChekDetailsVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Models.DateVm">
+    <Position X="28" Y="38.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\DateVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Models.DefectDetailDisplayVm">
+    <Position X="19.5" Y="33.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAQAAAAAAAABAQAAAAAAAAA=</HashCode>
+      <FileName>Models\DefectDetailDisplayVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Models.DefectDetailVm">
+    <Position X="23.5" Y="33.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAwAQAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DefectDetailVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Models.DetailInProductVm">
+    <Position X="35.5" Y="38.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Models\DetailInProductVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Models.DetailVm">
+    <Position X="28.5" Y="36.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAQAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Models\DetailVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Models.DisplayArrivalOfDetailVm">
+    <Position X="30.5" Y="36.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAQAAAAAAAABAQAAAAAAAAA=</HashCode>
+      <FileName>Models\DisplayArrivalOfDetailVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Models.IdProvider">
+    <Position X="25.5" Y="31.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IdProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Models.LoginVm">
+    <Position X="28" Y="40.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAQAAAAAAAAA=</HashCode>
+      <FileName>Models\LoginVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Models.ProductStateVm">
+    <Position X="20.5" Y="36.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAgAAIAAA=</HashCode>
+      <FileName>Models\ProductStateVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Models.ProductVm">
+    <Position X="24.5" Y="36.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ProductVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Models.RegisterVm">
+    <Position X="26.5" Y="36.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAABACAQAAAAAAIAA=</HashCode>
+      <FileName>Models\RegisterVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Models.RepairVm">
+    <Position X="29.5" Y="33.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAACAAAAAAAAAAAAgAAAAAAAABAQAAgAAIAAA=</HashCode>
+      <FileName>Models\RepairVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Models.ShipmentChartVm">
+    <Position X="21" Y="38.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAAAAAABAAAAgAAAAAA=</HashCode>
+      <FileName>Models\ShipmentChartVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Models.ShipmentVm">
+    <Position X="31.5" Y="33.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAgAAAAAAAABAQAAggAIAAA=</HashCode>
+      <FileName>Models\ShipmentVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Models.SolderingCountVm">
+    <Position X="37.25" Y="33.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAIAAA=</HashCode>
+      <FileName>Models\SolderingCountVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MES.WEB.Models.SolderingVm">
+    <Position X="21.5" Y="33.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAgAAAAAAAABAQAAgAAIAAA=</HashCode>
+      <FileName>Models\SolderingVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="MES.DAL.Interfaces.IBaseRepository&lt;T&gt;">
+    <Position X="35.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="MES.DAL.Interfaces.IMesContext">
+    <Position X="37" Y="7.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="MES.DAL.Interfaces.IUnitOfWork">
+    <Position X="38.75" Y="8" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="MES.BLL.Interfaces.IAdminService">
+    <Position X="18.5" Y="25.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="MES.BLL.Interfaces.IAnalyticsService">
+    <Position X="20.25" Y="25.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="MES.BLL.Interfaces.IArrivalService">
+    <Position X="22" Y="25.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="MES.BLL.Interfaces.IAssemblyService">
+    <Position X="23.75" Y="25.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="MES.BLL.Interfaces.IBoxingService">
+    <Position X="23.75" Y="27.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="MES.BLL.Interfaces.ICheckJmtService">
+    <Position X="34.25" Y="25.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="MES.BLL.Interfaces.IDefectService">
+    <Position X="27.25" Y="25.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="MES.BLL.Interfaces.IHomeService">
+    <Position X="29" Y="25.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="MES.BLL.Interfaces.IRepairService">
+    <Position X="30.75" Y="25.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="MES.BLL.Interfaces.IShipmentService">
+    <Position X="32.5" Y="25.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="MES.BLL.Interfaces.ISolderingService">
+    <Position X="25.5" Y="25.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="MES.BLL.Interfaces.IStockService">
+    <Position X="36" Y="25.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="MES.BLL.Interfaces.IUserService">
+    <Position X="29" Y="26.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Enum Name="MES.DAL.Enums.BoxingVariant">
+    <Position X="25.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Enum Name="MES.DAL.Enums.RepairsVariant">
+    <Position X="28.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Enum Name="MES.DAL.Enums.StateFoTest">
+    <Position X="23.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Enum Name="MES.DAL.Enums.VariantStateProduct">
+    <Position X="27" Y="9.5" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
