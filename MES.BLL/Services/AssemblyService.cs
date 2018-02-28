@@ -129,7 +129,7 @@ namespace MES.BLL.Services
             catch (Exception)
             {
                 _uof.Rollback();
-                return new OperationDetails(false, "Сборка не добавлена", "");
+                return new OperationDetails(false, "Сборка не удалена", "");
             }
         }
 

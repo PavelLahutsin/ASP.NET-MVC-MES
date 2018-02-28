@@ -253,301 +253,301 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="MES.WEB.AutoMapperConfigWeb">
-    <Position X="31.5" Y="38.75" Width="1.5" />
+    <Position X="31" Y="38.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>App_Start\AutoMapperConfigWeb.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.BundleConfig">
-    <Position X="37.25" Y="38.25" Width="1.5" />
+    <Position X="30.75" Y="45.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>App_Start\BundleConfig.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.FilterConfig">
-    <Position X="40.75" Y="31.75" Width="1.5" />
+    <Position X="25.5" Y="43.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>App_Start\FilterConfig.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.NinjectRegistrations">
-    <Position X="39" Y="31.75" Width="1.5" />
+    <Position X="23.75" Y="43.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>App_Start\NinjectRegistrations.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.RouteConfig">
-    <Position X="19.25" Y="38.75" Width="1.5" />
+    <Position X="25.75" Y="41" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>App_Start\RouteConfig.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Startup">
-    <Position X="39" Y="33.25" Width="1.5" />
+    <Position X="23.75" Y="45" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>App_Start\Startup.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.MvcApplication">
-    <Position X="37.25" Y="31.75" Width="1.5" />
+    <Position X="22" Y="43.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
       <FileName>Global.asax.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Controllers.AccountController">
-    <Position X="35.5" Y="31.75" Width="1.5" />
+    <Position X="32.5" Y="45.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAQEAAAAAIQAAABAAICAAAQAQAAAAA=</HashCode>
       <FileName>Controllers\AccountController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Controllers.AdminController">
-    <Position X="37.25" Y="34.75" Width="1.5" />
+    <Position X="22" Y="46.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BCAAAAAAAAAAAAAQAAIAQAoAAAAAAAAAAAEAAAAAgAA=</HashCode>
       <FileName>Controllers\AdminController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Controllers.AnalyticsController">
-    <Position X="39" Y="34.5" Width="1.5" />
+    <Position X="23.75" Y="46.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAIgAAAAAAIAAAQAQAAAAAEAQAAAAAAAAEgAAAACAA=</HashCode>
       <FileName>Controllers\AnalyticsController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Controllers.ArrivalController">
-    <Position X="40.75" Y="39" Width="1.5" />
+    <Position X="27.25" Y="43.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAgBgAAAAAAAAAAQAAAAAAACAAAIAAAAAAEAAAAAAAA=</HashCode>
       <FileName>Controllers\ArrivalController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Controllers.AssemblyController">
-    <Position X="31.5" Y="40" Width="1.5" />
+    <Position X="31" Y="40" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAIAAAAAAAQAAAAAAAgAAAAAABAAAEAAAAAAAA=</HashCode>
       <FileName>Controllers\AssemblyController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Controllers.BoxingController">
-    <Position X="35.5" Y="35.5" Width="1.5" />
+    <Position X="29.25" Y="46.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAgAAAAAQAAAAAAAAAAEBAAAAAAEAAAAAAAA=</HashCode>
       <FileName>Controllers\BoxingController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Controllers.CheckJmtController">
-    <Position X="39" Y="38.25" Width="1.5" />
+    <Position X="29" Y="43.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAABBAAAQABBAAAAAAAEAAAAAAAEAAAAAAAA=</HashCode>
       <FileName>Controllers\CheckJmtController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Controllers.DefectController">
-    <Position X="29.75" Y="38.75" Width="1.5" />
+    <Position X="29.25" Y="38.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAIAAQAAAAAAAAACAAAQAAAIAAgAAAAAA=</HashCode>
       <FileName>Controllers\DefectController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Controllers.ErrorController">
-    <Position X="37.25" Y="39.5" Width="1.5" />
+    <Position X="30.75" Y="43.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Controllers\ErrorController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Controllers.FinishedGoodsWarehouseController">
-    <Position X="24.5" Y="38.75" Width="1.5" />
+    <Position X="24" Y="38.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAQAAAAAQAAAAAAAAAAEQAABAAAEAAAAAAAA=</HashCode>
       <FileName>Controllers\FinishedGoodsWarehouseController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Controllers.HomeController">
-    <Position X="26.25" Y="38.75" Width="1.5" />
+    <Position X="25.75" Y="38.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
       <FileName>Controllers\HomeController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Controllers.RepairController">
-    <Position X="40.75" Y="33.25" Width="1.5" />
+    <Position X="25.5" Y="45" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAAEAAAAQAAAAAAAAAAEAAABAAAEAAAAAAAA=</HashCode>
       <FileName>Controllers\RepairController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Controllers.SolderingController">
-    <Position X="22.75" Y="38.75" Width="1.5" />
+    <Position X="22.25" Y="38.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABAggAAAAAAIAAAAAAAAAEAAAAAIABAAAAAAAAAAAA=</HashCode>
       <FileName>Controllers\SolderingController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Controllers.StockController">
-    <Position X="40.75" Y="36" Width="1.5" />
+    <Position X="27.25" Y="46.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAIAEAAABAAAAAAAAAAEAAABAAAEAAAAAAAA=</HashCode>
       <FileName>Controllers\StockController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Models.ArrivalOfDetailVm">
-    <Position X="18.5" Y="36.5" Width="1.5" />
+    <Position X="20" Y="38.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAwAQAAAAAABAAAAAAAAAAA=</HashCode>
       <FileName>Models\ArrivalOfDetailVm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Models.AssemblyVm">
-    <Position X="22.5" Y="36.25" Width="1.5" />
+    <Position X="22" Y="36.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAAAAAAAAAAAAAAAAAAAgAAAAAAAABAQAAgAAIAAA=</HashCode>
       <FileName>Models\AssemblyVm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Models.BoxingVm">
-    <Position X="25.5" Y="33.75" Width="1.5" />
+    <Position X="25" Y="33.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAAAAAAAAAAAAAAAAAAAgAAAAAAAABAQAAggAIAAA=</HashCode>
       <FileName>Models\BoxingVm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Models.CheckJmtForListVm">
-    <Position X="27.5" Y="33.75" Width="1.5" />
+    <Position X="27" Y="33.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAIAAAAAAAAAQAAAAAAAABAAAAAAAIAAA=</HashCode>
       <FileName>Models\CheckJmtForListVm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Models.CheckJmtVm">
-    <Position X="33.25" Y="38.75" Width="1.5" />
+    <Position X="32.75" Y="38.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>FAAAAQAAAJAAIAAAAgAAEAwAAAAAAYABAAAABAAIAAA=</HashCode>
       <FileName>Models\CheckJmtVm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Models.ChekDetailsVm">
-    <Position X="33.25" Y="33.75" Width="1.5" />
+    <Position X="32.75" Y="33.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAQAAAJAAIAAAAgAAEAQAAAAAAYABAQAABAAIAAA=</HashCode>
       <FileName>Models\ChekDetailsVm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Models.DateVm">
-    <Position X="28" Y="38.75" Width="1.5" />
+    <Position X="27.5" Y="38.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAEAAAAA=</HashCode>
       <FileName>Models\DateVm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Models.DefectDetailDisplayVm">
-    <Position X="19.5" Y="33.75" Width="1.5" />
+    <Position X="20" Y="41" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAAAAAAAAAAAAAAAAAAAAAQAAAAAAAABAQAAAAAAAAA=</HashCode>
       <FileName>Models\DefectDetailDisplayVm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Models.DefectDetailVm">
-    <Position X="23.5" Y="33.75" Width="1.5" />
+    <Position X="23" Y="33.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAwAQAAAAAABAAAAAAAAAAA=</HashCode>
       <FileName>Models\DefectDetailVm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Models.DetailInProductVm">
-    <Position X="35.5" Y="38.5" Width="1.5" />
+    <Position X="32.5" Y="43.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Models\DetailInProductVm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Models.DetailVm">
-    <Position X="28.5" Y="36.25" Width="1.5" />
+    <Position X="28" Y="36.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAQAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Models\DetailVm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Models.DisplayArrivalOfDetailVm">
-    <Position X="30.5" Y="36.25" Width="1.5" />
+    <Position X="30" Y="36.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAAAAAAAAAAAAAAAAAAAAAQAAAAAAAABAQAAAAAAAAA=</HashCode>
       <FileName>Models\DisplayArrivalOfDetailVm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Models.IdProvider">
-    <Position X="25.5" Y="31.75" Width="1.5" />
+    <Position X="25" Y="31.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\IdProvider.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Models.LoginVm">
-    <Position X="28" Y="40.25" Width="1.5" />
+    <Position X="27.5" Y="40.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAQAAAAAAAAA=</HashCode>
       <FileName>Models\LoginVm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Models.ProductStateVm">
-    <Position X="20.5" Y="36.5" Width="1.5" />
+    <Position X="20" Y="36.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAgAAIAAA=</HashCode>
       <FileName>Models\ProductStateVm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Models.ProductVm">
-    <Position X="24.5" Y="36.25" Width="1.5" />
+    <Position X="24" Y="36.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\ProductVm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Models.RegisterVm">
-    <Position X="26.5" Y="36.25" Width="1.5" />
+    <Position X="26" Y="36.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAABACAQAAAAAAIAA=</HashCode>
       <FileName>Models\RegisterVm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Models.RepairVm">
-    <Position X="29.5" Y="33.75" Width="1.5" />
+    <Position X="29" Y="33.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAAAAAACAAAAAAAAAAAAgAAAAAAAABAQAAgAAIAAA=</HashCode>
       <FileName>Models\RepairVm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Models.ShipmentChartVm">
-    <Position X="21" Y="38.75" Width="1.5" />
+    <Position X="29.25" Y="41.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAAAAAABAAAAgAAAAAA=</HashCode>
       <FileName>Models\ShipmentChartVm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Models.ShipmentVm">
-    <Position X="31.5" Y="33.75" Width="1.5" />
+    <Position X="31" Y="33.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAAAAAAAAAAAAAAAAAAAgAAAAAAAABAQAAggAIAAA=</HashCode>
       <FileName>Models\ShipmentVm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Models.SolderingCountVm">
-    <Position X="37.25" Y="33.25" Width="1.5" />
+    <Position X="22" Y="45" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAIAAA=</HashCode>
       <FileName>Models\SolderingCountVm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MES.WEB.Models.SolderingVm">
-    <Position X="21.5" Y="33.75" Width="1.5" />
+    <Position X="21" Y="33.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAAAAAAAAAAAAAAAAAAAgAAAAAAAABAQAAgAAIAAA=</HashCode>
       <FileName>Models\SolderingVm.cs</FileName>
