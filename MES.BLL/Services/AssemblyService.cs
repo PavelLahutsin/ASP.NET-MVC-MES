@@ -58,7 +58,7 @@ namespace MES.BLL.Services
                 _uof.Assemblys.Create(ass);
                 
                 await _uof.Commit();
-               // await SendEmailAsync();
+                await SendEmailAsync();
                 return new OperationDetails(true, "Сборка успешно добавлена", "/Assembly/ListPartial");
             }
             catch (Exception e)
@@ -154,17 +154,17 @@ namespace MES.BLL.Services
 
             if (i > 0)
             {
-                var from = new MailAddress("zavet.glade@gmail.com", "Склад");
+                var from = new MailAddress("glade@zavet.ga", "Склад");
                 var to = new MailAddress("p.lahutsin@gmail.com");
                 var m = new MailMessage(@from, to)
                 {
                     Subject = "Остаток деталей на складе",
                     Body = str.ToString()
                 };
-                var smtp = new SmtpClient("smtp.gmail.com", 465)
+                var smtp = new SmtpClient("mail.zavet.ga", 8889)
                 {
-                    Credentials = new NetworkCredential("zavet.glade@gmail.com", "7553311df"),
-                    EnableSsl = true
+                    Credentials = new NetworkCredential("glade@zavet.ga", "_7553311df"),
+                   
                 };
                 await smtp.SendMailAsync(m);
             }

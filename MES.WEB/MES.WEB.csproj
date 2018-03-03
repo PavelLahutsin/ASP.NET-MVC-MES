@@ -458,6 +458,7 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Image\avatar.png" />
+    <Content Include="Content\Image\Логотип.png" />
     <Content Include="Content\mes.css" />
     <Content Include="Content\modal.css" />
     <Content Include="Content\StyleSheet1.css" />
