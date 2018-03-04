@@ -1,12 +1,6 @@
-﻿using System;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web.Mvc;
 using MES.BLL.Interfaces;
-using MES.DAL.Enums;
-using MES.DAL.Interfaces;
 
 namespace MES.WEB.Controllers
 {

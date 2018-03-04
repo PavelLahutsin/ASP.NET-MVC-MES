@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using MES.BLL.DTO;
 using MES.BLL.Infrastructure;
-using MES.DAL.Entities;
 
 namespace MES.BLL.Interfaces
 {

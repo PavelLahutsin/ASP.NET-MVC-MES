@@ -5,8 +5,6 @@ using System.Web.Mvc;
 using AutoMapper;
 using MES.BLL.DTO;
 using MES.BLL.Interfaces;
-using MES.DAL.Entities;
-using MES.DAL.Enums;
 using MES.DAL.Interfaces;
 using MES.WEB.Models;
 
