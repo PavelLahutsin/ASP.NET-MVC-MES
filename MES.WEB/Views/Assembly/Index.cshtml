@@ -1,7 +1,7 @@
 ﻿@model MES.WEB.Models.DateVm
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Сборка";
 }
 
 
@@ -47,6 +47,32 @@
     </div>
 </div>
 
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class="box-title">Альбом недели</h3>
+
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                <i class="fa fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+    </div>
+    <div class="box-body">
+        <div id="cp_widget_050838eb-0ad1-435b-b6ce-83d56e035097">...</div>
+        <script type="text/javascript">
+            var cpo = []; cpo["_object"] = "cp_widget_050838eb-0ad1-435b-b6ce-83d56e035097"; cpo["_fid"] = "AUFA-MeZKIZf";
+            var _cpmp = _cpmp || []; _cpmp.push(cpo);
+            (function () {
+                var cp = document.createElement("script"); cp.type = "text/javascript";
+                cp.async = true; cp.src = "//www.cincopa.com/media-platform/runtime/libasync.js";
+                var c = document.getElementsByTagName("script")[0];
+                c.parentNode.insertBefore(cp, c);
+            })();</script><noscript><span>New Gallery 2018/3/3</span></noscript>
+    </div>
+    <!-- /.box-body -->
+</div>
+
 
 
 
@@ -63,7 +89,7 @@
                 '&endDate=' +
                 endDate);
         }
-        
+
         $(function () {
             var idToUpdate = $('#results');
             $.get("/Assembly/ListPartial",
@@ -73,11 +99,11 @@
         });
         document.getElementById('assembly').className = "active";
 
-        
-       
+
+
     </script>
 
-   
+
 
 }
 

@@ -37,7 +37,7 @@ namespace MES.BLL.Services
                 };
                 _uof.Users.Create(user);
                 await _uof.Commit();
-                return new OperationDetails(true, $"Пользователь {userDto.UserName} удачно зарегестрирован", "");
+                return new OperationDetails(true, $"Пользователь {userDto.UserName} удачно зарегистрирован", "");
             }
             catch (Exception e)
             {
