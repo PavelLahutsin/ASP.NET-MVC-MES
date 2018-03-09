@@ -155,12 +155,13 @@ namespace MES.BLL.Services
             if (i > 0)
             {
                 var from = new MailAddress("glade@zavet.ga", "Склад");
-                var to = new MailAddress("p.lahutsin@gmail.com");
+                var to = new MailAddress("ooozavet@bk.ru");
                 var m = new MailMessage(@from, to)
                 {
-                    Subject = "Остаток деталей на складе",
+                    Subject = "Детали заканчивающиеся на складе",
                     Body = str.ToString()
                 };
+                m.To.Add("pavelvasilevich@gmail.com");
                 var smtp = new SmtpClient("mail.zavet.ga", 8889)
                 {
                     Credentials = new NetworkCredential("glade@zavet.ga", "_7553311df"),
