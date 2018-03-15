@@ -801,8 +801,6 @@
     <Content Include="Views\Stock\_AddDetail.cshtml" />
     <Content Include="Views\Stock\Index.cshtml" />
     <Content Include="Views\Stock\_EditJmtDetail.cshtml" />
-    <Content Include="Views\Assembly\Music.cshtml" />
-    <Content Include="Views\Assembly\Book.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

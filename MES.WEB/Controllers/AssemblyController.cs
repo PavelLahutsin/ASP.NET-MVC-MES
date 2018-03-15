@@ -80,14 +80,6 @@ namespace MES.WEB.Controllers
 
         }
 
-        public  ActionResult Music()
-        {            
-            return PartialView();
-        }
-        public ActionResult Book()
-        {
-            return PartialView();
-        }
     }
     
 }
