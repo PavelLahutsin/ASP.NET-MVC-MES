@@ -58,7 +58,7 @@ namespace MES.BLL.Services
                 _uof.Assemblys.Create(ass);
                 
                 await _uof.Commit();
-                await SendEmailAsync();
+                await CheckStock();
                 return new OperationDetails(true, "Сборка успешно добавлена", "/Assembly/ListPartial");
             }
             catch (Exception e)
@@ -133,7 +133,7 @@ namespace MES.BLL.Services
             }
         }
 
-        private async Task SendEmailAsync()
+        private async Task CheckStock()
         {
             var details = await _uof.StructureOfTheProducts.Entities.Where(w => w.Product.Name == "5200-01").Select(x => new DetailDTO
             {
@@ -143,34 +143,41 @@ namespace MES.BLL.Services
                 VendorCode = x.Detail.VendorCode
             }).ToListAsync();
 
-            var i = 0;
+            
             var str = new StringBuilder();
             foreach (var dto in details)
             {
                 if (dto.Quantityq > 500) continue;
                 str.AppendLine($"{dto.Name} ({dto.VendorCode}) осталось на {dto.Quantityq} теплообменника\n");
-                i++;
+               
             }
 
-            if (i > 0)
+            if (str.Length>0)
+            {
+                await SendEmailAsync(str.ToString());
+            }
+                        
+        }
+
+        private async Task SendEmailAsync(string str)
+        {
+            if (!string.IsNullOrEmpty(str))
             {
                 var from = new MailAddress("glade@zavet.ga", "Склад");
-                var to = new MailAddress("ooozavet@bk.ru");
+                var to = new MailAddress("pavelvasilevich@gmail.com");
                 var m = new MailMessage(@from, to)
                 {
                     Subject = "Детали заканчивающиеся на складе",
-                    Body = str.ToString()
+                    Body = str
                 };
-                m.To.Add("pavelvasilevich@gmail.com");
+               // m.To.Add("pavelvasilevich@gmail.com");
                 var smtp = new SmtpClient("mail.zavet.ga", 8889)
                 {
                     Credentials = new NetworkCredential("glade@zavet.ga", "_7553311df"),
-                   
+
                 };
                 await smtp.SendMailAsync(m);
             }
-
-            
         }
     }
 }

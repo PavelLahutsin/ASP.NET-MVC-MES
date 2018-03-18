@@ -14,12 +14,11 @@ namespace MES.WEB.Controllers
     public class AnalyticsController : Controller
     {
         private readonly IAnalyticsService _service;
-        private readonly IUnitOfWork _db;
+        
 
-        public AnalyticsController(IAnalyticsService service, IUnitOfWork db)
+        public AnalyticsController(IAnalyticsService service)
         {
-            _service = service;
-            _db = db;
+            _service = service;            
         }
 
         public ActionResult Index()
