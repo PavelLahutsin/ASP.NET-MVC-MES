@@ -214,6 +214,7 @@
     <Compile Include="Controllers\ArrivalController.cs" />
     <Compile Include="Controllers\AssemblyController.cs" />
     <Compile Include="Controllers\BoxingController.cs" />
+    <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\CheckJmtController.cs" />
     <Compile Include="Controllers\DefectController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -228,6 +229,9 @@
     <Compile Include="Models\ArrivalOfDetailVm.cs" />
     <Compile Include="Models\AssemblyVm.cs" />
     <Compile Include="Models\BoxingVm.cs" />
+    <Compile Include="Models\ChatMessage.cs" />
+    <Compile Include="Models\ChatModel.cs" />
+    <Compile Include="Models\ChatUser.cs" />
     <Compile Include="Models\CheckJmtForListVm.cs" />
     <Compile Include="Models\CheckJmtVm.cs" />
     <Compile Include="Models\ChekDetailsVm.cs" />
@@ -801,6 +805,7 @@
     <Content Include="Views\Stock\_AddDetail.cshtml" />
     <Content Include="Views\Stock\Index.cshtml" />
     <Content Include="Views\Stock\_EditJmtDetail.cshtml" />
+    <Content Include="Views\Chat\_Chat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
