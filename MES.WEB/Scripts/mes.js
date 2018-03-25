@@ -165,3 +165,12 @@ $('#EndDate').on('changeDate',
         view();
     });
 
+function OnSuccess() {
+    Scroll();
+};
+
+function Scroll() {
+    var win = $('#mesegebox');
+    var height = win[0].scrollHeight;
+    win.scrollTop(height);
+}

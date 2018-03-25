@@ -170,7 +170,7 @@ namespace MES.BLL.Services
                     Subject = "Детали заканчивающиеся на складе",
                     Body = str
                 };
-               // m.To.Add("pavelvasilevich@gmail.com");
+                m.To.Add("ooozavet@bk.ru");
                 var smtp = new SmtpClient("mail.zavet.ga", 8889)
                 {
                     Credentials = new NetworkCredential("glade@zavet.ga", "_7553311df"),

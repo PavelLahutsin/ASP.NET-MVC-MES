@@ -57,6 +57,19 @@ namespace MES.WEB.Controllers
             ViewBag.Products = new SelectList(products, "Id", "Name");
             if (!ModelState.IsValid) return PartialView(assembly);//Json(new{ success = false});
             var result = await _service.AddAssemblyAsync(Mapper.Map<AssemblyDto>(assembly));
+           
+            if (result.Succedeed) {
+                string prodName = (await _db.Products.GetAsync(assembly.ProductId)).Name;
+                ChatUser user = Mapper.Map<ChatUser>(await _db.Users.GetAsync(assembly.UserId));
+                ChatMessage message = new ChatMessage
+                {
+                    Date = DateTime.Now,
+                    Text = $"Я собрал {assembly.Quantity}шт. {prodName}",
+                    User = user
+                };
+                if (ChatController.listMessage == null) ChatController.listMessage = new List<ChatMessage>();
+                ChatController.listMessage.Add(message);
+                    }
             return Json(result);
         }
 

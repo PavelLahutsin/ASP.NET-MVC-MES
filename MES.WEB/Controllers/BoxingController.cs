@@ -57,6 +57,20 @@ namespace MES.WEB.Controllers
             }
 
             var result = await _service.AddBoxingAsync(Mapper.Map<BoxingDto>(boxing));
+
+            if (result.Succedeed)
+            {
+                string prodName = (await _db.Products.GetAsync(boxing.ProductId)).Name;
+                ChatUser user = Mapper.Map<ChatUser>(await _db.Users.GetAsync(boxing.UserId));
+                ChatMessage message = new ChatMessage
+                {
+                    Date = DateTime.Now,
+                    Text = $"Я упаковал {boxing.Quantity}шт. {prodName}",
+                    User = user
+                };
+                if (ChatController.listMessage == null) ChatController.listMessage = new List<ChatMessage>();
+                ChatController.listMessage.Add(message);
+            }
             return Json(result);
         }
 

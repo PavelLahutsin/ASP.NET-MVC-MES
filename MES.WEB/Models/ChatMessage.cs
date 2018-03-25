@@ -14,4 +14,9 @@ namespace MES.WEB.Models
         // текст
         public string Text = "";
     }
+
+    public static class ChatModel
+    {
+        public static List<ChatMessage> listMessage;
+    }
 }

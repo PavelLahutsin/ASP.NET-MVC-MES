@@ -1,0 +1,37 @@
+﻿@using MES.WEB.Models
+@using MES.BLL.Infrastructure
+@model List<ChatMessage>
+
+@foreach (ChatMessage message in Model)
+{
+    if (message.User.Id != User.Identity.GetUserId<int>())
+    {
+        <div class="direct-chat-msg">
+            <div class="direct-chat-info clearfix">
+                <span class="direct-chat-name pull-left">@message.User.UserName</span>
+                <span class="direct-chat-timestamp pull-right">@message.Date</span>
+            </div>
+            <!-- /.direct-chat-info -->
+            <img class="direct-chat-img" src="@Url.Action("GetImage", "Account", new { id = message.User.Id })" alt="Message User Image"><!-- /.direct-chat-img -->
+            <div class="direct-chat-text">
+                @message.Text
+            </div>
+            <!-- /.direct-chat-text -->
+        </div>
+    }
+    else
+    {
+        <div class="direct-chat-msg right">
+            <div class="direct-chat-info clearfix">
+                <span class="direct-chat-name pull-right">@message.User.UserName</span>
+                <span class="direct-chat-timestamp pull-left">@message.Date</span>
+            </div>
+            <!-- /.direct-chat-info -->
+            <img class="direct-chat-img" src="@Url.Action("GetImage", "Account", new { id = message.User.Id })" alt="Message User Image"><!-- /.direct-chat-img -->
+            <div class="direct-chat-text">
+                @message.Text
+            </div>
+            <!-- /.direct-chat-text -->
+        </div>
+    }
+}

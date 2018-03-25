@@ -7,6 +7,7 @@ using MES.BLL.DTO;
 using MES.BLL.Infrastructure;
 using MES.BLL.Interfaces;
 using MES.DAL.Entities;
+using MES.DAL.Interfaces;
 using MES.WEB.Models;
 
 namespace MES.WEB.Controllers
@@ -14,10 +15,12 @@ namespace MES.WEB.Controllers
     public class DefectController : Controller
     {
         private readonly IDefectService _service;
+        private readonly IUnitOfWork _db;
 
-        public DefectController(IDefectService service)
+        public DefectController(IDefectService service, IUnitOfWork db)
         {
             _service = service;
+            _db = db;
         }
 
         /// <summary>
@@ -44,6 +47,20 @@ namespace MES.WEB.Controllers
             if (!ModelState.IsValid) return PartialView(defect);
 
             var result = await _service.AddDefectDetailAsync(Mapper.Map<DefectDetailDto>(defect));
+
+            if (result.Succedeed)
+            {
+                string prodName = (await _db.Details.GetAsync(defect.DetailId)).Name;
+                ChatUser user = Mapper.Map<ChatUser>(await _db.Users.GetAsync(defect.UserId));
+                ChatMessage message = new ChatMessage
+                {
+                    Date = DateTime.Now,
+                    Text = $"Я добавил в брак {prodName} {defect.Count}шт.",
+                    User = user
+                };
+                if (ChatController.listMessage == null) ChatController.listMessage = new List<ChatMessage>();
+                ChatController.listMessage.Add(message);
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
