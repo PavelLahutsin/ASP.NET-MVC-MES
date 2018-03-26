@@ -1,7 +1,7 @@
 ﻿<li class="dropdown messages-menu">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" id="chat">
         <i class="fa fa-comment"></i>
-        <span class="label label-success">4</span>
+        
     </a>
     <div class="box box-primary direct-chat direct-chat-primary dropdown-menu">
         <div class="box-header with-border">
@@ -20,12 +20,12 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-            @using (Ajax.BeginForm("Messege", new AjaxOptions { UpdateTargetId = "mesegebox", OnSuccess = "OnSuccess" }))
+            @using (Ajax.BeginForm("Messege", "Chat", null, new AjaxOptions { UpdateTargetId = "mesegebox", OnSuccess = "OnSuccess" }, new { @id = "frmID" }))
             {
                 <div class="input-group">
-                    <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                    <input type="text" name="message" placeholder="Пиши здесь ..." class="form-control" id="inputText">
                     <span class="input-group-btn">
-                        <button type="submit" class="btn btn-primary btn-flat">Send</button>
+                        <button type="submit" class="btn btn-primary btn-flat"><i class="fa fa-send"></i></button>
                     </span>
                 </div>
             }
@@ -34,13 +34,4 @@
     </div>
 </li>
 
-@section script{
-<script>
-
-    function Scroll() {
-        var win = $('#Messages');
-        var height = win[0].scrollHeight;
-        win.scrollTop(height);
-    }
-</script>    
-}
+ 

@@ -1,15 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MES.BLL.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Moq;
 using MES.DAL.Interfaces;
 using MES.BLL.DTO;
 using MES.DAL.Entities;
-using MES.BLL.Interfaces;
 using AutoMapper;
 
 namespace MES.BLL.Services.Tests

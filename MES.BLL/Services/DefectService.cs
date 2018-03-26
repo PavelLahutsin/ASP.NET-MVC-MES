@@ -53,9 +53,21 @@ namespace MES.BLL.Services
         /// Возвращает список брака деталей
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<DefectDetailDisplayDto>> ShowDefectDetailAsync()
+        public async Task<IEnumerable<DefectDetailDisplayDto>> ShowDefectDetailAsync(string startDate, string endDate)
         {
-            return await _uof.DefectDetails.Entities.Select(x => new DefectDetailDisplayDto
+            DateTime myEndDate;
+            DateTime myStartDate;
+            if (string.IsNullOrEmpty(startDate) || string.IsNullOrEmpty(endDate))
+            {
+                myEndDate = DateTime.Now;
+                myStartDate = new DateTime(myEndDate.Year, myEndDate.Month, 1);
+            }
+            else
+            {
+                myEndDate = DateTime.Parse(endDate);
+                myStartDate = DateTime.Parse(startDate);
+            }
+            return await _uof.DefectDetails.Entities.Where(w => w.Date >= myStartDate && w.Date <= myEndDate).Select(x => new DefectDetailDisplayDto
             {
                 Date = x.Date,
                 Count = x.Count,
@@ -65,6 +77,28 @@ namespace MES.BLL.Services
             }).OrderByDescending(x => x.Date).ToListAsync();
         }
 
+
+        public async Task<IEnumerable<DefectQuantityDto>> ShowDefectCountAsync(string startDate, string endDate)
+        {
+            DateTime myEndDate;
+            DateTime myStartDate;
+            if (string.IsNullOrEmpty(startDate) || string.IsNullOrEmpty(endDate))
+            {
+                myEndDate = DateTime.Now;
+                myStartDate = new DateTime(myEndDate.Year, myEndDate.Month, 1);
+            }
+            else
+            {
+                myEndDate = DateTime.Parse(endDate);
+                myStartDate = DateTime.Parse(startDate);
+            }
+            return await _uof.DefectDetails.Entities.Where(w => w.Date >= myStartDate && w.Date <= myEndDate).GroupBy(x => x.DetailId).Select(s => new DefectQuantityDto()
+            {
+                Count = s.Sum(x => x.Count),
+                NameDetail = s.FirstOrDefault().Detail.Name
+            }).OrderBy(x => x.NameDetail).ToListAsync();
+
+        }
 
         /// <summary>
         /// Удаление данных о браке деталей

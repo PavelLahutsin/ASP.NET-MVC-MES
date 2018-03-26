@@ -99,6 +99,7 @@
     <Compile Include="DTO\ChekDetailsDto.cs" />
     <Compile Include="DTO\DefectDetailDisplayDto.cs" />
     <Compile Include="DTO\DefectDetailDto.cs" />
+    <Compile Include="DTO\DefectQuantityDto.cs" />
     <Compile Include="DTO\DetailDTO.cs" />
     <Compile Include="DTO\DetailInProductDto.cs" />
     <Compile Include="DTO\IdProvider.cs" />

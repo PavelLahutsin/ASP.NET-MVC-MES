@@ -237,6 +237,7 @@
     <Compile Include="Models\DateVm.cs" />
     <Compile Include="Models\DefectDetailDisplayVm.cs" />
     <Compile Include="Models\DefectDetailVm.cs" />
+    <Compile Include="Models\DefectQuantityVm.cs" />
     <Compile Include="Models\DetailInProductVm.cs" />
     <Compile Include="Models\DetailVm.cs" />
     <Compile Include="Models\IdProvider.cs" />
@@ -807,6 +808,7 @@
     <Content Include="Views\Stock\_EditJmtDetail.cshtml" />
     <Content Include="Views\Chat\_Chat.cshtml" />
     <Content Include="Views\Chat\_Messege.cshtml" />
+    <Content Include="Views\Defect\_QuantityDefectPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

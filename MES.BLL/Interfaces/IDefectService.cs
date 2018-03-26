@@ -9,10 +9,11 @@ namespace MES.BLL.Interfaces
     public interface IDefectService
     {
         Task<OperationDetails> AddDefectDetailAsync(DefectDetailDto defect);
-        Task<IEnumerable<DefectDetailDisplayDto>> ShowDefectDetailAsync();
+        Task<IEnumerable<DefectDetailDisplayDto>> ShowDefectDetailAsync(string startDate, string endDate);
         Task<OperationDetails> DeleteDefectDetailAsync(int id);
         Task<OperationDetails> EditDefectDetailAsync(DefectDetail defect);
         List<DetailDTO> GetDetailsJmt();
         Task<DefectDetailDto> GetDefect(int id);
+        Task<IEnumerable<DefectQuantityDto>> ShowDefectCountAsync(string startDate, string endDate);
     }
 }

@@ -66,10 +66,16 @@ namespace MES.WEB.Controllers
 
 
         //История брака на склад
-        public async Task<ActionResult> HistDefectPartial()
+        public async Task<ActionResult> HistDefectPartial(string startDate, string endDate)
         {
-            var defect = Mapper.Map<IEnumerable<DefectDetailDisplayDto>, List<DefectDetailDisplayVm>>(await _service.ShowDefectDetailAsync());
+            var defect = Mapper.Map<IEnumerable<DefectDetailDisplayDto>, List<DefectDetailDisplayVm>>(await _service.ShowDefectDetailAsync(startDate, endDate));
             return PartialView(defect);
+        }
+
+        public async Task<ActionResult> QuantityDefectPartial(string startDate, string endDate)
+        {
+            var defect = Mapper.Map<IEnumerable<DefectQuantityDto>, List<DefectQuantityVm>>(await _service.ShowDefectCountAsync(startDate, endDate));
+            return PartialView("_QuantityDefectPartial", defect);
         }
 
         public ActionResult Defect()

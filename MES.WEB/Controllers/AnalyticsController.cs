@@ -5,7 +5,6 @@ using System.Web.Mvc;
 using AutoMapper;
 using MES.BLL.DTO;
 using MES.BLL.Interfaces;
-using MES.DAL.Interfaces;
 using MES.WEB.Models;
 
 namespace MES.WEB.Controllers

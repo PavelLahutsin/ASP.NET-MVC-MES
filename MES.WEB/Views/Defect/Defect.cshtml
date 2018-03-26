@@ -43,9 +43,15 @@
     </div>
     <hr />
     <div class="box-body">
+        <div id="results2">
+        </div>
+    </div>
+    <hr />
+    <div class="box-body">
         <div id="results">
         </div>
     </div>
+
 </div>
 
 
@@ -54,7 +60,7 @@
 @section scripts
 {
 
-    <script>
+<script>
         function view() {
             var startDate = $('#StartDate').val();
             startDate = encodeURIComponent(startDate);
@@ -64,10 +70,13 @@
                 startDate +
                 '&endDate=' +
                 endDate);
-
+             $('#results2').load('@Url.Action("QuantityDefectPartial", "Defect")?startDate=' +
+                startDate +
+                '&endDate=' +
+                endDate);
         }
 
-    
+
         $(function () {
             var idToUpdate = $('#results');
             $.get("/Defect/HistDefectPartial",
@@ -76,9 +85,17 @@
                 });
         });
 
+        $(function () {
+            var idToUpdate = $('#results2');
+            $.get("/Defect/QuantityDefectPartial",
+                function (data) {
+                    $(idToUpdate).html(data);
+                });
+        });
+
         document.getElementById("stock").className = "active treeview menu-open";
         document.getElementById("defectJmtDetail").className = "active";
-    </script>
+</script>
 
 
 }

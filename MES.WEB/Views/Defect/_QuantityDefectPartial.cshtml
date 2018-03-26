@@ -1,0 +1,25 @@
+﻿@model IEnumerable<MES.WEB.Models.DefectQuantityVm>
+
+<h4>Брак за период</h4>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NameDetail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Count)
+        </th>       
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameDetail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Count)
+        </td>       
+    </tr>
+}
+
+</table>

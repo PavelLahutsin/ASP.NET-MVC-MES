@@ -4,9 +4,7 @@ using MES.DAL.Interfaces;
 using MES.WEB.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MES.WEB.Controllers
@@ -44,8 +42,8 @@ namespace MES.WEB.Controllers
             if (listMessage == null) listMessage = new List<ChatMessage>();
 
             //оставляем только последние 90 сообщений
-            if (listMessage.Count > 15)
-                listMessage.RemoveRange(0, 10);
+            if (listMessage.Count > 100)
+                listMessage.RemoveRange(0, 90);
 
             if (!Request.IsAjaxRequest())
             {

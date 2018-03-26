@@ -167,6 +167,7 @@ $('#EndDate').on('changeDate',
 
 function OnSuccess() {
     Scroll();
+    $('#frmID')[0].reset();
 };
 
 function Scroll() {
@@ -174,3 +175,20 @@ function Scroll() {
     var height = win[0].scrollHeight;
     win.scrollTop(height);
 }
+
+$("#chat").click(async function () {
+
+   
+    Refresh();
+})
+
+async function Refresh() {
+    var idToUpdate2 = $('#mesegebox');
+    await $.post("/Chat/Messege",
+        function (data) {
+            $(idToUpdate2).html(data);
+        });
+     Scroll();
+    setTimeout("Refresh();", 5000);
+}
+
