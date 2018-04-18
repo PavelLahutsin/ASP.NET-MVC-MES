@@ -75,7 +75,7 @@ namespace MES.BLL.Services
                 .GroupBy(dt => dt.ProductId)
                 .Select(x => new ChekDetailsDto()
                 {
-                    Airtight = x.Sum(s => s.Count),
+                    Airtight = x.Sum(s => s.Airtight),
                     Defect = x.Sum(s => s.Defect),
                     Housing = x.Sum(s => s.Housing),
                     Other = x.Sum(s => s.Other),
