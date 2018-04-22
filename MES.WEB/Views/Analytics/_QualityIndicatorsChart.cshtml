@@ -3,7 +3,7 @@
 
 <div class="box external-event">
     <div class="box-header with-border">
-        <h3 class="box-title">Сколько теплообменников 5200-01 можно собрать</h3>
+        <h3 class="box-title">Показатель качества</h3>
 
         <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -33,18 +33,7 @@
         data: {
             labels: @Html.Raw(Json.Encode(Model.Select(x=>x.ProducName))),
             datasets: [{
-                label: 'Всего',
-                data: @Html.Raw(Json.Encode(Model.Select(x=>x.Quantity))),
-                backgroundColor:
-                    'rgba(50, 180, 0, 1)'
-                ,
-                borderColor:
-                    'rgba(255, 159, 64, 1)'
-                ,
-                borderWidth: 1
-            },
-                {
-                    label: 'Брак',
+                 label: 'Брак',
                     data: @Html.Raw(Json.Encode(Model.Select(x=>x.QuantityDefect))),
                     backgroundColor:
                         'rgba(255, 50, 64, 1)'
@@ -53,10 +42,22 @@
                         'rgba(255, 159, 64, 1)'
                     ,
                     borderWidth: 1
+            },
+                {
+                     label: 'Всего',
+        data: @Html.Raw(Json.Encode(Model.Select(x => x.Quantity))),
+    backgroundColor:
+    'rgba(50, 180, 0, 1)'
+        ,
+        borderColor:
+    'rgba(255, 159, 64, 1)'
+        ,
+        borderWidth: 1
+
                 }
                 ]
         },
-        options: {           
+        options: {
             tooltips: {
                 mode: 'index',
                 intersect: false
