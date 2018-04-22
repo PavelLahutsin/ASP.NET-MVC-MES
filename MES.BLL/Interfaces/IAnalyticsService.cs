@@ -10,5 +10,6 @@ namespace MES.BLL.Interfaces
         Task<IEnumerable<SolderingCountDto>> ShowSolderingsCountAsync(string startDate, string endDate);
         Task<ChekDetailsDto> ShowCheckInfo(string startDate, string endDate);
         Task<IEnumerable<ShipmentChartDto>> ShowShipmentAsync(string startDate, string endDate);
+        Task<IEnumerable<QualityIndicators>> QualityIndicators520001(string startDate, string endDate);
     }
 }

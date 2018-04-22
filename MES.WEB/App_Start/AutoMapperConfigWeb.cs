@@ -36,6 +36,7 @@ namespace MES.WEB
             cfg.CreateMap<DetailInProductDto, DetailInProductVm>().ReverseMap();
             cfg.CreateMap<User, ChatUser>().ReverseMap();
             cfg.CreateMap<DefectQuantityDto, DefectQuantityVm>().ReverseMap();
+            cfg.CreateMap<QualityIndicators, QualityIndicatorsVm>().ReverseMap();
         };
     }
 }

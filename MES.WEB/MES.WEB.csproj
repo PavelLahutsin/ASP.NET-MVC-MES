@@ -245,6 +245,7 @@
     <Compile Include="Models\LoginVm.cs" />
     <Compile Include="Models\ProductStateVm.cs" />
     <Compile Include="Models\ProductVm.cs" />
+    <Compile Include="Models\QualityIndicatorsVm.cs" />
     <Compile Include="Models\RegisterVm.cs" />
     <Compile Include="Models\RepairVm.cs" />
     <Compile Include="Models\ShipmentChartVm.cs" />
@@ -809,6 +810,7 @@
     <Content Include="Views\Chat\_Chat.cshtml" />
     <Content Include="Views\Chat\_Messege.cshtml" />
     <Content Include="Views\Defect\_QuantityDefectPartial.cshtml" />
+    <Content Include="Views\Analytics\_QualityIndicatorsChart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

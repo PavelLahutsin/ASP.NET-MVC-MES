@@ -50,7 +50,6 @@
             </a>
             <!-- /.box -->
             <!-- BAR CHART -->
-           
             <!-- /.box -->
             <!-- /.box -->
 
@@ -71,6 +70,12 @@
                 </div>
             </a>
         </div>
+
+        <div class="col-md-6">
+            <div id="results5">
+            </div>
+        </div>
+
         <!-- /.col (RIGHT) -->
     </div>
     <!-- /.row -->
@@ -80,8 +85,8 @@
 
 @section scripts
 {
-    
-<script>
+
+    <script>
 
 
 
@@ -115,7 +120,15 @@
                 function (data) {
                     $(idToUpdate).html(data);
                 });
-        });
+    });
+
+    $(function () {
+        var idToUpdate = $('#results5');
+        $.get("/Analytics/QualityIndicatorsChart",
+            function (data) {
+                $(idToUpdate).html(data);
+            });
+    });
 
         function view() {
             var startDate = $('#StartDate').val();
@@ -135,9 +148,13 @@
                 startDate +
                 '&endDate=' +
                 endDate);
+            $('#results5').load('@Url.Action("QualityIndicatorsChart", "Analytics")?startDate=' +
+                startDate +
+                '&endDate=' +
+                endDate);
         }
 
         document.getElementById('analytics').className = "active";
-</script>
+    </script>
 
 }

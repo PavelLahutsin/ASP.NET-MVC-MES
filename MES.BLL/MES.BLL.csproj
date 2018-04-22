@@ -107,6 +107,7 @@
     <Compile Include="DTO\LoginDto.cs" />
     <Compile Include="DTO\ProductDTO.cs" />
     <Compile Include="DTO\ProductStateDto.cs" />
+    <Compile Include="DTO\QualityIndicators.cs" />
     <Compile Include="DTO\RepairDto.cs" />
     <Compile Include="DTO\ShipmentChartDto.cs" />
     <Compile Include="DTO\ShipmentDto.cs" />

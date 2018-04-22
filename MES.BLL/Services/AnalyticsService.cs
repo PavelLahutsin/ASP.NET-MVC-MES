@@ -170,5 +170,57 @@ namespace MES.BLL.Services
             
             return shpList;
         }
+
+        public async Task<IEnumerable<QualityIndicators>> QualityIndicators520001(string startDate, string endDate)
+        {
+            DateTime myEndDate;
+            DateTime myStartDate;
+            if (string.IsNullOrEmpty(startDate) || string.IsNullOrEmpty(endDate))
+            {
+                myEndDate = DateTime.Now;
+                myStartDate = new DateTime(myEndDate.Year, myEndDate.Month, 1);
+            }
+            else
+            {
+                myEndDate = DateTime.Parse(endDate);
+                myStartDate = DateTime.Parse(startDate);
+            }
+
+            var res = await _uof.CheckJmts.Entities.Where(w => w.Date >= myStartDate && w.Date <= myEndDate && w.State == StateFoTest.Новые).Select(x => new QualityIndicators()
+            {
+                QuantityDefect = x.Defect,
+                ProducName = x.Product.Name,
+                Quantity = x.Count
+            }).ToListAsync();
+
+            var result = res.GroupBy(x => x.ProducName).Select(x => new QualityIndicators
+            {
+                QuantityDefect = x.Sum(s => s.QuantityDefect),
+                ProducName = x.First().ProducName,
+                Quantity = x.Sum(s => s.Quantity)
+            });
+
+            var resDef = await _uof.CheckJmts.Entities.Where(w => w.Date >= myStartDate && w.Date <= myEndDate).Select(x => new QualityIndicators()
+            {
+                QuantityDefect = x.Defect,
+                ProducName = x.Product.Name
+            }).ToListAsync();
+
+            var resultDef = resDef.GroupBy(x => x.ProducName).Select(x => new QualityIndicators
+            {
+                QuantityDefect = x.Sum(s => s.QuantityDefect),
+                ProducName = x.First().ProducName
+            });
+
+
+            var results = result.Join(resultDef, p => p.ProducName, c => c.ProducName, (p, c) =>
+                new QualityIndicators
+                {
+                    ProducName = p.ProducName,
+                    Quantity = p.Quantity,
+                    QuantityDefect = c.QuantityDefect
+                });
+            return results;
+        }
     }
 }

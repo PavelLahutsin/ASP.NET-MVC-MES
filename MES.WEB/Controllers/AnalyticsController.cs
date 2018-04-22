@@ -105,5 +105,13 @@ namespace MES.WEB.Controllers
 
             return PartialView("_ShipmentChartModal", check);
         }
+
+        public async Task<ActionResult> QualityIndicatorsChart(string startDate, string endDate)
+        {
+            var result = Mapper.Map<IEnumerable<QualityIndicators>, List<QualityIndicatorsVm>>(
+                await _service.QualityIndicators520001(startDate, endDate));
+
+            return PartialView("_QualityIndicatorsChart", result);
+        }
     }
 }
