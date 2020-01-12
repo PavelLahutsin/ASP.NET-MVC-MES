@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using AutoMapper;
@@ -41,6 +42,16 @@ namespace MES.WEB.Controllers
         {
             var arrivals = Mapper.Map<IEnumerable<DisplayArrivalOfDetailDto>, List<DisplayArrivalOfDetailVm>>(await _service.ShowArryvalOfDedailsAsync(startDate, endDate));
             return PartialView(arrivals);
+        }
+
+        //История прихода на склад
+        public async Task<ActionResult> HistArrivalPartialGroup(string startDate, string endDate)
+        {
+            var arrivals = Mapper.Map<IEnumerable<DisplayArrivalOfDetailDto>, List<DisplayArrivalOfDetailVm>>(await _service.ShowArryvalOfDedailsAsync(startDate, endDate));
+            var arrivalsGroup = arrivals.GroupBy(x => x.NameDetail)
+                .Select(x => new DisplayArrivalGroupVm(x.Key, x.Sum(s => s.Count))).ToArray();
+
+            return PartialView(arrivalsGroup);
         }
 
         //Удаление Данных о добавлении на склад

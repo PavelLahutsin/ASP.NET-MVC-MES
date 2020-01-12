@@ -45,6 +45,7 @@ namespace MES.WEB.Controllers
             var assembly = new AssemblyVm { Date = DateTime.Now };
             var products = Mapper.Map<IEnumerable<Product>, List<ProductVm>>(await _db.Products.GetAllAsync());
             ViewBag.Products = new SelectList(products, "Id", "Name");
+
             return PartialView(assembly);
         }
 
@@ -69,7 +70,8 @@ namespace MES.WEB.Controllers
                 };
                 if (ChatController.listMessage == null) ChatController.listMessage = new List<ChatMessage>();
                 ChatController.listMessage.Add(message);
-                    }
+            }
+
             return Json(result);
         }
 

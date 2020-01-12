@@ -1,0 +1,31 @@
+﻿@model IEnumerable<MES.WEB.Models.DisplayArrivalGroupVm>
+
+@if(Model.Any())
+{ 
+    <table class="table table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NameDetail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Count)
+            </th>
+        </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameDetail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Count)
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+<h5>В таблице отсутствуют данные</h5>
+}

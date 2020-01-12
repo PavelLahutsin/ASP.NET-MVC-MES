@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div id="modDialog" class="modal fade">
+    <div id="dialogContent" class="modal-dialog"></div>
+</div>
+<div id="alert-message"></div>
+<div id="results"></div>
+
+
+@section scripts
+{
+
+    <script>
+        function view() {
+            $('#results').load('@Url.Action("GetUsers", "Account")');
+
+        }
+
+
+        $(function () {
+            var idToUpdate = $('#results');
+            $.get("/Account/GetUsers",
+                function (data) {
+                    $(idToUpdate).html(data);
+                });
+        });
+
+        document.getElementById("users").className = "active";
+    </script>
+
+
+}

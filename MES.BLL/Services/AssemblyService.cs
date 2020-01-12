@@ -154,7 +154,7 @@ namespace MES.BLL.Services
 
             if (str.Length>0)
             {
-                await SendEmailAsync(str.ToString());
+                //await SendEmailAsync(str.ToString());
             }
                         
         }

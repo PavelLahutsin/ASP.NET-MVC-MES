@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -27,6 +28,11 @@ namespace MES.WEB.Controllers
         }
 
         private IAuthenticationManager AuthenticationManager => HttpContext.GetOwinContext().Authentication;
+
+        public ActionResult Index()
+        {
+            return View();
+        }
 
         public ActionResult Login()
         {
@@ -133,6 +139,19 @@ namespace MES.WEB.Controllers
             var image = _serviceOfWork.Users.Entities.Where(w=>w.Id==id).Select(x => x.Image).FirstOrDefault();
             
             return PartialView(image);
+        }
+
+        public async Task<ActionResult> Delete(int id)
+        {
+            var result = await _service.DeleteUser(id);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public async Task<ActionResult> GetUsers(string startDate, string endDate)
+        {
+            var users = Mapper.Map<IEnumerable<UserDto>, IEnumerable<ChatUser>>(
+                await _service.GetUsers());
+            return PartialView(users);
         }
     }
 }

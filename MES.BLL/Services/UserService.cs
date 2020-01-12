@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using MES.BLL.DTO;
 using MES.BLL.Infrastructure;
 using MES.BLL.Interfaces;
@@ -65,7 +67,32 @@ namespace MES.BLL.Services
             }
         }
 
-       
+        public async Task<IEnumerable<UserDto>> GetUsers()
+        {
+            return Mapper.Map<IEnumerable<User>, IEnumerable<UserDto>>(await _uof.Users.GetAllAsync());
+        }
 
+        public async Task<OperationDetails> DeleteUser(int id)
+        {
+            try
+            {
+                var user = await _uof.Users.GetAsync(id);
+                if (user == null)
+                {
+                    throw new Exception("Данный пользователя нет в базе");
+                }
+
+                _uof.Users.Delete(id);
+
+                await _uof.Commit();
+
+                return new OperationDetails(true, "Пользователь удален", "");
+            }
+            catch (Exception)
+            {
+                _uof.Rollback();
+                return new OperationDetails(false, "Пользователь не удален", "");
+            }
+        }
     }
 }

@@ -21,7 +21,7 @@
     </div>
     <!-- /.box-header -->
     <br />
-    <div class="form-inline">
+    <div class="box-body form-inline">
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -41,7 +41,26 @@
         </div>
 
     </div>
-    <hr />
+</div>
+
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title">Сводный отчет</h3>
+    </div>
+    <!-- /.box-header -->
+    
+    <div class="box-body">
+        <div id="resultsGroup">
+        </div>
+    </div>
+</div>
+
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title">Подробный отчет</h3>
+    </div>
+    <!-- /.box-header -->
+   
     <div class="box-body">
         <div id="results">
         </div>
@@ -64,11 +83,24 @@
                 '&endDate=' +
                 endDate);
 
+            $('#resultsGroup').load('@Url.Action("HistArrivalPartialGroup", "Arrival")?startDate=' +
+                startDate +
+                '&endDate=' +
+                endDate);
+
         }
 
         $(function () {
             var idToUpdate = $('#results');
             $.get("/Arrival/HistArrivalPartial",
+                function (data) {
+                    $(idToUpdate).html(data);
+                });
+        });
+
+        $(function () {
+            var idToUpdate = $('#resultsGroup');
+            $.get("/Arrival/HistArrivalPartialGroup",
                 function (data) {
                     $(idToUpdate).html(data);
                 });

@@ -240,6 +240,7 @@
     <Compile Include="Models\DefectQuantityVm.cs" />
     <Compile Include="Models\DetailInProductVm.cs" />
     <Compile Include="Models\DetailVm.cs" />
+    <Compile Include="Models\DisplayArrivalGroupVm.cs" />
     <Compile Include="Models\IdProvider.cs" />
     <Compile Include="Models\DisplayArrivalOfDetailVm.cs" />
     <Compile Include="Models\LoginVm.cs" />
@@ -811,6 +812,9 @@
     <Content Include="Views\Chat\_Messege.cshtml" />
     <Content Include="Views\Defect\_QuantityDefectPartial.cshtml" />
     <Content Include="Views\Analytics\_QualityIndicatorsChart.cshtml" />
+    <Content Include="Views\Arrival\HistArrivalPartialGroup.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\GetUsers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
