@@ -29,6 +29,7 @@ namespace MES.WEB.Controllers
 
         private IAuthenticationManager AuthenticationManager => HttpContext.GetOwinContext().Authentication;
 
+        [Authorize]
         public ActionResult Index()
         {
             return View();
@@ -45,7 +46,7 @@ namespace MES.WEB.Controllers
         {
             if (!ModelState.IsValid) return View(model);
             var user = await _serviceOfWork.Users.Entities.FirstOrDefaultAsync(u =>
-                u.UserName == model.UserName && u.Password == model.Password);
+                u.UserName == model.UserName && u.Password == model.Password && !u.IsDeleted);
 
             if (user == null)
             {
@@ -133,6 +134,7 @@ namespace MES.WEB.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize]
         public  ActionResult ShowProfile()
         {
             var id = User.Identity.GetUserId<int>();
@@ -141,12 +143,15 @@ namespace MES.WEB.Controllers
             return PartialView(image);
         }
 
+        [Authorize(Roles = "admin")]
+        [HttpPost]
         public async Task<ActionResult> Delete(int id)
         {
             var result = await _service.DeleteUser(id);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         public async Task<ActionResult> GetUsers(string startDate, string endDate)
         {
             var users = Mapper.Map<IEnumerable<UserDto>, IEnumerable<ChatUser>>(

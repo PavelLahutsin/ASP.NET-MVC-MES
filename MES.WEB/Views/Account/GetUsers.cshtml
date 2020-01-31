@@ -20,8 +20,15 @@
                         @Html.DisplayFor(modelItem => item.UserName)
                     </td>
                     <td>
-                        <a class="btn btn-danger" onclick="deleteElement(event, this)" href="@Url.Action("Delete", new { id = item.Id })">Удалить</a>
-
+                        
+                        @if (item.UserName != "Серега")
+                        {
+                            <a class="btn btn-danger" onclick="deleteElement(event, this)" href="@Url.Action("Delete", new {id = item.Id})">Удалить</a>
+                        }
+                        else
+                        {
+                            <button class="btn btn-success">Дать премию</button>
+                        }
                     </td>
                 </tr>
             }

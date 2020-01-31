@@ -88,6 +88,15 @@
     <Compile Include="Interfaces\IBaseRepository.cs" />
     <Compile Include="Interfaces\IMesContext.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Migrations\201802111948352_InitialCreate.cs" />
+    <Compile Include="Migrations\201802111948352_InitialCreate.Designer.cs">
+      <DependentUpon>201802111948352_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001311947266_MigrateDB.cs" />
+    <Compile Include="Migrations\202001311947266_MigrateDB.Designer.cs">
+      <DependentUpon>202001311947266_MigrateDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
   </ItemGroup>
@@ -96,6 +105,13 @@
     <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201802111948352_InitialCreate.resx">
+      <DependentUpon>201802111948352_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001311947266_MigrateDB.resx">
+      <DependentUpon>202001311947266_MigrateDB.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -69,7 +70,7 @@ namespace MES.BLL.Services
 
         public async Task<IEnumerable<UserDto>> GetUsers()
         {
-            return Mapper.Map<IEnumerable<User>, IEnumerable<UserDto>>(await _uof.Users.GetAllAsync());
+            return Mapper.Map<IEnumerable<User>, IEnumerable<UserDto>>(await _uof.Users.Entities.Where(x=>!x.IsDeleted).ToListAsync());
         }
 
         public async Task<OperationDetails> DeleteUser(int id)
@@ -79,10 +80,11 @@ namespace MES.BLL.Services
                 var user = await _uof.Users.GetAsync(id);
                 if (user == null)
                 {
-                    throw new Exception("Данный пользователя нет в базе");
+                    throw new Exception("Данного пользователя нет в базе");
                 }
 
-                _uof.Users.Delete(id);
+                user.IsDeleted = true;
+                _uof.Users.Update(user);
 
                 await _uof.Commit();
 
